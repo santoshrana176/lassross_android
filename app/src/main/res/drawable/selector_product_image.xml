@@ -1,0 +1,6 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/rhombus_filled_shape" android:state_selected="true" />
+    <item android:drawable="@drawable/rhombus_unfilled_shape" />
+
+</selector>

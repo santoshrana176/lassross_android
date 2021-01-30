@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/llUpperLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_160sdp"
+                android:background="@drawable/sub_bg">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/ivActivePlanBack"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_14sdp"
+                        android:layout_marginTop="@dimen/_1sdp"
+                        android:padding="@dimen/_2sdp"
+                        android:src="@drawable/ic_back_arrow_ico" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:fontFamily="@font/ibmplexsans_regular"
+                        android:gravity="center"
+                        android:text="@string/active_plan"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSubscriptionImageWithText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-95dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/tvSubscriptionPlanImage"
+                    android:layout_width="@dimen/_110sdp"
+                    android:layout_height="@dimen/_110sdp"
+                    android:background="@drawable/circular_main_bg"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/silverplan_icon_orange" />
+
+                <TextView
+                    android:id="@+id/tvSubscriptionPlanTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/ibmplexsans_bold"
+                    android:paddingTop="@dimen/_3sdp"
+                    android:text="@string/silver_plan"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    android:id="@+id/tvSubscriptionPlan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/ibmplexsans_bold"
+                    android:text="@string/plan"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSubscription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_60sdp"
+                android:layout_marginEnd="@dimen/_40sdp"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvplanPriceCurrency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:fontFamily="@font/ibmplexsans_semibold"
+                        android:gravity="center"
+                        android:text="$ "
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_23sdp" />
+
+                    <TextView
+                        android:id="@+id/tvSubscriptionPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/ibmplexsans_semibold"
+                        android:gravity="center"
+                        android:text="500"
+                        android:textColor="@color/orange_forgot_password"
+                        android:textSize="@dimen/_20sdp" />
+
+                    <TextView
+                        android:id="@+id/tvSubscriptionPlanDurationType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:fontFamily="@font/ibmplexsans_regular"
+                        android:gravity="center"
+                        android:text=" / Month"
+                        android:textColor="@color/another_black"
+                        android:textSize="@dimen/_14sdp" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvItemDescriptionListSubscription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llDownLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llUpperLayout"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/_20sdp">
+
+            <TextView
+                android:id="@+id/tvRenewDateTextActivePlan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ibmplexsans_semibold"
+                android:gravity="center"
+                android:text="@string/next_billing_date"
+                android:textColor="@color/orange_forgot_password"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:id="@+id/tvRenewDateActivePlan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ibmplexsans_regular"
+                android:gravity="center"
+                android:paddingStart="@dimen/_10sdp"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                tools:ignore="RtlSymmetry" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvStopAutoRecurring"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_below="@+id/llDownLayout"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:background="@drawable/lasros_main_btn"
+            android:fontFamily="@font/ibmplexsans_semibold"
+            android:gravity="center"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_7sdp"
+            android:text="@string/stop_auto_recurring"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvStopAutoRecurring"
+            android:layout_marginStart="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_35sdp"
+            android:fontFamily="@font/ibmplexsans_regular"
+            android:gravity="center"
+            android:paddingBottom="@dimen/_30sdp"
+            android:text="If you stop auto recurring of current plan now, You can still access it's benefits until expiry date"
+            android:textColor="@color/input_text_color"
+            android:textSize="@dimen/_10sdp" />
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/_15sdp"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:layout_marginRight="@dimen/_15sdp"
+    android:layout_marginBottom="@dimen/_15sdp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivUserImage"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@drawable/product_review_list_image_circle"
+            android:src="@drawable/placeholder_image" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_toEndOf="@+id/ivUserImage"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ibmplexsans_semibold"
+                android:text="Pearle Desrosier"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <RatingBar
+                android:id="@+id/ratingBarAllReviews"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:stepSize="0.1"
+                android:theme="@style/RatingBar" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvDateProductReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:padding="@dimen/_5sdp"
+            android:text="21 Apr 2019"
+            android:textColor="#828282"
+            android:textSize="@dimen/_10sdp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvUserComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:fontFamily="@font/ibmplexsans_light"
+        android:text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blan diti is praese ntium voluptatum deleniti atque corrupti quos dolores et qu as molestias excepturi sint occaecati cupiditate non provi dent, simili que sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga"
+        android:textColor="#828282"
+        android:textSize="@dimen/_9sdp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="#cccccc" />
+
+</LinearLayout>

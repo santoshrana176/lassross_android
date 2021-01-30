@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvHeaderName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="@string/name"
+        android:textSize="12sp" />
+
+    <View
+        android:id="@+id/tvChildLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="40dp"
+        android:background="#cccccc"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/child_devider_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_15sdp"
+        android:background="#f8f8f8"
+        android:visibility="gone" />
+</LinearLayout>

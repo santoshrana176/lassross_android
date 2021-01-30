@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rvLarge"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:gravity="center"
+    android:padding="@dimen/_3sdp">
+
+    <CheckBox
+        android:id="@+id/cbLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/checkbox_selector"
+        android:checked="false"
+        android:clickable="false"
+        android:focusable="false"
+        android:fontFamily="@font/ibmplexsans_light"
+        android:textColor="#666666"
+        android:textSize="@dimen/_10sdp" />
+
+    <TextView
+        android:id="@+id/tvSizeFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_3sdp"
+        android:layout_toEndOf="@+id/cbLarge"
+        android:paddingStart="@dimen/_10sdp"
+        android:text="@string/large"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/tvLargeItemNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="1252"
+        android:textSize="@dimen/_10sdp"
+        android:visibility="gone" />
+</RelativeLayout>

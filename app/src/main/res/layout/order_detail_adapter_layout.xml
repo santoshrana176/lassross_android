@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/_10sdp">
+
+    <ImageView
+        android:id="@+id/ivOrderDetail"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:src="@drawable/dress2" />
+
+    <LinearLayout
+        android:id="@+id/llMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_21sdp"
+        android:layout_toEndOf="@+id/ivOrderDetail"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvItemNameOrderDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ibmplexsans_regular"
+            android:maxLines="1"
+            android:paddingStart="@dimen/_2sdp"
+            android:singleLine="true"
+            android:text="COATS AND JACKETS"
+            android:textAllCaps="true"
+            android:textColor="#999999"
+            android:textSize="@dimen/_8sdp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvItemCategoryOrderDetail"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:fontFamily="@font/ibmplexsans_regular"
+                android:maxLines="1"
+                android:paddingStart="@dimen/_2sdp"
+                android:singleLine="true"
+                android:text="Jackets Shinny Fitssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+                android:textColor="@color/another_black"
+                android:textSize="@dimen/_11sdp" />
+
+            <TextView
+                android:id="@+id/tvItemTotalPriceOrderDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/ibmplexsans_semibold"
+                android:text="£ 39.00"
+                android:textColor="#ff0101"
+                android:textSize="@dimen/_12sdp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvItemSizeOrderDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/ibmplexsans_light"
+            android:paddingStart="@dimen/_2sdp"
+            android:text="Large"
+            android:textColor="@color/another_black"
+            android:textSize="@dimen/_11sdp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/_2sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ibmplexsans_regular"
+                android:text="@string/color_order_detail"
+                android:textColor="#999999"
+                android:textSize="@dimen/_9sdp" />
+
+            <TextView
+                android:id="@+id/productColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ibmplexsans_regular"
+                android:text=""
+                android:textColor="@color/another_black"
+                android:textSize="@dimen/_9sdp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ibmplexsans_regular"
+                android:paddingStart="@dimen/_10sdp"
+                android:text="@string/quantity_order_detail"
+                android:textColor="#999999"
+                android:textSize="@dimen/_9sdp" />
+
+            <TextView
+                android:id="@+id/productQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ibmplexsans_regular"
+                android:text=""
+                android:textColor="@color/another_black"
+                android:textSize="@dimen/_9sdp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_5sdp">
+
+            <RatingBar
+                android:id="@+id/myRatingBar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:rating="@color/yellow_color"
+                android:stepSize="1"
+                android:theme="@style/RatingBar" />
+
+            <TextView
+                android:id="@+id/tvWriteReviewOrderDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/write_a_review"
+                android:textColor="@color/write_review_color"
+                android:textSize="@dimen/_10sdp"
+                android:visibility="visible" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

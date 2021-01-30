@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "789589005117",
+    "firebase_url": "https://lasross-a84d5.firebaseio.com",
+    "project_id": "lasross-a84d5",
+    "storage_bucket": "lasross-a84d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789589005117:android:8b4cd247cf629e8cc22b54",
+        "android_client_info": {
+          "package_name": "com.lasross"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "789589005117-3pvf7j6s6t8hisf9j4af2ibhmak3caqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUemHoSwC_DiSDBLQtzH-i2WuY_cycle4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "789589005117-3pvf7j6s6t8hisf9j4af2ibhmak3caqt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "789589005117-vjpd84jsed3s3pfuglgkrsb97na11pku.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mindiii.LasRoss"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789589005117:android:532f5dbd97ee0b3fc22b54",
+        "android_client_info": {
+          "package_name": "com.mindiii.lasross"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "789589005117-tg6t06uk68baqm1c3abmmnlafdq6hj7n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mindiii.lasross",
+            "certificate_hash": "a635e3dfb35d65aae73b025c43aa313ab7c46147"
+          }
+        },
+        {
+          "client_id": "789589005117-o85t2o40of1fluh35k1uj05lqaea2hil.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mindiii.lasross",
+            "certificate_hash": "3a4a4c868f2871b6433e7880c06b011486e89be8"
+          }
+        },
+        {
+          "client_id": "789589005117-3pvf7j6s6t8hisf9j4af2ibhmak3caqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUemHoSwC_DiSDBLQtzH-i2WuY_cycle4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "789589005117-3pvf7j6s6t8hisf9j4af2ibhmak3caqt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "789589005117-vjpd84jsed3s3pfuglgkrsb97na11pku.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mindiii.LasRoss"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

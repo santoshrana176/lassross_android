@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rvHeaderHomeTop"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_120sdp"
+    android:layout_margin="@dimen/_7sdp"
+    android:background="@drawable/home_banner_image_bg">
+    <!--android:background="@drawable/home_banner_image_bg"-->
+    <LinearLayout
+        android:layout_width="@dimen/_170sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvUpTo50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ibmplexsans_bold"
+            android:paddingStart="@dimen/_5sdp"
+            android:text="@string/up_to_50off"
+            android:textColor="@color/up_to_50off"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ibmplexsans_regular"
+            android:padding="@dimen/_5sdp"
+            android:text="Don't miss out on some very special items at extraordinary sale prices. For a limited time!"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8sdp" />
+
+        <Button
+            android:id="@+id/btnPick"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/pick_up_bargain_bg"
+            android:paddingLeft="@dimen/_7sdp"
+            android:paddingRight="@dimen/_7sdp"
+            android:text="Pick up a Bargain"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_8sdp" />
+    </LinearLayout>
+
+    <com.mindiii.lasross.helper.RoundRectCornerImageView
+        android:id="@+id/ivDiscount"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/dress2" />
+</RelativeLayout>
