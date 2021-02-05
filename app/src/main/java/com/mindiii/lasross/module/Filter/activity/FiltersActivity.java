@@ -172,6 +172,14 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
         tvClearAll.setOnClickListener(this);
     }
 
+ /*   public void finViewById(ArrayList<View> viewList,ArrayList<Integer> viewIdList ){
+        if (viewList.size()==viewIdList.size()){
+            for (int i=0;i<viewList.size();i++){
+                viewList.get(i).findViewById(viewIdList.get(i));
+            }
+        }
+    }*/
+
     private void setPriceData() {
         final Typeface semi_bold = ResourcesCompat.getFont(FiltersActivity.this, R.font.ibmplexsans_semibold);
         final Typeface regular = ResourcesCompat.getFont(FiltersActivity.this, R.font.ibmplexsans_regular);
@@ -218,8 +226,10 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
             @Override
             public void onSizeRemoveClick(String size) {
                 if (sb.size() > 0) {
+
                     sb.remove(size);
                     System.out.println("adapter........size removed SIZE" + size);
+
                 }
             }
 

@@ -61,7 +61,6 @@ public class LasrossParentActivity extends AppCompatActivity {
                     Log.w("firebaseToken", "getInstanceId failed", task.getException());
                     return;
                 }
-
                 fireBaseToken = Objects.requireNonNull(task.getResult()).getToken();
                 Log.d("firebaseToken", fireBaseToken);
             }

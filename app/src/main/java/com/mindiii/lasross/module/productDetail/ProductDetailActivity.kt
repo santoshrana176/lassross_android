@@ -63,13 +63,16 @@ class ProductDetailActivity : LasrossParentKotlinActivity(), ApiCallback.Product
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
         session = Session(this)
-    /*    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            val w = window
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        }*/
+        val window = this.window
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().statusBarColor=ContextCompat.getColor(this ,R.color.white)
+            window.statusBarColor = this.resources.getColor(R.color.white)
         }
+
+        /*   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+               getWindow().statusBarColor=ContextCompat.getColor(this ,R.color.white)
+           }*/
 
         if (session.cartItemCount.equals("0", ignoreCase = true))
             tvCartItemCountProductDetail.setVisibility(View.GONE)

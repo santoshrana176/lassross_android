@@ -27,8 +27,8 @@ class PaymentConfirmActivity : LasrossParentKotlinActivity(), View.OnClickListen
             window.statusBarColor = this.resources.getColor(R.color.home_header_bg1)
         }
         if (intent.getStringExtra("totalAmount") != null) {
-            totalAmount = intent.getStringExtra("totalAmount")
-            orderNumber = intent.getStringExtra("orderNumber")
+            totalAmount = intent.getStringExtra("totalAmount")!!
+            orderNumber = intent.getStringExtra("orderNumber")!!
         }
 
         updateUi(totalAmount, orderNumber)

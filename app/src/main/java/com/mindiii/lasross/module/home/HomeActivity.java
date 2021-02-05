@@ -460,7 +460,6 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
         lp.gravity = Gravity.BOTTOM;
         lp.windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setAttributes(lp);
-
         dialog.show();
 
     }
@@ -605,18 +604,14 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
     // logout dialog
     public void showLogoutDialog(final Activity activity, String message) {
         final Dialog dialog = new Dialog(activity);
-
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-
         dialog.setContentView(R.layout.logout_view);
-
         TextView tvMessagesLogout = dialog.findViewById(R.id.tvMessagesLogout);
         tvMessagesLogout.setText(message);
         TextView tvPopupNoLogout = dialog.findViewById(R.id.tvPopupNoLogout);
         TextView tvPopupYesLogout = dialog.findViewById(R.id.tvPopupYesLogout);
-
         tvPopupNoLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

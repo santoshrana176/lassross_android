@@ -81,6 +81,7 @@ data class VariantValue(
     override fun toString(): String {
         return variant_value
     }
+
 }
 /*
 data class ProductDetailResponse(
