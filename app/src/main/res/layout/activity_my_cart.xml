@@ -197,7 +197,7 @@
                         android:layout_height=".5dp"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:background="#cccccc" />
+                        android:background="#cccccc"/>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -273,8 +273,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_50sdp"
-        android:layout_marginTop="@dimen/_170sdp"
+        android:layout_marginTop="@dimen/_150sdp"
         android:layout_marginEnd="@dimen/_50sdp"
+        android:layout_centerHorizontal="true"
         android:orientation="vertical"
         android:visibility="gone">
 
@@ -294,14 +295,5 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_14sdp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:fontFamily="@font/ibmplexsans_regular"
-            android:gravity="center"
-            android:text="@string/wishlist_no_item_text"
-            android:textColor="@color/sort_by_color"
-            android:textSize="@dimen/_11sdp" />
     </LinearLayout>
 </RelativeLayout>

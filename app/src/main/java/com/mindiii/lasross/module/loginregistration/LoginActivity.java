@@ -447,7 +447,7 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
         if (loginResponse.getStatus().equalsIgnoreCase("success")) {
             session.createRegistration(loginResponse.getData().getUserDetail());
             session.setUserLoggedIn();
-       //     session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
+          session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             finish();
         } else {
@@ -459,7 +459,7 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
     public void onSuccessSocial(LoginResponse loginResponse) {
         if (loginResponse.getStatus().equalsIgnoreCase("success")) {
             session.createRegistration(loginResponse.getData().getUserDetail());
-         //    session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
+            session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
             session.setUserLoggedIn();
             if (loginResponse.getMessageCode().equalsIgnoreCase("social_reg")) {
                 CommonUtils.toastMessage(LoginActivity.this, loginResponse.getMessage());

@@ -65,10 +65,9 @@ public class Session {
         Gson gson = new Gson();
         String json = gson.toJson(loginData);
         editor.putString(RegisterInfo, json);
-      editor.putString(AuthToken, loginData.getAuth_token());
+     // editor.putString(AuthToken, loginData.getAuth_token());
         editor.commit();
     }
-
     public LoginResponse.DataBean.UserDetailBean getRegistration() {
         Gson gson = new Gson();
         String string = mypref.getString(RegisterInfo, "");
@@ -77,11 +76,10 @@ public class Session {
         else
             return null;
     }
-
-  /*  public void setAuthToken(String authToken) {//896320c98cfe4a7b2283a9c1438b93d6c21dbfa8
+    public void setAuthToken(String authToken) {//896320c98cfe4a7b2283a9c1438b93d6c21dbfa8
         editor.putString(AuthToken, authToken);
         editor.apply();
-     }*/
+     }
     public String getAuthToken() {
         return mypref.getString(AuthToken, "");
     }
@@ -103,6 +101,10 @@ public class Session {
         editor.putString(cartItemCount, itemCount);
         editor.apply();
     }
+  /*  public void setAuthToken(String authToken) {//896320c98cfe4a7b2283a9c1438b93d6c21dbfa8
+        editor.putString(AuthToken, authToken);
+        editor.apply();
+    }*/
 
     public String getScreen() {
         return mypref.getString(ScreenName, "");
