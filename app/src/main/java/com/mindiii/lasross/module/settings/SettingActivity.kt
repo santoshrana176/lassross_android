@@ -190,7 +190,11 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
         if (oldPass == "") {
             CommonUtils.showCustomAlert(this, "Please enter old password")
             return false;
-        } else if (newPass == "") {
+        }
+        if (!isValidPass(oldPass)) {
+            CommonUtils.showCustomAlert(this, "Password should have minimum 6 characters")
+            return false;
+        }else if (newPass == "") {
             CommonUtils.showCustomAlert(this, "Please enter new password")
             return false
         } else if (!isValidPass(newPass)) {
