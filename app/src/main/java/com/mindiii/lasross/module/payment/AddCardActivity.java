@@ -40,14 +40,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class AddCardActivity37 extends LasrossParentActivity implements View.OnClickListener, ApiCallback.SubscriptionCallback {
+public class AddCardActivity extends LasrossParentActivity implements View.OnClickListener, ApiCallback.SubscriptionCallback {
     private ImageView ivUnChecked, ivChecked, btnBackToCard;
     private EditText etCardNumber, etName;
     private EditText etExpiryDate;
     private EditText etCVV;
     private TextView tvAddCard;
     private String error = "", subscriptionPlanId = "";
-    private int month1, year1, width;
+    private int  width;
+    private int  month1=0;
+    private int  year1=0;
     private long mLastClickTime = 0;
     private Session session;
 
@@ -102,7 +104,7 @@ public class AddCardActivity37 extends LasrossParentActivity implements View.OnC
         mLastClickTime = SystemClock.elapsedRealtime();
         switch (view.getId()) {
             case R.id.etExpiryDate:
-                showMonthYearDialog();
+                    showMonthYearDialog(month1,year1);
                 break;
             case R.id.ivUnChecked:
                 if (ivUnChecked.getVisibility() == View.VISIBLE) {
@@ -117,41 +119,45 @@ public class AddCardActivity37 extends LasrossParentActivity implements View.OnC
                 }
                 break;
             case R.id.tvAddCard:
-                if (CommonUtils.isNetworkAvailable(this)) {
-                    //showLoader();
-                    String name = etName.getText().toString();
-                    String cardNumber = etCardNumber.getText().toString();
-                    String expiryDate = etExpiryDate.getText().toString();
-                    String cvv = etCVV.getText().toString();
+                    String name = etName.getText().toString().trim();
+                    String cardNumber = etCardNumber.getText().toString().trim();
+                    String expiryDate = etExpiryDate.getText().toString().trim();
+                    String cvv = etCVV.getText().toString().trim();
 
                      /*
                      Please enter valid name
                      Please enter expiry date
                      CVV number must be 3 digit long*/
 
-                    if (name.equals("")) {
+                    if (name.isEmpty()) {
                         CommonUtils.showCustomAlert(this, getResources().getString(R.string.enter_card_holder_name));
                         return;
-                    } else if (cardNumber.equals("")) {
+                    } else if (cardNumber.isEmpty()) {
                         CommonUtils.showCustomAlert(this, getResources().getString(R.string.enter_card_no));
                         return;
-                    } else if (cvv.equals("")) {
-                        CommonUtils.showCustomAlert(this, getResources().getString(R.string.enter_cvv));
-                        return;
-                    } else if (cardNumber.length() < 16) {
+                    }  else if (cardNumber.length() < 16) {
                         CommonUtils.showCustomAlert(this, getResources().getString(R.string.card_no_sixteen_digit));
+                        return;
+                    }else  if (expiryDate.isEmpty()){
+                        CommonUtils.showCustomAlert(this, getString(R.string.expiry_date_text));
+                    }
+                    else if (cvv.isEmpty()) {
+                        CommonUtils.showCustomAlert(this, getResources().getString(R.string.enter_cvv));
                         return;
                     } else if (cvv.length() < 3) {
                         CommonUtils.showCustomAlert(this, getResources().getString(R.string.cvv_no_three_digit));
                         return;
                     } else {
-                        showLoader();
-                        AsyncTaskRunner asyncTaskRunner = new AsyncTaskRunner();
-                        asyncTaskRunner.execute();
+                        if (CommonUtils.isNetworkAvailable(this)) {
+                            showLoader();
+                            AsyncTaskRunner asyncTaskRunner = new AsyncTaskRunner();
+                            asyncTaskRunner.execute();
+                        }else {
+                            showInternetAlertDialog(this);
+                        }
+
                     }
-                } else {
-                    showInternetAlertDialog(this);
-                }
+
                 break;
             case R.id.btnBackToCard:
                 finish();
@@ -230,7 +236,7 @@ public class AddCardActivity37 extends LasrossParentActivity implements View.OnC
                     if (getIntent().getStringExtra("subscriptionScreen") != null) {
                         subscribe(subscriptionPlanId);
                     } else {
-                        showAlertDialog(AddCardActivity37.this, getString(R.string.card_add_success));
+                        showAlertDialog(AddCardActivity.this, getString(R.string.card_add_success));
                     }
                 } else {
                     toastMessage("Stripe Error");
@@ -270,9 +276,17 @@ public class AddCardActivity37 extends LasrossParentActivity implements View.OnC
     }
 
     //*************show  MonthYear  Dialog *******************//
-    private void showMonthYearDialog() {
-        final int year = Calendar.getInstance().get(Calendar.YEAR);
-        final int month = Calendar.getInstance().get(Calendar.MONTH);
+    private void showMonthYearDialog(int month11, int year11) {
+        int year=0;
+        int month=0;
+        if (month1!=0){
+            month=month11;
+            year=year11;
+        }else {
+            year = Calendar.getInstance().get(Calendar.YEAR);
+            month = Calendar.getInstance().get(Calendar.MONTH);
+        }
+
         final Dialog yearDialog;
         yearDialog = new Dialog(this);
         yearDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -291,7 +305,7 @@ public class AddCardActivity37 extends LasrossParentActivity implements View.OnC
 
 
         yearPicker.setMaxValue(2050);
-        yearPicker.setMinValue(year);
+        yearPicker.setMinValue(Calendar.getInstance().get(Calendar.YEAR));
         yearPicker.setWrapSelectorWheel(false);
         yearPicker.setValue(year);
         yearPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
@@ -300,11 +314,11 @@ public class AddCardActivity37 extends LasrossParentActivity implements View.OnC
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-                year1 = yearPicker.getValue();
-                month1 = monthPicker.getValue();
+                AddCardActivity.this.year1 = yearPicker.getValue();
+                AddCardActivity.this.month1 = monthPicker.getValue();
 
-                String lastTwoDigits = String.valueOf(year1).substring(2);
-                if (month1 < 10) {
+                String lastTwoDigits = String.valueOf(AddCardActivity.this.year1).substring(2);
+                if (AddCardActivity.this.month1 < 10) {
                     String twodigitMonth = "0" + monthPicker.getValue();
                     etExpiryDate.setText(twodigitMonth + "/" + lastTwoDigits);
                 } else {
@@ -362,7 +376,7 @@ public class AddCardActivity37 extends LasrossParentActivity implements View.OnC
             if (token != null) {
                 saveCreditCard(token.getId());
             } else {
-                CommonUtils.showCustomAlert(AddCardActivity37.this, error);
+                CommonUtils.showCustomAlert(AddCardActivity.this, error);
                 //toastMessage(error);
             }
         }

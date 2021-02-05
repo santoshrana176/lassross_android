@@ -140,9 +140,9 @@ public class RegistrationActivity extends LasrossParentActivity implements View.
         tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = etFullName.getText().toString();
-                String email = etEmail.getText().toString();
-                String pass = etPass.getText().toString();
+                String name = etFullName.getText().toString().trim();
+                String email = etEmail.getText().toString().trim();
+                String pass = etPass.getText().toString().trim();
 
                 try {
                     InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
@@ -151,34 +151,46 @@ public class RegistrationActivity extends LasrossParentActivity implements View.
                     e.printStackTrace();
                 }
 
-                if (name.equals("")) {
+                if (name.isEmpty()) {
                     CommonUtils.showCustomAlert(RegistrationActivity.this, "Please enter full name");
-                    return;
+                   // return;
+                } else if (!isValidName(name)) {
+                    CommonUtils.showCustomAlert(RegistrationActivity.this, "Only alphabets are allowed in full name");
                 } else if (name.length() < 3) {
                     CommonUtils.showCustomAlert(RegistrationActivity.this, "Full name should not less than 2 characters");
-                    return;
-                } else if (email.equals("")) {
+                    // return;
+                }else if (email.isEmpty()) {
                     CommonUtils.showCustomAlert(RegistrationActivity.this, "Please enter email");
-                    return;
-                } else if (pass.equals("")) {
+                   // return;
+                } else if (!isValidEmail(email)) {
+                    CommonUtils.showCustomAlert(RegistrationActivity.this, "Please enter valid email");
+                } else if (pass.isEmpty()) {
                     CommonUtils.showCustomAlert(RegistrationActivity.this, "Please enter password");
-                    return;
-                }
-
-                ////////////////  REGISTRATION  API CALL  ////////////////////
-                if (isValidEmail(email) && isValidPass(pass) && isValidName(name)) {
+                    //return;
+                } else if (!isValidPass(pass)) {
+                    CommonUtils.showCustomAlert(RegistrationActivity.this, "Password should have minimum 6 characters");
+                }else {
                     if (CommonUtils.isNetworkAvailable(RegistrationActivity.this)) {
                         callSignUpApi(name, email, pass, formattedDate, getCurrentFirebaseToken());
                     } else {
                         showInternetAlertDialog(RegistrationActivity.this);
                     }
-                } else if (!isValidName(name)) {
+                }
+
+                ////////////////  REGISTRATION  API CALL  ////////////////////
+                /*if (isValidEmail(email) && isValidPass(pass) && isValidName(name)) {
+                    if (CommonUtils.isNetworkAvailable(RegistrationActivity.this)) {
+                        callSignUpApi(name, email, pass, formattedDate, getCurrentFirebaseToken());
+                    } else {
+                        showInternetAlertDialog(RegistrationActivity.this);
+                    }
+                }*/ /*else if (!isValidName(name)) {
                     CommonUtils.showCustomAlert(RegistrationActivity.this, "Only alphabets are allowed in full name");
                 } else if (!isValidEmail(email)) {
                     CommonUtils.showCustomAlert(RegistrationActivity.this, "Please enter valid email");
                 } else if (!isValidPass(pass)) {
                     CommonUtils.showCustomAlert(RegistrationActivity.this, "Password should have minimum 6 characters");
-                }
+                }*/
             }
         });
     }
@@ -365,7 +377,10 @@ public class RegistrationActivity extends LasrossParentActivity implements View.
             session.createRegistration(loginResponse.getData().getUserDetail());
         //    session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
             session.setUserLoggedIn();
-            startActivity(new Intent(RegistrationActivity.this, SubscriptionActivity.class));
+       Intent intent=     new Intent(RegistrationActivity.this, SubscriptionActivity.class);
+           intent.putExtra("from","Signup Screen");
+            startActivity(intent);
+
             finish();
         } else {
             CommonUtils.showCustomAlert(this, loginResponse.getMessage());

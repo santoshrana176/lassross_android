@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".MainActivity">
 
@@ -76,6 +76,9 @@
                     android:background="@drawable/edittext_bg"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:padding="@dimen/_10sdp"
+                    android:singleLine="true"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"
                     android:textColor="#828282"
                     android:textSize="@dimen/_10sdp" />
 
@@ -96,6 +99,8 @@
                     android:background="@drawable/edittext_bg"
                     android:inputType="number"
                     android:maxLength="16"
+                    android:singleLine="true"
+                    android:imeOptions="actionNext"
                     android:padding="@dimen/_10sdp"
                     android:textColor="#828282"
                     android:textSize="@dimen/_10sdp" />
@@ -157,7 +162,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:background="@drawable/edittext_bg"
-                            android:inputType="number"
+                            android:inputType="numberPassword"
                             android:maxLength="3"
                             android:padding="@dimen/_10sdp"
                             android:textColor="#828282"
@@ -233,4 +238,4 @@
 
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>

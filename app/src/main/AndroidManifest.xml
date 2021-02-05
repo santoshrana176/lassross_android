@@ -156,9 +156,10 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".module.payment.AddCardActivity37"
+            android:name=".module.payment.AddCardActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
         <activity
             android:name=".module.faq.FAQActivity"
             android:screenOrientation="portrait"

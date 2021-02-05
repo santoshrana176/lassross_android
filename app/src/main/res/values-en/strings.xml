@@ -248,4 +248,5 @@
     <string name="cvv_no_three_digit">CVV number must be 3 digit long</string>
     <string name="english_lng">English</string>
     <string name="spanish_lng">Spanish</string>
+    <string name="expiry_date_text">Please enter expiry date.</string>
 </resources>

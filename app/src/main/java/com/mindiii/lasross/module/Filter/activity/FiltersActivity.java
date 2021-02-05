@@ -370,11 +370,11 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.llItemPrice:
-                llSearchlayout.setVisibility(View.GONE);
+                //llSearchlayout.setVisibility(View.GONE);
                 setPriceData();
                 break;
             case R.id.llItemColor:
-                llSearchlayout.setVisibility(View.VISIBLE);
+               // llSearchlayout.setVisibility(View.VISIBLE);
                 variantAdapter.setDataVarient(colorName);
                 variantAdapter.notifyDataSetChanged();
                 if (session.getFilterColorIds() != null && !session.getFilterColorIds().equals("")) {
@@ -386,7 +386,7 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
                 }
                 break;
             case R.id.llItemSize:
-                llSearchlayout.setVisibility(View.VISIBLE);
+                //llSearchlayout.setVisibility(View.VISIBLE);
                 variantAdapter.setDataVarient(sizeName);
                 variantAdapter.notifyDataSetChanged();
                 setSizeData(sb);
@@ -469,7 +469,7 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
             case R.id.tvClearAll:
                 String min=session.getProductDetailMinValue();
                 String max=session.getProductDetailMaxValue();
-                llSearchlayout.setVisibility(View.VISIBLE);
+               // llSearchlayout.setVisibility(View.VISIBLE);
                 tvMinPriceRange.setText(session.getProductDetailMinValue());
                 tvMaxPriceRange.setText(session.getProductDetailMaxValue());
                 seekbar_distance.setValue(Float.parseFloat(min), Float.parseFloat(max));

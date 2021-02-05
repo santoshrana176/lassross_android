@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:scrollbars="none"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -31,8 +32,7 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginTop="-107dp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginBottom="-40dp"
-            android:background="@drawable/layout_bg"
+             android:background="@drawable/layout_bg"
             android:orientation="vertical">
 
             <LinearLayout
@@ -143,10 +143,10 @@
                     android:background="@drawable/edittext_bg"
                     android:fontFamily="@font/ibmplexsans_light"
                     android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:padding="@dimen/_10sdp"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/input_text_color"
                     android:textSize="@dimen/_10sdp" />
 

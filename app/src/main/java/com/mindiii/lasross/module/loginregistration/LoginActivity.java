@@ -185,7 +185,6 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
             public void onClick(View v) {
                 String email = etEmail.getText().toString().trim();
                 String pass = etPass.getText().toString().trim();
-
                 try {
                     InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                     assert imm != null;
@@ -194,31 +193,38 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
 
                 }
 
-                if (email.equals("")) {
+                if (email.isEmpty()) {
                     CommonUtils.showCustomAlert(LoginActivity.this, "Please enter email");
                     //etEmail.setError("Please enter email");
-                    return;
-                } else if (pass.equals("")) {
+                    //return;
+                }else  if (!isValidEmail(email)){
+                    CommonUtils.showCustomAlert(LoginActivity.this, "Please enter valid email");
+                   // return;
+                } else if (pass.isEmpty()) {
                     CommonUtils.showCustomAlert(LoginActivity.this, "Please enter password");
-                    //etPass.setError("Please enter password");
-                    return;
-                }
-
-                ////////////////  LOGIN  API CALL  ////////////////////
-                if (isValidEmail(email) && isValidPass(pass)) {
+                   // return;
+                }else if (!isValidPass(pass)) {
+                    CommonUtils.showCustomAlert(LoginActivity.this, "Password should have minimum 6 characters");
+                    //etPass.setError("Password should have minimum 6 characters");
+                }else {
                     if (CommonUtils.isNetworkAvailable(LoginActivity.this)) {
                         callLoginApi(email, pass, getCurrentFirebaseToken());
                     } else {
                         showInternetAlertDialog(LoginActivity.this);
                     }
+                }
 
-                } else if (!isValidEmail(email)) {
+                ////////////////  LOGIN  API CALL  ////////////////////
+              //  if (isValidEmail(email) && isValidPass(pass)) {
+
+
+                /*} else if (!isValidEmail(email)) {
                     CommonUtils.showCustomAlert(LoginActivity.this, "Please enter valid email");
                     //etEmail.setError("Please enter valid email");
                 } else if (!isValidPass(pass)) {
                     CommonUtils.showCustomAlert(LoginActivity.this, "Password should have minimum 6 characters");
                     //etPass.setError("Password should have minimum 6 characters");
-                }
+                }*/
             }
         });
 
@@ -341,14 +347,15 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
                 String emailDialog = etEmailID.getText().toString().trim();
                 if (emailDialog.isEmpty()){
                     CommonUtils.showCustomAlert(LoginActivity.this, "Please enter email");
-                }else  if (isValidEmail(emailDialog)) {
+                }
+                else if (!isValidEmail(emailDialog)) {
+                    CommonUtils.showCustomAlert(LoginActivity.this, "Please enter valid email");
+                }else  {
                     if (CommonUtils.isNetworkAvailable(LoginActivity.this)) {
                         validPasswordDetail(emailDialog, dialog);
                     } else {
                         showInternetAlertDialog(LoginActivity.this);
                     }
-                } else if (!isValidEmail(emailDialog)) {
-                    CommonUtils.showCustomAlert(LoginActivity.this, "Please enter valid email");
                 }
             }
         });

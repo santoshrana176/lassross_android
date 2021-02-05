@@ -309,7 +309,7 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
                 break;
             case R.id.btnAddNewCard:
                 if (CommonUtils.isNetworkAvailable(MyCardActivity.this)) {
-                    startActivity(new Intent(MyCardActivity.this, AddCardActivity37.class));
+                    startActivity(new Intent(MyCardActivity.this, AddCardActivity.class));
                 } else {
                     showInternetAlertDialog(this);
                 }

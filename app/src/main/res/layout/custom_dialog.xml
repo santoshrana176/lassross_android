@@ -53,7 +53,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="OK"
-            android:textColor="#007EFF"
+            android:textColor="@color/write_review_color"
             android:textSize="@dimen/_12sdp" />
 
     </LinearLayout>

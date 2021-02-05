@@ -18,7 +18,7 @@ import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
 import com.mindiii.lasross.base.LasrossParentKotlinActivity
 import com.mindiii.lasross.module.home.HomeActivity
-import com.mindiii.lasross.module.payment.AddCardActivity37
+import com.mindiii.lasross.module.payment.AddCardActivity
 import com.mindiii.lasross.module.payment.model.StripeSaveCardResponce
 import com.mindiii.lasross.module.subscription.presenter.SubscriptionPresenter
 import com.mindiii.lasross.module.subscription.presenter.adapter.SubscriptionItemDescriptionAdapter
@@ -38,6 +38,7 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
     private var session: Session? = null
     private var mLastClickTime: Long = 0
     private var plan_id: String = ""
+    private var from: String = ""
     private lateinit var itemDescriptionList: ArrayList<String>
     private lateinit var subscriptionItemDescriptionAdapter: SubscriptionItemDescriptionAdapter
 
@@ -48,6 +49,16 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
         session = Session(this)
 
         itemDescriptionList = ArrayList()
+        if (intent.getStringExtra("from") != null) {
+            from = intent.getStringExtra("from")!!
+        }
+
+        if (from.equals("Signup Screen")) {
+            iv_subcribeBack.visibility = View.GONE
+        } else {
+            iv_subcribeBack.visibility = View.VISIBLE
+        }
+
 
         subscriptionApiCAll()
         getCreditCardInfo()
@@ -99,7 +110,7 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
                         subscribe(plan_id)
                     } else {
                         plan_id = response.data.get(0).subscriptionPlanId
-                        startActivity(Intent(this, AddCardActivity37::class.java)
+                        startActivity(Intent(this, AddCardActivity::class.java)
                                 .putExtra("subscriptionScreen", "fromSubscription")
                                 .putExtra("subscriptionPlanId", plan_id))
                     }
@@ -109,7 +120,7 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
                         subscribe(plan_id)
                     } else {
                         plan_id = response.data.get(1).subscriptionPlanId
-                        startActivity(Intent(this, AddCardActivity37::class.java)
+                        startActivity(Intent(this, AddCardActivity::class.java)
                                 .putExtra("subscriptionScreen", "fromSubscription")
                                 .putExtra("subscriptionPlanId", plan_id))
                     }
