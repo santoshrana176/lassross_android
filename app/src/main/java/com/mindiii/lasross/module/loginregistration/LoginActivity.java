@@ -326,7 +326,6 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
         final Dialog dialog = new Dialog(LoginActivity.this);//,android.R.style.Theme_Dialog);
         dialog.setContentView(R.layout.forgot_password_dialog_artboard_2_1);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
         final EditText etEmailID;
         TextView tvSend;
         ImageView ivClose;
