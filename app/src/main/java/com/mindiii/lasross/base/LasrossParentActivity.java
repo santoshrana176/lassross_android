@@ -62,7 +62,7 @@ public class LasrossParentActivity extends AppCompatActivity {
                     return;
                 }
                 fireBaseToken = Objects.requireNonNull(task.getResult()).getToken();
-                Log.d("firebaseToken", fireBaseToken);
+                //Log.d("firebaseToken", fireBaseToken);
             }
         });
         return fireBaseToken;
