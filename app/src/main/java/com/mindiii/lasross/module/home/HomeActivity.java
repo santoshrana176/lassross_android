@@ -314,7 +314,6 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
     }
 
     private void setHeaderAdapterData() {
-
         headerListAdapter = new HeaderListAdapter(strBannerImage, productList, this, new HeaderInterface() {
             @Override
             public void onClickListener(int i) {
@@ -618,7 +617,6 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
                 dialog.dismiss();
             }
         });
-
         tvPopupYesLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

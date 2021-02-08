@@ -70,7 +70,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(), ApiCallback.Product
             window.statusBarColor = this.resources.getColor(R.color.white)
         }
 
-        /*   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                getWindow().statusBarColor=ContextCompat.getColor(this ,R.color.white)
            }*/
 

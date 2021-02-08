@@ -79,6 +79,7 @@ class WishListActivity : LasrossParentKotlinActivity(), ApiCallback.UserWishList
     private fun setWishListAdapter() {
         wishListAdapter = WishListAdapter(userWishList, this, object : ClickListener.WishListListener {
             override fun onAddToCartClick(position: Int) {
+
             }
 
             override fun onItemClick(position: Int) {

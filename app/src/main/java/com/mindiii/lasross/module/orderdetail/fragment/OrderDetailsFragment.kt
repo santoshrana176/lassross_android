@@ -49,7 +49,6 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_order_details, container, false)
     }
-
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,7 +58,6 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
         window.setStatusBarColor(this.resources.getColor(R.color.home_header_bg1))
         orderDetailList = ArrayList()
         trackingStatusList = ArrayList()
-
         activityFAQ?.setOrderDetail()
 
         callOrderDetailApi()
@@ -161,7 +159,6 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
         }
     }
 
-
     private fun setInstanceData(orderId: String) {
         this.orderId = orderId
     }
@@ -189,7 +186,6 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
     override fun onError(errorMessage: String?) {
         activity.toastMessage(errorMessage.toString())
     }
-
 
     fun callOrderDetailApi() {
         OrderDetailPresenter(requireContext(), this).callOrderDetailApi(orderId.toString())

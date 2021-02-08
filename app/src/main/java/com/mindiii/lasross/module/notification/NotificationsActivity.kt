@@ -85,7 +85,6 @@ class NotificationsActivity : LasrossParentKotlinActivity(), View.OnClickListene
     }
 
     override fun onSuccessReadNotification(readNotificationModel: ReadNotificationModel?) {
-
     }
 
     override fun onTokenChangeError(errorMessage: String?) {
@@ -104,12 +103,10 @@ class NotificationsActivity : LasrossParentKotlinActivity(), View.OnClickListene
             override fun onItemClick(position: Int) {
 
                 callReadNotificationApi(notificationList[position].notificationId)
-
                 startActivity(Intent(this@NotificationsActivity, FAQActivity::class.java)
                         .putExtra("screenCheck", "Order Status")
                         .putExtra("orderId", notificationList[position].reference_id))
             }
-
         })
         rvNotificationListActivity.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rvNotificationListActivity.adapter = notificationAdapter

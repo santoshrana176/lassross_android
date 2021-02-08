@@ -95,7 +95,6 @@ class WishListAdapter(private val list: List<UserWishlist>,
                 R.id.ivDeleteWishList -> wishListListener.onDelete(adapterPosition)
                 R.id.tvMoveToBag -> wishListListener.onAddToCartClick(adapterPosition)
             }
-
         }
     }
 }

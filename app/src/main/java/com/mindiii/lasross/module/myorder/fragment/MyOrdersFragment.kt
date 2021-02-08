@@ -101,7 +101,6 @@ class MyOrdersFragment : BaseKotlinFragment(), ApiCallback.MyOrderCallback {
         callMyOrderListApi(requireContext())
     }
 
-
     override fun onTokenChangeError(errorMessage: String?) {
         activity.showDialog(requireContext())
     }

@@ -34,9 +34,7 @@ import java.util.*
 
 class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, ApiCallback.SettingsCallback, ApiCallback.LanguageCallback
 {
-
     private var session: Session? = null
-
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,7 +101,6 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
                 if (CommonUtils.isNetworkAvailable(this)) {
                     startActivity(Intent(this, LeaveFeedbackActivity::class.java))
                 } else run { showInternetAlertDialog(this) }
-
             }
             R.id.rlPrivacyPolicy -> {
                 if (CommonUtils.isNetworkAvailable(this)) {
@@ -149,7 +146,6 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
             callLogoutApi()
             dialog.dismiss()
         })
-
         dialog.show()
     }
 
