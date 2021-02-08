@@ -272,10 +272,7 @@
         android:id="@+id/llNoMyCartItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_50sdp"
-        android:layout_marginTop="@dimen/_150sdp"
-        android:layout_marginEnd="@dimen/_50sdp"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:orientation="vertical"
         android:visibility="gone">
 

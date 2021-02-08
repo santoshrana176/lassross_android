@@ -21,9 +21,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
-import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
-import com.jaygoo.widget.OnRangeChangedListener;
+ import com.jaygoo.widget.OnRangeChangedListener;
 import com.jaygoo.widget.RangeSeekBar;
 import com.mindiii.lasross.R;
 import com.mindiii.lasross.app.session.Session;
@@ -49,7 +47,7 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
     private ImageView ivItemColorIcon;
     private ImageView ivItemPriceIcon;
     private LinearLayout llItemSize, llItemColor, llItemPrice, llPriceTouch, llSearchlayout;
-    private Button btnApply;
+    private Button btnApply,btnClose;
     private VariantAdapter variantAdapter;
     private String sizeName = "", colorName = "";
     private ArrayList<String> sb;
@@ -59,7 +57,7 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
     private String sizeIds = "", colorIds = "", prizeLow = "", priceHigh = "";
     private String childCatName = "", myCatId = "", dealId = "", popularity = "", average_rating = "", lowPrice = "", highPrice = "", latest = "";
     private Session session;
-    private CrystalRangeSeekbar crystalRangeSeekbar;
+    //private CrystalRangeSeekbar crystalRangeSeekbar;
     private RangeSeekBar seekbar_distance;
     private int minPrice, maxPrice;
 
@@ -115,10 +113,11 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
         tvMaxPriceRange = findViewById(R.id.tvMaxPriceRange);
         llPriceTouch = findViewById(R.id.llPriceTouch);
         tvClearAll = findViewById(R.id.tvClearAll);
+        btnClose = findViewById(R.id.btnClose);
         ivItemSizeIcon = findViewById(R.id.ivItemSizeIcon);
         ivItemColorIcon = findViewById(R.id.ivItemColorIcon);
         ivItemPriceIcon = findViewById(R.id.ivItemPriceIcon);
-        crystalRangeSeekbar = findViewById(R.id.rangeSeekbar3);
+       // crystalRangeSeekbar = findViewById(R.id.rangeSeekbar3);
         seekbar_distance = findViewById(R.id.seekbar_distance);
         llItemSize = findViewById(R.id.llItemSize);
         llItemColor = findViewById(R.id.llItemColor);
@@ -150,26 +149,29 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
             tvMaxPriceRange.setText(session.getFilterMaxPrice());
             seekbar_distance.setValue(Float.parseFloat(session.getFilterMinPrice()), Float.parseFloat(session.getFilterMaxPrice()));
         } else {
-            seekbar_distance.setValue(0, 5000);
+            seekbar_distance.setRange(minPrice,maxPrice);
+            seekbar_distance.setValue(minPrice, maxPrice);
+
         }
         if (session.getFilterMinPrice() != null && !session.getFilterMinPrice().equals("")) {
             tvMinPriceRange.setText(session.getFilterMinPrice());
         }
 
-        crystalRangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
+     /*   crystalRangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
             @Override
             public void valueChanged(Number minValue, Number maxValue) {
                 //  tvMinPriceRange.setText(minValue + "");
                 //  tvMaxPriceRange.setText(maxValue + "");
                 Log.e("The value is", "User selected new range values: MIN=" + minValue + ", MAX=" + maxValue);
             }
-        });
+        });*/
 
         llItemSize.setOnClickListener(this);
         llItemColor.setOnClickListener(this);
         llItemPrice.setOnClickListener(this);
         btnApply.setOnClickListener(this);
         tvClearAll.setOnClickListener(this);
+        btnClose.setOnClickListener(this);
     }
 
  /*   public void finViewById(ArrayList<View> viewList,ArrayList<Integer> viewIdList ){
@@ -473,8 +475,8 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
                 tvMinPriceRange.setText(session.getProductDetailMinValue());
                 tvMaxPriceRange.setText(session.getProductDetailMaxValue());
                 seekbar_distance.setValue(Float.parseFloat(min), Float.parseFloat(max));
-                crystalRangeSeekbar.setMinValue(Float.parseFloat(min));
-                crystalRangeSeekbar.setMaxValue(Float.parseFloat(max));
+                //crystalRangeSeekbar.setMinValue(Float.parseFloat(min));
+                //crystalRangeSeekbar.setMaxValue(Float.parseFloat(max));
                 session.setFilterPrice(null, null);
                 session.setFilterSizeIds(null);
                 session.setFilterColorIds(null);
@@ -482,6 +484,10 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
                 sb1.clear();
                 setSizeData(sb);
                 variantAdapter.notifyDataSetChanged();
+
+                break;
+                case R.id.btnClose:
+               onBackPressed();
                 break;
         }
     }

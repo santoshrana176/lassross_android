@@ -37,7 +37,7 @@ import java.util.*
 import java.util.regex.Pattern
 
 @SuppressLint("Registered")
-class AddAddressActivity39 : LasrossParentActivity(), View.OnClickListener, ApiCallback.AddAddressCallback {
+class AddAddressActivity : LasrossParentActivity(), View.OnClickListener, ApiCallback.AddAddressCallback {
     private var btnBackToAddress: ImageView? = null
     private var etAddress: EditText? = null
     private var etMobileNo: EditText? = null
@@ -131,9 +131,11 @@ class AddAddressActivity39 : LasrossParentActivity(), View.OnClickListener, ApiC
         if (requestCode == AUTOCOMPLETE_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
                 val place = Autocomplete.getPlaceFromIntent(data!!)
-                latitude = place.latLng!!.latitude.toString()
-                longitude = place.latLng!!.longitude.toString()
-                etAddress!!.setText(place.name + "\n" + place.address)
+                if (place.latLng != null) {
+                    latitude = place.latLng!!.latitude.toString()
+                    longitude = place.latLng!!.longitude.toString()
+                    etAddress!!.setText(place.name + "\n" + place.address)
+                }
             } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
                 val status = Autocomplete.getStatusFromIntent(data!!)
                 assert(status.statusMessage != null)
@@ -164,14 +166,14 @@ class AddAddressActivity39 : LasrossParentActivity(), View.OnClickListener, ApiC
 
 
     private fun getDataForApi() {
-        val name = etAddressTitle!!.text.toString()
-        val mobileNo = etMobileNo!!.text.toString()
-        val address = etAddress!!.text.toString()
+        val name = etAddressTitle!!.text.toString().trim()
+        val mobileNo = etMobileNo!!.text.toString().trim()
+        val address = etAddress!!.text.toString().trim()
 
-        if (name == "") {
+        if (name.isEmpty()) {
             CommonUtils.showCustomAlert(this, resources.getString(R.string.enter_address_title))
             return
-        } else if (mobileNo == "") {
+        } else if (mobileNo.isEmpty()) {
             CommonUtils.showCustomAlert(this, resources.getString(R.string.enter_mobile_no))
             //etEmail.setError("Enter email");
             return
@@ -179,7 +181,7 @@ class AddAddressActivity39 : LasrossParentActivity(), View.OnClickListener, ApiC
             CommonUtils.showCustomAlert(this, resources.getString(R.string.mobile_no_ten_digit))
             //etEmail.setError("Enter email");
             return
-        } else if (address == "") {
+        } else if (address.isEmpty()) {
             CommonUtils.showCustomAlert(this, resources.getString(R.string.str_select_address))
             return
         }
@@ -204,8 +206,7 @@ class AddAddressActivity39 : LasrossParentActivity(), View.OnClickListener, ApiC
     }
 
     private fun callAddAddressApi(fullName: String, mobileNumber: String, myAddress: String, myLati: String, myLong: String) {
-        AddAddressPresenter(this, this).callAddAddressApi(fullName, mobileNumber
-                , myAddress, myLati, myLong)
+        AddAddressPresenter(this, this).callAddAddressApi(fullName, mobileNumber, myAddress, myLati, myLong)
     }
 
     private fun isValidName(lName: String): Boolean {
@@ -225,7 +226,7 @@ class AddAddressActivity39 : LasrossParentActivity(), View.OnClickListener, ApiC
             if (checkValue == "CheckFound") {
                 finish()
             } else {
-                startActivity(Intent(this, MyAddressesActivity38::class.java)
+                startActivity(Intent(this, MyAddressesActivity::class.java)
                         .putExtra("CheckValue", "CheckNotFound")
                         .putExtra("showClearButton", "showClearButtonProfile"))
                 finish()

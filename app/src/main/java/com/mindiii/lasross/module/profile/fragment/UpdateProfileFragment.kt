@@ -21,7 +21,7 @@ import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
 import com.mindiii.lasross.base.BaseKotlinFragment
 import com.mindiii.lasross.helper.Constant
-import com.mindiii.lasross.module.address.activity.MyAddressesActivity38
+import com.mindiii.lasross.module.address.activity.MyAddressesActivity
 import com.mindiii.lasross.module.loginregistration.model.LoginResponse
 import com.mindiii.lasross.module.profile.ProfileActivity
 import com.mindiii.lasross.module.profile.presenter.UpdateProfilePresenter
@@ -151,7 +151,7 @@ lateinit var session: Session
                 }
             }
             R.id.etAddress -> {
-                startActivity(Intent(mContext, MyAddressesActivity38::class.java)
+                startActivity(Intent(mContext, MyAddressesActivity::class.java)
                         .putExtra("CheckValue", "CheckFound"))
             }
             R.id.btnBackToProfile -> {

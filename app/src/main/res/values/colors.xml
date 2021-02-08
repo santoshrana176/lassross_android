@@ -17,7 +17,7 @@
     <color name="up_to_50off">#faa31d</color>
     <color name="heart_color">#fc8327</color>
     <color name="sort_by_color">#828282</color>
-    <color name="delete_icon_color">#959595</color>
+        <color name="delete_icon_color">#959595</color>
     <color name="rating_star_green_color">#29a83f</color>
     <color name="write_review_color">#ff6430</color>
     <color name="filter_size_bg_color">#fe682e</color>

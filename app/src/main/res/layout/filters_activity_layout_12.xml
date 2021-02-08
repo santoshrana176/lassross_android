@@ -106,10 +106,12 @@
 
                 <ImageView
                     android:id="@+id/ivItemPriceIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_15sdp"
-                    android:src="@drawable/ic_inactive_price_ico" />
+                    android:src="@drawable/black_euro_icon" />
 
                 <TextView
                     android:id="@+id/tvItemPrice"
@@ -225,7 +227,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/ibmplexsans_semibold"
-                        android:text="£  "
+                        android:text="€  "
                         android:textColor="@color/black"
                         android:textSize="@dimen/_11sdp" />
 
@@ -234,15 +236,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/ibmplexsans_semibold"
-                        android:text="0"
-                        android:textColor="@color/black"
+                         android:textColor="@color/black"
                         android:textSize="@dimen/_11sdp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/ibmplexsans_semibold"
-                        android:text=" -  £  "
+                        android:text=" -  €  "
                         android:textColor="@color/black"
                         android:textSize="@dimen/_11sdp" />
 
@@ -251,11 +252,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/ibmplexsans_semibold"
-                        android:text="5000"
-                        android:textColor="@color/black"
+                         android:textColor="@color/black"
                         android:textSize="@dimen/_11sdp" />
                 </LinearLayout>
-
+<!--
                 <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
                     android:id="@+id/rangeSeekbar3"
                     android:layout_width="match_parent"
@@ -265,13 +265,11 @@
                     android:visibility="gone"
                     app:bar_color="#eaeaea"
                     app:bar_highlight_color="#fe682e"
-                    app:corner_radius="10"
+                    app:corner_radius="10"`
                     app:left_thumb_image="@drawable/range_circle"
                     app:left_thumb_image_pressed="@drawable/range_circle"
-                    app:max_value="5000"
-                    app:min_value="00"
                     app:right_thumb_image="@drawable/range_circle"
-                    app:right_thumb_image_pressed="@drawable/range_circle" />
+                    app:right_thumb_image_pressed="@drawable/range_circle" />-->
 
                 <com.jaygoo.widget.RangeSeekBar
                     android:id="@+id/seekbar_distance"
@@ -282,10 +280,8 @@
                     app:rsb_indicator_show_mode="alwaysHide"
                     app:rsb_indicator_text_color="#eaeaea"
                     app:rsb_indicator_width="15dp"
-                    app:rsb_max="5000"
-                    app:rsb_min="0"
                     app:rsb_mode="range"
-                    app:rsb_progress_color="#fe682e"
+                     app:rsb_progress_color="#fe682e"
                     app:rsb_progress_height="4dp"
                     app:rsb_thumb_drawable="@drawable/price_range_img"
                     app:rsb_thumb_inactivated_drawable="@drawable/price_range_img"

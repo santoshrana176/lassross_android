@@ -24,7 +24,7 @@ import com.mindiii.lasross.utils.EndlessRecyclerViewScrollListener
 import kotlinx.android.synthetic.main.my_addresses_activty_38.*
 import java.util.*
 
-class MyAddressesActivity38 : LasrossParentActivity(), View.OnClickListener, ApiCallback.MyAddressCallback {
+class MyAddressesActivity : LasrossParentActivity(), View.OnClickListener, ApiCallback.MyAddressCallback {
     lateinit var myAddressAdapter: MyAddressAdapter
     private var count: Int = 0
     private var offset: Int = 0
@@ -116,17 +116,17 @@ class MyAddressesActivity38 : LasrossParentActivity(), View.OnClickListener, Api
         userAddressList.clear()
         myAddressAdapter = MyAddressAdapter(checkValue, userAddressList, this, object : ClickListener.MyAddressListener {
             override fun onItemDelete(position: Int) {
-                if (CommonUtils.isNetworkAvailable(this@MyAddressesActivity38)!!) {
+                if (CommonUtils.isNetworkAvailable(this@MyAddressesActivity)!!) {
                     callRemoveAddressApi(userAddressList.get(position).userAddressId)
                     myAddressAdapter.notifyItemRemoved(position)
                 } else {
-                    showInternetAlertDialog(this@MyAddressesActivity38)
+                    showInternetAlertDialog(this@MyAddressesActivity)
                 }
             }
 
             override fun onItemUpdate(position: Int) {
-                if (CommonUtils.isNetworkAvailable(this@MyAddressesActivity38)!!) {
-                    startActivity(Intent(this@MyAddressesActivity38, AddAddressActivity39::class.java)
+                if (CommonUtils.isNetworkAvailable(this@MyAddressesActivity)!!) {
+                    startActivity(Intent(this@MyAddressesActivity, AddAddressActivity::class.java)
                             .putExtra("shipAddress", userAddressList[position].ship_address_location)
                             .putExtra("latitude", userAddressList[position].ship_address_latitude)
                             .putExtra("longitude", userAddressList[position].ship_address_longitude)
@@ -136,7 +136,7 @@ class MyAddressesActivity38 : LasrossParentActivity(), View.OnClickListener, Api
                             .putExtra("strComeFrom", "UpdateBtn"))
                     finish()
                 } else {
-                    showInternetAlertDialog(this@MyAddressesActivity38)
+                    showInternetAlertDialog(this@MyAddressesActivity)
                 }
             }
 
@@ -190,13 +190,13 @@ class MyAddressesActivity38 : LasrossParentActivity(), View.OnClickListener, Api
                             // finish()
 
                         }
-                        positionInt == -1 -> startActivity(Intent(this, AddAddressActivity39::class.java)
+                        positionInt == -1 -> startActivity(Intent(this, AddAddressActivity::class.java)
                                 .putExtra("strComeFrom", "Addbutton")
                                 .putExtra("CheckValue", checkValue))
                         else -> toastMessage("Please select address")
                     }
                 } else {
-                    startActivity(Intent(this, AddAddressActivity39::class.java)
+                    startActivity(Intent(this, AddAddressActivity::class.java)
                             .putExtra("strComeFrom", "Addbutton")
                             .putExtra("CheckValue", checkValue))
                     finish()

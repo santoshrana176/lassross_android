@@ -82,6 +82,13 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         dialog.setContentView(R.layout.custom_dilog);
         TextView tvMessages = dialog.findViewById(R.id.tvMessages);
         tvMessages.setText("Are you sure you want to delete card?");
+        TextView tvPopupNo = dialog.findViewById(R.id.tvPopupNo);
+        tvPopupNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
         TextView tvPopupOk = dialog.findViewById(R.id.tvPopupOk);
         tvPopupOk.setOnClickListener(new View.OnClickListener() {
             @Override

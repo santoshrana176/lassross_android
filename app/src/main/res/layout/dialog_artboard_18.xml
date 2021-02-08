@@ -115,6 +115,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/ibmplexsans_light"
                         android:paddingStart="@dimen/_10sdp"
+                        android:singleLine="true"
                         android:textColor="#333333"
                         android:ellipsize="end"
                         android:layout_marginEnd="@dimen/_7sdp"

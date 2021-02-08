@@ -16,12 +16,13 @@ import retrofit2.Response
 import java.io.IOException
 
 class ProductDetailPresenter(var productDetailCallback: ApiCallback.ProductDetailCallback, var mContext: Context) {
-
+val session=Session(mContext)
 
     fun callProductDetailApi(productId: String) {
         productDetailCallback.onShowBaseLoader()
+        val session = Session(mContext).registration.userId
          val api = ServiceGeneratorkotlin().createService(API::class.java)
-        val loginResponseCall = api.callProductDetailApi(productId, Session(mContext).authToken)
+        val loginResponseCall = api.callProductDetailApi(productId,session)
         loginResponseCall.enqueue(object : Callback<ProductDetailResponse> {
             override fun onResponse(call: Call<ProductDetailResponse>, response: Response<ProductDetailResponse>) {
                 productDetailCallback.onHideBaseLoader()

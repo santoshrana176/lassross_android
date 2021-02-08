@@ -32,10 +32,10 @@ import kotlinx.android.synthetic.main.reset_password_dialog_artboard_35.*
 import kotlinx.android.synthetic.main.setting_activty_40.*
 import java.util.*
 
-class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, ApiCallback.SettingsCallback, ApiCallback.LanguageCallback
-{
+class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, ApiCallback.SettingsCallback, ApiCallback.LanguageCallback {
 
     private var session: Session? = null
+    lateinit var changePasswordDialog: Dialog
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -159,46 +159,48 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
 
     private fun openChangePasswordDialog() {
 
-        val dialog = Dialog(this)//,android.R.style.Theme_Dialog);
-        dialog.setContentView(R.layout.reset_password_dialog_artboard_35)
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val changePasswordDialog = Dialog(this)//,android.R.style.Theme_Dialog);
+        changePasswordDialog.setContentView(R.layout.reset_password_dialog_artboard_35)
+        changePasswordDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        dialog.ivClose.setOnClickListener { dialog.dismiss() }
+        changePasswordDialog.ivClose.setOnClickListener { changePasswordDialog.dismiss() }
 
-        dialog.tvDone.setOnClickListener {
-            val oldPass = dialog.etOldPass.text.toString()
-            val newPass = dialog.etNewPass.text.toString()
-            val confPass = dialog.etConfirmPass.text.toString()
-
+        changePasswordDialog.tvDone.setOnClickListener {
+            val oldPass = changePasswordDialog.etOldPass.text.toString().trim()
+            val newPass = changePasswordDialog.etNewPass.text.toString().trim()
+            val confPass = changePasswordDialog.etConfirmPass.text.toString().trim()
             if (validations(oldPass, newPass, confPass)) {
                 changePasswordApi(oldPass, newPass, confPass)
-                dialog.dismiss()
             }
         }
         val lp = WindowManager.LayoutParams()
-        lp.copyFrom(dialog.window?.attributes)
-        dialog.window?.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+        lp.copyFrom(changePasswordDialog.window?.attributes)
+        changePasswordDialog.window?.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
         lp.gravity = Gravity.TOP
         lp.windowAnimations = R.style.DialogAnimation
-        dialog.window!!.attributes = lp
-        dialog.setCanceledOnTouchOutside(false)
-        dialog.show()
+        changePasswordDialog.window!!.attributes = lp
+        changePasswordDialog.setCanceledOnTouchOutside(false)
+        changePasswordDialog.show()
     }
 
     fun validations(oldPass: String, newPass: String, confPass: String): Boolean {
 
-        if (oldPass == "") {
+        if (oldPass.isEmpty()) {
             CommonUtils.showCustomAlert(this, "Please enter old password")
             return false;
         }
         if (!isValidPass(oldPass)) {
             CommonUtils.showCustomAlert(this, "Password should have minimum 6 characters")
             return false;
-        }else if (newPass == "") {
+        } else if (newPass.isEmpty()) {
             CommonUtils.showCustomAlert(this, "Please enter new password")
             return false
         } else if (!isValidPass(newPass)) {
             CommonUtils.showCustomAlert(this, "Password should have minimum 6 characters")
+            //etPass.setError("Password should have minimum 6 characters");
+            return false
+        } else if (confPass.isEmpty()) {
+            CommonUtils.showCustomAlert(this, "Please enter confirm password")
             //etPass.setError("Password should have minimum 6 characters");
             return false
         } else if (!confPass.equals(newPass)) {
@@ -231,9 +233,15 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
 
     override fun onError(errorMessage: String?) {
         //toastMessage(errorMessage.toString())
+        if (this::changePasswordDialog.isInitialized) {
+            changePasswordDialog.dismiss()
+        }
     }
 
     override fun onSuccessChangePassword(response: AddAddressResponse?) {
+        if (this::changePasswordDialog.isInitialized) {
+            changePasswordDialog.dismiss()
+        }
         CommonUtils.showCustomAlert(this@SettingActivity, response!!.message)
     }
 

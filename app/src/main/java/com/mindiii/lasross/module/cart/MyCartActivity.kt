@@ -14,7 +14,7 @@ import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
 import com.mindiii.lasross.base.ClickListener
 import com.mindiii.lasross.base.LasrossParentKotlinActivity
-import com.mindiii.lasross.module.address.activity.MyAddressesActivity38
+import com.mindiii.lasross.module.address.activity.MyAddressesActivity
 import com.mindiii.lasross.module.cart.adapter.MyCartAdapter
 import com.mindiii.lasross.module.cart.model.*
 import com.mindiii.lasross.module.cart.presenter.GetCartPresenter
@@ -243,7 +243,7 @@ class MyCartActivity : LasrossParentKotlinActivity(), ApiCallback.GetCartCallbac
                     if (intOutOfStock > 0) {
                         showOutOfStockDialog(this, "First remove out of stock product to continue")
                     } else {
-                        startActivity(Intent(this, MyAddressesActivity38::class.java)
+                        startActivity(Intent(this, MyAddressesActivity::class.java)
                                 .putExtra("CheckValue", "CheckFound")
                                 .putExtra("from", "MyCart")
                                 .putExtra("totalItem", tvItem.text.toString())

@@ -10,7 +10,7 @@ import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
 import com.mindiii.lasross.base.BaseKotlinFragment
-import com.mindiii.lasross.module.address.activity.MyAddressesActivity38
+import com.mindiii.lasross.module.address.activity.MyAddressesActivity
 import com.mindiii.lasross.module.address.model.UserAddressListResponse
 import com.mindiii.lasross.module.cart.MyCartActivity
 import com.mindiii.lasross.module.cart.model.CartListResponse
@@ -87,7 +87,7 @@ class ProfileFragment : BaseKotlinFragment(), View.OnClickListener, ApiCallback.
                 activity.addFragment(UpdateProfileFragment.newInstance(Session(mContext).authToken), true, R.id.profileFrame)
             }
             R.id.rlMyAddress -> {
-                startActivity(Intent(mContext, MyAddressesActivity38::class.java)
+                startActivity(Intent(mContext, MyAddressesActivity::class.java)
                         .putExtra("CheckValue", "CheckNotFound")
                         .putExtra("showClearButton", "showClearButtonProfile"))
             }

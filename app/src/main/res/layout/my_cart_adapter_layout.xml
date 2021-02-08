@@ -39,9 +39,9 @@
                 android:fontFamily="@font/ibmplexsans_regular"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="sdfsafadf"
-                android:textColor="#999999"
-                android:textSize="@dimen/_7sdp" />
+                android:textAllCaps="true"
+                 android:textColor="#999999"
+                 android:textSize="@dimen/_7sdp" />
 
             <TextView
                 android:id="@+id/tvItemName"
@@ -51,8 +51,7 @@
                 android:fontFamily="@font/ibmplexsans_regular"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="sdfsafadf"
-                android:textColor="@color/black"
+                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp" />
 
             <TextView
@@ -63,8 +62,7 @@
                 android:fontFamily="@font/ibmplexsans_light"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="sdfsafadf"
-                android:textColor="@color/black"
+                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp" />
 
 
@@ -103,8 +101,7 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:fontFamily="@font/ibmplexsans_semibold"
                 android:gravity="bottom|center"
-                android:text="sdfsafadf"
-                android:textColor="@color/black"
+                 android:textColor="@color/black"
                 android:textSize="@dimen/_11sdp" />
 
         </RelativeLayout>

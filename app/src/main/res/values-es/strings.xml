@@ -201,7 +201,8 @@
     <string name="price_details">PRICE DETAILS</string>
     <string name="plan_subscribe_success">Your subscription has been done successfully</string>
     <string name="plan">Plan</string>
-    <string name="place_key">AIzaSyAzlqPc1OwdMSrrVPLllUCKubclM_rcox0</string>
+    <!--<string name="place_key">AIzaSyAzlqPc1OwdMSrrVPLllUCKubclM_rcox0</string>-->
+    <string name="place_key">AIzaSyDuEJjb_-knzxl69RX-8hm4_EuCGaNZ7Ao</string>
     <string name="pin_code">PIN Code</string>
     <string name="pick_image_intent_text">Choose an image</string>
     <string name="pick_image_intent_chooser_title">Select source</string>

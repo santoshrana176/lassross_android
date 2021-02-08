@@ -42,7 +42,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".module.address.activity.AddAddressActivity39"
+            android:name=".module.address.activity.AddAddressActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
@@ -148,7 +148,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".module.address.activity.MyAddressesActivity38"
+            android:name=".module.address.activity.MyAddressesActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity

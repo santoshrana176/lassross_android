@@ -35,8 +35,10 @@ import kotlin.collections.ArrayList
 
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-class ProductDetailActivity : LasrossParentKotlinActivity(), ApiCallback.ProductDetailCallback, ApiCallback.AddToCartCallback, View.OnClickListener
-{
+class ProductDetailActivity : LasrossParentKotlinActivity(),
+        ApiCallback.ProductDetailCallback,
+        ApiCallback.AddToCartCallback,
+        View.OnClickListener {
     lateinit var similarProduct: List<SimilarProduct>
     private lateinit var availableQuantity: String
     private lateinit var varientlist: List<Variant>
@@ -83,6 +85,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(), ApiCallback.Product
         //tvCartItemCountProductDetail.text = session.cartItemCount
        if( intent.getStringExtra("productId")!=null)
         productId = intent.getStringExtra("productId")
+
         similarProduct = ArrayList()
         varientlist = ArrayList()
         variantSizeValue = ArrayList()
@@ -98,7 +101,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(), ApiCallback.Product
         ibBagIcon.setOnClickListener(this)
         ivProductDetailBack.setOnClickListener(this)
         llProductDetailRating.setOnClickListener(this)
-     //   apiCalling()
+        apiCalling()
     }
 
     private fun setRatingBarStart(rating_bar: RatingBar) {

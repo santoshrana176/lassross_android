@@ -178,11 +178,15 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
                             if (externalAccountCollection != null) {
                                 cardResponce = new Gson().fromJson(externalAccountCollection.toJson(), StripeSaveCardResponce.class);
                                 Log.e("Size: ", "" + cardResponce.getData().size());
-                                if (from.equals("PaymentActivity"))
+                                if (from.equals("PaymentActivity")){
                                     tvSaveCard.setText("SELECT CARD");
-                                else
-                                    tvSaveCard.setText(cardResponce.getData().size() + " " + getResources().getString(R.string.save_cards));
-
+                                }else {
+                                    if (cardResponce.getData().size()==1){
+                                        tvSaveCard.setText(cardResponce.getData().size() + " " +"saved card");
+                                    }else {
+                                        tvSaveCard.setText(cardResponce.getData().size() + " " +"saved cards");
+                                    }
+                                }
                                 if (cardResponce.getData().size() > 0) {
                                     tvSaveCard.setVisibility(View.VISIBLE);
                                     cardsList.setVisibility(View.VISIBLE);
