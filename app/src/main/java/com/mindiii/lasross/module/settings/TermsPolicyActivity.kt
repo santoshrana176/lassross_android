@@ -2,7 +2,6 @@ package com.mindiii.lasross.module.settings
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.webkit.WebView
@@ -44,7 +43,7 @@ lateinit var webView:WebView
             onBackPressed()
         })
 
-        titleBar = intent.getStringExtra("title")!!
+        titleBar = intent.getStringExtra("title")
         tvTermsPolicyTitle.text = titleBar
     }
 

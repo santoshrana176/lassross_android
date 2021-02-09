@@ -1,5 +1,4 @@
 package com.mindiii.lasross.module.payment
-
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -10,8 +9,6 @@ import com.mindiii.lasross.R
 import com.mindiii.lasross.base.LasrossParentKotlinActivity
 import com.mindiii.lasross.module.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_payment_confirm.*
-
-
 class PaymentConfirmActivity : LasrossParentKotlinActivity(), View.OnClickListener {
     var totalAmount: String = ""
     var orderNumber: String = ""

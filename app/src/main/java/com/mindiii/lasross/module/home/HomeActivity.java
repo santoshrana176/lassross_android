@@ -409,7 +409,6 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
 
         final Typeface semi_bold = ResourcesCompat.getFont(HomeActivity.this, R.font.ibmplexsans_semibold);
         final Typeface regular = ResourcesCompat.getFont(HomeActivity.this, R.font.ibmplexsans_regular);
-
         rbDefault.setChecked(true);
         rbDefault.setTypeface(semi_bold);
 

@@ -110,7 +110,7 @@
                     android:layout_height="@dimen/_20sdp"
                     android:padding="@dimen/_5sdp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
                     android:src="@drawable/black_euro_icon" />
 
                 <TextView

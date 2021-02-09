@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -46,32 +46,32 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNotificationListActivity"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llFAQ"
+        android:layout_marginTop="@dimen/_20sdp"/>
 
     <LinearLayout
         android:id="@+id/tvNotFoundNotification"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_50sdp"
-        android:layout_marginTop="@dimen/_110sdp"
-        android:layout_marginEnd="@dimen/_50sdp"
         android:orientation="vertical"
+        android:layout_centerInParent="true"
         android:visibility="gone">
 
         <ImageView
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:src="@drawable/ic_notification_ico" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="@dimen/_17sdp"
             android:fontFamily="@font/ibmplexsans_semibold"
             android:text="@string/no_notification"
+            android:layout_gravity="center_horizontal"
             android:textColor="@color/another_black"
             android:textSize="@dimen/_14sdp" />
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

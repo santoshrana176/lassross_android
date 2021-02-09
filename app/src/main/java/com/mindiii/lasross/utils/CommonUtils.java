@@ -38,14 +38,11 @@ public class CommonUtils {
 
     public static void showCustomAlert(final Activity activity, String message) {
         final Dialog dialog = new Dialog(activity);
-
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-
         dialog.setContentView(R.layout.custom_dialog);
         dialog.setCancelable(false);
-
         TextView tvMessages = dialog.findViewById(R.id.tvMessages);
         tvMessages.setText(message);
         TextView tvPopupOk = dialog.findViewById(R.id.tvPopupOk);

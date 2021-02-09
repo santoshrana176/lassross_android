@@ -2,6 +2,7 @@ package com.mindiii.lasross.module.settings
 
 import android.app.Activity
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -27,13 +28,13 @@ import com.mindiii.lasross.module.settings.presenter.SettingsPresenter
 import com.mindiii.lasross.module.subscription.SubscriptionActivity
 import com.mindiii.lasross.module.subscription.presenter.model.SubscribeResponse
 import com.mindiii.lasross.utils.CommonUtils
+import kotlinx.android.synthetic.main.custom_dialog_settings.*
 import kotlinx.android.synthetic.main.logout_view.*
 import kotlinx.android.synthetic.main.reset_password_dialog_artboard_35.*
 import kotlinx.android.synthetic.main.setting_activty_40.*
 import java.util.*
 
-class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, ApiCallback.SettingsCallback, ApiCallback.LanguageCallback
-{
+class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, ApiCallback.SettingsCallback, ApiCallback.LanguageCallback {
 
     private var session: Session? = null
     lateinit var changePasswordDialog: Dialog
@@ -135,7 +136,6 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
 
     fun showLogoutDialog(activity: Activity, message: String) {
         val dialog = Dialog(activity)
-
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         Objects.requireNonNull(dialog.window)!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window!!.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
@@ -159,8 +159,7 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
     }
 
     private fun openChangePasswordDialog() {
-
-        val changePasswordDialog = Dialog(this)//,android.R.style.Theme_Dialog);
+        changePasswordDialog = Dialog(this)//,android.R.style.Theme_Dialog);
         changePasswordDialog.setContentView(R.layout.reset_password_dialog_artboard_35)
         changePasswordDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
@@ -191,13 +190,13 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
             return false;
         }
         if (!isValidPass(oldPass)) {
-            CommonUtils.showCustomAlert(this, "Password should have minimum 6 characters")
+            CommonUtils.showCustomAlert(this, "Password should have minimum 6 characters.")
             return false;
         } else if (newPass.isEmpty()) {
             CommonUtils.showCustomAlert(this, "Please enter new password")
             return false
         } else if (!isValidPass(newPass)) {
-            CommonUtils.showCustomAlert(this, "Password should have minimum 6 characters")
+            CommonUtils.showCustomAlert(this, "Password should have minimum 6 characters.")
             //etPass.setError("Password should have minimum 6 characters");
             return false
         } else if (confPass.isEmpty()) {
@@ -240,10 +239,29 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
     }
 
     override fun onSuccessChangePassword(response: AddAddressResponse?) {
-        if (this::changePasswordDialog.isInitialized) {
-            changePasswordDialog.dismiss()
+        /*  if (this::changePasswordDialog.isInitialized) {
+              changePasswordDialog.dismiss()
+          }*/
+        showCustomAlert(response?.message.toString(),this)
+    }
+
+    fun showCustomAlert(message: String, context: Context) {
+        val dialog = Dialog(context)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.getWindow()?.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
+        dialog.setContentView(R.layout.custom_dialog_settings)
+        dialog.setCancelable(false)
+        val tvMessages = dialog.tvMessages_1
+        tvMessages.setText(message)
+        val tvPopupOk = dialog.tvOk
+        tvPopupOk.setOnClickListener {
+            dialog.dismiss()
+              if (this::changePasswordDialog.isInitialized) {
+              changePasswordDialog.dismiss()
+         }
         }
-        CommonUtils.showCustomAlert(this@SettingActivity, response!!.message)
+        dialog.show()
     }
 
     override fun onSuccessCurrentSubscribedPlan(response: SubscribeResponse?) {

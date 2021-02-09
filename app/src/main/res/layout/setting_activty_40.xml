@@ -25,8 +25,8 @@
 
             <ImageView
                 android:id="@+id/iv_back"
-                android:layout_width="@dimen/_13sdp"
-                android:layout_height="@dimen/_13sdp"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="@dimen/_14sdp"
                 android:layout_alignParentBottom="true"
                 android:paddingBottom="@dimen/_2sdp"
                 android:src="@drawable/ic_back_arrow_ico"
