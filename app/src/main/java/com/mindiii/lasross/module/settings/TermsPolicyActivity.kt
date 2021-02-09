@@ -39,9 +39,9 @@ lateinit var webView:WebView
 
         callTermsPolicyApi()
 
-        ivTermPolicyBack.setOnClickListener({
+        ivTermPolicyBack.setOnClickListener {
             onBackPressed()
-        })
+        }
 
         titleBar = intent.getStringExtra("title")
         tvTermsPolicyTitle.text = titleBar
