@@ -18,10 +18,7 @@ import com.mindiii.lasross.module.subscription.presenter.model.SubscribeResponse
 import kotlinx.android.synthetic.main.term_policy_activity.*
 
 class TermsPolicyActivity : LasrossParentKotlinActivity(), ApiCallback.SettingsCallback {
-
-
     var titleBar: String = ""
-
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +34,6 @@ class TermsPolicyActivity : LasrossParentKotlinActivity(), ApiCallback.SettingsC
         ivTermPolicyBack.setOnClickListener({
             onBackPressed()
         })
-
         titleBar = intent.getStringExtra("title")
         tvTermsPolicyTitle.text = titleBar
     }
@@ -61,25 +57,20 @@ class TermsPolicyActivity : LasrossParentKotlinActivity(), ApiCallback.SettingsC
             webViewLayout.loadUrl(termsPolicyResponse!!.content_url.policy)
         }
     }
-
     private inner class MyBrowser : WebViewClient() {
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
             view.loadUrl(url)
             return true
         }
     }
-
     override fun onShowBaseLoader() {
         showLoader()
     }
-
     override fun onHideBaseLoader() {
         hideLoader()
     }
-
     override fun onError(errorMessage: String?) {
     }
-
     override fun onSuccessChangePassword(response: AddAddressResponse?) {
     }
 

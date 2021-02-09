@@ -79,12 +79,11 @@
                         android:id="@+id/llFacebook"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/_34sdp"
-                        android:layout_marginStart="@dimen/_2sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_weight="1"
                         android:background="@drawable/fb_border"
                         android:gravity="center"
-                        android:padding="@dimen/_5sdp">
+                       >
 
                         <ImageView
                             android:layout_width="@dimen/_15sdp"
@@ -114,12 +113,11 @@
                         android:layout_height="@dimen/_38sdp"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:layout_marginEnd="@dimen/_2sdp"
                         android:layout_marginBottom="@dimen/_6sdp"
                         android:layout_weight="1"
                         android:background="@drawable/box"
                         android:gravity="center"
-                        android:padding="@dimen/_5sdp">
+                       >
 
                         <ImageView
                             android:layout_width="@dimen/_17sdp"
@@ -226,7 +224,7 @@
                     android:layout_gravity="right"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="@font/ibmplexsans_medium"
-                    android:padding="@dimen/_5sdp"
+                    android:padding="@dimen/_2sdp"
                     android:text="@string/forgot_password"
                     android:textColor="@color/orange_forgot_password"
                     android:textSize="@dimen/_10sdp" />

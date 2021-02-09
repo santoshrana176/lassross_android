@@ -36,7 +36,6 @@ class SettingsPresenter(var mContext: Context, var changePassword: ApiCallback.S
                         changePassword.onError(apiErrors.message)
                     }
                 }
-
             }
 
             override fun onFailure(call: Call<AddAddressResponse>, t: Throwable) {

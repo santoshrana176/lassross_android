@@ -96,7 +96,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_50sdp"
-        android:layout_centerInParent="true"
         android:layout_marginEnd="@dimen/_50sdp"
         android:orientation="vertical"
         android:layout_centerInParent="true"
@@ -105,13 +104,13 @@
         <ImageView
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:src="@drawable/ic_no_wishlist_heart_ico" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/_17sdp"
             android:fontFamily="@font/ibmplexsans_semibold"
             android:text="@string/no_items"

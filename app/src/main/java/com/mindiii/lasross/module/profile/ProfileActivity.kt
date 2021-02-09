@@ -22,12 +22,9 @@ class ProfileActivity : LasrossParentKotlinActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.statusBarColor = this.resources.getColor(R.color.home_header_bg1)
         }
-
-
         if (intent.getStringExtra("from") != null) {
             from = intent.getStringExtra("from")
         }
-
         if (from.isNotEmpty() && from.equals("Settings")) {
             addFragment(UpdateProfileFragment.newInstance(""), false, R.id.profileFrame)
         } else {
