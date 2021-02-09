@@ -205,7 +205,7 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
             Picasso.with(this).load(session.getRegistration().getProfile_photo()).into(ivUserPic);
         }
 
-        Log.e("image", session.getRegistration().getProfile_photo());
+        //Log.e("image", session.getRegistration().getProfile_photo());
 
 
         ivBagIcon.setOnClickListener(new View.OnClickListener() {
