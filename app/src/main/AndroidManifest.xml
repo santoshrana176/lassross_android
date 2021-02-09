@@ -22,7 +22,9 @@
         android:largeHeap="true"
         android:roundIcon="@drawable/app_ico"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:networkSecurityConfig="@xml/network_security_config"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".module.payment.PaymentConfirmActivity"

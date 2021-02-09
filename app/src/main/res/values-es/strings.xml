@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Lasross</string>
-    <string name="StripeKeyTest">sk_test_jVM872jPfk462GPwYDH7mr84</string>
+     <string name="StripeKeyTest">sk_test_jVM872jPfk462GPwYDH7mr84</string>
     <string name="abc">abc</string>
     <string name="accounts">Account</string>
     <string name="active_plan">Active Plan</string>
@@ -195,7 +195,7 @@
     <string name="reset_pwd">Reset Password</string>
     <string name="red">Red</string>
     <string name="quantity_order_detail">"Qty : "</string>
-    <string name="product_not_found">lasross-a84d5</string>
+    <string name="product_not_found">No record found</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="pricing_details">PRICING DETAIL</string>
     <string name="price_details">PRICE DETAILS</string>

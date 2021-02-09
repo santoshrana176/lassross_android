@@ -10,12 +10,14 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/addToCartFullLayout">
+        android:scrollbars="none"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+           >
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -532,6 +534,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:fontFamily="@font/ibmplexsans_regular"
+                android:layout_marginBottom="@dimen/_55sdp"
                 android:paddingTop="@dimen/_5sdp" />
 
         </LinearLayout>
@@ -542,8 +545,10 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_8sdp"
         android:layout_marginLeft="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="@android:color/transparent"
         android:layout_marginRight="@dimen/_15sdp"
         android:orientation="horizontal"
         android:weightSum="1">

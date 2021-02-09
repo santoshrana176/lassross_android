@@ -7,6 +7,12 @@
         <item name="colorPrimaryDark">#ffb236</item>
         <item name="colorAccent">#ffb236</item>
     </style>
+    <style name="CustomTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#ffb236</item>
+        <item name="colorPrimaryDark">#ffb236</item>
+        <item name="colorAccent">#ffb236</item>
+    </style>
 
     <style name="DialogAnimation">
         <item name="android:windowEnterAnimation">@anim/slide_up</item>

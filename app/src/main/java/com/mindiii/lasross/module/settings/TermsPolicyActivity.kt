@@ -2,6 +2,7 @@ package com.mindiii.lasross.module.settings
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.webkit.WebView
@@ -19,7 +20,7 @@ import kotlinx.android.synthetic.main.term_policy_activity.*
 
 class TermsPolicyActivity : LasrossParentKotlinActivity(), ApiCallback.SettingsCallback {
 
-
+lateinit var webView:WebView
     var titleBar: String = ""
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -32,13 +33,18 @@ class TermsPolicyActivity : LasrossParentKotlinActivity(), ApiCallback.SettingsC
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = this.resources.getColor(com.mindiii.lasross.R.color.home_header_bg1)
 
+        webViewLayout.getSettings().setLoadsImagesAutomatically(true)
+        webViewLayout.getSettings().setJavaScriptEnabled(true);
+        webViewLayout.setWebViewClient(MyBrowser())
+        webViewLayout.getSettings().setDefaultTextEncodingName("utf-8")
+
         callTermsPolicyApi()
 
         ivTermPolicyBack.setOnClickListener({
             onBackPressed()
         })
 
-        titleBar = intent.getStringExtra("title")
+        titleBar = intent.getStringExtra("title")!!
         tvTermsPolicyTitle.text = titleBar
     }
 
@@ -48,16 +54,8 @@ class TermsPolicyActivity : LasrossParentKotlinActivity(), ApiCallback.SettingsC
 
     override fun onSuccessTermsPolicy(termsPolicyResponse: TermsPolicyResponse?) {
         if (titleBar.equals("Terms and Conditions")) {
-            webViewLayout.getSettings().setLoadsImagesAutomatically(true)
-            webViewLayout.getSettings().setJavaScriptEnabled(true);
-            webViewLayout.setWebViewClient(MyBrowser())
-            webViewLayout.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-            webViewLayout.loadUrl(termsPolicyResponse!!.content_url.term_and_condition)
-        } else {
-            webViewLayout.getSettings().setLoadsImagesAutomatically(true)
-            webViewLayout.getSettings().setJavaScriptEnabled(true);
-            webViewLayout.setWebViewClient(MyBrowser())
-            webViewLayout.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+              webViewLayout.loadUrl(termsPolicyResponse!!.content_url.term_and_condition)
+          } else {
             webViewLayout.loadUrl(termsPolicyResponse!!.content_url.policy)
         }
     }

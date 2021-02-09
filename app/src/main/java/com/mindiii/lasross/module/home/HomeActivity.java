@@ -100,6 +100,7 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
     private long mLastClickTime = 0;
     private int index, minPrice = 0, maxPrice = 0;
     private String strBannerImage;
+    private int previousGroupPosition;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -233,11 +234,8 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
-
         navigationView.setNavigationItemSelectedListener(this);
-
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
@@ -261,9 +259,17 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
                 parent.smoothScrollToPosition(groupPosition);
-                if (parent.isGroupExpanded(groupPosition)) {
-                    parent.collapseGroup(groupPosition);
+                if (parent.isGroupExpanded(previousGroupPosition)) {
+                    parent.collapseGroup(previousGroupPosition);
+                //    parent.expandGroup(groupPosition);
+                    //previousGroupPosition = groupPosition;
+                    if (groupPosition!=previousGroupPosition){
+                        parent.expandGroup(groupPosition);
+                        previousGroupPosition=groupPosition;
+                    }
+
                 } else {
+                    previousGroupPosition = groupPosition;
                     parent.expandGroup(groupPosition);
                 }
                 return true;
@@ -500,7 +506,7 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
     }
 
     private void setExpandableListStaticViewHeight(ExpandableListView listView, int group) {
-
+/*
         ExpandableListStaticAdapter listAdapter = (ExpandableListStaticAdapter) listView.getExpandableListAdapter();
         int totalHeight = 0;
         int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(),
@@ -531,7 +537,7 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
             height = 100;
         params.height = height;
         listView.setLayoutParams(params);
-        listView.requestLayout();
+        listView.requestLayout();*/
 
     }
 
@@ -663,7 +669,6 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
     public void onSuccessProductList(ProductResponse productResponse) {
         minPrice = Integer.parseInt(productResponse.getMinPrice());
         maxPrice = Integer.parseInt(productResponse.getMaxPrice());
-
         session.setProductDetail(String.valueOf(minPrice), String.valueOf(maxPrice));
         productList.clear();
         productList.addAll(productResponse.getData().getProduct_list());
@@ -707,7 +712,7 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
             }
         }, HomeActivity.this, listDataHeader1);
         listView1.setAdapter(listAdapter1);
-        setExpandableListViewHeight(listView1, -1);
+       // setExpandableListViewHeight(listView1, -1);
     }
 
     @Override

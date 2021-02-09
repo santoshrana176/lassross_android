@@ -154,6 +154,7 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
 
         if (session.getFilterMaxPrice() != null && !session.getFilterMaxPrice().equals("")) {
             tvMaxPriceRange.setText(session.getFilterMaxPrice());
+            seekbar_distance.setRange(Float.parseFloat(session.getFilterMinPrice()), Float.parseFloat(session.getFilterMaxPrice()));
             seekbar_distance.setValue(Float.parseFloat(session.getFilterMinPrice()), Float.parseFloat(session.getFilterMaxPrice()));
         } else {
             seekbar_distance.setRange(minPrice,maxPrice);

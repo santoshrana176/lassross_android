@@ -11,9 +11,9 @@ import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
+import android.view.Window
 import android.view.WindowManager
 import android.widget.*
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
@@ -61,20 +61,17 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
     private var viewPagerAdapter: ViewPagerAdapter? = null
     private lateinit var session: Session
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
         session = Session(this)
-        val window = this.window
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.statusBarColor = this.resources.getColor(R.color.white)
+            val window: Window = window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.setStatusBarColor(Color.BLACK)
         }
-
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-               getWindow().statusBarColor=ContextCompat.getColor(this ,R.color.white)
-           }*/
 
         if (session.cartItemCount.equals("0", ignoreCase = true))
             tvCartItemCountProductDetail.setVisibility(View.GONE)
@@ -82,7 +79,6 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
             tvCartItemCountProductDetail.setVisibility(View.VISIBLE)
             tvCartItemCountProductDetail.setText(session.cartItemCount)
         }
-        //tvCartItemCountProductDetail.text = session.cartItemCount
        if( intent.getStringExtra("productId")!=null)
         productId = intent.getStringExtra("productId")
 
@@ -140,12 +136,6 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
 
         })
         rvRecycler.adapter = similarProductAdapter
-
-        /*Size Adapter*/
-        /*val sizeArray = ArrayList<String>()
-        for(n in 0..variantSizeValue.size-1) {
-            sizeArray.add(variantSizeValue.get(n).variant_value)
-        }*/
 
         val sizeAdapter = ArrayAdapter(this, R.layout.size_adapter_layout, variantSizeValue.toMutableList())
         sizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

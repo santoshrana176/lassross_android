@@ -72,7 +72,7 @@
                     android:layout_marginEnd="@dimen/_4sdp"
                     android:background="@drawable/cart_item_box_grey"
                     android:gravity="center"
-                    android:text="12"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="@dimen/_6sdp" />
 
