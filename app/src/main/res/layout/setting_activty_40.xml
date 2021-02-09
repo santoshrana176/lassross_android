@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <LinearLayout
@@ -27,7 +30,7 @@
                 android:layout_alignParentBottom="true"
                 android:paddingBottom="@dimen/_2sdp"
                 android:src="@drawable/ic_back_arrow_ico"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,7 +63,7 @@
             android:text="@string/accounts"
             android:textColor="@color/another_black"
             android:textSize="@dimen/_13sdp"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -71,7 +74,7 @@
                 android:layout_width="@dimen/_18sdp"
                 android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_1sdp"
-                android:src="@drawable/setting_account_icon" />
+                android:src="@drawable/setting_account_icon"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -81,7 +84,7 @@
                 android:paddingBottom="@dimen/_1sdp"
                 android:text="@string/accounts"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_13sdp"/>
         </LinearLayout>
 
         <View
@@ -171,9 +174,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/llAccount"
         android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:orientation="vertical"
-        android:visibility="gone">
+        >
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -222,7 +225,7 @@
                 android:layout_alignParentEnd="true"
                 android:scaleX="1"
                 android:scaleY="1"
-                android:switchMinWidth="60dp"
+                android:switchMinWidth="50dp"
                 android:theme="@style/SwitchTheme"
                 android:track="@drawable/customswitchselector" />
         </RelativeLayout>
@@ -234,7 +237,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/llNotification"
         android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:orientation="vertical">
 
         <TextView
@@ -258,7 +261,7 @@
                 android:layout_width="@dimen/_18sdp"
                 android:layout_height="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_1sdp"
-                android:src="@drawable/setting_more_icon" />
+                android:src="@drawable/language"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -445,20 +448,20 @@
                 android:padding="@dimen/_2sdp"
                 android:src="@drawable/ic_gray_back_ico" />
         </RelativeLayout>
+        <TextView
+            android:id="@+id/tvSettingLogout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_below="@+id/rlPrivacyPolicy"
+            android:layout_margin="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:background="@drawable/lasros_main_btn"
+            android:fontFamily="@font/ibmplexsans_semibold"
+            android:gravity="center"
+            android:padding="@dimen/_7sdp"
+            android:text="@string/logout"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"/>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvSettingLogout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_35sdp"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_16sdp"
-        android:background="@drawable/lasros_main_btn"
-        android:fontFamily="@font/ibmplexsans_semibold"
-        android:gravity="center"
-        android:padding="@dimen/_7sdp"
-        android:text="@string/logout"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_12sdp" />
 </RelativeLayout>
+</androidx.core.widget.NestedScrollView>

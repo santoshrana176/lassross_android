@@ -16,11 +16,10 @@ import retrofit2.Response
 import java.io.IOException
 
 class ProductDetailPresenter(var productDetailCallback: ApiCallback.ProductDetailCallback, var mContext: Context) {
-val session=Session(mContext)
+     val session = Session(mContext).registration.userId
 
     fun callProductDetailApi(productId: String) {
         productDetailCallback.onShowBaseLoader()
-        val session = Session(mContext).registration.userId
          val api = ServiceGeneratorkotlin().createService(API::class.java)
         val loginResponseCall = api.callProductDetailApi(productId,session)
         loginResponseCall.enqueue(object : Callback<ProductDetailResponse> {

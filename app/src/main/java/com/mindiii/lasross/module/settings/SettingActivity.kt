@@ -32,7 +32,8 @@ import kotlinx.android.synthetic.main.reset_password_dialog_artboard_35.*
 import kotlinx.android.synthetic.main.setting_activty_40.*
 import java.util.*
 
-class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, ApiCallback.SettingsCallback, ApiCallback.LanguageCallback {
+class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, ApiCallback.SettingsCallback, ApiCallback.LanguageCallback
+{
 
     private var session: Session? = null
     lateinit var changePasswordDialog: Dialog

@@ -26,7 +26,7 @@
                 android:layout_height="@dimen/_13sdp"
                 android:layout_alignParentBottom="true"
                 android:paddingBottom="@dimen/_3sdp"
-                android:src="@drawable/ic_white_close_ico"
+                android:src="@drawable/ic_back_arrow_ico"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -39,7 +39,7 @@
                 android:fontFamily="@font/ibmplexsans_regular"
                 android:text="@string/notifications"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_13sdp"/>
         </RelativeLayout>
     </LinearLayout>
 

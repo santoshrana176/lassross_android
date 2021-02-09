@@ -183,7 +183,6 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
         ivSort = findViewById(R.id.ivSort);
         tvNotFound = findViewById(R.id.tvNotFound);
         bag_icon = findViewById(R.id.bag_icon);
-
         if (session.getCartItemCount().equals("0"))
             tvCartItemCountShop.setVisibility(View.GONE);
         else {

@@ -44,6 +44,9 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
     private RecyclerView recyclerViewColor;
     private TextView tvItemSize, tvItemColor, tvItemPrice, tvMinPriceRange, tvMaxPriceRange, tvClearAll;
     private ImageView ivItemSizeIcon;
+    private ImageView ivItemColorArrow;
+    private ImageView ivItemPriceArrow;
+    private ImageView ivItemSizeArrow;
     private ImageView ivItemColorIcon;
     private ImageView ivItemPriceIcon;
     private LinearLayout llItemSize, llItemColor, llItemPrice, llPriceTouch, llSearchlayout;
@@ -123,6 +126,10 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
         llItemColor = findViewById(R.id.llItemColor);
         llItemPrice = findViewById(R.id.llItemPrice);
         llSearchlayout = findViewById(R.id.llSearchlayout);
+        ivItemColorArrow = findViewById(R.id.ivItemColorArrow);
+        ivItemSizeArrow = findViewById(R.id.ivItemSizeArrow);
+        ivItemPriceArrow = findViewById(R.id.ivItemPriceArrow);
+        ivItemSizeIcon = findViewById(R.id.ivItemSizeIcon);
 
         seekbar_distance.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
@@ -186,26 +193,30 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
         final Typeface semi_bold = ResourcesCompat.getFont(FiltersActivity.this, R.font.ibmplexsans_semibold);
         final Typeface regular = ResourcesCompat.getFont(FiltersActivity.this, R.font.ibmplexsans_regular);
 
+        llItemPrice.setBackgroundColor(Color.parseColor("#fe682e"));
+        tvItemPrice.setTextColor(Color.WHITE);
+        tvItemPrice.setTypeface(semi_bold);
+        ivItemPriceIcon.setColorFilter(Color.WHITE);
+        ivItemPriceArrow.setVisibility(View.VISIBLE);
+        ivItemColorArrow.setVisibility(View.GONE);
+        ivItemSizeArrow.setVisibility(View.GONE);
+        llPriceTouch.setVisibility(View.VISIBLE);
+        recyclerViewColor.setVisibility(View.GONE);
+
         llItemColor.setBackgroundColor(Color.parseColor("#f9f7f7"));
         tvItemColor.setTextColor(Color.BLACK);
         tvItemColor.setTypeface(regular);
         ivItemColorIcon.setColorFilter(Color.BLACK);
-        //ivItemColorArrow.setVisibility(View.GONE);
 
         llItemSize.setBackgroundColor(Color.parseColor("#f9f7f7"));
         tvItemSize.setTextColor(Color.BLACK);
         tvItemSize.setTypeface(regular);
         ivItemSizeIcon.setColorFilter(Color.BLACK);
-        //ivItemSizeArrow.setVisibility(View.GONE);
+      /*  ivItemColorArrow.setVisibility(View.GONE);
+        ivItemSizeArrow.setVisibility(View.GONE);
+*/
 
-        llItemPrice.setBackgroundColor(Color.parseColor("#fe682e"));
-        tvItemPrice.setTextColor(Color.WHITE);
-        tvItemPrice.setTypeface(semi_bold);
-        ivItemPriceIcon.setColorFilter(Color.WHITE);
-        //ivItemPriceArrow.setVisibility(View.VISIBLE);
-        llPriceTouch.setVisibility(View.VISIBLE);
-        recyclerViewColor.setVisibility(View.GONE);
-        // llSearchlayout.setVisibility(View.GONE);
+        //llSearchlayout.setVisibility(View.GONE);
     }
 
     private void setSizeData(ArrayList<String> sizeb) {
@@ -251,23 +262,23 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
         tvItemSize.setTextColor(Color.WHITE);
         tvItemSize.setTypeface(semi_bold);
         ivItemSizeIcon.setColorFilter(Color.WHITE);
-        //ivItemSizeArrow.setVisibility(View.VISIBLE);
+        ivItemSizeArrow.setVisibility(View.VISIBLE);
+        ivItemColorArrow.setVisibility(View.GONE);
+        ivItemPriceArrow.setVisibility(View.GONE);
 
         llItemColor.setBackgroundColor(Color.parseColor("#f9f7f7"));
         tvItemColor.setTextColor(Color.BLACK);
         tvItemColor.setTypeface(regular);
         ivItemColorIcon.setColorFilter(Color.BLACK);
-        //ivItemColorArrow.setVisibility(View.GONE);
 
 
         llItemPrice.setBackgroundColor(Color.parseColor("#f9f7f7"));
         tvItemPrice.setTextColor(Color.BLACK);
         tvItemPrice.setTypeface(regular);
         ivItemPriceIcon.setColorFilter(Color.BLACK);
-        //ivItemPriceArrow.setVisibility(View.GONE);
         llPriceTouch.setVisibility(View.GONE);
-
         recyclerViewColor.setVisibility(View.VISIBLE);
+
         //llSearchlayout.setVisibility(View.VISIBLE);
     }
 
@@ -287,7 +298,6 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
             public void onColorClick(String color) {
                 System.out.println("adapter........color added COLOR" + color);
                 sb1.add(color);
-
             }
 
             @Override
@@ -314,21 +324,20 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
         tvItemColor.setTextColor(Color.WHITE);
         tvItemColor.setTypeface(semi_bold);
         ivItemColorIcon.setColorFilter(Color.WHITE);
-        //ivItemColorArrow.setVisibility(View.VISIBLE);
+        ivItemColorArrow.setVisibility(View.VISIBLE);
+        ivItemPriceArrow.setVisibility(View.GONE);
+        ivItemSizeArrow.setVisibility(View.GONE);
 
         llItemSize.setBackgroundColor(Color.parseColor("#f9f7f7"));
         tvItemSize.setTextColor(Color.BLACK);
         tvItemSize.setTypeface(regular);
         ivItemSizeIcon.setColorFilter(Color.BLACK);
-        //ivItemSizeArrow.setVisibility(View.GONE);
 
         llItemPrice.setBackgroundColor(Color.parseColor("#f9f7f7"));
         tvItemPrice.setTextColor(Color.BLACK);
         tvItemPrice.setTypeface(regular);
         ivItemPriceIcon.setColorFilter(Color.BLACK);
-        //ivItemPriceArrow.setVisibility(View.GONE);
         llPriceTouch.setVisibility(View.GONE);
-
         recyclerViewColor.setVisibility(View.VISIBLE);
 
     }
@@ -376,7 +385,7 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
                 setPriceData();
                 break;
             case R.id.llItemColor:
-               // llSearchlayout.setVisibility(View.VISIBLE);
+                // llSearchlayout.setVisibility(View.VISIBLE);
                 variantAdapter.setDataVarient(colorName);
                 variantAdapter.notifyDataSetChanged();
                 if (session.getFilterColorIds() != null && !session.getFilterColorIds().equals("")) {
@@ -469,9 +478,9 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
                 break;
 
             case R.id.tvClearAll:
-                String min=session.getProductDetailMinValue();
-                String max=session.getProductDetailMaxValue();
-               // llSearchlayout.setVisibility(View.VISIBLE);
+                String min = session.getProductDetailMinValue();
+                String max = session.getProductDetailMaxValue();
+                // llSearchlayout.setVisibility(View.VISIBLE);
                 tvMinPriceRange.setText(session.getProductDetailMinValue());
                 tvMaxPriceRange.setText(session.getProductDetailMaxValue());
                 seekbar_distance.setValue(Float.parseFloat(min), Float.parseFloat(max));
