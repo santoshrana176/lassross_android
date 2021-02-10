@@ -459,6 +459,7 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
                 session.setFilterPrice(prizeLow, priceHigh);
 
                 Intent intent = new Intent(FiltersActivity.this, CoatsActivity.class);
+                intent.putExtra("title", "");
                 intent.putExtra("sizeIds", sizeIds);
                 intent.putExtra("colorIds", colorIds);
                 intent.putExtra("prizeLow", prizeLow);

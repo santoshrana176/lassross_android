@@ -80,7 +80,13 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
 
         if (getIntent().getStringExtra("ChildCatName") != null) {
             childCatName = getIntent().getStringExtra("ChildCatName");
+          String deal= getIntent().getStringExtra("title");
+           if (deal.isEmpty())
             tvWishList.setText(childCatName);
+           else
+            tvWishList.setText(deal);
+
+
             productListBeans.clear();
             myCatId = getIntent().getStringExtra("myCatId");
             dealId = getIntent().getStringExtra("dealId");

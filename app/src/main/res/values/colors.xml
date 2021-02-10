@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#ffb236</color>
     <color name="black">#000000</color>
+    <color name="black_1">#333333</color>
     <color name="orange_forgot_password">#ff6031</color>
     <color name="btn_fb">#303F9F</color>
     <color name="white">#ffffff</color>

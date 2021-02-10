@@ -4,7 +4,7 @@
      <string name="StripeKeyTest">sk_test_jVM872jPfk462GPwYDH7mr84</string>
     <string name="abc">abc</string>
     <string name="accounts">Account</string>
-    <string name="active_plan">Active Plan</string>
+    <string name="active_plan">Plan activo</string>
     <string name="add_address">Add Address</string>
     <string name="add_card">Add Card</string>
     <string name="add_new_address">Add New Address</string>

@@ -25,11 +25,19 @@ import com.mindiii.lasross.module.cart.MyCartActivity
 import com.mindiii.lasross.module.cart.model.AddTocartResponse
 import com.mindiii.lasross.module.cart.presenter.AddToCartPresenter
 import com.mindiii.lasross.module.home.model.AddRemoveWishListResponse
+import com.mindiii.lasross.module.productDetail.adapter.CustomeSpinnerAdapter
 import com.mindiii.lasross.module.productDetail.adapter.SimilarProductKotlinAdapter
 import com.mindiii.lasross.module.productDetail.adapter.ViewPagerAdapter
 import com.mindiii.lasross.module.productDetail.model.*
 import com.mindiii.lasross.module.productDetail.presenter.ProductDetailPresenter
 import kotlinx.android.synthetic.main.activity_product_detail.*
+import kotlinx.android.synthetic.main.activity_product_detail.tvItemName
+import kotlinx.android.synthetic.main.activity_product_detail.tvItemNameVariety
+import kotlinx.android.synthetic.main.activity_product_detail.tvItemPrice
+import kotlinx.android.synthetic.main.activity_product_detail.tvMinus
+import kotlinx.android.synthetic.main.activity_product_detail.tvPlus
+import kotlinx.android.synthetic.main.activity_product_detail.tvQuantity
+import kotlinx.android.synthetic.main.my_cart_adapter_layout.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -62,7 +70,6 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
     private lateinit var session: Session
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
@@ -79,8 +86,8 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
             tvCartItemCountProductDetail.setVisibility(View.VISIBLE)
             tvCartItemCountProductDetail.setText(session.cartItemCount)
         }
-       if( intent.getStringExtra("productId")!=null)
-        productId = intent.getStringExtra("productId")
+        if (intent.getStringExtra("productId") != null)
+            productId = intent.getStringExtra("productId")
 
         similarProduct = ArrayList()
         varientlist = ArrayList()
@@ -88,6 +95,10 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         variantColorValue = ArrayList()
         galleryImage = ArrayList()
 
+        tv_size.setOnClickListener(this)
+        ivDropdown.setOnClickListener(this)
+        tv_color.setOnClickListener(this)
+        ll_size1.setOnClickListener(this)
         tvMoveToBag.setOnClickListener(this)
         tvPlus.setOnClickListener(this)
         tvMinus.setOnClickListener(this)
@@ -136,21 +147,29 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
 
         })
         rvRecycler.adapter = similarProductAdapter
-
-        val sizeAdapter = ArrayAdapter(this, R.layout.size_adapter_layout, variantSizeValue.toMutableList())
-        sizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinSize.adapter = sizeAdapter
-
-        spinSize.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                selectedSizeId = variantSizeValue[position].variantValueId
-
-            } // to close the onItemSelected
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-
+        // spiner initilization for size
+        var spinSizeAdapter = CustomeSpinnerAdapter(this, variantSizeValue, object : CustomeSpinnerAdapter.SelectedItem {
+            override fun selectedItem(variantValueId: String,name:String) {
+                selectedSizeId = variantValueId
+                tv_size.text=name
             }
-        }
+
+        })
+        spinSize.adapter = spinSizeAdapter
+
+        // val sizeAdapter = ArrayAdapter(this, R.layout.size_adapter_layout, variantSizeValue.toMutableList())
+        // sizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        //  spinSize.setPrompt("Select Size");
+
+        /*  spinSize.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+              override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                //  selectedSizeId = variantSizeValue[position].variantValueId
+              } // to close the onItemSelected
+
+              override fun onNothingSelected(parent: AdapterView<*>) {
+
+              }
+          }*/
 
         /*Color Adapter*/
         /*val colorArray = ArrayList<String>()
@@ -158,8 +177,9 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
             colorArray.add(variantColorValue.get(n).variant_value)
         }*/
 
-        val spinnerAdapter = ArrayAdapter(this, R.layout.color_adapter_layout, variantColorValue.toMutableList())
+      /*  val spinnerAdapter = ArrayAdapter(this, R.layout.color_adapter_layout, variantColorValue.toMutableList())
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        // spinSize.setPrompt("Select Color");
         spinColor.adapter = spinnerAdapter
 
         spinColor.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -169,7 +189,14 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
 
             override fun onNothingSelected(parent: AdapterView<*>) {
             }
-        }
+        }*/
+        var spinnerColorAdapter = CustomeSpinnerAdapter(this, variantColorValue, object : CustomeSpinnerAdapter.SelectedItem {
+            override fun selectedItem(variantValueId: String,name:String) {
+                selectedColorId = variantValueId
+                tv_color.text=name
+            }
+        })
+        spinColor.adapter = spinnerColorAdapter
 
         /*pagerAdapter set*/
         viewPagerAdapter = ViewPagerAdapter(galleryImage, this)
@@ -196,11 +223,11 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         availableQuantity = productDetailResponse.data.product_detail.product_available_quantity
         varientlist = productDetailResponse.data.product_detail.variant
         variantSizeValue = productDetailResponse.data.product_detail.variant[0].variant_value as ArrayList<VariantValue>
-        val sizeVal = VariantValue("0", "0", "Select Size")
-        variantSizeValue.add(0, sizeVal)
+      //  val sizeVal = VariantValue("0", "0", "Select Size")
+      //  variantSizeValue.add(0, sizeVal)
         variantColorValue = productDetailResponse.data.product_detail.variant[1].variant_value as ArrayList<VariantValue>
-        val colorVal = VariantValue("0", "0", "Select Color")
-        variantColorValue.add(0, colorVal)
+       // val colorVal = VariantValue("0", "0", "Select Color")
+       // variantColorValue.add(0, colorVal)
 
         galleryImage = productDetailResponse.data.product_detail.gallery_images as ArrayList<GalleryImage>
         val galleryImages = GalleryImage("0", productDetailResponse.data.product_detail.product_image_original, "0")
@@ -295,6 +322,15 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
                 }
 
             }
+            R.id.tv_color -> {
+                spinColor.performClick()
+            }
+            R.id.tv_size ->{
+                spinSize.performClick()
+            }
+            /*R.id.ll_size1 -> {
+                spinSize.performClick()
+            }*/
             R.id.ivAddWish -> {
                 ivAlreadyAddWish.visibility = View.VISIBLE
                 ivAddWish.visibility = View.GONE

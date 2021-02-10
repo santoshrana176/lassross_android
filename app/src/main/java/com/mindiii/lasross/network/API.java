@@ -178,7 +178,8 @@ public interface API {
             , @Field("longitude") String longitude);
 
     @GET("user/userAddresslist")
-    Call<UserAddressListResponse> callUserAddressList(@Header("auth-token") String token
+    Call<UserAddressListResponse> callUserAddressList(
+            @Header("auth-token") String token
             , @Query("offset") String offset
             , @Query("limit") String limit);
 

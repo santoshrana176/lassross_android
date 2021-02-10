@@ -4,20 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-       tools:context=".module.productDetail.ProductDetailActivity">
+    tools:context=".module.productDetail.ProductDetailActivity">
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
-        >
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-           >
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -269,20 +267,44 @@
                     android:orientation="horizontal"
                     android:weightSum="2">
 
-                    <LinearLayout
+                    <RelativeLayout
+                        android:id="@+id/ll_size1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/small_size_border">
 
+                        <TextView
+                            android:id="@+id/tv_size"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_25sdp"
+                            android:gravity="start|center_vertical"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/ibmplexsans_regular"
+                            android:hint="select size"
+                            android:textSize="@dimen/_10sdp"
+                            android:paddingStart="@dimen/_5sdp"
+                            android:layout_toStartOf="@id/ivDropdown"/>
+                        <ImageView
+                            android:id="@+id/ivDropdown"
+                            android:layout_width="@dimen/_13sdp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_height="@dimen/_13sdp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/_12sdp"
+                            android:src="@drawable/ic_drop_down"/>
+
                         <Spinner
                             android:id="@+id/spinSize"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_25sdp"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="-5dp"
                             android:dropDownWidth="match_parent"
                             android:dropDownVerticalOffset="@dimen/_30sdp"
-                            android:spinnerMode="dropdown" />
-                    </LinearLayout>
+                            android:spinnerMode="dropdown"
+                              />
+                    </RelativeLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -394,15 +416,45 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:background="@drawable/small_size_border">
+                        <RelativeLayout
+                            android:id="@+id/ll_color1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/small_size_border">
 
+                            <TextView
+                                android:id="@+id/tv_color"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_25sdp"
+                                android:gravity="start|center_vertical"
+                                android:layout_centerVertical="true"
+                                android:fontFamily="@font/ibmplexsans_regular"
+                                android:hint="select color"
+                                android:textSize="@dimen/_10sdp"
+                                android:paddingStart="@dimen/_5sdp"
+                                android:layout_toStartOf="@id/iv_Dropdown"/>
+                            <ImageView
+                                android:id="@+id/iv_Dropdown"
+                                android:layout_width="@dimen/_13sdp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_height="@dimen/_13sdp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="@dimen/_12sdp"
+                                android:src="@drawable/ic_drop_down"/>
+                        </RelativeLayout>
                         <Spinner
                             android:id="@+id/spinColor"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_25sdp"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="-5dp"
                             android:dropDownWidth="match_parent"
-                            android:dropDownVerticalOffset="@dimen/_30sdp"
+                             android:dropDownVerticalOffset="@dimen/_30sdp"
                             android:dropDownSelector="@color/text_color"
-                            android:spinnerMode="dropdown" />
+                            android:spinnerMode="dropdown"
+                             />
+
 
                     </RelativeLayout>
 
@@ -522,9 +574,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
-                android:textAllCaps="true"
                 android:fontFamily="@font/ibmplexsans_medium"
                 android:text="@string/description"
+                android:textAllCaps="true"
                 android:textColor="#333333" />
 
 
@@ -533,8 +585,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
-                android:fontFamily="@font/ibmplexsans_regular"
                 android:layout_marginBottom="@dimen/_55sdp"
+                android:fontFamily="@font/ibmplexsans_regular"
                 android:paddingTop="@dimen/_5sdp" />
 
         </LinearLayout>
@@ -545,11 +597,11 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/_8sdp"
         android:layout_marginLeft="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_8sdp"
-        android:background="@android:color/transparent"
         android:layout_marginRight="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:background="@android:color/transparent"
         android:orientation="horizontal"
         android:weightSum="1">
 
@@ -566,7 +618,7 @@
                 android:background="@drawable/wishlist_black_border"
                 android:padding="@dimen/_10sdp"
                 android:src="@drawable/ic_favorite_ico"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/ivAlreadyAddWish"
@@ -575,7 +627,7 @@
                 android:background="@drawable/wishlist_black_border"
                 android:padding="@dimen/_10sdp"
                 android:src="@drawable/ic_favorite_filled"
-                android:visibility="visible"/>
+                android:visibility="visible" />
         </LinearLayout>
 
 
