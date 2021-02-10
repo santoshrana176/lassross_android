@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/ibmplexsans_semibold"
-            android:text="Email"
+            android:text="@string/email_"
             android:textColor="@color/another_black"
             android:textSize="@dimen/_12sdp" />
 
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_2sdp"
             android:fontFamily="@font/ibmplexsans_light"
-            android:text="lasross@gmail.com"
+            android:text="@string/lasross_gmail_com"
             android:textColor="#666666"
             android:textSize="@dimen/_11sdp" />
 

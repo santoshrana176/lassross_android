@@ -26,7 +26,7 @@
         android:layout_marginLeft="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_3sdp"
         android:fontFamily="@font/ibmplexsans_medium"
-        android:text="RELATED PRODUCTS"
+        android:text="@string/related_products"
         android:textColor="@color/black"
         android:textSize="@dimen/_12sdp" />
 

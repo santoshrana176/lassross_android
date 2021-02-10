@@ -8,5 +8,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/_5sdp"
-        android:text="item 1" />
+        android:text="@string/item_1" />
 </LinearLayout>

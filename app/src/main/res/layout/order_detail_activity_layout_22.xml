@@ -58,7 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_semibold"
-                    android:text="ORDER ID  :  "
+                    android:text="@string/order_id__"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -66,7 +66,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text="TRH102512542" />
+                    android:text="@string/trh102512542"
+                    android:layout_marginStart="@dimen/_5sdp"/>
             </LinearLayout>
 
             <View
@@ -104,7 +105,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/ibmplexsans_regular"
-                            android:text="COATS AND JACKETS"
+                            android:text="@string/coats_and_jackets"
                             android:textColor="#999999"
                             android:textSize="@dimen/_8sdp" />
 
@@ -114,7 +115,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/ibmplexsans_regular"
-                            android:text="Jackets Shinny Fit"
+                            android:text="@string/jackets_shinny_fit"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_11sdp" />
 
@@ -124,7 +125,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_3sdp"
                             android:fontFamily="@font/ibmplexsans_regular"
-                            android:text="Large"
+                            android:text="@string/largee"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_11sdp" />
 
@@ -137,7 +138,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/ibmplexsans_regular"
-                                android:text="Color"
+                                android:text="@string/color"
                                 android:textColor="#999999"
                                 android:textSize="@dimen/_9sdp" />
 
@@ -206,7 +207,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:text="Seller : TrueComRetail"
+                            android:text="@string/seller_truecomretail"
                             android:textColor="#828282"
                             android:textSize="@dimen/_8sdp" />
                     </LinearLayout>
@@ -231,7 +232,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="WRITE A REVIEW"
+                        android:text="@string/write_a_review"
                         android:textColor="@color/write_review_color"
                         android:textSize="@dimen/_11sdp" />
                 </RelativeLayout>
@@ -264,14 +265,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/ibmplexsans_regular"
-                        android:text="Ordered and Approved"
+                        android:text="@string/ordered_and_approved"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/ibmplexsans_regular"
-                        android:text="24 Apr 2019"
+                        android:text="@string/_24_apr_2019"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -286,7 +287,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/ibmplexsans_regular"
-                        android:text="02 May 2019"
+                        android:text="@string/_02_may_2019"
                         android:textColor="@color/black" />
                 </LinearLayout>
             </LinearLayout>
@@ -297,7 +298,7 @@
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:fontFamily="@font/ibmplexsans_semibold"
-                android:text="SHIPPING DETAILS"
+                android:text="@string/shipping_details"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_11sdp" />
 
@@ -317,7 +318,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_semibold"
-                    android:text="Pearle Desrosier"
+                    android:text="@string/pearle_desrosier"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_11sdp" />
 
@@ -326,8 +327,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_light"
                     android:paddingTop="@dimen/_5sdp"
-                    android:text="Akshya Nagar 1st Block 1st Cross, Rammurthy nagar,
-                    Bangalore"
+                    android:text="@string/akshya_nagar_1st_block_1st_cross_rammurthy_nagar_bangalore"
                     android:textColor="#828282"
                     android:textSize="@dimen/_10sdp" />
 
@@ -341,7 +341,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/ibmplexsans_light"
-                        android:text="PIN CODE - "
+                        android:text="@string/pin_codee"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10sdp" />
 
@@ -349,7 +349,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/ibmplexsans_light"
-                        android:text="560016"
+                        android:text="@string/_560016"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10sdp" />
                 </LinearLayout>
@@ -363,7 +363,7 @@
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:fontFamily="@font/ibmplexsans_semibold"
-                android:text="PRICE DETAILS"
+                android:text="@string/price_details"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_11sdp" />
 
@@ -389,13 +389,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ListPrice" />
+                        android:text="@string/listprice" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="£125" />
+                        android:text="@string/_125" />
                 </RelativeLayout>
 
                 <View
@@ -412,13 +412,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Selling Price" />
+                        android:text="@string/selling_price" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="£135" />
+                        android:text="@string/_135" />
                 </RelativeLayout>
 
                 <View
@@ -435,13 +435,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Extra Discount" />
+                        android:text="@string/extra_discount" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="£125"
+                        android:text="@string/_125"
                         android:textColor="#ff0101" />
                 </RelativeLayout>
 
@@ -460,7 +460,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/ibmplexsans_semibold"
-                        android:text="Total"
+                        android:text="@string/total"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -468,7 +468,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:fontFamily="@font/ibmplexsans_semibold"
-                        android:text="£39"
+                        android:text="@string/_39"
                         android:textColor="@color/black" />
                 </RelativeLayout>
 

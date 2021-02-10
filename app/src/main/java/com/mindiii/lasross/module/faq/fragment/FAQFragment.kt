@@ -55,8 +55,8 @@ class FAQFragment : BaseKotlinFragment(), View.OnClickListener {
         list = ArrayList()
 
         for (i in 1..10) {
-            val itemList = FAQModel("How long does it take for me to receive my order?",
-                    "Meditation williamsburg kogi blog bushwick pitchfork polaroid austin dreamcatcher narwhal taxidermy tofu gentrify aesthetic.")
+            val itemList = FAQModel(getString(R.string.question),
+                    getString(R.string.answer))
             list.add(itemList)
         }
 

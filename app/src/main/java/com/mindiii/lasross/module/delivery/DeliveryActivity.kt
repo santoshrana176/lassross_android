@@ -129,7 +129,7 @@ class DeliveryActivity : LasrossParentKotlinActivity(), View.OnClickListener, Ap
                                 .putExtra("totalAmt", tvTotalHere.text.toString())
                                 .putExtra("addressID", addressID))
                     } else {
-                        toastMessage("please select address")
+                        toastMessage(getString(R.string.address_select))
                     }
                 } else {
                     showInternetAlertDialog(this)

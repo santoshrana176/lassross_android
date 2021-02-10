@@ -68,7 +68,7 @@
                 android:gravity="center"
                 android:paddingStart="@dimen/_3sdp"
                 android:paddingEnd="@dimen/_3sdp"
-                android:text="Feel free to fill the form below to find your queries solution or if you need any help ! "
+                android:text="@string/feel_free_to_fill_the_form_below_to_find_your_queries_solution_or_if_you_need_any_help"
                 android:textColor="@color/input_text_color"
                 android:textSize="@dimen/_9sdp" />
 

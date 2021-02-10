@@ -46,7 +46,7 @@
             android:fontFamily="@font/ibmplexsans_regular"
             android:maxLines="1"
             android:singleLine="true"
-            android:text="COATS AND JACKETS"
+            android:text="@string/coats_and_jackets"
             android:textColor="#999999"
             android:textSize="@dimen/_8sdp" />
 
@@ -57,7 +57,7 @@
             android:fontFamily="@font/ibmplexsans_regular"
             android:maxLines="1"
             android:singleLine="true"
-            android:text="Jackets Shinny Fit"
+            android:text="@string/jackets_shinny_fit"
             android:textColor="@color/black"
             android:textSize="@dimen/_9sdp" />
 

@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_semibold"
-                android:text="ORDER ID  :  "
+                android:text="@string/order_id_"
                 android:textColor="@color/black" />
 
             <TextView
@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_regular"
-                android:text="TRH102512542" />
+                android:text="@string/trh102512542" />
         </LinearLayout>
 
         <View
@@ -242,7 +242,7 @@
             android:layout_height="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:background="#f8f8f8"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -252,7 +252,7 @@
             android:paddingLeft="@dimen/_15sdp"
             android:text="@string/shipping_details"
             android:textColor="@color/black"
-            android:textSize="@dimen/_11sdp" />
+            android:textSize="@dimen/_11sdp"/>
 
         <View
             android:layout_width="match_parent"
@@ -273,7 +273,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_semibold"
-                android:text="Pearle Desrosier"
+                android:text="@string/pearle_desrosier"
                 android:textColor="@color/another_black"
                 android:textSize="@dimen/_11sdp" />
 
@@ -284,7 +284,7 @@
                 android:fontFamily="@font/ibmplexsans_light"
                 android:lineSpacingExtra="5dp"
                 android:paddingTop="@dimen/_5sdp"
-                android:text="Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore"
+                android:text="@string/akshya_nagar_1st_block_1st_cross_rammurthy_nagar_bangalore"
                 android:textColor="#828282"
                 android:textSize="@dimen/_10sdp" />
 
@@ -294,7 +294,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_light"
                 android:paddingTop="@dimen/_5sdp"
-                android:text="560016"
+                android:text="@string/_560016"
                 android:textColor="@color/another_black"
                 android:textSize="@dimen/_10sdp" />
         </LinearLayout>

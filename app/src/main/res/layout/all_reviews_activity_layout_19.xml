@@ -32,7 +32,6 @@
                 android:id="@+id/tvWishList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_marginStart="@dimen/_13sdp"
                 android:layout_toEndOf="@+id/ivBackAllReviews"
                 android:fontFamily="@font/ibmplexsans_regular"

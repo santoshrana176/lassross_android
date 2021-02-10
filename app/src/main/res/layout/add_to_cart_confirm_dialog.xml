@@ -16,7 +16,7 @@
         android:gravity="bottom|center"
         android:paddingLeft="@dimen/_10sdp"
         android:paddingRight="@dimen/_10sdp"
-        android:text="Lasross"
+        android:text="@string/lasross"
         android:textColor="@color/black"
         android:textSize="@dimen/_14sdp"
         android:textStyle="bold" />
@@ -44,7 +44,7 @@
         android:layout_height="@dimen/_35sdp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="Ok"
+        android:text="@string/ok"
         android:textColor="#3C94EE"
         android:textSize="@dimen/_12sdp" />
 </LinearLayout>

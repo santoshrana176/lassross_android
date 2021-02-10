@@ -26,7 +26,7 @@
             android:fontFamily="@font/ibmplexsans_regular"
             android:lineSpacingExtra="@dimen/_5sdp"
             android:paddingEnd="@dimen/_7sdp"
-            android:text="What do I do if I entered an incorrect shipping address?"
+            android:text="@string/what_do_i_do_if_i_entered_an_incorrect_shipping_address"
             android:textColor="@color/another_black"
             android:textSize="@dimen/_11sdp" />
 
@@ -50,7 +50,7 @@
         android:lineSpacingExtra="@dimen/_5sdp"
         android:paddingStart="@dimen/_10sdp"
         android:paddingEnd="@dimen/_15sdp"
-        android:text="Meditation williamsburg kogi blog bushwick pitchfork polaroid austin dreamcatcher narwhal taxidermy tofu gentrify aesthetic."
+        android:text="@string/meditation_williamsburg_kogi_blog_bushwick_pitchfork_polaroid_austin_dreamcatcher_narwhal_taxidermy_tofu_gentrify_aesthetic"
         android:textColor="#828282"
         android:textSize="@dimen/_9sdp" />
 

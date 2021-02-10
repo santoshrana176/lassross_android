@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
-        android:text="Camera" />
+        android:text="@string/camera" />
 
     <TextView
         android:id="@+id/tvGallery"
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
-        android:text="Gallery" />
+        android:text="@string/gallery" />
 
     <TextView
         android:id="@+id/tvCancel"
@@ -39,6 +39,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
-        android:text="Cancel" />
+        android:text="@string/cancel" />
 
 </LinearLayout>

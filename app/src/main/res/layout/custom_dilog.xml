@@ -16,7 +16,7 @@
         android:gravity="bottom|center"
         android:paddingLeft="@dimen/_10sdp"
         android:paddingRight="@dimen/_10sdp"
-        android:text="Alert"
+        android:text="@string/alert"
         android:textColor="@color/black"
         android:textSize="@dimen/_14sdp"
         android:textStyle="bold" />
@@ -52,7 +52,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="NO"
+            android:text="@string/no_"
             android:textColor="@color/home_header_bg1"
             android:textSize="@dimen/_12sdp" />
 
@@ -69,7 +69,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="YES"
+            android:text="@string/yes"
             android:textColor="@color/home_header_bg1"
             android:textSize="@dimen/_12sdp" />
 

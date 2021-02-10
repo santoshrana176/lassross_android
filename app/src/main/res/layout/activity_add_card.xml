@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:fontFamily="@font/ibmplexsans_regular"
-                android:text="Card Holder Name"
+                android:text="@string/card_holder_name"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp" />
 
@@ -130,7 +130,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:fontFamily="@font/ibmplexsans_regular"
-                        android:text="CVV"
+                        android:text="@string/cvv"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10sdp" />
 
@@ -153,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="Force Crash!"
+                android:text="@string/force_crash"
                 android:visibility="gone" />
 
             <CheckBox
@@ -163,7 +163,7 @@
                 android:layout_marginTop="25dp"
                 android:button="@drawable/check_box_selector"
                 android:paddingLeft="@dimen/_10sdp"
-                android:text="Save Card Detail"
+                android:text="@string/save_card_detail"
                 android:visibility="gone" />
 
             <LinearLayout
@@ -190,7 +190,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_10sdp"
-                    android:text="Save Card Detail"
+                    android:text="@string/save_card_detail"
                     android:visibility="gone" />
             </LinearLayout>
             <!--android:button="@drawable/check_box_uncheck"-->

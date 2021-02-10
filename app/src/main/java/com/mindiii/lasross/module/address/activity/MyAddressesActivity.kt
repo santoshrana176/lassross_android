@@ -193,7 +193,7 @@ class MyAddressesActivity : LasrossParentActivity(), View.OnClickListener, ApiCa
                         positionInt == -1 -> startActivity(Intent(this, AddAddressActivity::class.java)
                                 .putExtra("strComeFrom", "Addbutton")
                                 .putExtra("CheckValue", checkValue))
-                        else -> toastMessage("Please select address")
+                        else -> toastMessage(getString(R.string.Please_select_address))
                     }
                 } else {
                     startActivity(Intent(this, AddAddressActivity::class.java)

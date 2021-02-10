@@ -108,13 +108,11 @@ class AddAddressActivity : LasrossParentActivity(), View.OnClickListener, ApiCal
         if (!Places.isInitialized()) {
             Places.initialize(applicationContext, getString(R.string.place_key), Locale.US)
         }
-
         val autocompleteFragment = (supportFragmentManager.findFragmentById(R.id.autocomplete_fragment) as AutocompleteSupportFragment?)!!
 
         autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME))
         autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {}
-
             override fun onError(status: Status) {}
         })
 
@@ -194,7 +192,7 @@ class AddAddressActivity : LasrossParentActivity(), View.OnClickListener, ApiCal
             }
 
         } else if (!isValidName(name)) {
-            CommonUtils.showCustomAlert(this, "Only alphabets are allowed in full name")
+            CommonUtils.showCustomAlert(this, getString(R.string.only_alphabate))
         }
     }
 

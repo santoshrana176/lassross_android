@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/ibmplexsans_semibold"
-                android:text="Home"
+                android:text="@string/home"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_16sdp" />
 
@@ -88,7 +88,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/_3sdp"
                     android:background="@drawable/home_search_bg"
-                    android:hint="Search Here for Products......."
+                    android:hint="@string/search_here_for_products"
                     android:textColor="@color/search_icon"
                     android:textColorHint="@color/search_icon"
                     android:textSize="@dimen/_10sdp" />
@@ -118,7 +118,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="#ff5e31"
-        android:text="Logout"
+        android:text="@string/logout"
         android:textColor="@color/white" />
 
 </LinearLayout>

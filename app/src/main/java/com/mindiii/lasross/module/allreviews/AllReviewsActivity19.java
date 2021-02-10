@@ -92,7 +92,7 @@ public class AllReviewsActivity19 extends LasrossParentActivity implements ApiCa
     @Override
     public void onSuccessReviews(AllReviewsModel allReviewsModel) {
         if (allReviewsModel.getStatus().equalsIgnoreCase("fail")) {
-            toastMessage("no list");
+            toastMessage(getString(R.string.no_list));
         } else {
             reviewList.addAll(allReviewsModel.getData().getReview());
 

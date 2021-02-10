@@ -79,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_regular"
-                android:text="25th Oct 2019 - 8:51 AM"
+                android:text="@string/_25th_oct_2019_8_51_am"
                 android:textColor="#828282"
                 android:textSize="@dimen/_9sdp" />
         </LinearLayout>
@@ -149,7 +149,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_regular"
-                android:text="25th Oct 2019 - 8:51 AM"
+                android:text="@string/_25th_oct_2019_8_51_am"
                 android:textColor="#828282"
                 android:textSize="@dimen/_9sdp" />
         </LinearLayout>
@@ -219,7 +219,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_regular"
-                android:text="27th Oct 2019 - 12:00 AM"
+                android:text="@string/_27th_oct_2019_12_00_am"
                 android:textColor="#828282"
                 android:textSize="@dimen/_9sdp" />
         </LinearLayout>
@@ -288,7 +288,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_regular"
-                android:text="28th Oct 2019 - 1:51 AM"
+                android:text="@string/_28th_oct_2019_1_51_am"
                 android:textColor="#828282"
                 android:textSize="@dimen/_9sdp" />
         </LinearLayout>
@@ -345,7 +345,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_regular"
-                android:text="28th Oct 2019 - 5:51 PM"
+                android:text="@string/_28th_oct_2019_5_51_pm"
                 android:textColor="#828282"
                 android:textSize="@dimen/_9sdp" />
         </LinearLayout>

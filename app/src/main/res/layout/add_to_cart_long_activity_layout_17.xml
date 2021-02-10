@@ -97,7 +97,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="-20dp"
                         android:fontFamily="@font/ibmplexsans_regular"
-                        android:text="Jackets Shinny Fit"
+                        android:text="@string/jackets_shinny_fit"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_11sdp" />
 
@@ -205,7 +205,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:fontFamily="@font/ibmplexsans_medium"
-                    android:text="NO OF ITEM"
+                    android:text="@string/no_of_itemss"
                     android:textColor="#333333" />
 
                 <LinearLayout
@@ -308,7 +308,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginLeft="@dimen/_55sdp"
                         android:fontFamily="@font/ibmplexsans_medium"
-                        android:text="NO OF ITEM"
+                        android:text="@string/no_of_item"
                         android:textColor="#333333" />
 
                     <LinearLayout
@@ -407,7 +407,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/ibmplexsans_bold"
-                                android:text="Guaranteed Safe Checkout"
+                                android:text="@string/guaranteed_safe_checkout"
                                 android:textColor="#333333"
                                 android:textSize="@dimen/_8sdp" />
 
@@ -457,7 +457,7 @@
                             android:layout_marginTop="@dimen/_10sdp"
                             android:fontFamily="@font/ibmplexsans_bold"
                             android:gravity="center"
-                            android:text="Free worldwide shipping on all orders over $50"
+                            android:text="@string/free_worldwide_shipping_on_all_orders_over_50"
                             android:textColor="#333333"
                             android:textSize="@dimen/_8sdp" />
 
