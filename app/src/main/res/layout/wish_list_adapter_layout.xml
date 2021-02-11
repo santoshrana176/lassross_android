@@ -109,8 +109,8 @@
 
             <ImageView
                 android:id="@+id/ivDeleteWishList"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:padding="@dimen/_5sdp"

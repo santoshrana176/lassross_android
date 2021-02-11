@@ -490,7 +490,7 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
                     rbPoplarity.setTypeface(semi_bold);
                     productListBeans.clear();
                     searchText = "";
-                    popularity = "popularity";
+                    popularity = "popularity=1";
                     average_rating = "";
                     latest = "";
                     lowPrice = "";
