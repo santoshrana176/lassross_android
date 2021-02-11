@@ -450,7 +450,7 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
     @Override
     public void onSuccessLogin(LoginResponse loginResponse) {
         if (loginResponse.getStatus().equalsIgnoreCase("success")) {
-            Log.e("authToken::::::::",""+loginResponse.getData().getUserDetail().getAuth_token());
+           // Log.e("authToken::::::::",""+loginResponse.getData().getUserDetail().getAuth_token());
             session.createRegistration(loginResponse.getData().getUserDetail());
             session.setUserLoggedIn();
           session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
