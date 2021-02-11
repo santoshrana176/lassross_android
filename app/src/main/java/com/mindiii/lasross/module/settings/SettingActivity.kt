@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
@@ -17,6 +18,7 @@ import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
 import com.mindiii.lasross.base.LasrossParentKotlinActivity
+import com.mindiii.lasross.helper.LocaleHelper
 import com.mindiii.lasross.module.activeplan.ActivePlanActivity
 import com.mindiii.lasross.module.address.model.AddAddressResponse
 import com.mindiii.lasross.module.home.model.LogoutResponse
@@ -34,6 +36,7 @@ import kotlinx.android.synthetic.main.logout_view.*
 import kotlinx.android.synthetic.main.reset_password_dialog_artboard_35.*
 import kotlinx.android.synthetic.main.setting_activty_40.*
 import java.util.*
+
 
 class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, ApiCallback.SettingsCallback, ApiCallback.LanguageCallback {
 
@@ -130,7 +133,10 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
             }
         }
     }
-
+    private fun updateViews(languageCode: String) {
+        val context = LocaleHelper.setLocale(this, languageCode)
+        val resources: Resources = context.resources
+    }
     fun callLanguageApi(countryLanguageCode: String) {
         LanguagePresenter(this, this).callLanguageApi(countryLanguageCode)
     }
@@ -198,18 +204,18 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
             CommonUtils.showCustomAlert(this, getString(R.string.max_char))
             return false;
         } else if (newPass.isEmpty()) {
-            CommonUtils.showCustomAlert(this, "Please enter new password")
+            CommonUtils.showCustomAlert(this, getString(R.string.plsase_enter_new_passwprd))
             return false
         } else if (!isValidPass(newPass)) {
-            CommonUtils.showCustomAlert(this, "Password should have minimum 6 characters.")
+            CommonUtils.showCustomAlert(this, getString(R.string.max_six_char))
             //etPass.setError("Password should have minimum 6 characters");
             return false
         } else if (confPass.isEmpty()) {
-            CommonUtils.showCustomAlert(this, "Please enter confirm password")
+            CommonUtils.showCustomAlert(this, getString(R.string.confirm_password))
             //etPass.setError("Password should have minimum 6 characters");
             return false
         } else if (!confPass.equals(newPass)) {
-            CommonUtils.showCustomAlert(this, "Confirm password does not match")
+            CommonUtils.showCustomAlert(this, getString(R.string.comfirm_password_doesnot_match))
             //etPass.setError("Password should have minimum 6 characters");
             return false
         }
@@ -290,6 +296,7 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
             //    toastMessage(languageModel.message)
             //   startActivity(Intent(this, SettingActivity::class.java))
             //  finish()
+            updateViews(selectedLanguage)
             if (selectedLanguage.equals("en")) {
                 session?.language = "en"
                 LanguageUtils.language(this, selectedLanguage,true)
@@ -299,7 +306,7 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
             }
 
         } else {
-            toastMessage("something is wrong")
+            toastMessage(getString(R.string.something_worng))
         }
     }
 

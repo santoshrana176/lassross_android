@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 class ServiceGeneratorkotlin {
 
     // DBUG BASE URL
-    private val API_BASE_URL = "https://www.lasross.com/service/api_v1/"
+    private val API_BASE_URL = "https://dev.mindiii.com/lasross/service/api_v1/"
 
     companion object {
         fun logger(): HttpLoggingInterceptor {

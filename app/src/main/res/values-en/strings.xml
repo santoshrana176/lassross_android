@@ -343,6 +343,11 @@
     <string name="no_list">no list</string>
     <string name="Please_enter_old_password">Please enter old password</string>
     <string name="max_char">Password should have minimum 6 characters.</string>
+    <string name="plsase_enter_new_passwprd">Please enter new password</string>
+    <string name="max_six_char">Password should have minimum 6 characters.</string>
+    <string name="confirm_password">Please enter confirm password</string>
+    <string name="comfirm_password_doesnot_match">Confirm password does not match</string>
+    <string name="something_worng">something is wrong</string>
 </resources>
 
     <!--<string name="place_key">AIzaSyDyUk7vkNaDVsFojxOYTEz0m_rtdFqdgqs</string>-->

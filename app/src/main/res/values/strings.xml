@@ -1,7 +1,7 @@
 <resources>
     <string name="facebook_app_id">2268931679891162</string>
     <string name="app_name">Lasross</string>
-    <string name="alert">Alert</string>
+    <string name="alert">Alerta</string>
     <string name="sign_in_with">Sign In With</string>
     <string name="sign_up_with">Sign Up With</string>
     <string name="email_address">Email Address</string>
@@ -116,7 +116,7 @@
     <string name="apply">APPLY</string>
     <string name="move_to_bag">MOVE TO BAG</string>
     <string name="clear_all">CLEAR ALL</string>
-    <string name="cancel_order">CANCEL ORDER</string>
+    <string name="cancel_order">CANCELAR ORDEN</string>
     <string name="no_items">No Items</string>
     <string name="no_order">No Orders</string>
     <string name="no_notification">No Notifications</string>
@@ -136,16 +136,16 @@
     <string name="add_new_address">Add New Address</string>
     <string name="saved_address">SAVED ADDRESS</string>
     <string name="delivery">Delivery</string>
-    <string name="shipping_details">SHIPPING DETAILS</string>
+    <string name="shipping_details">DETALLES DE ENVÍO</string>
     <string name="expiry_date">Expiry Date</string>
     <string name="cancel">Cancel</string>
     <string name="set">Set</string>
-    <string name="my_card">My Cards</string>
+    <string name="my_card">Mis tarjetas</string>
     <string name="save_cards">SAVED CARDS</string>
     <string name="no_address_found">No address found</string>
-    <string name="change_add">CHANGE ADDRESS</string>
-    <string name="add_new_card">ADD NEW CARD</string>
-    <string name="payment">Payments</string>
+    <string name="change_add">CAMBIAR DIRECCIÓN</string>
+    <string name="add_new_card">AGREGAR NUEVA TARJETA</string>
+    <string name="payment">Pago</string>
     <string name="choose_payment_type">CHOOSE PAYMENT TYPE</string>
     <string name="credit_debit_atm_card">Credit / Debit / ATM Card</string>
     <string name="select_message">Please select payment method</string>
@@ -188,7 +188,7 @@
     <string name="expiry_date_active_plan">Expiry Date- </string>
     <string name="todo">TODO</string>
     <string name="subtotal">Subtotal</string>
-    <string name="price_details">PRICE DETAILS</string>
+    <string name="price_details">Detalles del precio</string>
     <string name="pricing_details">PRICING DETAIL</string>
     <string name="item_quantity">Item quantity</string>
     <string name="cash_on_delivery">Cash On Delivery</string>
@@ -204,9 +204,9 @@
     <string name="yes">Yes</string>
     <string name="order_confirmed_successfully">Order Confirmed Successfully</string>
     <string name="your_order_has_been_confirmed">Your order has been confirmed successfully you will get a confirmation message.</string>
-    <string name="confirmation">Confirmation</string>
+    <string name="confirmation">Confirmación</string>
     <string name="order_amount">Order Amount:</string>
-    <string name="continue_shopping">CONTINUE SHOPPING</string>
+    <string name="continue_shopping">SIGUE COMPRANDO</string>
     <string name="order_id">Order Id:</string>
     <string name="nointernet_connection_mssge">Please check your internet connections</string>
     <string name="color_order_detail">Color : </string>
@@ -214,7 +214,7 @@
     <string name="overall_rating">Overall Rating</string>
     <string name="out_of_stock">Out of stock</string>
     <string name="no_reviews">No Reviews Found</string>
-    <string name="shipping_charge">Shipping Charge</string>
+    <string name="shipping_charge">Costo de envío</string>
     <string name="your_order_placed_on">Your order placed on</string>
     <string name="your_order_approved_on">Your order approved on</string>
     <string name="approved_processing">Approved and Processing</string>
@@ -239,15 +239,15 @@
     <string name="Please_enter_valid_email">Please enter valid email</string>
     <string name="Please_enter_password">Please enter password</string>
     <string name="password_max">Password should have minimum 6 characters</string>
-    <string name="Please_enter_full_name">Please enter full name</string>
-    <string name="alphabets">Only alphabets are allowed in full name</string>
+    <string name="Please_enter_full_name">Por favor ingrese el nombre completo</string>
+    <string name="alphabets">Only alphabeticals allowed in full name</string>
     <string name="full_name_max_two">Full name should not less than 2 characters</string>
     <string name="golden">Golden</string>
     <string name="month">/ Month</string>
     <string name="_1_item">(1 item)</string>
     <string name="jennie_bostick">Jennie Bostick</string>
     <string name="saved_card">saved card</string>
-    <string name="saved_cards">saved cards</string>
+    <string name="saved_cards">SELECCIONE TARJETA</string>
     <string name="only_alphabate">Only alphabets are allowed in full name</string>
     <string name="force_crash">Force Crash!</string>
     <string name="if_youexpiry_date">If you stop auto recurring of current plan now, You can still access it\'s benefits until expiry date</string>
@@ -282,7 +282,7 @@
     <string name="shop_now">Shop Now</string>
     <string name="enter_your_registered_email_below_to_receive_your_password_reset_instructions">Enter your registered email below to receive your password reset instructions</string>
     <string name="feel_free_to_fill_the_form_below_to_find_your_queries_solution_or_if_you_need_any_help">Feel free to fill the form below to find your queries solution or if you need any help !</string>
-    <string name="order_id_">ORDER ID :</string>
+    <string name="order_id_">SOLICITAR ID :</string>
     <string name="trh102512542">TRH102512542</string>
     <string name="pearle_desrosier">Pearle Desrosier</string>
     <string name="akshya_nagar_1st_block_1st_cross_rammurthy_nagar_bangalore">Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore</string>
@@ -341,7 +341,12 @@
     <string name="Please_select_address">Please select address</string>
     <string name="no_list">no list</string>
     <string name="Please_enter_old_password">Please enter old password</string>
-    <string name="max_char">Password should have minimum 6 characters.</string>
+    <string name="max_char">La contraseña debe tener un mínimo de 6 caracteres.</string>
+    <string name="plsase_enter_new_passwprd">Ingrese nueva contraseña</string>
+    <string name="max_six_char">La contraseña debe tener un mínimo de 6 caracteres.</string>
+    <string name="confirm_password">Please enter confirm password</string>
+    <string name="comfirm_password_doesnot_match">Confirm password does not match</string>
+    <string name="something_worng">something is wrong</string>
 </resources>
 
 
