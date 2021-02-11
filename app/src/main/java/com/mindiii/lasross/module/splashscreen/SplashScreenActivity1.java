@@ -12,11 +12,13 @@ import android.util.Log;
 import com.mindiii.lasross.R;
 import com.mindiii.lasross.app.session.Session;
 import com.mindiii.lasross.base.LasrossParentActivity;
+import com.mindiii.lasross.helper.LocaleHelper;
 import com.mindiii.lasross.module.home.HomeActivity;
 import com.mindiii.lasross.module.loginregistration.LoginActivity;
 import com.mindiii.lasross.utils.LanguageUtils;
 
 import java.security.MessageDigest;
+import java.util.Locale;
 
 
 public class SplashScreenActivity1 extends LasrossParentActivity {
@@ -28,13 +30,19 @@ public class SplashScreenActivity1 extends LasrossParentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen_1);
         session = new Session(SplashScreenActivity1.this);
-        String lang=session.getLanguage();
-        if (lang.equals("es")){
-            LanguageUtils.Companion.language(this, "es",false);
+        String defaltLanguage = Locale.getDefault().getDisplayLanguage();
+        String selectedLanguage = LocaleHelper.getLanguage(this);
+
+       // String lang = session.getLanguage();
+        if (defaltLanguage.equals("es") || selectedLanguage.equals("es")) {
+            LanguageUtils.Companion.language(this, "es", false);
             session.setLanguage("es");
-        }else {
-            LanguageUtils.Companion.language(this, "en",false);
-           session.setLanguage("en");
+        } else if (defaltLanguage.equals("en") || selectedLanguage.equals("en")) {
+            LanguageUtils.Companion.language(this, "en", false);
+            session.setLanguage("en");
+        } else {
+            LanguageUtils.Companion.language(this, "en", false);
+            session.setLanguage("en");
         }
         getKeyHashFacebook();
         new Handler().postDelayed(new Runnable() {

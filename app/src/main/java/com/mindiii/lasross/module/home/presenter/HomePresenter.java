@@ -77,7 +77,6 @@ public class HomePresenter {
             }
         });
     }
-
     // get deal list api
     public void callDealListApi() {
         productListCallback.onShowBaseLoader();

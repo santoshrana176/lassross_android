@@ -375,8 +375,7 @@ public class RegistrationActivity extends LasrossParentActivity implements View.
     public void onSuccessSignUp(LoginResponse loginResponse) {
         if (loginResponse.getStatus().equalsIgnoreCase("success")) {
             session.createRegistration(loginResponse.getData().getUserDetail());
-        //    session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
-            session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
+             session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
             session.setUserLoggedIn();
        Intent intent=     new Intent(RegistrationActivity.this, SubscriptionActivity.class);
            intent.putExtra("from","Signup Screen");
