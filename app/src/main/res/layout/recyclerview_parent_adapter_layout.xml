@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/ibmplexsans_bold"
-        android:text="ITEM" />>
+        android:text="@string/items" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRecyclerItem"

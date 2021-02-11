@@ -363,8 +363,8 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
 
     private fun callAddToProductApi() {
         when {
-            selectedSizeId == "0" -> toastMessage("Please select size")
-            selectedColorId == "0" -> toastMessage("Please select color")
+            selectedSizeId == "0" -> toastMessage(getString(R.string.please_selelct_size))
+            selectedColorId == "0" -> toastMessage(getString(R.string.please_select_color))
             else -> {
                 variants = "$selectedColorId,$selectedSizeId"
                 productQuantity = tvQuantity.text.toString()

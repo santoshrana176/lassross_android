@@ -60,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_semibold"
-                    android:text="Email"
+                    android:text="@string/email_text"
                     android:textColor="@color/another_black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -69,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="@font/ibmplexsans_light"
-                    android:text="lasross@gmail.com"
+                    android:text="@string/lasross_gmail_com"
                     android:textColor="#666666"
                     android:textSize="@dimen/_11sdp" />
 
@@ -103,7 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_semibold"
-                    android:text="Phone"
+                    android:text="@string/phone"
                     android:textColor="@color/another_black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -143,20 +143,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_light"
-                android:text="You can " />
+                android:text="@string/you_can" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_semibold"
-                android:text="Get in Touch"
-                android:textColor="#fe682e" />
+                android:text="@string/get_in_touch"
+                android:textColor="#fe682e"
+                android:layout_marginStart="@dimen/_5sdp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_light"
-                android:text=" our 24/7  customer" />
+                android:text="@string/our_24_7_customer"
+                android:layout_marginStart="@dimen/_5sdp"/>
         </LinearLayout>
 
         <TextView
@@ -164,7 +166,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/ibmplexsans_light"
             android:paddingBottom="@dimen/_5sdp"
-            android:text="service at any time" />
+            android:text="@string/service_at_any_time" />
 
 
     </LinearLayout>

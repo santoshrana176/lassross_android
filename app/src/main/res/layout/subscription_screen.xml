@@ -154,7 +154,7 @@
                         android:layout_marginEnd="@dimen/_28sdp"
                         android:fontFamily="@font/ibmplexsans_regular"
                         android:paddingTop="@dimen/_3sdp"
-                        android:text="   Golden"
+                        android:text="@string/golden"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -214,7 +214,7 @@
                         android:layout_marginTop="@dimen/_2sdp"
                         android:fontFamily="@font/ibmplexsans_regular"
                         android:gravity="center"
-                        android:text=" / Month"
+                        android:text="@string/month"
                         android:textColor="@color/another_black"
                         android:textSize="@dimen/_14sdp" />
                 </LinearLayout>

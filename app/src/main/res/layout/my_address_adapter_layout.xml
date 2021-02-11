@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_semibold"
-                android:text="nikita"
+                android:text="@string/nikita"
                 android:textColor="@color/another_black"
                 android:textSize="@dimen/_11sdp" />
 
@@ -36,7 +36,7 @@
                 android:fontFamily="@font/ibmplexsans_regular"
                 android:lineSpacingExtra="5dp"
                 android:maxLines="2"
-                android:text="sehore , Mp"
+                android:text="@string/sehore_mp"
                 android:textColor="@color/sort_by_color"
                 android:textSize="@dimen/_9sdp" />
 
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:fontFamily="@font/ibmplexsans_regular"
-                android:text="123456"
+                android:text="@string/_123456"
                 android:textColor="@color/another_black"
                 android:textSize="@dimen/_9sdp" />
         </LinearLayout>

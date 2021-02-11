@@ -192,19 +192,18 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
                 } catch (Exception e) {
 
                 }
-
                 if (email.isEmpty()) {
-                    CommonUtils.showCustomAlert(LoginActivity.this, "Please enter email");
+                    CommonUtils.showCustomAlert(LoginActivity.this, getString(R.string.Please_enter_email));
                     //etEmail.setError("Please enter email");
                     //return;
                 }else  if (!isValidEmail(email)){
-                    CommonUtils.showCustomAlert(LoginActivity.this, "Please enter valid email");
+                    CommonUtils.showCustomAlert(LoginActivity.this, getString(R.string.Please_enter_valid_email));
                    // return;
                 } else if (pass.isEmpty()) {
-                    CommonUtils.showCustomAlert(LoginActivity.this, "Please enter password");
+                    CommonUtils.showCustomAlert(LoginActivity.this, getString(R.string.Please_enter_password));
                    // return;
                 }else if (!isValidPass(pass)) {
-                    CommonUtils.showCustomAlert(LoginActivity.this, "Password should have minimum 6 characters");
+                    CommonUtils.showCustomAlert(LoginActivity.this, getString(R.string.password_max));
                     //etPass.setError("Password should have minimum 6 characters");
                 }else {
                     if (CommonUtils.isNetworkAvailable(LoginActivity.this)) {
@@ -345,10 +344,10 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
 
                 String emailDialog = etEmailID.getText().toString().trim();
                 if (emailDialog.isEmpty()){
-                    CommonUtils.showCustomAlert(LoginActivity.this, "Please enter email");
+                    CommonUtils.showCustomAlert(LoginActivity.this, getString(R.string.Please_enter_email));
                 }
                 else if (!isValidEmail(emailDialog)) {
-                    CommonUtils.showCustomAlert(LoginActivity.this, "Please enter valid email");
+                    CommonUtils.showCustomAlert(LoginActivity.this, getString(R.string.Please_enter_valid_email));
                 }else  {
                     if (CommonUtils.isNetworkAvailable(LoginActivity.this)) {
                         validPasswordDetail(emailDialog, dialog);

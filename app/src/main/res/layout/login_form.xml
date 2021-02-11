@@ -70,7 +70,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:orientation="horizontal"
                     android:weightSum="2">
@@ -111,8 +111,9 @@
                         android:id="@+id/llGoogle"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/_38sdp"
-                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginStart="@dimen/_17sdp"
                         android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginEnd="-3dp"
                         android:layout_marginBottom="@dimen/_6sdp"
                         android:layout_weight="1"
                         android:background="@drawable/box"

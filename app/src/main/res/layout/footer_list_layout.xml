@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/ibmplexsans_semibold"
-            android:text="Holiday Style"
+            android:text="@string/holiday_style"
             android:textColor="@color/white"
             android:textSize="@dimen/_10sdp" />
 
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/ibmplexsans_medium"
-            android:text="from $50"
+            android:text="@string/from_50"
             android:textColor="@color/white"
             android:textSize="@dimen/_8sdp" />
 
@@ -54,7 +54,7 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:background="#3bb54a"
             android:fontFamily="@font/ibmplexsans_semibold"
-            android:text="Shop Now"
+            android:text="@string/shop_now"
             android:textColor="@color/white"
             android:textSize="@dimen/_5sdp" />
     </LinearLayout>

@@ -19,7 +19,7 @@
                 android:id="@+id/btnBackToCard"
                 android:layout_width="@dimen/_15sdp"
                 android:layout_height="@dimen/_15sdp"
-                android:layout_marginStart="@dimen/_9sdp"
+                android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/ic_back_arrow_ico" />
 

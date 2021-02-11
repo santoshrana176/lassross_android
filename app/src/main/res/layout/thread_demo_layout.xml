@@ -13,13 +13,13 @@
             android:id="@+id/btnStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start" />
+            android:text="@string/start" />
 
         <Button
             android:id="@+id/btnStop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Stop" />
+            android:text="@string/stop" />
     </LinearLayout>
 
     <LinearLayout
@@ -29,7 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Generated no. is : "
+            android:text="@string/generated_no_is"
             android:textColor="#000000"
             android:textSize="@dimen/_16sdp" />
 
@@ -37,7 +37,7 @@
             android:id="@+id/tvText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="off"
+            android:text="@string/off"
             android:textColor="#000000"
             android:textSize="@dimen/_16sdp" />
     </LinearLayout>

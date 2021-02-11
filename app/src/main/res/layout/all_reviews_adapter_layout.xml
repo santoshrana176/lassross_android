@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_semibold"
-                android:text="Pearle Desrosier"
+                android:text="@string/pearle_desrosier"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
 
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_3sdp"
         android:fontFamily="@font/ibmplexsans_light"
-        android:text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blan diti is praese ntium voluptatum deleniti atque corrupti quos dolores et qu as molestias excepturi sint occaecati cupiditate non provi dent, simili que sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga"
+        android:text="@string/at_vero_eos_et_accusamus_et_iusto_odio_dignissimos_ducimus_qui_blan_diti_is_praese_ntium_voluptatum_deleniti_atque_corrupti_quos_dolores_et_qu_as_molestias_excepturi_sint_occaecati_cupiditate_non_provi_dent_simili_que_sunt_in_culpa_qui_officia_deserunt_mollitia_animi_id_est_laborum_et_dolorum_fuga"
         android:textColor="#828282"
         android:textSize="@dimen/_9sdp" />
 

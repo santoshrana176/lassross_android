@@ -83,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_medium"
-                    android:text="Ordered and Approved"
+                    android:text="@string/ordered_and_approved"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_11sdp" />
 
@@ -91,7 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text="Your order placed on"
+                    android:text="@string/your_order_placed_on"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_9sdp" />
 
@@ -99,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text="25th Oct 2019 - 8:51 AM"
+                    android:text="@string/_25th_oct_2019_8_51_am"
                     android:textColor="#828282"
                     android:textSize="@dimen/_9sdp" />
 
@@ -108,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text="Seller processed order on"
+                    android:text="@string/seller_processed_order_on"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_9sdp" />
 
@@ -116,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text="26th Oct 2019 - 2:31 AM"
+                    android:text="@string/_26th_oct_2019_2_31_am"
                     android:textColor="#828282"
                     android:textSize="@dimen/_9sdp" />
             </LinearLayout>
@@ -163,7 +163,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_medium"
-                    android:text="Packed"
+                    android:text="@string/packed"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_11sdp" />
 
@@ -171,7 +171,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text="Your item packed on"
+                    android:text="@string/your_item_packed_on"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_9sdp" />
 
@@ -179,7 +179,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text="27th Oct 2019 - 12:00 AM"
+                    android:text="@string/_27th_oct_2019_12_00_am"
                     android:textColor="#828282"
                     android:textSize="@dimen/_9sdp" />
             </LinearLayout>
@@ -226,7 +226,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_medium"
-                    android:text="Shipped"
+                    android:text="@string/shipped"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_11sdp" />
 
@@ -234,7 +234,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text="Ekart Logistics - FRDHJL76GJ"
+                    android:text="@string/ekart_logistics_frdhjl76gj"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_9sdp" />
 
@@ -242,7 +242,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text="Your item has been shipped on"
+                    android:text="@string/your_item_has_been_shipped_on"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_9sdp" />
 
@@ -250,7 +250,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text="28th Oct 2019 - 1:51 AM"
+                    android:text="@string/_28th_oct_2019_1_51_am"
                     android:textColor="#828282"
                     android:textSize="@dimen/_9sdp" />
 
@@ -259,7 +259,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_6sdp"
                     android:layout_marginBottom="@dimen/_6sdp"
-                    android:text="Your item has been received in the hub nearest to you"
+                    android:text="@string/your_item_has_been_received_in_the_hub_nearest_to_you"
                     android:textColor="#fe6a2e"
                     android:textSize="@dimen/_7sdp" />
 
@@ -267,7 +267,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text="Your item is out of delivery"
+                    android:text="@string/your_item_is_out_of_delivery"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_9sdp" />
 
@@ -275,7 +275,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text="28th Oct 2019 - 3:00 AM"
+                    android:text="@string/_28th_oct_2019_3_00_am"
                     android:textColor="#828282"
                     android:textSize="@dimen/_9sdp" />
             </LinearLayout>
@@ -310,7 +310,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_medium"
-                    android:text="Delivered"
+                    android:text="@string/delivered"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_11sdp" />
 
@@ -318,7 +318,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text="Your item has been delivered on"
+                    android:text="@string/your_item_has_been_delivered_on"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_9sdp" />
 
@@ -326,7 +326,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text="28th Oct 2019 - 5:51 PM"
+                    android:text="@string/_28th_oct_2019_5_51_pm"
                     android:textColor="#828282"
                     android:textSize="@dimen/_9sdp" />
             </LinearLayout>

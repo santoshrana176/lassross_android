@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text="COATS AND JACKETS"
+                    android:text="@string/coats_and_jackets"
                     android:textColor="#999999"
                     android:textSize="@dimen/_9sdp" />
 
@@ -72,7 +72,7 @@
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:background="@drawable/move_to_bag_bg"
                     android:padding="@dimen/_5sdp"
-                    android:text="+ INFO"
+                    android:text="@string/info_add"
                     android:textColor="#ff6230"
                     android:textSize="@dimen/_8sdp"
                     android:textStyle="bold" />
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-20dp"
                 android:fontFamily="@font/ibmplexsans_regular"
-                android:text="Jackets Shinny Fit"
+                android:text="@string/jackets_shinny_fit"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_11sdp" />
 
@@ -170,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_regular"
                     android:gravity="center"
-                    android:text="Add To Cart"
+                    android:text="@string/add_to_cart"
                     android:textColor="@color/white" />
             </LinearLayout>
         </LinearLayout>

@@ -14,6 +14,7 @@ import com.mindiii.lasross.app.session.Session;
 import com.mindiii.lasross.base.LasrossParentActivity;
 import com.mindiii.lasross.module.home.HomeActivity;
 import com.mindiii.lasross.module.loginregistration.LoginActivity;
+import com.mindiii.lasross.utils.LanguageUtils;
 
 import java.security.MessageDigest;
 
@@ -26,11 +27,19 @@ public class SplashScreenActivity1 extends LasrossParentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen_1);
+        session = new Session(SplashScreenActivity1.this);
+        String lang=session.getLanguage();
+        if (lang.equals("es")){
+            LanguageUtils.Companion.language(this, "es",false);
+            session.setLanguage("es");
+        }else {
+            LanguageUtils.Companion.language(this, "en",false);
+           session.setLanguage("en");
+        }
         getKeyHashFacebook();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                session = new Session(SplashScreenActivity1.this);
                 if (session.getUserLoggedIn() && session.getRegistration() != null) {
                     Intent i = new Intent(SplashScreenActivity1.this, HomeActivity.class);
                     startActivity(i);

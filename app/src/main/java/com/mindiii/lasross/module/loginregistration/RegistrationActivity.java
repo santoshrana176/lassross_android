@@ -152,23 +152,23 @@ public class RegistrationActivity extends LasrossParentActivity implements View.
                 }
 
                 if (name.isEmpty()) {
-                    CommonUtils.showCustomAlert(RegistrationActivity.this, "Please enter full name");
+                    CommonUtils.showCustomAlert(RegistrationActivity.this, getString(R.string.Please_enter_full_name));
                    // return;
                 } else if (!isValidName(name)) {
-                    CommonUtils.showCustomAlert(RegistrationActivity.this, "Only alphabets are allowed in full name");
+                    CommonUtils.showCustomAlert(RegistrationActivity.this, getString(R.string.alphabets));
                 } else if (name.length() < 3) {
-                    CommonUtils.showCustomAlert(RegistrationActivity.this, "Full name should not less than 2 characters");
+                    CommonUtils.showCustomAlert(RegistrationActivity.this, getString(R.string.full_name_max_two));
                     // return;
                 }else if (email.isEmpty()) {
-                    CommonUtils.showCustomAlert(RegistrationActivity.this, "Please enter email");
+                    CommonUtils.showCustomAlert(RegistrationActivity.this, getString(R.string.Please_enter_email));
                    // return;
                 } else if (!isValidEmail(email)) {
-                    CommonUtils.showCustomAlert(RegistrationActivity.this, "Please enter valid email");
+                    CommonUtils.showCustomAlert(RegistrationActivity.this, getString(R.string.Please_enter_valid_email));
                 } else if (pass.isEmpty()) {
-                    CommonUtils.showCustomAlert(RegistrationActivity.this, "Please enter password");
+                    CommonUtils.showCustomAlert(RegistrationActivity.this, getString(R.string.Please_enter_password));
                     //return;
                 } else if (!isValidPass(pass)) {
-                    CommonUtils.showCustomAlert(RegistrationActivity.this, "Password should have minimum 6 characters");
+                    CommonUtils.showCustomAlert(RegistrationActivity.this, getString(R.string.password_max));
                 }else {
                     if (CommonUtils.isNetworkAvailable(RegistrationActivity.this)) {
                         callSignUpApi(name, email, pass, formattedDate, getCurrentFirebaseToken());

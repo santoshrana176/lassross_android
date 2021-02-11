@@ -28,6 +28,7 @@ import com.mindiii.lasross.module.settings.presenter.SettingsPresenter
 import com.mindiii.lasross.module.subscription.SubscriptionActivity
 import com.mindiii.lasross.module.subscription.presenter.model.SubscribeResponse
 import com.mindiii.lasross.utils.CommonUtils
+import com.mindiii.lasross.utils.LanguageUtils
 import kotlinx.android.synthetic.main.custom_dialog_settings.*
 import kotlinx.android.synthetic.main.logout_view.*
 import kotlinx.android.synthetic.main.reset_password_dialog_artboard_35.*
@@ -38,13 +39,14 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
 
     private var session: Session? = null
     lateinit var changePasswordDialog: Dialog
+    var selectedLanguage = ""
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         session = Session(this)
-        setAppLocale(session!!.getIsEnglishLanguage())
+       // setAppLocale(session!!.getIsEnglishLanguage())
         setContentView(R.layout.setting_activty_40)
 
         val window = this.window
@@ -114,14 +116,17 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
                 } else run { showInternetAlertDialog(this) }
             }
             R.id.rlEnglish -> {
-                session!!.setIsEnglishLanguage("en")
+                //session!!.setIsEnglishLanguage("en")
                 callLanguageApi("en")
                 //finish()
+                selectedLanguage = "en"
             }
             R.id.rlSpanish -> {
-                session!!.setIsEnglishLanguage("es")
+                // session!!.setIsEnglishLanguage("es")
                 callLanguageApi("es")
                 //finish()
+                selectedLanguage = "es"
+
             }
         }
     }
@@ -186,11 +191,11 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
     fun validations(oldPass: String, newPass: String, confPass: String): Boolean {
 
         if (oldPass.isEmpty()) {
-            CommonUtils.showCustomAlert(this, "Please enter old password")
+            CommonUtils.showCustomAlert(this, getString(R.string.Please_enter_old_password))
             return false;
         }
         if (!isValidPass(oldPass)) {
-            CommonUtils.showCustomAlert(this, "Password should have minimum 6 characters.")
+            CommonUtils.showCustomAlert(this, getString(R.string.max_char))
             return false;
         } else if (newPass.isEmpty()) {
             CommonUtils.showCustomAlert(this, "Please enter new password")
@@ -242,7 +247,7 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
         /*  if (this::changePasswordDialog.isInitialized) {
               changePasswordDialog.dismiss()
           }*/
-        showCustomAlert(response?.message.toString(),this)
+        showCustomAlert(response?.message.toString(), this)
     }
 
     fun showCustomAlert(message: String, context: Context) {
@@ -257,9 +262,9 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
         val tvPopupOk = dialog.tvOk
         tvPopupOk.setOnClickListener {
             dialog.dismiss()
-              if (this::changePasswordDialog.isInitialized) {
-              changePasswordDialog.dismiss()
-         }
+            if (this::changePasswordDialog.isInitialized) {
+                changePasswordDialog.dismiss()
+            }
         }
         dialog.show()
     }
@@ -282,9 +287,16 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
     override fun onSuccessLanguageResponse(languageModel: LanguageModel?) {
         if (languageModel!!.status.equals("success")) {
             //CommonUtils.showCustomAlert(this, languageModel.message)
-            toastMessage(languageModel.message)
-            startActivity(Intent(this, SettingActivity::class.java))
-            finish()
+            //    toastMessage(languageModel.message)
+            //   startActivity(Intent(this, SettingActivity::class.java))
+            //  finish()
+            if (selectedLanguage.equals("en")) {
+                session?.language = "en"
+                LanguageUtils.language(this, selectedLanguage,true)
+            } else if (selectedLanguage.equals("es")) {
+                session?.language = "es"
+                LanguageUtils.language(this, selectedLanguage,true)
+            }
 
         } else {
             toastMessage("something is wrong")

@@ -17,7 +17,7 @@
         android:layout_marginLeft="@dimen/_5sdp"
         android:fontFamily="@font/ibmplexsans_light"
         android:padding="5dp"
-        android:text="Discount with silver obtain 10 per cent in all items"
+        android:text="@string/discount_with_silver_obtain_10_per_cent_in_all_items"
         android:textColor="@color/input_text_color"
         android:textSize="@dimen/_12sdp"
         android:visibility="visible" />

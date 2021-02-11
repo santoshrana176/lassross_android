@@ -27,7 +27,7 @@
             android:maxLines="1"
             android:paddingStart="@dimen/_2sdp"
             android:singleLine="true"
-            android:text="COATS AND JACKETS"
+            android:text="@string/coats_and_jackets"
             android:textAllCaps="true"
             android:textColor="#999999"
             android:textSize="@dimen/_8sdp" />
@@ -46,7 +46,7 @@
                 android:maxLines="1"
                 android:paddingStart="@dimen/_2sdp"
                 android:singleLine="true"
-                android:text="Jackets Shinny Fitssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+                android:text="@string/jackets_shinny_fit"
                 android:textColor="@color/another_black"
                 android:textSize="@dimen/_11sdp" />
 
@@ -69,7 +69,7 @@
             android:layout_marginTop="@dimen/_3sdp"
             android:fontFamily="@font/ibmplexsans_light"
             android:paddingStart="@dimen/_2sdp"
-            android:text="Large"
+            android:text="@string/largee"
             android:textColor="@color/another_black"
             android:textSize="@dimen/_11sdp" />
 

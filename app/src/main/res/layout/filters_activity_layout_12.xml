@@ -69,7 +69,7 @@
                     android:layout_height="@dimen/_40sdp"
                     android:fontFamily="@font/ibmplexsans_semibold"
                     android:padding="@dimen/_10sdp"
-                    android:text="Size"
+                    android:text="@string/sizee"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12sdp" />
             </LinearLayout>
@@ -93,7 +93,7 @@
                     android:layout_height="@dimen/_40sdp"
                     android:fontFamily="@font/ibmplexsans_semibold"
                     android:padding="@dimen/_10sdp"
-                    android:text="Color"
+                    android:text="@string/color"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
             </LinearLayout>
@@ -119,7 +119,7 @@
                     android:layout_height="@dimen/_40sdp"
                     android:fontFamily="@font/ibmplexsans_semibold"
                     android:padding="@dimen/_10sdp"
-                    android:text="Price"
+                    android:text="@string/price"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
             </LinearLayout>
@@ -191,7 +191,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_3sdp"
                     android:background="@drawable/home_search_bg"
-                    android:hint="Search"
+                    android:hint="@string/search"
                     android:textColor="@color/search_icon"
                     android:textColorHint="@color/search_icon"
                     android:textSize="@dimen/_10sdp" />

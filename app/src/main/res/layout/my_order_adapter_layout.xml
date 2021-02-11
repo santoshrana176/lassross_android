@@ -35,7 +35,7 @@
                 android:fontFamily="@font/ibmplexsans_regular"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="COATS AND JACKETS"
+                android:text="@string/coats_and_jackets"
                 android:textAllCaps="true"
                 android:textColor="#999999"
                 android:textSize="@dimen/_8sdp"
@@ -50,7 +50,7 @@
                 android:fontFamily="@font/ibmplexsans_regular"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="Jackets Shinny Fit"
+                android:text="@string/jackets_shinny_fit"
                 android:textColor="@color/another_black"
                 android:textSize="@dimen/_10sdp" />
 
@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_7sdp"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text="Delivered on 31st.Aug 2019"
+                    android:text="@string/delivered_on_31st_aug_2019"
                     android:textColor="#999999"
                     android:textSize="@dimen/_9sdp" />
             </LinearLayout>

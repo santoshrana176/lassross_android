@@ -34,7 +34,7 @@
             android:layout_toRightOf="@+id/ivUserPic"
             android:fontFamily="@font/ibmplexsans_regular"
             android:gravity="end"
-            android:text="Jennie Bostick"
+            android:text="@string/jennie_bostick"
             android:textColor="#ffffff"
             android:textSize="16sp" />
 

@@ -25,7 +25,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_semibold"
-                    android:text="OTHER INFO"
+                    android:text="@string/other_info"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10sdp" />
 

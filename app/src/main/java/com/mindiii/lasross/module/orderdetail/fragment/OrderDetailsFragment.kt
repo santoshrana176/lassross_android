@@ -123,7 +123,7 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
             val ratings = dialog.myRatingBar1.getRating()
             val description = dialog.etReviews.text.toString()
             if (ratings == 0.0f) {
-                Toast.makeText(mContext, "The Rating field is required", Toast.LENGTH_SHORT).show()
+                Toast.makeText(mContext, getString(R.string.rating), Toast.LENGTH_SHORT).show()
 
             } else {
                 RatingReviewApiCall(productId, ratings, description, item_id)

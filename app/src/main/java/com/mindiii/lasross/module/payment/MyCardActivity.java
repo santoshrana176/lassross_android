@@ -182,9 +182,9 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
                                     tvSaveCard.setText("SELECT CARD");
                                 }else {
                                     if (cardResponce.getData().size()==1){
-                                        tvSaveCard.setText(cardResponce.getData().size() + " " +"saved card");
+                                        tvSaveCard.setText(cardResponce.getData().size() + " " +getString(R.string.saved_card));
                                     }else {
-                                        tvSaveCard.setText(cardResponce.getData().size() + " " +"saved cards");
+                                        tvSaveCard.setText(cardResponce.getData().size() + " " +getString(R.string.saved_cards));
                                     }
                                 }
                                 if (cardResponce.getData().size() > 0) {

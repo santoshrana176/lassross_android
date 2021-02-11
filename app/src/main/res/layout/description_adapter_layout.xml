@@ -25,7 +25,7 @@
             android:ellipsize="end"
             android:fontFamily="@font/ibmplexsans_medium"
             android:maxLines="1"
-            android:text="This item is ethically produced"
+            android:text="@string/this_item_is_ethically_produced"
             android:textSize="@dimen/_8sdp" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:ellipsize="end"
             android:fontFamily="@font/ibmplexsans_light"
             android:maxLines="4"
-            android:text="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."
+            android:text="@string/pellentesque_habitant_morbi_tristique_senectus_et_netus_et_malesuada_fames_ac_turpis_egestas_vestibulum_tortor_quam_feugiat_vitae_ultricies_eget_tempor_sit_amet_ante_donec_eu_libero_sit_amet_quam_egestas_semper_aenean_ultricies_mi_vitae_est_mauris_placerat_eleifend_leo"
             android:textSize="@dimen/_6sdp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
