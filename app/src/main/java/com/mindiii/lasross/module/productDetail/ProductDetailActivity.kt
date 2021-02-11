@@ -54,7 +54,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
     private lateinit var variantColorValue: ArrayList<VariantValue>
     private lateinit var galleryImage: ArrayList<GalleryImage>
     lateinit var productId: String
-    lateinit var productDesc: String
+      var productDesc: String=""
     lateinit var productSku: String
     lateinit var productCategory: String
     private var quantity: Int = 1
@@ -230,8 +230,8 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
        // variantColorValue.add(0, colorVal)
 
         galleryImage = productDetailResponse.data.product_detail.gallery_images as ArrayList<GalleryImage>
-        val galleryImages = GalleryImage("0", productDetailResponse.data.product_detail.product_image_original, "0")
-        galleryImage.add(0, galleryImages)
+       // val galleryImages = GalleryImage("0", productDetailResponse.data.product_detail.product_image_original, productDetailResponse.data.product_detail.product_image_large,productDetailResponse.data.product_detail.product_image_medium,productDetailResponse.data.product_detail.gallery_images.,"")
+        galleryImage.addAll(productDetailResponse.data.product_detail.gallery_images)
 
         setAdapter()
         similarProductAdapter!!.notifyDataSetChanged()

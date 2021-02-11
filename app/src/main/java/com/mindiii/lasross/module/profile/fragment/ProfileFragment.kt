@@ -153,13 +153,14 @@ class ProfileFragment : BaseKotlinFragment(), View.OnClickListener, ApiCallback.
     }
 
     override fun onSuccessUserAddressList(userAddressListResponse: UserAddressListResponse?) {
-
-        if (userAddressListResponse!!.data.user_addresslist.size == 0) {
-            tvAddressProfile.text = "N/A"
-        } else {
-            val lastIndex = userAddressListResponse.data.user_addresslist.size - 1
-            val address = userAddressListResponse.data.user_addresslist[0].ship_address_location
-            tvAddressProfile.text = address
+        if (isAdded) {
+            if (userAddressListResponse!!.data.user_addresslist.size == 0) {
+                tvAddressProfile.text = "N/A"
+            } else {
+                val lastIndex = userAddressListResponse.data.user_addresslist.size - 1
+                val address = userAddressListResponse.data.user_addresslist[0].ship_address_location
+                tvAddressProfile.text = address
+            }
         }
     }
 
@@ -167,7 +168,7 @@ class ProfileFragment : BaseKotlinFragment(), View.OnClickListener, ApiCallback.
         if (loginResponse?.status.equals("success", ignoreCase = true)) {
             session.createRegistration(loginResponse?.data?.userDetail)
             session.setUserLoggedIn()
-           //  session.authToken = loginResponse?.data?.userDetail!!.auth_token
+            //  session.authToken = loginResponse?.data?.userDetail!!.auth_token
             setData(loginResponse!!.data)
         }
     }
