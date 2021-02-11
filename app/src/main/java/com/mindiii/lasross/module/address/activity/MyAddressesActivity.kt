@@ -85,8 +85,6 @@ class MyAddressesActivity : LasrossParentActivity(), View.OnClickListener, ApiCa
             warehouse_lng = intent.getStringExtra("warehouse_lng")
             warehouse_tax = intent.getStringExtra("waaddAddressResponserehouse_tax")
         }
-
-
         checkValue?.let { setAdapter(it) }
         /*pagination*/
         layoutManager1 = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -147,7 +145,6 @@ class MyAddressesActivity : LasrossParentActivity(), View.OnClickListener, ApiCa
                         btnAddNewAddress.text = resources.getString(R.string.continues)
                     else
                         btnAddNewAddress.text = resources.getString(R.string.add_new_address)
-
                 } else {
                     btnAddNewAddress.text = resources.getString(R.string.add_new_address)
                 }

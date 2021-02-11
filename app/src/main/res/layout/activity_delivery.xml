@@ -32,7 +32,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_marginStart="@dimen/_13sdp"
                 android:layout_toEndOf="@+id/ivBackDeliveryAddress"
                 android:fontFamily="@font/ibmplexsans_regular"
@@ -169,7 +168,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height=".5dp"
-                    android:background="#cccccc" />
+                    android:background="#cccccc"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -336,7 +335,7 @@
             android:fontFamily="@font/ibmplexsans_regular"
             android:text="@string/cancel_order"
             android:textColor="@color/sort_by_color"
-            tools:ignore="ButtonStyle" />
+            tools:ignore="ButtonStyle"/>
 
         <Button
             android:id="@+id/btnAddNewAddress"
@@ -346,6 +345,6 @@
             android:background="@drawable/background_gradient"
             android:text="@string/continues"
             android:textColor="@color/white"
-            android:textSize="@dimen/_12sdp" />
+            android:textSize="@dimen/_12sdp"/>
     </LinearLayout>
 </RelativeLayout>
