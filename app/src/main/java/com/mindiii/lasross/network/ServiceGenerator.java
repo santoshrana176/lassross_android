@@ -13,7 +13,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServiceGenerator {
 
     // DBUG BASE URL
-    private static final String API_BASE_URL = "https://www.lasross.com/service/api_v1/";
+    //private static final String API_BASE_URL = "https://www.lasross.com/service/api_v1/";
+    private static final String API_BASE_URL = "https://dev.mindiii.com/lasross/service/api_v1/";
 
     //LIVE BASE URL
     //private static final String API_BASE_URL = "https://api.lasross.com/api_v1/";

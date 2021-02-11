@@ -345,6 +345,7 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
             @Override
             public void onTopImageClick() {
                 startActivity(new Intent(HomeActivity.this, CoatsActivity.class)
+                        .putExtra("title", "")
                         .putExtra("ChildCatName", "Shop")
                         .putExtra("myCatId", "")
                         .putExtra("dealId", "")
@@ -377,6 +378,7 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
             @Override
             public void onClick(int position) {
                 startActivity(new Intent(HomeActivity.this, CoatsActivity.class)
+                        .putExtra("title", "Deal")
                         .putExtra("ChildCatName", dealList.get(position).getDeal_title())
                         .putExtra("myCatId", "")
                         .putExtra("dealId", dealList.get(position).getDealId())
@@ -696,6 +698,7 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
             public void onClick(String myCatId, String catName) {
                 if (CommonUtils.isNetworkAvailable(HomeActivity.this)) {
                     startActivity(new Intent(HomeActivity.this, CoatsActivity.class)
+                            .putExtra("title", "")
                             .putExtra("ChildCatName", catName)
                             .putExtra("myCatId", myCatId)
                             .putExtra("dealId", "")
@@ -802,6 +805,7 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
             case R.id.rlShopLayout:
             case R.id.tvFilterText:
                 startActivity(new Intent(HomeActivity.this, CoatsActivity.class)
+                       .putExtra("title", "")
                         .putExtra("ChildCatName", "Shop")
                         .putExtra("myCatId", "")
                         .putExtra("dealId", "")

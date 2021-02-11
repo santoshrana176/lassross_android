@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.home.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -189,6 +190,7 @@ public class HomePresenter {
                 if (response.isSuccessful()) {
                     productListCallback.onSuccessAddRemoveWishList(response.body());
                 } else {
+                    Log.e("error:::",""+response.errorBody().toString());
                     APIErrors apiErrors = ErrorUtils.parseError(response);
                     if (apiErrors.getMessage().equals("Invalid token")) {
                         productListCallback.onTokenChangeError(apiErrors.getMessage());

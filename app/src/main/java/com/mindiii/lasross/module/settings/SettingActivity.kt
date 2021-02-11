@@ -150,13 +150,9 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         Objects.requireNonNull(dialog.window)!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window!!.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
-
         dialog.setContentView(R.layout.logout_view)
-
         dialog.tvMessagesLogout.setText(message)
-
         dialog.tvPopupNoLogout.setOnClickListener(View.OnClickListener { dialog.dismiss() })
-
         dialog.tvPopupYesLogout.setOnClickListener(View.OnClickListener {
             callLogoutApi()
             dialog.dismiss()

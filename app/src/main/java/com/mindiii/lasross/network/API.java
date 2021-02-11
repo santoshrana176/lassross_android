@@ -41,6 +41,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -118,8 +119,12 @@ public interface API {
 
     @FormUrlEncoded
     @POST("user/addRemoveProductWishlist")
-    Call<AddRemoveWishListResponse> callAddRemoveWishListApi(@Header("auth-token") String token,
-                                                             @Field("productId") String productId);
+     //@Header('Content-Type',"application/x-www-form-urlencoded")
+    //@Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8")
+    Call<AddRemoveWishListResponse> callAddRemoveWishListApi(
+            @Header("auth-token") String token,
+           // @Header("Content-Type") String Content_Type,
+            @Field("productId") String productId);
 
     @GET("products/getProductDetail")
     Call<ProductDetailResponse> callProductDetailApi(@Query("productId") String productId,
@@ -178,7 +183,8 @@ public interface API {
             , @Field("longitude") String longitude);
 
     @GET("user/userAddresslist")
-    Call<UserAddressListResponse> callUserAddressList(@Header("auth-token") String token
+    Call<UserAddressListResponse> callUserAddressList(
+            @Header("auth-token") String token
             , @Query("offset") String offset
             , @Query("limit") String limit);
 

@@ -7,7 +7,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+     android:fitsSystemWindows="true"
     android:focusableInTouchMode="true"
     tools:openDrawer="start">
 
@@ -182,7 +182,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvListDown"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/_120sdp"
                     android:layout_below="@+id/rvListUp"
                     android:layout_marginStart="@dimen/_5sdp"
