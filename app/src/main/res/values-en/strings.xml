@@ -348,6 +348,8 @@
     <string name="confirm_password">Please enter confirm password</string>
     <string name="comfirm_password_doesnot_match">Confirm password does not match</string>
     <string name="something_worng">something is wrong</string>
+    <string name="Please_full_name">Please enter full name</string>
+    <string name="select_size">select size</string>
 </resources>
 
     <!--<string name="place_key">AIzaSyDyUk7vkNaDVsFojxOYTEz0m_rtdFqdgqs</string>-->

@@ -141,7 +141,7 @@ class UpdateProfileFragment : BaseKotlinFragment(), ApiCallback.UpdateProfileCal
                 if (etName.text.toString().trim().isNotEmpty())
                     apiCalling()
                 else
-                    CommonUtils.showCustomAlert(activity, "Please enter full name")
+                    CommonUtils.showCustomAlert(activity, getString(R.string.Please_full_name))
 
             }
             R.id.edit_pencil -> {
