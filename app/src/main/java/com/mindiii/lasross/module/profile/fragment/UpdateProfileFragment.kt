@@ -27,6 +27,7 @@ import com.mindiii.lasross.module.profile.ProfileActivity
 import com.mindiii.lasross.module.profile.presenter.UpdateProfilePresenter
 import com.mindiii.lasross.picker.ImagePicker
 import com.mindiii.lasross.picker.ImageRotator
+import com.mindiii.lasross.utils.CommonUtils
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_update.*
 import java.io.IOException
@@ -43,7 +44,7 @@ class UpdateProfileFragment : BaseKotlinFragment(), ApiCallback.UpdateProfileCal
     private var from: String? = null
     private var imageUri: Uri? = null
     private lateinit var address: String
-lateinit var session: Session
+    lateinit var session: Session
     private lateinit var profileImageBitmap: Bitmap
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +61,7 @@ lateinit var session: Session
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-      session=  Session(mContext)
+        session = Session(mContext)
         setOnClicks(tvUpdate, edit_pencil, etAddress, btnBackToProfile)
         setData()
     }
@@ -70,8 +71,8 @@ lateinit var session: Session
 //        imageUri = Uri.parse(session.profile_photo)
         etName.setText(session.full_name)
 
-        if (session.profile_photo == "")
-            Picasso.with(mContext).load(session.profile_photo).into(ivProfileImage)
+        if (session.profile_photo.isNotEmpty())
+            Picasso.with(mContext).load(R.drawable.placeholder_image).into(ivProfileImage)
         else
             Picasso.with(mContext).load(session.profile_photo).into(ivProfileImage)
 
@@ -113,8 +114,8 @@ lateinit var session: Session
         Toast.makeText(mContext, loginResponse?.message, Toast.LENGTH_SHORT).show()
         if (loginResponse!!.status.equals("success", ignoreCase = true)) {
             session.createRegistration(loginResponse.data?.userDetail)
-           session.setUserLoggedIn()
-          //  session.authToken=loginResponse.data?.userDetail!!.auth_token
+            session.setUserLoggedIn()
+            //  session.authToken=loginResponse.data?.userDetail!!.auth_token
         }
     }
 
@@ -137,7 +138,11 @@ lateinit var session: Session
     override fun onClick(p0: View?) {
         when (p0!!.id) {
             R.id.tvUpdate -> {
-                apiCalling()
+                if (etName.text.toString().trim().isNotEmpty())
+                    apiCalling()
+                else
+                    CommonUtils.showCustomAlert(activity, "Please enter full name")
+
             }
             R.id.edit_pencil -> {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -155,8 +160,7 @@ lateinit var session: Session
                         .putExtra("CheckValue", "CheckFound"))
             }
             R.id.btnBackToProfile -> {
-                startActivity(Intent(requireContext(), ProfileActivity::class.java))
-                activity.finish()
+                activity.onBackPressed()
             }
 
         }
