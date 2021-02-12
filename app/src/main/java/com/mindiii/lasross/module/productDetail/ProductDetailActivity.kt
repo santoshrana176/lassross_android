@@ -243,11 +243,11 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         availableQuantity = productDetailResponse.data.product_detail.product_available_quantity
         varientlist = productDetailResponse.data.product_detail.variant
         variantSizeValue = productDetailResponse.data.product_detail.variant[0].variant_value as ArrayList<VariantValue>
-      //  val sizeVal = VariantValue("0", "0", "Select Size")
-      //  variantSizeValue.add(0, sizeVal)
+        val sizeVal = VariantValue("0", "0", "")
+         variantSizeValue.add(0, sizeVal)
         variantColorValue = productDetailResponse.data.product_detail.variant[1].variant_value as ArrayList<VariantValue>
-       // val colorVal = VariantValue("0", "0", "Select Color")
-       // variantColorValue.add(0, colorVal)
+        val colorVal = VariantValue("0", "0", "")
+         variantColorValue.add(0, colorVal)
 
         galleryImage = productDetailResponse.data.product_detail.gallery_images as ArrayList<GalleryImage>
         val galleryImages = GalleryImage("0",

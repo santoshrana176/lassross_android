@@ -12,6 +12,8 @@ import com.mindiii.lasross.base.ApiCallback
 import com.mindiii.lasross.base.LasrossParentKotlinActivity
 import com.mindiii.lasross.module.address.model.AddAddressResponse
 import com.mindiii.lasross.module.home.model.LogoutResponse
+import com.mindiii.lasross.module.settings.model.LanguageModel
+import com.mindiii.lasross.module.settings.model.NotificationAlertResponse
 import com.mindiii.lasross.module.settings.model.TermsPolicyResponse
 import com.mindiii.lasross.module.settings.presenter.SettingsPresenter
 import com.mindiii.lasross.module.subscription.presenter.model.SubscribeResponse
@@ -85,6 +87,10 @@ lateinit var webView:WebView
     }
 
     override fun onSuccessLogout(logoutResponse: LogoutResponse?) {
+    }
+
+    override fun onSuccesNotifcationOnOff(logoutResponse: NotificationAlertResponse?) {
+        TODO("Not yet implemented")
     }
 
     override fun onSuccessCurrentSubscribedPlan(response: SubscribeResponse?) {

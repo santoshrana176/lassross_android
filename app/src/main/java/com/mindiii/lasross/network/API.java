@@ -28,6 +28,7 @@ import com.mindiii.lasross.module.payment.model.FinalPaymentResponse;
 import com.mindiii.lasross.module.productDetail.model.ProductDetailResponse;
 import com.mindiii.lasross.module.settings.model.FeedbackResponse;
 import com.mindiii.lasross.module.settings.model.LanguageModel;
+import com.mindiii.lasross.module.settings.model.NotificationAlertResponse;
 import com.mindiii.lasross.module.settings.model.TermsPolicyResponse;
 import com.mindiii.lasross.module.subscription.SubscriptionResponse;
 import com.mindiii.lasross.module.subscription.presenter.model.SubscribeResponse;
@@ -286,5 +287,9 @@ public interface API {
     @POST("user/changeLanguage")
     Call<LanguageModel> callLanguageApi(@Header("auth-token") String token,
                                         @Field("language_code") String languageCode);
+    @FormUrlEncoded
+    @POST("api_v1/notification/pushAlertStatus")
+    Call<NotificationAlertResponse> callNotificationOnOff(@Header("auth-token") String token,
+                                                          @Field("status") String status);
 
 }

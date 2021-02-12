@@ -670,6 +670,7 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
     public void onSuccessProductList(ProductResponse productResponse) {
         minPrice = Integer.parseInt(productResponse.getMinPrice());
         maxPrice = Integer.parseInt(productResponse.getMaxPrice());
+          session.setFilterPrice(String.valueOf(minPrice), String.valueOf(maxPrice));
         session.setProductDetail(String.valueOf(minPrice), String.valueOf(maxPrice));
         productList.clear();
         productList.addAll(productResponse.getData().getProduct_list());
