@@ -157,7 +157,6 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
             callLogoutApi()
             dialog.dismiss()
         })
-
         dialog.show()
     }
 

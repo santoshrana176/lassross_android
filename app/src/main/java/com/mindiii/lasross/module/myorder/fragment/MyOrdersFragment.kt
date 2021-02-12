@@ -43,7 +43,6 @@ class MyOrdersFragment : BaseKotlinFragment(), ApiCallback.MyOrderCallback {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.setStatusBarColor(this.resources.getColor(R.color.home_header_bg1))
         }
-
         session = Session(requireContext())
         setMyOrderAdapter()
         callMyOrderListApi(requireContext())

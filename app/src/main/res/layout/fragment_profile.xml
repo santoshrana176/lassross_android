@@ -38,7 +38,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:background="@drawable/user_pic_border"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"/>
 
                 <TextView
                     android:id="@+id/tvUserName"
@@ -49,7 +49,7 @@
                     android:gravity="center"
                     android:text="@string/abc"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_16sdp" />
+                    android:textSize="@dimen/_16sdp"/>
             </LinearLayout>
 
 
@@ -59,7 +59,7 @@
                 android:layout_height="@dimen/_15sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_18sdp"
-                android:src="@drawable/ic_back_arrow_ico" />
+                android:src="@drawable/ic_back_arrow_ico"/>
 
             <ImageView
                 android:id="@+id/ivProfileEdit"
@@ -69,7 +69,7 @@
                 android:layout_marginTop="@dimen/_18sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:src="@drawable/ic_edit_ico"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -95,6 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/iv"
                 android:orientation="vertical"
+                android:layout_toStartOf="@+id/myorder"
                 android:padding="@dimen/_10sdp"
                 tools:ignore="RelativeOverlap">
 
@@ -115,19 +116,21 @@
                     android:fontFamily="@font/ibmplexsans_light"
                     android:text="@string/it_is_a_long_established_fact_that_a_reader"
                     android:textColor="@color/input_text_color"
-                    android:textSize="@dimen/_10sdp" />
+                    android:textSize="@dimen/_10sdp"/>
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/myorder"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
                 android:layout_marginTop="@dimen/_17sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@drawable/orange_circle"
                 android:padding="@dimen/_5sdp"
                 android:src="@drawable/ic_right_arrow_ico"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -154,6 +157,7 @@
                 android:layout_toEndOf="@+id/wishList"
                 android:orientation="vertical"
                 android:padding="@dimen/_10sdp"
+                android:layout_toStartOf="@+id/myWishList"
                 android:visibility="visible"
                 tools:ignore="RelativeOverlap">
 
@@ -176,6 +180,7 @@
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/myWishList"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_alignParentEnd="true"
@@ -183,6 +188,7 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@drawable/orange_circle"
                 android:padding="@dimen/_5sdp"
+                android:layout_centerInParent="true"
                 android:src="@drawable/ic_right_arrow_ico"
                 tools:ignore="ContentDescription" />
 
@@ -212,7 +218,8 @@
                 android:layout_toEndOf="@+id/wallet"
                 android:orientation="vertical"
                 android:padding="@dimen/_10sdp"
-                tools:ignore="RelativeOverlap">
+                tools:ignore="RelativeOverlap"
+                android:layout_toStartOf="@+id/savedCard">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -233,6 +240,7 @@
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/savedCard"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_alignParentEnd="true"
@@ -240,6 +248,7 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@drawable/orange_circle"
                 android:padding="@dimen/_5sdp"
+                android:layout_centerInParent="true"
                 android:src="@drawable/ic_right_arrow_ico"
                 tools:ignore="ContentDescription" />
 
@@ -269,6 +278,7 @@
                 android:layout_toEndOf="@+id/cart"
                 android:orientation="vertical"
                 android:padding="@dimen/_10sdp"
+                android:layout_toStartOf="@+id/myCart"
                 tools:ignore="RelativeOverlap">
 
                 <TextView
@@ -290,6 +300,7 @@
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/myCart"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_alignParentEnd="true"
@@ -297,6 +308,8 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@drawable/orange_circle"
                 android:padding="@dimen/_5sdp"
+                android:layout_centerInParent="true"
+
                 android:src="@drawable/ic_right_arrow_ico"
                 tools:ignore="ContentDescription" />
 
@@ -323,6 +336,7 @@
                 tools:ignore="ContentDescription" />
 
             <LinearLayout
+                android:layout_toStartOf="@+id/myAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/qa"
@@ -346,6 +360,7 @@
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/myAddress"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_alignParentEnd="true"
@@ -375,7 +390,8 @@
                 android:src="@drawable/ic_map_pin_ico"
                 tools:ignore="ContentDescription" />
 
-            <RelativeLayout
+            <LinearLayout
+                android:layout_toStartOf="@+id/ivArrowAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/address"
@@ -405,7 +421,7 @@
                     android:textColor="@color/input_text_color"
                     android:textSize="@dimen/_10sdp"
                     tools:ignore="NotSibling" />
-            </RelativeLayout>
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/ivArrowAddress"
@@ -416,6 +432,7 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@drawable/orange_circle"
                 android:padding="@dimen/_5sdp"
+                android:layout_centerInParent="true"
                 android:src="@drawable/ic_right_arrow_ico"
                 tools:ignore="ContentDescription" />
 
@@ -438,9 +455,10 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_19sdp"
                 android:src="@drawable/ic_setting_ico"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"/>
 
             <LinearLayout
+                android:layout_toStartOf="@+id/ivArrowSetting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/setting"
@@ -467,6 +485,7 @@
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/ivArrowSetting"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_alignParentEnd="true"
@@ -474,6 +493,7 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@drawable/orange_circle"
                 android:padding="@dimen/_5sdp"
+                android:layout_centerInParent="true"
                 android:src="@drawable/ic_right_arrow_ico"
                 tools:ignore="ContentDescription" />
 
