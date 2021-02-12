@@ -10,8 +10,8 @@ import com.mindiii.lasross.R
 import com.mindiii.lasross.module.productDetail.model.VariantValue
 
 class CustomeSpinnerAdapter (val context: Context,
-                             var arrayList: ArrayList<VariantValue>,
-                             var mSelectedItemListner:SelectedItem
+                             var arrayList: ArrayList<VariantValue>/*,
+                             var mSelectedItemListner:SelectedItem*/
 ) : BaseAdapter() {
 
     private val inflater: LayoutInflater =
@@ -30,9 +30,9 @@ class CustomeSpinnerAdapter (val context: Context,
             vh = view.tag as ItemHolder
         }
         vh.label.text = arrayList.get(position).variant_value
-        vh.label.setOnClickListener {
+       /* vh.label.setOnClickListener {
             mSelectedItemListner.selectedItem(arrayList[position].variantValueId,arrayList.get(position).variant_value)
-        }
+        }*/
         return view
     }
 

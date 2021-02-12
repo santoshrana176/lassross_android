@@ -54,15 +54,15 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
     private lateinit var variantColorValue: ArrayList<VariantValue>
     private lateinit var galleryImage: ArrayList<GalleryImage>
     lateinit var productId: String
-    lateinit var productDesc: String
+      var productDesc: String=""
     lateinit var productSku: String
     lateinit var productCategory: String
     private var quantity: Int = 1
     private var index: Int = 0
     private var productQuantity = ""
     private var variants = ""
-    private var selectedColorId = ""
-    private var selectedSizeId = ""
+    private var selectedColorId = "0"
+    private var selectedSizeId = "0"
     private var isCheckWish: Boolean = true
     private var mLastClickTime: Long = 0
     private var similarProductAdapter: SimilarProductKotlinAdapter? = null
@@ -148,15 +148,24 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         })
         rvRecycler.adapter = similarProductAdapter
         // spiner initilization for size
-        var spinSizeAdapter = CustomeSpinnerAdapter(this, variantSizeValue, object : CustomeSpinnerAdapter.SelectedItem {
+        var spinSizeAdapter = CustomeSpinnerAdapter(this, variantSizeValue/*, object : CustomeSpinnerAdapter.SelectedItem {
             override fun selectedItem(variantValueId: String,name:String) {
                 selectedSizeId = variantValueId
                 tv_size.text=name
             }
 
-        })
+        }*/)
         spinSize.adapter = spinSizeAdapter
+        spinSize.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                 selectedSizeId = variantSizeValue[position].variantValueId
+                tv_size.text = variantSizeValue[position].variant_value
+            } // to close the onItemSelected
 
+            override fun onNothingSelected(parent: AdapterView<*>) {
+
+            }
+        }
         // val sizeAdapter = ArrayAdapter(this, R.layout.size_adapter_layout, variantSizeValue.toMutableList())
         // sizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         //  spinSize.setPrompt("Select Size");
@@ -190,13 +199,24 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
             override fun onNothingSelected(parent: AdapterView<*>) {
             }
         }*/
-        var spinnerColorAdapter = CustomeSpinnerAdapter(this, variantColorValue, object : CustomeSpinnerAdapter.SelectedItem {
+        var spinnerColorAdapter = CustomeSpinnerAdapter(this, variantColorValue/*, object : CustomeSpinnerAdapter.SelectedItem {
             override fun selectedItem(variantValueId: String,name:String) {
                 selectedColorId = variantValueId
                 tv_color.text=name
+                spinColor.clearFocus();
             }
-        })
+        }*/)
         spinColor.adapter = spinnerColorAdapter
+        spinColor.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                selectedColorId = variantColorValue[position].variantValueId
+               // selectedColorId = variantValueId
+                tv_color.text=variantColorValue[position].variant_value
+            } // to close the onItemSelected
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+            }
+        }
 
         /*pagerAdapter set*/
         viewPagerAdapter = ViewPagerAdapter(galleryImage, this)
@@ -230,8 +250,16 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
        // variantColorValue.add(0, colorVal)
 
         galleryImage = productDetailResponse.data.product_detail.gallery_images as ArrayList<GalleryImage>
-        val galleryImages = GalleryImage("0", productDetailResponse.data.product_detail.product_image_original, "0")
-        galleryImage.add(0, galleryImages)
+        val galleryImages = GalleryImage("0",
+                productDetailResponse.data.product_detail.product_image_original,
+                productDetailResponse.data.product_detail.product_image_large,
+                productDetailResponse.data.product_detail.product_image_medium,
+                productDetailResponse.data.product_detail.product_image,
+                "0")
+          galleryImage.add(0,galleryImages)
+        if (productDetailResponse.data.product_detail.gallery_images.isNotEmpty()){
+            galleryImage.addAll(productDetailResponse.data.product_detail.gallery_images)
+        }
 
         setAdapter()
         similarProductAdapter!!.notifyDataSetChanged()
