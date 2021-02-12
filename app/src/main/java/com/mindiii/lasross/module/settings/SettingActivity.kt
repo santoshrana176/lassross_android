@@ -299,7 +299,6 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
                 session?.language = "es"
                 LanguageUtils.language(this, selectedLanguage,true)
             }
-
         } else {
             toastMessage(getString(R.string.something_worng))
         }

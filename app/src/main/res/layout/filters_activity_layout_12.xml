@@ -285,7 +285,7 @@
                     app:rsb_indicator_text_color="#eaeaea"
                     app:rsb_indicator_width="15dp"
                     app:rsb_mode="range"
-                     app:rsb_progress_color="#fe682e"
+                    app:rsb_progress_color="#fe682e"
                     app:rsb_progress_height="4dp"
                     app:rsb_thumb_drawable="@drawable/price_range_img"
                     app:rsb_thumb_inactivated_drawable="@drawable/price_range_img"

@@ -2,10 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/_15sdp"
-    android:layout_marginTop="@dimen/_5sdp"
-    android:layout_marginRight="@dimen/_15sdp"
-    android:layout_marginBottom="@dimen/_15sdp"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -16,6 +13,8 @@
             android:id="@+id/ivUserImage"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
             android:background="@drawable/product_review_list_image_circle"
             android:src="@drawable/placeholder_image" />
 
@@ -30,6 +29,7 @@
             <TextView
                 android:id="@+id/tvUserName"
                 android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_semibold"
                 android:text="@string/pearle_desrosier"
@@ -57,6 +57,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:padding="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
             android:text="21 Apr 2019"
             android:textColor="#828282"
             android:textSize="@dimen/_10sdp" />
@@ -67,7 +69,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginStart="@dimen/_10sdp"
         android:fontFamily="@font/ibmplexsans_light"
+        android:layout_marginEnd="@dimen/_5sdp"
         android:text="@string/at_vero_eos_et_accusamus_et_iusto_odio_dignissimos_ducimus_qui_blan_diti_is_praese_ntium_voluptatum_deleniti_atque_corrupti_quos_dolores_et_qu_as_molestias_excepturi_sint_occaecati_cupiditate_non_provi_dent_simili_que_sunt_in_culpa_qui_officia_deserunt_mollitia_animi_id_est_laborum_et_dolorum_fuga"
         android:textColor="#828282"
         android:textSize="@dimen/_9sdp" />

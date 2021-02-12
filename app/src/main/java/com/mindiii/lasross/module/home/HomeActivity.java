@@ -28,7 +28,6 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -39,7 +38,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.material.navigation.NavigationView;
@@ -73,7 +71,6 @@ import com.mindiii.lasross.module.profile.presenter.GetProfilePresenter;
 import com.mindiii.lasross.module.wishlist.WishListActivity;
 import com.mindiii.lasross.utils.CommonUtils;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -120,7 +117,6 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
         // getCurrentFirebaseToken();
         initView();
         prfileApiCalling();
-
         rlShopLayout.setOnClickListener(this);
         tvFilterText.setOnClickListener(this);
     }

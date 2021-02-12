@@ -63,8 +63,6 @@ class MyFirebaseMessagingServices : FirebaseMessagingService() {
         intent.putExtra("body", body)
         intent.putExtra("title", title)
         sendNotification(reference_id!!, type!!, body!!, title!!, intent)
-
-
     }
 
     private fun sendNotification(reference_id: String, type: String, body: String, title: String, intent: Intent) {
@@ -73,7 +71,6 @@ class MyFirebaseMessagingServices : FirebaseMessagingService() {
         val iUniqueId = (System.currentTimeMillis() and 0xfffffff).toInt()
         val pendingIntent = PendingIntent.getActivity(applicationContext, iUniqueId, intent, PendingIntent.FLAG_ONE_SHOT)
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-
         var importance = 0
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             importance = NotificationManager.IMPORTANCE_HIGH
@@ -107,7 +104,6 @@ class MyFirebaseMessagingServices : FirebaseMessagingService() {
     }
 
     companion object {
-
         private val TAG = "notification4254"
     }
 

@@ -145,7 +145,7 @@
     <string name="no_address_found">No address found</string>
     <string name="change_add">CAMBIAR DIRECCIÓN</string>
     <string name="add_new_card">AGREGAR NUEVA TARJETA</string>
-    <string name="payment">Pago</string>
+    <string name="payment">Payment</string>
     <string name="choose_payment_type">CHOOSE PAYMENT TYPE</string>
     <string name="credit_debit_atm_card">Credit / Debit / ATM Card</string>
     <string name="select_message">Please select payment method</string>

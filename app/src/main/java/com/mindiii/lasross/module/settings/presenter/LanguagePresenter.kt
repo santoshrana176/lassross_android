@@ -1,5 +1,4 @@
 package com.mindiii.lasross.module.settings.presenter
-
 import android.content.Context
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
@@ -14,7 +13,6 @@ import retrofit2.Response
 import java.io.IOException
 
 class LanguagePresenter(var mContext: Context, var leavefeedback: ApiCallback.LanguageCallback) {
-
     fun callLanguageApi(language_code: String) {
         val session = Session(mContext)
         leavefeedback.onShowBaseLoader()
