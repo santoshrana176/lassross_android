@@ -20,7 +20,6 @@ import com.mindiii.lasross.module.payment.PaymentActivity
 import com.mindiii.lasross.utils.CommonUtils
 import kotlinx.android.synthetic.main.activity_delivery.*
 
-
 class DeliveryActivity : LasrossParentKotlinActivity(), View.OnClickListener, ApiCallback.DeliveryCallback {
 
     private var mLastClickTime: Long = 0

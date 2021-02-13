@@ -31,8 +31,6 @@ class MyOrdersFragment : BaseKotlinFragment(), ApiCallback.MyOrderCallback {
     lateinit var myOrdersAdapter: MyOrdersAdapter
     private var param2: String? = null
     private lateinit var session: Session
-
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_my_order, container, false)
     }
@@ -45,7 +43,6 @@ class MyOrdersFragment : BaseKotlinFragment(), ApiCallback.MyOrderCallback {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.setStatusBarColor(this.resources.getColor(R.color.home_header_bg1))
         }
-
         session = Session(requireContext())
         setMyOrderAdapter()
         callMyOrderListApi(requireContext())
@@ -123,6 +120,4 @@ class MyOrdersFragment : BaseKotlinFragment(), ApiCallback.MyOrderCallback {
                     }
                 }
     }
-
-
 }

@@ -112,13 +112,12 @@ public class AllReviewsActivity19 extends LasrossParentActivity implements ApiCa
                 else
                     tvProductReview.setText(getOneValueAfterDecimal(allReviewsModel.getData().getRating().getAverage_rating()) + ".0");
 
-                tvRatingAndReview.setText(allReviewsModel.getData().getRating().getAll_ratings() + " rating and " + allReviewsModel.getData().getRating().getReview() + " reviews");
+                tvRatingAndReview.setText(allReviewsModel.getData().getRating().getAll_ratings() + getString(R.string.rating_and) +" "+ allReviewsModel.getData().getRating().getReview() +" "+ getString(R.string.review_and));
                 tvFiveStartUser.setText(allReviewsModel.getData().getRating().getFive_star());
                 tvFourStartUser.setText(allReviewsModel.getData().getRating().getFour_star());
                 tvThreeStartUser.setText(allReviewsModel.getData().getRating().getThree_star());
                 tvTwoStartUser.setText(allReviewsModel.getData().getRating().getTwo_star());
                 tvOneStartUser.setText(allReviewsModel.getData().getRating().getOne_star());
-
                 allReviewsAdapter.notifyDataSetChanged();
             }
         }

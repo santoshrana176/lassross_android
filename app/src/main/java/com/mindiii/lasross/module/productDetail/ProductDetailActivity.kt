@@ -10,10 +10,14 @@ import android.graphics.drawable.LayerDrawable
 import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ImageView
+import android.widget.RatingBar
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
@@ -31,13 +35,6 @@ import com.mindiii.lasross.module.productDetail.adapter.ViewPagerAdapter
 import com.mindiii.lasross.module.productDetail.model.*
 import com.mindiii.lasross.module.productDetail.presenter.ProductDetailPresenter
 import kotlinx.android.synthetic.main.activity_product_detail.*
-import kotlinx.android.synthetic.main.activity_product_detail.tvItemName
-import kotlinx.android.synthetic.main.activity_product_detail.tvItemNameVariety
-import kotlinx.android.synthetic.main.activity_product_detail.tvItemPrice
-import kotlinx.android.synthetic.main.activity_product_detail.tvMinus
-import kotlinx.android.synthetic.main.activity_product_detail.tvPlus
-import kotlinx.android.synthetic.main.activity_product_detail.tvQuantity
-import kotlinx.android.synthetic.main.my_cart_adapter_layout.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -415,7 +412,9 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         tvSKU = dialog.findViewById(R.id.tvSKU)
         tvCategory = dialog.findViewById(R.id.tvCategory)
         ivCancel.setOnClickListener { dialog.dismiss() }
-        tvShortDescription.text = otherDesc
+       tvShortDescription.text = otherDesc
+        tvShortDescription.setMovementMethod(ScrollingMovementMethod())
+
         tvSKU.text = productSku
         tvCategory.text = productCategory
         val lp = WindowManager.LayoutParams()

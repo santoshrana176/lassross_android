@@ -39,12 +39,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
 import com.mindiii.lasross.R;
 import com.mindiii.lasross.app.session.Session;
 import com.mindiii.lasross.base.ApiCallback;
@@ -53,7 +51,6 @@ import com.mindiii.lasross.base.LasrossParentActivity;
 import com.mindiii.lasross.module.cart.MyCartActivity;
 import com.mindiii.lasross.module.cart.model.CartListResponse;
 import com.mindiii.lasross.module.faq.FAQActivity;
-import com.mindiii.lasross.module.home.adapter.BannerImagesViewPagerAdapter;
 import com.mindiii.lasross.module.home.adapter.ExpandableListAdapter;
 import com.mindiii.lasross.module.home.adapter.ExpandableListStaticAdapter;
 import com.mindiii.lasross.module.home.adapter.FooterListAdapter;
@@ -73,8 +70,6 @@ import com.mindiii.lasross.module.notification.model.NotificationListModel;
 import com.mindiii.lasross.module.productDetail.ProductDetailActivity;
 import com.mindiii.lasross.module.profile.ProfileActivity;
 import com.mindiii.lasross.module.profile.presenter.GetProfilePresenter;
-import com.mindiii.lasross.module.settings.model.BannerSilder;
-import com.mindiii.lasross.module.settings.model.SliderBannerResponse;
 import com.mindiii.lasross.module.wishlist.WishListActivity;
 import com.mindiii.lasross.utils.CommonUtils;
 import com.squareup.picasso.Picasso;
@@ -85,7 +80,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class HomeActivity extends LasrossParentActivity implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener, ApiCallback.ProductListCallback
-        , View.OnClickListener, ApiCallback.GetProfileCallback, BannerImagesViewPagerAdapter.BannerItemClickListner {
+        , View.OnClickListener, ApiCallback.GetProfileCallback {
     NotificationManager notificationManager;
     private RecyclerView rvListUp, rvListDown;
     private List<ProductResponse.DataBean.ProductListBean> productList;
@@ -243,6 +238,7 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
         callBannerWeeklyOfferApi();
         callCartItemCountApi();
         callNotificationCountApi();
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -575,10 +571,10 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
 
     private void menuExpandableStatic() {
 
-        listDataHeader2.add("Wishlist");
-        listDataHeader2.add("Order");
-        listDataHeader2.add("Cart");
-        listDataHeader2.add("Logout");
+        listDataHeader2.add(getString(R.string.wishlist_));
+        listDataHeader2.add(getString(R.string.order_));
+        listDataHeader2.add(getString(R.string.cart_text));
+        listDataHeader2.add(getString(R.string.logout_));
 
         List<String> wishList = new ArrayList<>();
         List<String> order = new ArrayList<>();
@@ -748,7 +744,6 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
         listView1.setAdapter(listAdapter1);
        // setExpandableListViewHeight(listView1, -1);
     }
-
 
     @Override
     public void OnSuccessDealList(DealListResponse dealListResponse) {

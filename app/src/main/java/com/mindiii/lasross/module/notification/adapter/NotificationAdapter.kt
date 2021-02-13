@@ -33,11 +33,9 @@ class NotificationAdapter(private val list: List<Data>,
         holder.tvTimeNotification.text = str
 
         if (itemList.is_read.equals("0"))
-            holder.linearLayout.setBackgroundResource(R.color.notification_unread)
+            holder.rlNotificatio.setBackgroundResource(R.color.notification_unread)
         else
-            holder.linearLayout.setBackgroundResource(R.color.white)
-
-
+            holder.rlNotificatio.setBackgroundResource(R.color.white)
         holder.tvItemDetailNotification.text = itemList.notification_message
 
         if (itemList.product_image.isNotEmpty()) {
@@ -58,6 +56,7 @@ class NotificationAdapter(private val list: List<Data>,
         internal var tvItemDetailNotification = itemView.tvItemDetailNotification
         internal var ivNotification = itemView.ivNotification
         internal var linearLayout = itemView.linearLayout
+        internal var rlNotificatio = itemView.rlNotification
 
         var img = itemView.ivNotification
         internal var rlNotification = itemView.rlNotification.setOnClickListener {

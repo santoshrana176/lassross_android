@@ -11,7 +11,6 @@ import com.mindiii.lasross.module.profile.fragment.ProfileFragment
 import com.mindiii.lasross.module.profile.fragment.UpdateProfileFragment
 
 class ProfileActivity : LasrossParentKotlinActivity() {
-
     var from: String = ""
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {

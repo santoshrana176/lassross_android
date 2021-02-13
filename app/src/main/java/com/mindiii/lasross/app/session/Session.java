@@ -7,14 +7,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
-
 import com.google.gson.Gson;
 import com.mindiii.lasross.module.loginregistration.LoginActivity;
 import com.mindiii.lasross.module.loginregistration.model.LoginResponse;
 
 import java.util.Locale;
-
-
 public class Session {
     private static final String PREF_NAME = "BANG";
     private static final String PREF_NAME2 = "AppSession";
