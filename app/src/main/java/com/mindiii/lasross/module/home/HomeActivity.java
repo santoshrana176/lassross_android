@@ -727,6 +727,7 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
         Session session = new Session(this);
         session.createRegistration(loginResponse.getData().getUserDetail());
       //  session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
+        session.setNotificatioStatus(loginResponse.getData().getUserDetail().getPush_alert_status());
         session.setUserLoggedIn();
     }
 

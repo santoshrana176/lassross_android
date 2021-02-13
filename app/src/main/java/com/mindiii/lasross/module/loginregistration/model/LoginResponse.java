@@ -84,6 +84,15 @@ public class LoginResponse {
             private String social_type;
             private String social_id;
             private String stripe_customer_id;
+
+            public String getPush_alert_status() {
+                return push_alert_status;
+            }
+
+            public void setPush_alert_status(String push_alert_status) {
+                this.push_alert_status = push_alert_status;
+            }
+
             private String push_alert_status;
 
             //private SubscriptionDetailBean subscription_detail;

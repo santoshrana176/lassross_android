@@ -168,6 +168,9 @@ class ProfileFragment : BaseKotlinFragment(), View.OnClickListener, ApiCallback.
         if (loginResponse?.status.equals("success", ignoreCase = true)) {
             session.createRegistration(loginResponse?.data?.userDetail)
             session.setUserLoggedIn()
+            //  session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
+            session.notificatioStatus = loginResponse!!.data.userDetail.push_alert_status
+
             //  session.authToken = loginResponse?.data?.userDetail!!.auth_token
             setData(loginResponse!!.data)
         }
