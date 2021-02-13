@@ -66,16 +66,16 @@ public class HeaderListAdapter extends RecyclerView.Adapter<HeaderListAdapter.Ho
     public Holder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view;
         Holder holder;
-        if (i == TYPE_LIST) {
+       // if (i == TYPE_LIST) {
             view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.header_list_layout, viewGroup, false);
             holder = new Holder(view, i);
             return holder;
-        } else if (i == TYPE_HEAD) {
-            view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.header_main_layout, viewGroup, false);
-            holder = new Holder(view, i);
-            return holder;
-        }
-        return null;
+       // }/* else if (i == TYPE_HEAD) {
+           // view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.header_main_layout, viewGroup, false);
+         //   holder = new Holder(view, i);
+         //   return holder;
+      //  }*/
+       // return null;
     }
 
     @SuppressLint("SetTextI18n")
@@ -83,7 +83,7 @@ public class HeaderListAdapter extends RecyclerView.Adapter<HeaderListAdapter.Ho
     public void onBindViewHolder(@NonNull Holder holder, @SuppressLint("RecyclerView") final int i) {
 
         if (holder.view_type == TYPE_LIST) {
-            ProductResponse.DataBean.ProductListBean itemList = productListBeans.get(i - 1);
+            ProductResponse.DataBean.ProductListBean itemList = productListBeans.get(i);
             holder.tvItemNameVariety.setText(itemList.getCategory_name());
             holder.tvItemName.setText(itemList.getProduct_name());
             holder.tvItemPrice.setText(itemList.getCurrency_symbol() + " " + itemList.getRegular_price());
@@ -113,7 +113,7 @@ public class HeaderListAdapter extends RecyclerView.Adapter<HeaderListAdapter.Ho
             } else {
                 holder.ivAddWishList.setImageResource(R.drawable.ic_favorite_filled);
             }
-        } else if (holder.view_type == TYPE_HEAD) {
+        }/* else if (holder.view_type == TYPE_HEAD) {
             holder.tvUpTo50.setText("Up to 50% OFF !");
             holder.tvMessage.setText("Don't miss out on some very special items at extraordinary sale prices. For a limited time!");
             holder.btnPick.setText("Pick up a Bargain");
@@ -122,12 +122,12 @@ public class HeaderListAdapter extends RecyclerView.Adapter<HeaderListAdapter.Ho
             } else {
                 Picasso.with(context).load(strBannerImage).into(holder.ivDiscount);
             }
-        }
+        }*/
     }
 
     @Override
     public int getItemCount() {
-        return productListBeans.size() + 1;
+        return productListBeans.size();
     }
 
     public void setListData(List<ProductResponse.DataBean.ProductListBean> product_list) {
@@ -139,9 +139,9 @@ public class HeaderListAdapter extends RecyclerView.Adapter<HeaderListAdapter.Ho
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0)
+       /* if (position == 0)
             return TYPE_HEAD;
-
+*/
         return TYPE_LIST;
     }
 
@@ -174,7 +174,7 @@ public class HeaderListAdapter extends RecyclerView.Adapter<HeaderListAdapter.Ho
                 ivAddWishList.setOnClickListener(this);
                 fullLayout.setOnClickListener(this);
                 view_type = 1;
-            } else if (viewType == TYPE_HEAD) {
+            }/* else if (viewType == TYPE_HEAD) {
                 tvUpTo50 = itemView.findViewById(R.id.tvUpTo50);
                 tvMessage = itemView.findViewById(R.id.tvMessage);
                 btnPick = itemView.findViewById(R.id.btnPick);
@@ -182,7 +182,7 @@ public class HeaderListAdapter extends RecyclerView.Adapter<HeaderListAdapter.Ho
                 rvHeaderHomeTop = itemView.findViewById(R.id.rvHeaderHomeTop);
                 rvHeaderHomeTop.setOnClickListener(this);
                 view_type = 0;
-            }
+            }*/
         }
 
         @Override

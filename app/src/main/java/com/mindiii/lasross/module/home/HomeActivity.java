@@ -39,10 +39,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 import com.mindiii.lasross.R;
 import com.mindiii.lasross.app.session.Session;
 import com.mindiii.lasross.base.ApiCallback;
@@ -51,6 +53,7 @@ import com.mindiii.lasross.base.LasrossParentActivity;
 import com.mindiii.lasross.module.cart.MyCartActivity;
 import com.mindiii.lasross.module.cart.model.CartListResponse;
 import com.mindiii.lasross.module.faq.FAQActivity;
+import com.mindiii.lasross.module.home.adapter.BannerImagesViewPagerAdapter;
 import com.mindiii.lasross.module.home.adapter.ExpandableListAdapter;
 import com.mindiii.lasross.module.home.adapter.ExpandableListStaticAdapter;
 import com.mindiii.lasross.module.home.adapter.FooterListAdapter;
@@ -70,6 +73,8 @@ import com.mindiii.lasross.module.notification.model.NotificationListModel;
 import com.mindiii.lasross.module.productDetail.ProductDetailActivity;
 import com.mindiii.lasross.module.profile.ProfileActivity;
 import com.mindiii.lasross.module.profile.presenter.GetProfilePresenter;
+import com.mindiii.lasross.module.settings.model.BannerSilder;
+import com.mindiii.lasross.module.settings.model.SliderBannerResponse;
 import com.mindiii.lasross.module.wishlist.WishListActivity;
 import com.mindiii.lasross.utils.CommonUtils;
 import com.squareup.picasso.Picasso;
@@ -80,7 +85,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class HomeActivity extends LasrossParentActivity implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener, ApiCallback.ProductListCallback
-        , View.OnClickListener, ApiCallback.GetProfileCallback {
+        , View.OnClickListener, ApiCallback.GetProfileCallback, BannerImagesViewPagerAdapter.BannerItemClickListner {
     NotificationManager notificationManager;
     private RecyclerView rvListUp, rvListDown;
     private List<ProductResponse.DataBean.ProductListBean> productList;
@@ -101,6 +106,10 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
     private int index, minPrice = 0, maxPrice = 0;
     private String strBannerImage;
     private int previousGroupPosition;
+    ViewPager mviewPager;
+    TabLayout mTabLayout;
+    private ArrayList<BannerSilder> mBannerSilderList;
+    private BannerImagesViewPagerAdapter pagerAdapter;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -180,6 +189,10 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
         dealList = new ArrayList<>();
         rvListUp = findViewById(R.id.rvListUp);
         rvListDown = findViewById(R.id.rvListDown);
+
+          mviewPager = findViewById(R.id.banner_images_viewpager);
+         mTabLayout = findViewById(R.id.banner_dots_tab_layout);
+
         rvListUp.setHasFixedSize(true);
         rvListDown.setHasFixedSize(true);
         ProgressDialog progressDialog = new ProgressDialog(this);
@@ -206,6 +219,7 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
             Picasso.with(this).load(session.getRegistration().getProfile_photo()).into(ivUserPic);
         }
 
+        bannerSliderApiCall();
         //Log.e("image", session.getRegistration().getProfile_photo());
 
 
@@ -229,7 +243,6 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
         callBannerWeeklyOfferApi();
         callCartItemCountApi();
         callNotificationCountApi();
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -294,6 +307,24 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
 
             }
         });
+    }
+
+    private void bannerSliderApiCall() {
+        if (CommonUtils.isNetworkAvailable(HomeActivity.this)) {
+            new HomePresenter(this, this).callBannerSliderApi();
+        } else {
+            showInternetAlertDialog(HomeActivity.this);
+        }
+    }
+
+    private void setViewPagerAdapter(SliderBannerResponse mSliderBannerResponse) {
+        mBannerSilderList=new ArrayList<>();
+        String basePath=mSliderBannerResponse.getData().getBanner_silder_path();
+        mBannerSilderList.addAll(mSliderBannerResponse.getData().getBanner_silder());
+        pagerAdapter=new BannerImagesViewPagerAdapter(this,mBannerSilderList,basePath,this);
+        mviewPager.setAdapter( pagerAdapter );
+        mTabLayout.setupWithViewPager(mviewPager);
+
     }
 
     private void callProductListApi() {
@@ -718,6 +749,7 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
        // setExpandableListViewHeight(listView1, -1);
     }
 
+
     @Override
     public void OnSuccessDealList(DealListResponse dealListResponse) {
         dealList.clear();
@@ -820,5 +852,24 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
                 startActivity(new Intent(HomeActivity.this, NotificationsActivity.class));
                 break;
         }
+    }
+
+
+    @Override
+    public void onSuccesBannerSliderImage(SliderBannerResponse mSliderBannerResponse) {
+        setViewPagerAdapter(mSliderBannerResponse);
+    }
+
+    @Override
+    public void onItemClick() {
+        startActivity(new Intent(HomeActivity.this, CoatsActivity.class)
+                .putExtra("title", "")
+                .putExtra("ChildCatName", "Shop")
+                .putExtra("myCatId", "")
+                .putExtra("dealId", "")
+                .putExtra("minPrice", minPrice)
+                .putExtra("maxPrice", maxPrice)
+                .putExtra("fromHome", "fromHome")
+        );
     }
 }

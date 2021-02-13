@@ -1,9 +1,13 @@
 package com.mindiii.lasross.module.address.activity
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import android.view.WindowManager
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
@@ -21,6 +25,11 @@ import com.mindiii.lasross.module.delivery.DeliveryActivity
 import com.mindiii.lasross.module.home.HomeActivity
 import com.mindiii.lasross.utils.CommonUtils
 import com.mindiii.lasross.utils.EndlessRecyclerViewScrollListener
+import kotlinx.android.synthetic.main.custom_dilog.*
+import kotlinx.android.synthetic.main.custom_dilog.tvMessages
+import kotlinx.android.synthetic.main.custom_dilog.tvPopupNo
+import kotlinx.android.synthetic.main.custom_dilog.tvPopupOk
+import kotlinx.android.synthetic.main.custom_dilog_delete.*
 import kotlinx.android.synthetic.main.my_addresses_activty_38.*
 import java.util.*
 
@@ -116,12 +125,8 @@ class MyAddressesActivity : LasrossParentActivity(), View.OnClickListener, ApiCa
         userAddressList.clear()
         myAddressAdapter = MyAddressAdapter(checkValue, userAddressList, this, object : ClickListener.MyAddressListener {
             override fun onItemDelete(position: Int) {
-                if (CommonUtils.isNetworkAvailable(this@MyAddressesActivity)!!) {
-                    callRemoveAddressApi(userAddressList.get(position).userAddressId)
-                    myAddressAdapter.notifyItemRemoved(position)
-                } else {
-                    showInternetAlertDialog(this@MyAddressesActivity)
-                }
+                deleteAddress(this@MyAddressesActivity,position)
+
             }
 
             override fun onItemUpdate(position: Int) {
@@ -156,6 +161,54 @@ class MyAddressesActivity : LasrossParentActivity(), View.OnClickListener, ApiCa
         recyclerView.adapter = myAddressAdapter
     }
 
+    private fun deleteAddress(context: MyAddressesActivity, position: Int) {
+        val dialog = Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        Objects.requireNonNull(dialog.getWindow())!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow()!!.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialog.setContentView(R.layout.custom_dilog_delete);
+       dialog.tvMessages_delete.text = getString(R.string.deleteAddress_msg)
+        dialog.tvPopupNo.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog. tvPopupOk.setOnClickListener {
+               if (CommonUtils.isNetworkAvailable(this@MyAddressesActivity)!!) {
+                      callRemoveAddressApi(userAddressList.get(position).userAddressId)
+                      myAddressAdapter.notifyItemRemoved(position)
+                  } else {
+                      showInternetAlertDialog(this@MyAddressesActivity)
+                  }
+            dialog.dismiss()
+        }
+        dialog.show();
+    }
+
+    /*   @SuppressLint("SetTextI18n")
+        private void showCustomAlert(Context context, final int position) {
+            final Dialog dialog = new Dialog(context);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+            dialog.setContentView(R.layout.custom_dilog);
+            TextView tvMessages = dialog.findViewById(R.id.tvMessages);
+            tvMessages.setText("Are you sure you want to delete card?");
+            TextView tvPopupNo = dialog.findViewById(R.id.tvPopupNo);
+            tvPopupNo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+            TextView tvPopupOk = dialog.findViewById(R.id.tvPopupOk);
+            tvPopupOk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    cardClickListener.deleteOnClick(position);
+                    dialog.dismiss();
+                }
+            });
+            dialog.show();
+        }*/
     fun callRemoveAddressApi(position: String) {
         MyAddressPresenter(this, this).callRemoveAddressApi(position)
     }

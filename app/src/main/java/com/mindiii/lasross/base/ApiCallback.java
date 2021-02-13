@@ -31,6 +31,7 @@ import com.mindiii.lasross.module.productDetail.model.ProductDetailResponse;
 import com.mindiii.lasross.module.settings.model.FeedbackResponse;
 import com.mindiii.lasross.module.settings.model.LanguageModel;
 import com.mindiii.lasross.module.settings.model.NotificationAlertResponse;
+import com.mindiii.lasross.module.settings.model.SliderBannerResponse;
 import com.mindiii.lasross.module.settings.model.TermsPolicyResponse;
 import com.mindiii.lasross.module.subscription.SubscriptionResponse;
 import com.mindiii.lasross.module.subscription.presenter.model.SubscribeResponse;
@@ -50,6 +51,7 @@ public interface ApiCallback {
         void onSuccessAddRemoveWishList(AddRemoveWishListResponse addRemoveWishListResponse);
 
         void OnSuccessMenuSlider(MenuSliderResponse menuSliderResponse);
+        void onSuccesBannerSliderImage(SliderBannerResponse menuSliderResponse);
 
         void OnSuccessDealList(DealListResponse dealListResponse);
 

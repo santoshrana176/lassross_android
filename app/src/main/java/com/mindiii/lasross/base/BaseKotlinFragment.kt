@@ -14,6 +14,7 @@ import com.mindiii.lasross.helper.Util
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -112,23 +113,112 @@ open class BaseKotlinFragment : Fragment() {
 
     // simple date formate
     fun DateFormatChange(input: String): String {
-        val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        val outputFormat = SimpleDateFormat("dd MMM yyyy ");
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.getDefault());
+        val outputFormat = SimpleDateFormat("dd MMM yyyy ",Locale.getDefault());
         System.out.println(outputFormat.format(inputFormat.parse(input)))
         return outputFormat.format(inputFormat.parse(input))
     }
 
     // date formate with suffix and time
     fun getCurrentDateInSpecificFormat(input: String): String {
-        val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-        val outputFormat1 = SimpleDateFormat("dd MMM yyyy KK:mm a")
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.getDefault())
+        val outputFormat1 = SimpleDateFormat("dd MMM yyyy KK:mm a",Locale.getDefault())
+      //   inputFormat.timeZone = TimeZone.getTimeZone("UTC")
         val outputDateFormat = SimpleDateFormat("dd")
 
         val date1 = outputDateFormat.format(inputFormat.parse(input))
 
         val dayNumberSuffix = getDayNumberSuffix(date1.toInt())
-        val dateFormat = SimpleDateFormat("dd'$dayNumberSuffix' MMM yyyy - KK:mm a")
+        val dateFormat = SimpleDateFormat("dd'$dayNumberSuffix' MMM yyyy - KK:mm a",Locale.getDefault())
         return dateFormat.format(inputFormat.parse(input))
+    }
+
+
+    fun getDayDifference(departDateTime: String): String {
+        var curruntTime = ""
+        var returnDay =""
+
+        val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss a", Locale.ENGLISH)
+        df.timeZone = TimeZone.getTimeZone("UTC")
+        val date = df.parse(departDateTime)
+        df.timeZone = TimeZone.getDefault()
+        val df1 = SimpleDateFormat("yyyy-MM-dd HH:mm:ss a", Locale.ENGLISH).format(date!!)
+
+        val dateInMillis = System.currentTimeMillis()
+        val format = "yyyy-MM-dd HH:mm:ss a"
+        val sdf = SimpleDateFormat(format, Locale.ENGLISH)
+          curruntTime = sdf.format(Date(dateInMillis))
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss a", Locale.ENGLISH)
+
+
+        try {
+            val startDate = simpleDateFormat.parse(df1)
+            val endDate = simpleDateFormat.parse(curruntTime)
+                     var different = endDate!!.time - startDate!!.time
+            val secondsInMilli: Long = 1000
+            val minutesInMilli = secondsInMilli * 60
+            val hoursInMilli = minutesInMilli * 60
+            val daysInMilli = hoursInMilli * 24
+            val weekInMilli = daysInMilli * 7
+            val monthInMilli = weekInMilli * 4
+            val yearInMilli = monthInMilli * 12
+
+
+            val elapsedYear = different / yearInMilli
+            different = different % yearInMilli
+
+            val elapsedMonth = different / monthInMilli
+            different = different % monthInMilli
+
+            val elapsedWeek = different / weekInMilli
+            different = different % weekInMilli
+
+            val elapsedDays = different / daysInMilli
+            different = different % daysInMilli
+
+            val elapsedHours = different / hoursInMilli
+            different = different % hoursInMilli
+
+            val elapsedMinutes = different / minutesInMilli
+            different = different % minutesInMilli
+
+            val elapsedSeconds = different / secondsInMilli
+
+            if (elapsedYear >= 1) {
+                returnDay = "$elapsedYear year ago"
+            } else if (elapsedMonth >= 1) {
+                returnDay = "$elapsedMonth month ago"
+            } else if (elapsedWeek >= 1) {
+                if (elapsedWeek == 1L) {
+                    returnDay = "$elapsedWeek week ago"
+                } else returnDay = "$elapsedWeek weeks ago"
+            } else if (elapsedDays == 1L) {
+              //  returnDay =  elapsedDays+"" +  "1 day ago"
+            } else if (elapsedDays > 1 && elapsedDays < 7) {
+                returnDay = "$elapsedDays days ago"
+            } else if (elapsedDays == 0L) {
+                if (elapsedHours == 0L) {
+                    if (elapsedMinutes == 0L) {
+                        //returnDay = elapsedSeconds + " Just now"
+                    } else {
+                        returnDay = "$elapsedMinutes mins ago"
+                    }
+                } else if (elapsedHours == 1L) {
+                    returnDay = "$elapsedHours hour ago"
+                } else {
+                    returnDay = "$elapsedHours hours ago"
+                }
+            } else {
+                returnDay = "$elapsedDays days ago"
+            }
+        } catch (e: ParseException) {
+            Log.d("day diffrence", e.message)
+        }
+        if (returnDay.startsWith("-")) {
+           // returnDay = removeFirstChar(returnDay)!!
+        }
+
+        return returnDay
     }
 
     // add suffix in date

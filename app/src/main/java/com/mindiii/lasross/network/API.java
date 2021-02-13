@@ -29,6 +29,7 @@ import com.mindiii.lasross.module.productDetail.model.ProductDetailResponse;
 import com.mindiii.lasross.module.settings.model.FeedbackResponse;
 import com.mindiii.lasross.module.settings.model.LanguageModel;
 import com.mindiii.lasross.module.settings.model.NotificationAlertResponse;
+import com.mindiii.lasross.module.settings.model.SliderBannerResponse;
 import com.mindiii.lasross.module.settings.model.TermsPolicyResponse;
 import com.mindiii.lasross.module.subscription.SubscriptionResponse;
 import com.mindiii.lasross.module.subscription.presenter.model.SubscribeResponse;
@@ -275,7 +276,7 @@ public interface API {
     @GET("deal/getDealList")
     Call<DealListResponse> callDealListApi(@Header("auth-token") String authToken);
 
-    @GET("service/getContent")
+    @GET("service/getContent")//get products/get_banner_slider
     Call<TermsPolicyResponse> callTermsPolicyApi();
 
     @FormUrlEncoded
@@ -291,5 +292,7 @@ public interface API {
     @POST("notification/pushAlertStatus")
     Call<NotificationAlertResponse> callNotificationOnOff(@Header("auth-token") String token,
                                                           @Field("status") String status);
+    @GET("products/get_banner_slider")//get
+    Call<SliderBannerResponse> callSlidingBannerApi(@Header("auth-token") String token);
 
 }

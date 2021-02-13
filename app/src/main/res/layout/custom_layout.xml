@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/banner_item"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_120sdp"
+    android:background="@drawable/home_banner_image_bg">
+
+    <com.mindiii.lasross.helper.RoundRectCornerImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/dress2" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/offer_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ibmplexsans_bold"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_16sdp" />
+
+        <TextView
+            android:id="@+id/offer_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="@font/ibmplexsans_regular"
+            android:textColor="@color/black_1"
+            android:paddingEnd="@dimen/_5sdp"
+            android:textSize="@dimen/_11sdp" />
+
+        <TextView
+            android:id="@+id/bargainView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/pick_up_bargain_bg"
+            android:fontFamily="@font/ibmplexsans_regular"
+            android:paddingStart="@dimen/_12sdp"
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_12sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            android:text="@string/pick_up_a_bargain"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11sdp" />
+    </LinearLayout>
+</RelativeLayout>

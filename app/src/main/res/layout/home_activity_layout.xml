@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-     android:fitsSystemWindows="true"
+    android:fitsSystemWindows="true"
     android:focusableInTouchMode="true"
     tools:openDrawer="start">
 
@@ -104,6 +103,7 @@
                     android:visibility="gone" />
 
             </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -172,10 +172,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <RelativeLayout
+                    android:id="@+id/ll_images"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:orientation="vertical">
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/banner_images_viewpager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    </androidx.viewpager.widget.ViewPager>
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/banner_dots_tab_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:tabBackground="@drawable/tab_selector"
+                        app:tabGravity="center"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"
+                        app:tabPaddingStart="1dp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        app:tabIndicatorHeight="0dp" />
+                </RelativeLayout>
+
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvListUp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_below="@+id/ll_images"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_5sdp" />
@@ -269,11 +299,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
+
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_10sdp"
                             android:background="#f8f8f8"
                             android:visibility="visible" />
+
                         <RelativeLayout
                             android:id="@+id/rlShopLayout"
                             android:layout_width="match_parent"
@@ -309,6 +341,7 @@
                                 android:layout_marginEnd="@dimen/_5sdp"
                                 android:src="@drawable/ic_gray_back_ico" />
                         </RelativeLayout>
+
                         <View
                             android:id="@+id/tvLine"
                             android:layout_width="match_parent"

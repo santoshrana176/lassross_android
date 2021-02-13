@@ -15,8 +15,6 @@ import com.mindiii.lasross.base.BaseKotlinFragment
 import com.mindiii.lasross.module.faq.FAQActivity
 import com.mindiii.lasross.module.orderdetail.model.TrackingStatu
 import kotlinx.android.synthetic.main.fragment_order_tracking_detail.*
-
-
 private const val ARG_PARAM1 = "list"
 private const val ARG_PARAM2 = "param2"
 
@@ -38,7 +36,6 @@ class OrderTrackingDetailFragment : BaseKotlinFragment() {
         return inflater.inflate(R.layout.fragment_order_tracking_detail, container, false)
     }
 
-
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,14 +56,12 @@ class OrderTrackingDetailFragment : BaseKotlinFragment() {
 
         if (list.size == 1) {
             val date0 = getCurrentDateInSpecificFormat(list[0].created_on)
-
             lineOrderPlaced.visibility = View.GONE
             llOrderdPlaced.visibility = View.VISIBLE
             tvOrderPlacedDate.text = date0
         } else if (list.size == 2) {
             val date0 = getCurrentDateInSpecificFormat(list[0].created_on)
             val date1 = getCurrentDateInSpecificFormat(list[1].created_on)
-
             lineApproved.visibility = View.GONE
             llOrderdPlaced.visibility = View.VISIBLE
             llOrderdAndApproved.visibility = View.VISIBLE

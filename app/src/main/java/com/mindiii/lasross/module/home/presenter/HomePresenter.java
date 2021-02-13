@@ -16,6 +16,7 @@ import com.mindiii.lasross.module.home.model.DealListResponse;
 import com.mindiii.lasross.module.home.model.LogoutResponse;
 import com.mindiii.lasross.module.home.model.MenuSliderResponse;
 import com.mindiii.lasross.module.home.model.ProductResponse;
+import com.mindiii.lasross.module.settings.model.SliderBannerResponse;
 import com.mindiii.lasross.network.API;
 import com.mindiii.lasross.network.ServiceGenerator;
 
@@ -243,4 +244,44 @@ public class HomePresenter {
             }
         });
     }
+
+    //home screen bannerSlider api
+    // slide menu api
+    public void callBannerSliderApi()
+    {
+        productListCallback.onShowBaseLoader();
+        final API api = ServiceGenerator.createService(API.class);
+        String token=session.getAuthToken();
+        Call<SliderBannerResponse> genderApi = api.callSlidingBannerApi(token);
+        genderApi.enqueue(new Callback<SliderBannerResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<SliderBannerResponse> call, @NonNull Response<SliderBannerResponse> response) {
+                productListCallback.onHideBaseLoader();
+                if (response.isSuccessful()) {
+                    productListCallback.onSuccesBannerSliderImage(response.body());
+                } else {
+                    APIErrors apiErrors = ErrorUtils.parseError(response);
+                    if (apiErrors.getMessage().equals("Invalid token")) {
+                        productListCallback.onTokenChangeError(apiErrors.getMessage());
+                    } else {
+                        productListCallback.onError(apiErrors.getMessage());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<SliderBannerResponse> call, @NonNull Throwable t) {
+                productListCallback.onHideBaseLoader();
+                if (t instanceof IOException) {
+                    //productListCallback.onError(mContext.getString(R.string.internet_connection));
+                } else {
+                    productListCallback.onError(mContext.getString(R.string.oops_wrong));
+                }
+            }
+        });
+    }
+
+
+
+
 }

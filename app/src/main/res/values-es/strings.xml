@@ -350,6 +350,8 @@
     <string name="something_worng">algo está mal</string>
     <string name="Please_full_name">Ingrese su nombre completo</string>
     <string name="select_size">selecciona el tamaño</string>
+    <string name="pick_up_a_bargain">Pick up a Bargain</string>
+    <string name="deleteAddress_msg">¿Estás seguro de que deseas eliminar esta dirección?</string>
 </resources>
 
     <!--<string name="place_key">AIzaSyAzlqPc1OwdMSrrVPLllUCKubclM_rcox0</string>-->

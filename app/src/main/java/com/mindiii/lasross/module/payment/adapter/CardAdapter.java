@@ -36,6 +36,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     private String cardSelection;
     private String crd_id = "";
     private long mLastClickTime = 0;
+    private ViewHolder mHolder = null;
 
     public CardAdapter(Context context, List<StripeSaveCardResponce.DataBean> cardList, ClickListener.CardClickListener cardClickListener, String cardSelection) {
         this.cardList = cardList;
@@ -59,6 +60,46 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         holder.tvCardNumberShow.setText(dataBean.getBrand());
         holder.tvExpDateShow.setText("**** **** **** " + dataBean.getLast4());
         holder.swipe.addDrag(SwipeLayout.DragEdge.Right, holder.swipe.findViewById(R.id.delete_post));
+        holder.swipe.addSwipeListener(new SwipeLayout.SwipeListener() {
+            @Override
+            public void onStartOpen(SwipeLayout layout) {
+
+               /* if (mHolder != holder && mHolder != null) {
+                    mHolder.itemView.findViewById(R.id.swipe).animate();
+                }
+                mHolder = holder;*/
+              //  SwipeLayout.Status st = holder.swipe.getOpenStatus();
+
+            }
+
+            @Override
+            public void onOpen(SwipeLayout layout) {
+
+            }
+
+            @Override
+            public void onStartClose(SwipeLayout layout) {
+
+            }
+
+            @Override
+            public void onClose(SwipeLayout layout) {
+
+            }
+
+            @Override
+            public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
+
+            }
+
+            @Override
+            public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
+                if (mHolder !=null && mHolder.swipe.getOpenStatus() == SwipeLayout.Status.Open) {
+                    mHolder.swipe.close();
+                }
+                mHolder = holder;
+            }
+        });
         holder.radioCardCheckBtn.setTag(position);
         holder.radioCardCheckBtn.setChecked(position == selectedPosition);
         if (cardSelection.equals("CardSelected")) {
@@ -66,6 +107,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         } else {
             holder.radioCardCheckBtn.setVisibility(View.GONE);
         }
+
+
     }
 
     @Override
