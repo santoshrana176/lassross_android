@@ -352,6 +352,7 @@ public class RegistrationActivity extends LasrossParentActivity implements View.
         if (loginResponse.getStatus().equalsIgnoreCase("success")) {
             session.createRegistration(loginResponse.getData().getUserDetail());
             session.setUserLoggedIn();
+            session.setNotificatioStatus(loginResponse.getData().getUserDetail().getPush_alert_status());
             session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
             if (loginResponse.getMessageCode().equalsIgnoreCase("social_reg")) {
                 CommonUtils.toastMessage(RegistrationActivity.this, loginResponse.getMessage());
@@ -376,6 +377,7 @@ public class RegistrationActivity extends LasrossParentActivity implements View.
         if (loginResponse.getStatus().equalsIgnoreCase("success")) {
             session.createRegistration(loginResponse.getData().getUserDetail());
              session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
+            session.setNotificatioStatus(loginResponse.getData().getUserDetail().getPush_alert_status());
             session.setUserLoggedIn();
        Intent intent=     new Intent(RegistrationActivity.this, SubscriptionActivity.class);
            intent.putExtra("from","Signup Screen");

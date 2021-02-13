@@ -48,31 +48,29 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
     private var session: Session? = null
     lateinit var changePasswordDialog: Dialog
     var selectedLanguage = ""
-    var  status =""
+    var status = ""
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         session = Session(this)
-       // setAppLocale(session!!.getIsEnglishLanguage())
+        // setAppLocale(session!!.getIsEnglishLanguage())
         setContentView(R.layout.setting_activty_40)
-    val status1=session!!.notificatioStatus
-        if (status1.isEmpty()){
-            status="0"
-            Glide.with(this).load(R.drawable.ico_toggle_off).into(notificationSwitch);
-        }else if (status1.equals("1")){
-            status="1"
-            Glide.with(this).load(R.drawable.ico_toggle_on).into(notificationSwitch);
-        }else{
-            status="0"
-            Glide.with(this).load(R.drawable.ico_toggle_off).into(notificationSwitch);
-        }
+        val status1 = session!!.notificatioStatus
+         if (status1.equals("1")) {
+            status = "1"
+             notificationSwitch.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ico_toggle_on));
+         } else {
+            status = "0"
+            notificationSwitch.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ico_toggle_off));
+         }
         val window = this.window
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = this.resources.getColor(R.color.home_header_bg1)
         setOnClicks(rlEditProfile, rlChangePassword, subscriptionPlans, iv_back, tvSettingLogout,
-                rlTermsCondition, rlPrivacyPolicy, rlFeedback, rlEnglish, rlSpanish,notificationSwitch)
+                rlTermsCondition, rlPrivacyPolicy, rlFeedback, rlEnglish, rlSpanish, notificationSwitch)
     }
 
     fun setAppLocale(locale: String) {
@@ -109,9 +107,11 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
                 onBackPressed()
             }
             R.id.notificationSwitch -> {
-                 if ( status.equals("1")){
+                if (status.equals("1")) {
+                    status = "0"
                     notificatioOnOffApi("0")
-                }else{
+                } else {
+                    status = "1"
                     notificatioOnOffApi("1")
                 }
             }
@@ -155,10 +155,12 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
             }
         }
     }
+
     private fun updateViews(languageCode: String) {
         val context = LocaleHelper.setLocale(this, languageCode)
         val resources: Resources = context.resources
     }
+
     fun callLanguageApi(countryLanguageCode: String) {
         LanguagePresenter(this, this).callLanguageApi(countryLanguageCode)
     }
@@ -186,7 +188,8 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
     private fun callLogoutApi() {
         SettingsPresenter(this, this).callLogoutApi()
     }
-    private fun notificatioOnOffApi(status:String) {
+
+    private fun notificatioOnOffApi(status: String) {
         SettingsPresenter(this, this).callNotificationOnOff(status)
     }
 
@@ -320,10 +323,10 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
             updateViews(selectedLanguage)
             if (selectedLanguage.equals("en")) {
                 session?.language = "en"
-                LanguageUtils.language(this, selectedLanguage,true)
+                LanguageUtils.language(this, selectedLanguage, true)
             } else if (selectedLanguage.equals("es")) {
                 session?.language = "es"
-                LanguageUtils.language(this, selectedLanguage,true)
+                LanguageUtils.language(this, selectedLanguage, true)
             }
 
         } else {
@@ -336,20 +339,17 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
     }
 
     override fun onSuccesNotifcationOnOff(logoutResponse: NotificationAlertResponse?) {
-         // on notification response
-
-        if ( status.equals("1")){
-            session!!.notificatioStatus="1"
-            Glide.with(this).load(R.drawable.ico_toggle_on).into(notificationSwitch);
-        }else{
-            session!!.notificatioStatus="1"
-            Glide.with(this).load(R.drawable.ico_toggle_off).into(notificationSwitch);
-        }
+        // on notification response
+        session!!.notificatioStatus = status
+        if (status.equals("1")) {
+              notificationSwitch.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ico_toggle_on));
+         } else {
+            notificationSwitch.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ico_toggle_off));
+             }
     }
 
     override fun onSuccessTermsPolicy(termsPolicyResponse: TermsPolicyResponse?) {
     }
-
 
 
 }

@@ -452,6 +452,7 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
         if (loginResponse.getStatus().equalsIgnoreCase("success")) {
            // Log.e("authToken::::::::",""+loginResponse.getData().getUserDetail().getAuth_token());
             session.createRegistration(loginResponse.getData().getUserDetail());
+            session.setNotificatioStatus(loginResponse.getData().getUserDetail().getPush_alert_status());
             session.setUserLoggedIn();
           session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
@@ -466,6 +467,7 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
         if (loginResponse.getStatus().equalsIgnoreCase("success")) {
             session.createRegistration(loginResponse.getData().getUserDetail());
             session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
+            session.setNotificatioStatus(loginResponse.getData().getUserDetail().getPush_alert_status());
             session.setUserLoggedIn();
             if (loginResponse.getMessageCode().equalsIgnoreCase("social_reg")) {
                 CommonUtils.toastMessage(LoginActivity.this, loginResponse.getMessage());
