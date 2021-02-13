@@ -30,11 +30,14 @@ import com.mindiii.lasross.module.payment.model.FinalPaymentResponse;
 import com.mindiii.lasross.module.productDetail.model.ProductDetailResponse;
 import com.mindiii.lasross.module.settings.model.FeedbackResponse;
 import com.mindiii.lasross.module.settings.model.LanguageModel;
+import com.mindiii.lasross.module.settings.model.NotificationAlertResponse;
 import com.mindiii.lasross.module.settings.model.TermsPolicyResponse;
 import com.mindiii.lasross.module.subscription.SubscriptionResponse;
 import com.mindiii.lasross.module.subscription.presenter.model.SubscribeResponse;
 import com.mindiii.lasross.module.wishlist.model.AllClearResponse;
 import com.mindiii.lasross.module.wishlist.model.WishListResponse;
+
+import org.intellij.lang.annotations.Language;
 
 
 public interface ApiCallback {
@@ -206,6 +209,7 @@ public interface ApiCallback {
         void onTokenChangeError(String errorMessage);
 
         void onSuccessLogout(LogoutResponse logoutResponse);
+        void onSuccesNotifcationOnOff(NotificationAlertResponse logoutResponse);
 
         void onSuccessCurrentSubscribedPlan(SubscribeResponse response);
 

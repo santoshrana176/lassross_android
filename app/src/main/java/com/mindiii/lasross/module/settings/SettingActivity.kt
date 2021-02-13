@@ -14,6 +14,9 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -24,6 +27,7 @@ import com.mindiii.lasross.module.address.model.AddAddressResponse
 import com.mindiii.lasross.module.home.model.LogoutResponse
 import com.mindiii.lasross.module.profile.ProfileActivity
 import com.mindiii.lasross.module.settings.model.LanguageModel
+import com.mindiii.lasross.module.settings.model.NotificationAlertResponse
 import com.mindiii.lasross.module.settings.model.TermsPolicyResponse
 import com.mindiii.lasross.module.settings.presenter.LanguagePresenter
 import com.mindiii.lasross.module.settings.presenter.SettingsPresenter
@@ -32,6 +36,7 @@ import com.mindiii.lasross.module.subscription.presenter.model.SubscribeResponse
 import com.mindiii.lasross.utils.CommonUtils
 import com.mindiii.lasross.utils.LanguageUtils
 import kotlinx.android.synthetic.main.custom_dialog_settings.*
+import kotlinx.android.synthetic.main.fragment_update.*
 import kotlinx.android.synthetic.main.logout_view.*
 import kotlinx.android.synthetic.main.reset_password_dialog_artboard_35.*
 import kotlinx.android.synthetic.main.setting_activty_40.*
@@ -43,7 +48,7 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
     private var session: Session? = null
     lateinit var changePasswordDialog: Dialog
     var selectedLanguage = ""
-
+    var  status =""
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,13 +56,23 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
         session = Session(this)
        // setAppLocale(session!!.getIsEnglishLanguage())
         setContentView(R.layout.setting_activty_40)
-
+    val status1=session!!.notificatioStatus
+        if (status1.isEmpty()){
+            status="0"
+            Glide.with(this).load(R.drawable.ico_toggle_off).into(notificationSwitch);
+        }else if (status1.equals("1")){
+            status="1"
+            Glide.with(this).load(R.drawable.ico_toggle_on).into(notificationSwitch);
+        }else{
+            status="0"
+            Glide.with(this).load(R.drawable.ico_toggle_off).into(notificationSwitch);
+        }
         val window = this.window
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = this.resources.getColor(R.color.home_header_bg1)
         setOnClicks(rlEditProfile, rlChangePassword, subscriptionPlans, iv_back, tvSettingLogout,
-                rlTermsCondition, rlPrivacyPolicy, rlFeedback, rlEnglish, rlSpanish)
+                rlTermsCondition, rlPrivacyPolicy, rlFeedback, rlEnglish, rlSpanish,notificationSwitch)
     }
 
     fun setAppLocale(locale: String) {
@@ -92,6 +107,13 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
             }
             R.id.iv_back -> {
                 onBackPressed()
+            }
+            R.id.notificationSwitch -> {
+                 if ( status.equals("1")){
+                    notificatioOnOffApi("0")
+                }else{
+                    notificatioOnOffApi("1")
+                }
             }
             R.id.tvSettingLogout -> {
                 if (CommonUtils.isNetworkAvailable(this)) {
@@ -152,8 +174,8 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
         dialog.window!!.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
         dialog.setContentView(R.layout.logout_view)
         dialog.tvMessagesLogout.setText(message)
-        dialog.tvPopupNoLogout.setOnClickListener(View.OnClickListener { dialog.dismiss() })
-        dialog.tvPopupYesLogout.setOnClickListener(View.OnClickListener {
+        dialog.tvPopupNoLogout.setOnClickListener({ dialog.dismiss() })
+        dialog.tvPopupYesLogout.setOnClickListener({
             callLogoutApi()
             dialog.dismiss()
         })
@@ -162,6 +184,9 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
 
     private fun callLogoutApi() {
         SettingsPresenter(this, this).callLogoutApi()
+    }
+    private fun notificatioOnOffApi(status:String) {
+        SettingsPresenter(this, this).callNotificationOnOff(status)
     }
 
     private fun openChangePasswordDialog() {
@@ -308,7 +333,22 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
         session!!.logout()
     }
 
+    override fun onSuccesNotifcationOnOff(logoutResponse: NotificationAlertResponse?) {
+         // on notification response
+
+        if ( status.equals("1")){
+            session!!.notificatioStatus="1"
+            Glide.with(this).load(R.drawable.ico_toggle_on).into(notificationSwitch);
+        }else{
+            session!!.notificatioStatus="1"
+            Glide.with(this).load(R.drawable.ico_toggle_off).into(notificationSwitch);
+        }
+    }
+
     override fun onSuccessTermsPolicy(termsPolicyResponse: TermsPolicyResponse?) {
     }
+
+
+
 }
 

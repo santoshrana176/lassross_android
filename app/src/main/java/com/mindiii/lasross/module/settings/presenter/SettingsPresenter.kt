@@ -7,6 +7,8 @@ import com.mindiii.lasross.base.ApiCallback
 import com.mindiii.lasross.base.errorResponse.ErrorUtils
 import com.mindiii.lasross.module.address.model.AddAddressResponse
 import com.mindiii.lasross.module.home.model.LogoutResponse
+import com.mindiii.lasross.module.settings.model.LanguageModel
+import com.mindiii.lasross.module.settings.model.NotificationAlertResponse
 import com.mindiii.lasross.module.settings.model.TermsPolicyResponse
 import com.mindiii.lasross.module.subscription.presenter.model.SubscribeResponse
 import com.mindiii.lasross.network.API
@@ -73,6 +75,37 @@ class SettingsPresenter(var mContext: Context, var changePassword: ApiCallback.S
             }
 
             override fun onFailure(call: Call<LogoutResponse>, t: Throwable) {
+                changePassword.onHideBaseLoader()
+                if (t is IOException) {
+                    changePassword.onError(mContext.getString(R.string.internet_connection))
+                } else {
+                    changePassword.onError(mContext.getString(R.string.oops_wrong))
+                }
+            }
+        })
+    }
+
+    fun callNotificationOnOff(status: String) {//a02ff31ad64c18e919636be952f446650db284a8
+        val session = Session(mContext).authToken
+        changePassword.onShowBaseLoader()
+        val api = ServiceGenerator.createService(API::class.java)
+        val genderApi = api.callNotificationOnOff(session,status)
+        genderApi.enqueue(object : Callback<NotificationAlertResponse> {
+            override fun onResponse(call: Call<NotificationAlertResponse>, response: Response<NotificationAlertResponse>) {
+                changePassword.onHideBaseLoader()
+                if (response.isSuccessful) {
+                    changePassword.onSuccesNotifcationOnOff(response.body())
+                } else {
+                    val apiErrors = ErrorUtils.parseError(response)
+                    if (apiErrors.message == "Invalid token") {
+                        changePassword.onTokenChangeError(apiErrors.message)
+                    } else {
+                        changePassword.onError(apiErrors.message)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<NotificationAlertResponse>, t: Throwable) {
                 changePassword.onHideBaseLoader()
                 if (t is IOException) {
                     changePassword.onError(mContext.getString(R.string.internet_connection))

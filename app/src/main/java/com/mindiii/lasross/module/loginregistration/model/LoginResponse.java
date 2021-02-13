@@ -84,6 +84,8 @@ public class LoginResponse {
             private String social_type;
             private String social_id;
             private String stripe_customer_id;
+            private String push_alert_status;
+
             //private SubscriptionDetailBean subscription_detail;
 
 

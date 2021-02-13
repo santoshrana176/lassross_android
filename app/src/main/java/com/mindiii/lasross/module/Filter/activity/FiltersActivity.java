@@ -21,7 +21,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
- import com.jaygoo.widget.OnRangeChangedListener;
+import com.jaygoo.widget.OnRangeChangedListener;
 import com.jaygoo.widget.RangeSeekBar;
 import com.mindiii.lasross.R;
 import com.mindiii.lasross.app.session.Session;
@@ -50,7 +50,7 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
     private ImageView ivItemColorIcon;
     private ImageView ivItemPriceIcon;
     private LinearLayout llItemSize, llItemColor, llItemPrice, llPriceTouch, llSearchlayout;
-    private Button btnApply,btnClose;
+    private Button btnApply, btnClose;
     private VariantAdapter variantAdapter;
     private String sizeName = "", colorName = "";
     private ArrayList<String> sb;
@@ -60,6 +60,7 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
     private String sizeIds = "", colorIds = "", prizeLow = "", priceHigh = "";
     private String childCatName = "", myCatId = "", dealId = "", popularity = "", average_rating = "", lowPrice = "", highPrice = "", latest = "";
     private Session session;
+    boolean flag=false;
     //private CrystalRangeSeekbar crystalRangeSeekbar;
     private RangeSeekBar seekbar_distance;
     private int minPrice, maxPrice;
@@ -70,10 +71,13 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.filters_activity_layout_12);
 
-        minPrice = getIntent().getIntExtra("minPrice", 0);
-        maxPrice = getIntent().getIntExtra("maxPrice", 0);
+        if (getIntent().getStringExtra("from") != null) {
+            minPrice = getIntent().getIntExtra("lowPrice", 0);
+            maxPrice = getIntent().getIntExtra("highPrice", 0);
+            //flag = true;
+        }
 
-        if (getIntent().getStringExtra("childCatName") != null) {
+     /*   if (getIntent().getStringExtra("childCatName") != null) {
             childCatName = getIntent().getStringExtra("childCatName");
             myCatId = getIntent().getStringExtra("myCatId");
             dealId = getIntent().getStringExtra("dealId");
@@ -82,18 +86,18 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
             lowPrice = getIntent().getStringExtra("lowPrice");
             highPrice = getIntent().getStringExtra("highPrice");
             latest = getIntent().getStringExtra("latest");
-        }
+        }*/
+
         session = new Session(FiltersActivity.this);
+
         init();
         apiCalling();
-
-        tvMinPriceRange.setText(minPrice + "");
-        tvMaxPriceRange.setText(maxPrice + "");
 
         Window window = this.getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(this.getResources().getColor(R.color.home_header_bg1));
+
     }
 
     private void apiCalling() {
@@ -120,7 +124,7 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
         ivItemSizeIcon = findViewById(R.id.ivItemSizeIcon);
         ivItemColorIcon = findViewById(R.id.ivItemColorIcon);
         ivItemPriceIcon = findViewById(R.id.ivItemPriceIcon);
-       // crystalRangeSeekbar = findViewById(R.id.rangeSeekbar3);
+        // crystalRangeSeekbar = findViewById(R.id.rangeSeekbar3);
         seekbar_distance = findViewById(R.id.seekbar_distance);
         llItemSize = findViewById(R.id.llItemSize);
         llItemColor = findViewById(R.id.llItemColor);
@@ -131,6 +135,13 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
         ivItemPriceArrow = findViewById(R.id.ivItemPriceArrow);
         ivItemSizeIcon = findViewById(R.id.ivItemSizeIcon);
 
+        if (maxPrice != 0) {
+            tvMinPriceRange.setText(minPrice + "");
+            tvMaxPriceRange.setText(maxPrice + "");
+        } else {
+            tvMinPriceRange.setText(session.getFilterMinPrice());
+            tvMaxPriceRange.setText(session.getFilterMaxPrice());
+        }
         seekbar_distance.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
@@ -138,6 +149,7 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
                 String mainChapterNumber1 = String.valueOf(rightValue).split("\\.", 2)[0];
                 tvMinPriceRange.setText(mainChapterNumber + "");
                 tvMaxPriceRange.setText(mainChapterNumber1 + "");
+                //flag=true;
             }
 
             @Override
@@ -153,16 +165,25 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
 
 
         if (session.getFilterMaxPrice() != null && !session.getFilterMaxPrice().equals("")) {
-            tvMaxPriceRange.setText(session.getFilterMaxPrice());
+            //  tvMaxPriceRange.setText(session.getFilterMaxPrice());
             seekbar_distance.setRange(Float.parseFloat(session.getFilterMinPrice()), Float.parseFloat(session.getFilterMaxPrice()));
-            seekbar_distance.setValue(Float.parseFloat(session.getFilterMinPrice()), Float.parseFloat(session.getFilterMaxPrice()));
         } else {
-            seekbar_distance.setRange(minPrice,maxPrice);
+            seekbar_distance.setRange(minPrice, maxPrice);
+        }
+
+
+        if (maxPrice == 0) {
+            // tvMaxPriceRange.setText(session.getFilterMaxPrice());
+            seekbar_distance.setValue(Float.parseFloat(session.getFilterMinPrice()), Float.parseFloat(session.getFilterMaxPrice()));
+
+        } else {
+            //tvMinPriceRange.setText(minPrice + "");
+            // tvMaxPriceRange.setText(maxPrice + "");
             seekbar_distance.setValue(minPrice, maxPrice);
         }
-        if (session.getFilterMinPrice() != null && !session.getFilterMinPrice().equals("")) {
+       /* if (session.getFilterMinPrice() != null && !session.getFilterMinPrice().equals("")) {
             tvMinPriceRange.setText(session.getFilterMinPrice());
-        }
+        }*/
 
      /*   crystalRangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
             @Override
@@ -292,11 +313,13 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
             public void onSizeClick(String size) {
                 System.out.println("adapter........size added COLOR" + size);
                 sb.add(size);
+             //   flag = true;
             }
 
             @Override
             public void onColorClick(String color) {
                 System.out.println("adapter........color added COLOR" + color);
+              //  flag = true;
                 sb1.add(color);
             }
 
@@ -456,7 +479,10 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
 
                 prizeLow = tvMinPriceRange.getText().toString().trim();
                 priceHigh = tvMaxPriceRange.getText().toString().trim();
-                session.setFilterPrice(prizeLow, priceHigh);
+                //  session.setFilterPrice(prizeLow, priceHigh);
+                /*if (!sizeIds.isEmpty() || !colorIds.isEmpty()) {
+                    flag = true;
+                }*/
 
                 Intent intent = new Intent(FiltersActivity.this, CoatsActivity.class);
                 intent.putExtra("title", "");
@@ -464,30 +490,22 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
                 intent.putExtra("colorIds", colorIds);
                 intent.putExtra("prizeLow", prizeLow);
                 intent.putExtra("priceHigh", priceHigh);
-                intent.putExtra("childCategoryName", childCatName);
-                intent.putExtra("myCategoryId", myCatId);
-                intent.putExtra("dealId", dealId);
-                intent.putExtra("lowPrice", lowPrice);
-                intent.putExtra("highPrice", highPrice);
-                intent.putExtra("latest", latest);
-                intent.putExtra("popularity", popularity);
-                intent.putExtra("average_rating", average_rating);
-                intent.putExtra("minPrice", Integer.parseInt(prizeLow));
-                intent.putExtra("maxPrice", Integer.parseInt(priceHigh));
-                startActivity(intent);
+                setResult(RESULT_OK, intent);
                 finish();
                 break;
 
             case R.id.tvClearAll:
                 String min = session.getProductDetailMinValue();
                 String max = session.getProductDetailMaxValue();
+                flag = true;
                 // llSearchlayout.setVisibility(View.VISIBLE);
                 tvMinPriceRange.setText(session.getProductDetailMinValue());
                 tvMaxPriceRange.setText(session.getProductDetailMaxValue());
+                seekbar_distance.setRange(Float.parseFloat(min), Float.parseFloat(max));
                 seekbar_distance.setValue(Float.parseFloat(min), Float.parseFloat(max));
                 //crystalRangeSeekbar.setMinValue(Float.parseFloat(min));
                 //crystalRangeSeekbar.setMaxValue(Float.parseFloat(max));
-                session.setFilterPrice(null, null);
+                // session.setFilterPrice(null, null);
                 session.setFilterSizeIds(null);
                 session.setFilterColorIds(null);
                 sb.clear();
@@ -496,8 +514,15 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
                 variantAdapter.notifyDataSetChanged();
 
                 break;
-                case R.id.btnClose:
-               onBackPressed();
+            case R.id.btnClose:
+                if (flag) {
+                    setResult(RESULT_CANCELED);
+                    finish();
+                } else {
+                    setResult(501);
+                    finish();
+                    //onBackPressed();
+                }
                 break;
         }
     }

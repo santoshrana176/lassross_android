@@ -48,6 +48,7 @@ public class Session {
     private static final String productDetailMaxValue = "maxValue";
     private static final String isEnglishLanguage = "isEnglishLanguage";
     private static final String appLanguage = "AppLanguage";
+    private static final String notificationStatus = "notificationStatus";
     private Context context;
     private SharedPreferences mypref, mypref2;
     private SharedPreferences.Editor editor, editor2;
@@ -87,6 +88,20 @@ public class Session {
     public String getAuthToken() {
         return mypref.getString(AuthToken, "");
     }
+
+
+    public void setNotificatioStatus(String authToken) {//896320c98cfe4a7b2283a9c1438b93d6c21dbfa8
+        editor.putString(notificationStatus, authToken);
+        editor.apply();
+    }
+
+    public String getNotificatioStatus() {
+        return mypref.getString(notificationStatus, "");
+    }
+
+
+
+
 
     public void showPopup(boolean isShowPopup) {
         editor.putBoolean(isShow, isShowPopup);

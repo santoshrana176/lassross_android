@@ -20,6 +20,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -67,6 +68,9 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
     private Session session;
     private boolean IsSearch = true;
     private int minPrice, maxPrice;
+    private int seekBarLowPreice = 0;
+    private int SeekBarHighPrice = 0;
+    private boolean flag = true;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -80,11 +84,11 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
 
         if (getIntent().getStringExtra("ChildCatName") != null) {
             childCatName = getIntent().getStringExtra("ChildCatName");
-          String deal= getIntent().getStringExtra("title");
-           if (deal.isEmpty())
-            tvWishList.setText(childCatName);
-           else
-            tvWishList.setText(deal);
+            String deal = getIntent().getStringExtra("title");
+            if (deal.isEmpty())
+                tvWishList.setText(childCatName);
+            else
+                tvWishList.setText(deal);
 
 
             productListBeans.clear();
@@ -104,8 +108,7 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
             childCatName = "";
             IsSearch = true;
             apiCalling(searchText, popularity, average_rating, latest, lowPrice, highPrice, sizeIds, colorIds, prizeLow, priceHigh);
-        }
-        else if (getIntent().getStringExtra("childCategoryName") != null) {
+        } else if (getIntent().getStringExtra("childCategoryName") != null) {
             productListBeans.clear();
             sizeIds = getIntent().getStringExtra("sizeIds");
             colorIds = getIntent().getStringExtra("colorIds");
@@ -137,9 +140,31 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
         bag_icon.setOnClickListener(this);
     }
 
-    private void apiCalling(String search, String popularity, String average_rating, String latests, String low_price, String high_price, String sizeId, String colorId, String prizeLows, String priceHighs) {
-        new CoatPresenter(this, this).callGetProductListApi(search, "18", String.valueOf(offset), sizeId,
-                colorId, prizeLows, priceHighs, popularity, average_rating, latests, low_price, high_price, myCatId, dealId);
+    private void apiCalling(String search,
+                            String popularity,
+                            String average_rating,
+                            String latests,
+                            String low_price,
+                            String high_price,
+                            String sizeId,
+                            String colorId,
+                            String prizeLows,
+                            String priceHighs) {
+        new CoatPresenter(this, this).
+                callGetProductListApi(search,
+                        "18",
+                        String.valueOf(offset),
+                        sizeId,
+                        colorId,
+                        prizeLows,
+                        priceHighs,
+                        popularity,
+                        average_rating,
+                        latests,
+                        low_price,
+                        high_price,
+                        myCatId,
+                        dealId);
     }
 
     private void setProductAdapter() {
@@ -206,6 +231,7 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
                     if (page != 0) {
                         //coatAdapter.showLoading(true);
                         offset += 18; //load 18 items in recyclerView
+
                         apiCalling(searchText, popularity, average_rating, latest, lowPrice, highPrice, sizeIds, colorIds, prizeLow, priceHigh);
                     }
                 }
@@ -248,7 +274,7 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
 
     @Override
     public void onSuccessProductList(ProductResponse productResponse) {
-
+        flag = true;
         if (!IsSearch) {
             productListBeans.clear();
             productListBeans.addAll(productResponse.getData().getProduct_list());
@@ -304,21 +330,16 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ivFilterIcon:
-                startActivity(new Intent(CoatsActivity.this, FiltersActivity.class)
+                Intent intent = new Intent(CoatsActivity.this, FiltersActivity.class)
                         .putExtra("childCatName", tvWishList.getText().toString())
-                        .putExtra("myCatId", myCatId)
-                        .putExtra("lowPrice", lowPrice)
-                        .putExtra("highPrice", highPrice)
-                        .putExtra("latest", latest)
-                        .putExtra("popularity", popularity)
-                        .putExtra("average_rating", average_rating)
-                        .putExtra("minPrice", minPrice)
-                        .putExtra("maxPrice", maxPrice)
-                );
+                        .putExtra("lowPrice", seekBarLowPreice)
+                        .putExtra("highPrice", SeekBarHighPrice)
+                        .putExtra("from", "coatsActivity");
+                startActivityForResult(intent, 50001);
 
                 break;
             case R.id.ivBackButton:
-                session.setFilterPrice(null, null);
+                // session.setFilterPrice(null, null);
                 session.setFilterSizeIds(null);
                 session.setFilterColorIds(null);
                 onBackPressed();
@@ -333,10 +354,67 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
         }
     }
 
+   /* @Override
+    public void onActivityReenter(int resultCode, Intent data) {
+        super.onActivityReenter(resultCode, data);
+
+
+    }*/
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            offset = 0;
+            sizeIds = data.getStringExtra("sizeIds");
+            colorIds = data.getStringExtra("colorIds");
+            seekBarLowPreice = Integer.parseInt(data.getStringExtra("prizeLow"));
+            SeekBarHighPrice = Integer.parseInt(data.getStringExtra("priceHigh"));
+            flag = false;
+
+            new CoatPresenter(this, this).
+                    callGetProductListApi("",
+                            "18",
+                            String.valueOf(offset = 0),
+                            sizeIds,
+                            colorIds,
+                            Integer.toString(seekBarLowPreice),
+                            Integer.toString(SeekBarHighPrice),
+                            popularity,
+                            average_rating,
+                            latest,
+                            lowPrice,
+                            highPrice,
+                            myCatId,
+                            dealId);
+        }else if (resultCode==501){
+
+        }else {
+                  seekBarLowPreice = 0;
+                  SeekBarHighPrice = 0;
+            new CoatPresenter(this, this).
+                    callGetProductListApi("",
+                            "18",
+                            String.valueOf(offset = 0),
+                            sizeIds,
+                            colorIds,
+                            "",
+                            "",
+                            popularity,
+                            average_rating,
+                            latest,
+                            lowPrice,
+                            highPrice,
+                            myCatId,
+                            dealId);
+        }
+
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        session.setFilterPrice(null, null);
+        //   session.setFilterPrice(null, null);
         session.setFilterSizeIds(null);
         session.setFilterColorIds(null);
     }
@@ -490,7 +568,7 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
                     rbPoplarity.setTypeface(semi_bold);
                     productListBeans.clear();
                     searchText = "";
-                    popularity = "popularity=1";
+                    popularity = "1";
                     average_rating = "";
                     latest = "";
                     lowPrice = "";
@@ -624,6 +702,7 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
             tvCartItemCountShop.setVisibility(View.VISIBLE);
             tvCartItemCountShop.setText(session.getCartItemCount());
         }
-        apiCalling(searchText, popularity, average_rating, latest, lowPrice, highPrice, sizeIds, colorIds, prizeLow, priceHigh);
+        if (flag)
+            apiCalling(searchText, popularity, average_rating, latest, lowPrice, highPrice, sizeIds, colorIds, prizeLow, priceHigh);
     }
 }

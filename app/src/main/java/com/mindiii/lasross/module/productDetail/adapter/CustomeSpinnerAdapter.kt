@@ -9,8 +9,8 @@ import android.widget.TextView
 import com.mindiii.lasross.R
 import com.mindiii.lasross.module.productDetail.model.VariantValue
 
-class CustomeSpinnerAdapter (val context: Context,
-                             var arrayList: ArrayList<VariantValue>/*,
+class CustomeSpinnerAdapter(val context: Context,
+                            var arrayList: ArrayList<VariantValue>/*,
                              var mSelectedItemListner:SelectedItem*/
 ) : BaseAdapter() {
 
@@ -18,7 +18,15 @@ class CustomeSpinnerAdapter (val context: Context,
             context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-
+        /*  var v: View? = null
+          if (position === 0) {
+              val tv = TextView(context)
+              tv.visibility = View.GONE
+              v = tv
+          } else {
+              v = super.getDropDownView(position, null, parent)
+          }
+          return v!!*/
         val view: View
         val vh: ItemHolder
         if (convertView == null) {
@@ -29,10 +37,12 @@ class CustomeSpinnerAdapter (val context: Context,
             view = convertView
             vh = view.tag as ItemHolder
         }
-        vh.label.text = arrayList.get(position).variant_value
-       /* vh.label.setOnClickListener {
-            mSelectedItemListner.selectedItem(arrayList[position].variantValueId,arrayList.get(position).variant_value)
-        }*/
+        if (position != 0) {
+            vh.label.visibility = View.VISIBLE
+            vh.label.text = arrayList.get(position).variant_value
+
+        } else
+            vh.label.visibility = View.GONE
         return view
     }
 
@@ -52,6 +62,7 @@ class CustomeSpinnerAdapter (val context: Context,
         return super.getDropDownView(position, convertView, parent)
 
     }
+
     private class ItemHolder(row: View?) {
         val label: TextView
 
@@ -61,7 +72,7 @@ class CustomeSpinnerAdapter (val context: Context,
     }
 
     interface SelectedItem {
-        fun selectedItem(position1: String,name:String)
+        fun selectedItem(position1: String, name: String)
     }
 
 }
