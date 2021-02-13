@@ -112,7 +112,7 @@ class WishListActivity : LasrossParentKotlinActivity(), ApiCallback.UserWishList
         userWishList.addAll(wishListResponse!!.data?.user_wishlist!! as ArrayList<UserWishlist>)
         count = (wishListResponse.data?.total_records)!!.toInt()
         when {
-            wishListResponse.data?.total_records == "0" -> tvWishlistTotalItem.setText("(0 item)")
+            wishListResponse.data?.total_records == "0" -> tvWishlistTotalItem.setText(getString(R.string.item_zero))
             wishListResponse.data?.total_records == "1" -> tvWishlistTotalItem.setText("(" + wishListResponse.data?.total_records + " item)")
             else -> tvWishlistTotalItem.text = "(" + wishListResponse.data?.total_records + " items)"
         }

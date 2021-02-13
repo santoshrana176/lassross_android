@@ -430,7 +430,7 @@
                                 android:gravity="start|center_vertical"
                                 android:layout_centerVertical="true"
                                 android:fontFamily="@font/ibmplexsans_regular"
-                                android:hint="select color"
+                                android:hint="@string/select_color"
                                 android:textSize="@dimen/_10sdp"
                                 android:paddingStart="@dimen/_5sdp"
                                 android:layout_toStartOf="@id/iv_Dropdown"/>

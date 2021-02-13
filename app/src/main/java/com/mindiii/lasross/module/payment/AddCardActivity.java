@@ -294,15 +294,14 @@ public class AddCardActivity extends LasrossParentActivity implements View.OnCli
         Objects.requireNonNull(yearDialog.getWindow()).setLayout((width * 10) / 11, WindowManager.LayoutParams.WRAP_CONTENT);
         Button set = yearDialog.findViewById(R.id.button1);
         Button cancel = yearDialog.findViewById(R.id.button2);
+        set.setText(getString(R.string.set));
         final NumberPicker yearPicker = yearDialog.findViewById(R.id.numberPicker1);
         final NumberPicker monthPicker = yearDialog.findViewById(R.id.numberPicker2);
-
         monthPicker.setMinValue(1);
         monthPicker.setMaxValue(12);
         monthPicker.setWrapSelectorWheel(false);
         monthPicker.setValue(month);
         monthPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
-
 
         yearPicker.setMaxValue(2050);
         yearPicker.setMinValue(Calendar.getInstance().get(Calendar.YEAR));

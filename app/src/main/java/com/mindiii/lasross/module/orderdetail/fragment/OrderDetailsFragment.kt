@@ -105,7 +105,7 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
             dialog.myRatingBar1.rating = rating
 
             if (description.isEmpty()) {
-                dialog.etReviews.text = "no reviews".toEditable()
+                dialog.etReviews.text = getString(R.string.no_review_given).toEditable()
                 dialog.etReviews.isEnabled = false
             } else if (!description.isEmpty()) {
                 dialog.etReviews.text = description.toEditable()

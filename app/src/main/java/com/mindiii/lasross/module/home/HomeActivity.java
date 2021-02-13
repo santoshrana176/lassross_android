@@ -540,10 +540,10 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
 
     private void menuExpandableStatic() {
 
-        listDataHeader2.add("Wishlist");
-        listDataHeader2.add("Order");
-        listDataHeader2.add("Cart");
-        listDataHeader2.add("Logout");
+        listDataHeader2.add(getString(R.string.wishlist_));
+        listDataHeader2.add(getString(R.string.order_));
+        listDataHeader2.add(getString(R.string.cart_text));
+        listDataHeader2.add(getString(R.string.logout_));
 
         List<String> wishList = new ArrayList<>();
         List<String> order = new ArrayList<>();

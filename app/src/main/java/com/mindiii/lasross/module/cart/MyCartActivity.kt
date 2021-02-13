@@ -190,7 +190,7 @@ class MyCartActivity : LasrossParentKotlinActivity(), ApiCallback.GetCartCallbac
                 tvMyCartTotalItem.visibility = View.VISIBLE
             }
             cartList.isEmpty() -> {
-                tvMyCartTotalItem.text = "(0 item)"
+                tvMyCartTotalItem.text = getString(R.string.item_zero)
                 tvMyCartTotalItem.visibility = View.VISIBLE
             }
             else -> {

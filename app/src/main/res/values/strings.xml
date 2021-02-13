@@ -197,7 +197,7 @@
     <string name="card_add_success">Card added successfully</string>
     <string name="plan_subscribe_success">Your subscription has been done successfully</string>
     <string name="auto_recurr_stop_success">Auto recurring stopped successfully</string>
-    <string name="free">Free</string>
+    <string name="free">Free Plan</string>
     <string name="confirm">Confirm</string>
     <string name="home">Home</string>
     <string name="no">No</string>
@@ -332,10 +332,10 @@
     <string name="no_of_itemss">NO OF ITEM</string>
     <string name="question">How long does it take for me to receive my order?</string>
     <string name="answer">Meditation williamsburg kogi blog bushwick pitchfork polaroid austin dreamcatcher narwhal taxidermy tofu gentrify aesthetic.</string>
-    <string name="rating">The Rating field is required</string>
+    <string name="rating">Please select atleast one rating</string>
     <string name="please_selelct_size">Please select size</string>
     <string name="please_select_color">Please select color</string>
-    <string name="feedback_required">The Feedback is required</string>
+    <string name="feedback_required">Please write your feedback</string>
     <string name="myorder">MyOrder</string>
     <string name="address_select">please select address</string>
     <string name="Please_select_address">Please select address</string>
@@ -349,6 +349,18 @@
     <string name="something_worng">something is wrong</string>
     <string name="Please_full_name">Please enter full name</string>
     <string name="select_size">select size</string>
+    <string name="Terms_condition">Terms and Conditions</string>
+    <string name="no_review_given">no review given</string>
+    <string name="wishlist_">Wishlist</string>
+    <string name="order_">Order</string>
+    <string name="logout_">Logout</string>
+    <string name="cart_text">Cart</string>
+    <string name="item_zero">(0 item)</string>
+    <string name="itemmmm">(0 item)</string>
+    <string name="select_color">select color</string>
+    <string name="rating_and"> rating and </string>
+    <string name="review_and">reviews</string>
+    <string name="saveaddress">0 SAVED ADDRESS</string>
 </resources>
 
 

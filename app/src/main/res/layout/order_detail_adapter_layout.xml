@@ -17,7 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_21sdp"
         android:layout_toEndOf="@+id/ivOrderDetail"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_1sdp">
 
         <TextView
             android:id="@+id/tvItemNameOrderDetail"
@@ -142,5 +143,4 @@
                 android:visibility="visible" />
         </RelativeLayout>
     </LinearLayout>
-
 </RelativeLayout>

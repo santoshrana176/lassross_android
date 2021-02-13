@@ -43,7 +43,8 @@ class LeaveFeedbackActivity : LasrossParentKotlinActivity(), View.OnClickListene
 
             R.id.tvSendReview ->
                 if (etLeaveFeedback.text.toString().equals("")) {
-                    toastMessage(getString(R.string.feedback_required))
+                    //toastMessage(getString(R.string.feedback_required))
+                    CommonUtils.showCustomAlert(this,getString(R.string.feedback_required))
                 } else {
                     callLeaveFeedbackApi(etLeaveFeedback.text.toString())
                 }

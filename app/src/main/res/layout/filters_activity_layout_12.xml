@@ -22,17 +22,19 @@
             android:gravity="center"
             android:text="@string/filters"
             android:textColor="@color/white"
-            android:textSize="@dimen/_13sdp" />
+            android:textSize="@dimen/_13sdp"/>
 
         <TextView
             android:id="@+id/tvClearAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:textSize="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:text="@string/clear_all"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -293,12 +295,10 @@
                     app:rsb_thumb_size="15dp"
                     app:rsb_tick_mark_mode="number"
                     app:rsb_tick_mark_number="1"
-                    app:rsb_tick_mark_text_margin="10dp" />
+                    app:rsb_tick_mark_text_margin="10dp"/>
 
 
             </LinearLayout>
-
-
         </LinearLayout>
 
     </LinearLayout>

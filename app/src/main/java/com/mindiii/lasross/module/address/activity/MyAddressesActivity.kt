@@ -54,7 +54,7 @@ class MyAddressesActivity : LasrossParentActivity(), View.OnClickListener, ApiCa
         userAddressList = ArrayList()
         userAddressList.clear()
         callUserAddressListApi(offset.toString())
-        tvTotalAddress.text = "0 SAVED ADDRESS"
+        tvTotalAddress.text = getString(R.string.saveaddress)
 
         if (CommonUtils.isNetworkAvailable(this)!!) {
             llRecyclerView.visibility = View.VISIBLE

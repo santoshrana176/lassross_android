@@ -7,6 +7,7 @@ import android.view.WindowManager
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.annotation.RequiresApi
+import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
 import com.mindiii.lasross.base.LasrossParentKotlinActivity
@@ -46,7 +47,10 @@ lateinit var webView:WebView
         }
 
         titleBar = intent.getStringExtra("title")
-        tvTermsPolicyTitle.text = titleBar
+        if (titleBar.equals("Terms and Conditions"))
+            tvTermsPolicyTitle.text = getString(R.string.terms_and_conditions)
+        else
+            tvTermsPolicyTitle.text = getString(R.string.privacy_policy)
     }
 
     fun callTermsPolicyApi() {
@@ -54,7 +58,7 @@ lateinit var webView:WebView
     }
 
     override fun onSuccessTermsPolicy(termsPolicyResponse: TermsPolicyResponse?) {
-        if (titleBar.equals("Terms and Conditions")) {
+        if (titleBar.equals(getString(R.string.Terms_condition))) {
               webViewLayout.loadUrl(termsPolicyResponse!!.content_url.term_and_condition)
           } else {
             webViewLayout.loadUrl(termsPolicyResponse!!.content_url.policy)

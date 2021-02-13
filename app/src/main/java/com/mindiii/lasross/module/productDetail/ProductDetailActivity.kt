@@ -412,7 +412,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         tvSKU = dialog.findViewById(R.id.tvSKU)
         tvCategory = dialog.findViewById(R.id.tvCategory)
         ivCancel.setOnClickListener { dialog.dismiss() }
-        //tvShortDescription.text = otherDesc
+       tvShortDescription.text = otherDesc
         tvShortDescription.setMovementMethod(ScrollingMovementMethod())
 
         tvSKU.text = productSku
