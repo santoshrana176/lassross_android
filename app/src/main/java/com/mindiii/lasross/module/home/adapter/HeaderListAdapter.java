@@ -195,10 +195,10 @@ public class HeaderListAdapter extends RecyclerView.Adapter<HeaderListAdapter.Ho
             switch (v.getId()) {
 
                 case R.id.fullLayout:
-                    headerInterface.onClickListener(getAdapterPosition() - 1);
+                    headerInterface.onClickListener(getAdapterPosition());
                     break;
                 case R.id.ivAddWishList:
-                    headerInterface.OnAddWishListClickListener(getAdapterPosition() - 1);
+                    headerInterface.OnAddWishListClickListener(getAdapterPosition() );
                     break;
                 case R.id.rvHeaderHomeTop:
                     headerInterface.onTopImageClick();
