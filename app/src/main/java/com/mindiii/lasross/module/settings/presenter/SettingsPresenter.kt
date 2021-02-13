@@ -85,11 +85,11 @@ class SettingsPresenter(var mContext: Context, var changePassword: ApiCallback.S
         })
     }
 
-    fun callNotificationOnOff(status: String) {
-        val session = Session(mContext)
+    fun callNotificationOnOff(status: String) {//a02ff31ad64c18e919636be952f446650db284a8
+        val session = Session(mContext).authToken
         changePassword.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val genderApi = api.callNotificationOnOff(session.getAuthToken(),status)
+        val genderApi = api.callNotificationOnOff(session,status)
         genderApi.enqueue(object : Callback<NotificationAlertResponse> {
             override fun onResponse(call: Call<NotificationAlertResponse>, response: Response<NotificationAlertResponse>) {
                 changePassword.onHideBaseLoader()

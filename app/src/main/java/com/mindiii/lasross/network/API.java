@@ -288,7 +288,7 @@ public interface API {
     Call<LanguageModel> callLanguageApi(@Header("auth-token") String token,
                                         @Field("language_code") String languageCode);
     @FormUrlEncoded
-    @POST("api_v1/notification/pushAlertStatus")
+    @POST("notification/pushAlertStatus")
     Call<NotificationAlertResponse> callNotificationOnOff(@Header("auth-token") String token,
                                                           @Field("status") String status);
 
