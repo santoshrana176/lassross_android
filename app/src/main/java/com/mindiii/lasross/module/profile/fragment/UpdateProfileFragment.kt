@@ -72,10 +72,9 @@ class UpdateProfileFragment : BaseKotlinFragment(), ApiCallback.UpdateProfileCal
         etName.setText(session.full_name)
 
         if (session.profile_photo.isNotEmpty())
-            Picasso.with(mContext).load(R.drawable.placeholder_image).into(ivProfileImage)
-        else
             Picasso.with(mContext).load(session.profile_photo).into(ivProfileImage)
-
+        else
+            Picasso.with(mContext).load(R.drawable.placeholder_image).into(ivProfileImage)
     }
 
     private fun apiCalling() {
