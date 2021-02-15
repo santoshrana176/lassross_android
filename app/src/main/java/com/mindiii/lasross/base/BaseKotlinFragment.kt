@@ -113,30 +113,37 @@ open class BaseKotlinFragment : Fragment() {
 
     // simple date formate
     fun DateFormatChange(input: String): String {
-        val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.getDefault());
-        val outputFormat = SimpleDateFormat("dd MMM yyyy ",Locale.getDefault());
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        val outputFormat = SimpleDateFormat("dd MMM yyyy ", Locale.getDefault());
         System.out.println(outputFormat.format(inputFormat.parse(input)))
         return outputFormat.format(inputFormat.parse(input))
     }
 
     // date formate with suffix and time
     fun getCurrentDateInSpecificFormat(input: String): String {
-        val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.getDefault())
-        val outputFormat1 = SimpleDateFormat("dd MMM yyyy KK:mm a",Locale.getDefault())
-      //   inputFormat.timeZone = TimeZone.getTimeZone("UTC")
-        val outputDateFormat = SimpleDateFormat("dd")
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val outputFormat1 = SimpleDateFormat("dd MMM yyyy KK:mm a", Locale.getDefault())
+        val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
+        df.timeZone = TimeZone.getTimeZone("UTC")
+        val date = df.parse(input)
+        df.timeZone = TimeZone.getDefault()
+        val df1 = SimpleDateFormat("yyyy-MM-dd hh:mm:ss a", Locale.ENGLISH).format(date!!)
+        return df1
+        //  Log.e("date---",""+df1)
+        //   inputFormat.timeZone = TimeZone.getTimeZone("UTC")
+        //  val outputDateFormat = SimpleDateFormat("dd")
 
-        val date1 = outputDateFormat.format(inputFormat.parse(input))
+        // val date1 = outputDateFormat.format(inputFormat.parse(input))
 
-        val dayNumberSuffix = getDayNumberSuffix(date1.toInt())
-        val dateFormat = SimpleDateFormat("dd'$dayNumberSuffix' MMM yyyy - KK:mm a",Locale.getDefault())
-        return dateFormat.format(inputFormat.parse(input))
+        //  val dayNumberSuffix = getDayNumberSuffix(date1.toInt())
+        //val dateFormat = SimpleDateFormat("dd'$dayNumberSuffix' MMM yyyy - KK:mm a",Locale.getDefault())
+        //return dateFormat.format(inputFormat.parse(input))
     }
 
 
     fun getDayDifference(departDateTime: String): String {
         var curruntTime = ""
-        var returnDay =""
+        var returnDay = ""
 
         val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss a", Locale.ENGLISH)
         df.timeZone = TimeZone.getTimeZone("UTC")
@@ -147,14 +154,14 @@ open class BaseKotlinFragment : Fragment() {
         val dateInMillis = System.currentTimeMillis()
         val format = "yyyy-MM-dd HH:mm:ss a"
         val sdf = SimpleDateFormat(format, Locale.ENGLISH)
-          curruntTime = sdf.format(Date(dateInMillis))
+        curruntTime = sdf.format(Date(dateInMillis))
         val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss a", Locale.ENGLISH)
 
 
         try {
             val startDate = simpleDateFormat.parse(df1)
             val endDate = simpleDateFormat.parse(curruntTime)
-                     var different = endDate!!.time - startDate!!.time
+            var different = endDate!!.time - startDate!!.time
             val secondsInMilli: Long = 1000
             val minutesInMilli = secondsInMilli * 60
             val hoursInMilli = minutesInMilli * 60
@@ -193,7 +200,7 @@ open class BaseKotlinFragment : Fragment() {
                     returnDay = "$elapsedWeek week ago"
                 } else returnDay = "$elapsedWeek weeks ago"
             } else if (elapsedDays == 1L) {
-              //  returnDay =  elapsedDays+"" +  "1 day ago"
+                //  returnDay =  elapsedDays+"" +  "1 day ago"
             } else if (elapsedDays > 1 && elapsedDays < 7) {
                 returnDay = "$elapsedDays days ago"
             } else if (elapsedDays == 0L) {
@@ -215,7 +222,7 @@ open class BaseKotlinFragment : Fragment() {
             Log.d("day diffrence", e.message)
         }
         if (returnDay.startsWith("-")) {
-           // returnDay = removeFirstChar(returnDay)!!
+            // returnDay = removeFirstChar(returnDay)!!
         }
 
         return returnDay

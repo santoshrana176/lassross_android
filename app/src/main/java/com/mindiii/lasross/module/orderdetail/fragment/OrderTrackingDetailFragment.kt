@@ -55,7 +55,7 @@ class OrderTrackingDetailFragment : BaseKotlinFragment() {
         textViewCartCount.visibility = View.GONE
 
         if (list.size == 1) {
-            val date0 = getCurrentDateInSpecificFormat(list[0].created_on)
+            val date0 = getCurrentDateInSpecificFormat(list[0].created_on)//2021-02-13 12:27:01
             lineOrderPlaced.visibility = View.GONE
             llOrderdPlaced.visibility = View.VISIBLE
             tvOrderPlacedDate.text = date0
