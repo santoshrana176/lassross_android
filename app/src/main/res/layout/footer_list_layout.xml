@@ -3,7 +3,8 @@
     android:id="@+id/rvFullLayout"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/_100sdp"
-    android:layout_marginTop="@dimen/_7sdp">
+    android:layout_marginTop="@dimen/_7sdp"
+    android:layout_marginEnd="@dimen/_10sdp">
 
     <com.mindiii.lasross.helper.RoundRectCornerImageView
         android:id="@+id/ivBgImage"
@@ -12,7 +13,8 @@
         android:alpha=".9"
         android:scaleType="fitXY"
         android:src="@drawable/dress2"
-        android:tint="#6F000000" />
+        android:tint="#6F000000"
+      />
     <com.mindiii.lasross.helper.RoundRectCornerImageView
          android:layout_width="@dimen/_150sdp"
         android:layout_height="wrap_content"
@@ -49,7 +51,7 @@
         <Button
             android:id="@+id/btnShopNow"
             android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_15sdp"
+            android:layout_height="13dp"
             android:layout_marginTop="@dimen/_5sdp"
             android:background="#3bb54a"
             android:fontFamily="@font/ibmplexsans_semibold"
@@ -57,5 +59,6 @@
             android:textColor="@color/white"
             android:textSize="@dimen/_5sdp" />
     </LinearLayout>
+
 
 </RelativeLayout>

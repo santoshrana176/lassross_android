@@ -50,7 +50,7 @@
                 android:fontFamily="@font/ibmplexsans_regular"
                 android:paddingStart="@dimen/_5sdp"
                 android:paddingBottom="@dimen/_1sdp"
-                android:text="@string/_1_item"
+                android:text="@string/_1_item_cart"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_10sdp"
                 tools:ignore="RtlSymmetry" />

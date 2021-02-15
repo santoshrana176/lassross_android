@@ -22,7 +22,7 @@
     <string name="blue">Azul</string>
     <string name="cancel_order">CANCELAR ORDEN</string>
     <string name="cancel_subscription">Cancel Subscription</string>
-    <string name="card_add_success">Card added successfully</string>
+    <string name="card_add_success">Tarjeta agregada correctamente</string>
     <string name="card_holder_name">Nombre del titular de la tarjeta</string>
     <string name="card_no_sixteen_digit">El número de tarjeta debe tener 16 dígitos</string>
     <string name="card_not_found">Tarjeta no encontrada</string>
@@ -79,10 +79,10 @@
     <string name="filters">Filtros</string>
     <string name="forgot_password">¿Olvidaste tu contraseña?</string>
     <string name="forgot_your_password">¿Olvidaste tu contraseña?</string>
-    <string name="free">Gratis</string>
+    <string name="free">Libre</string>
     <string name="free_shipping">Envío gratis</string>
     <string name="full_name">Nombre completo</string>
-    <string name="golden_plan">Golden</string>
+    <string name="golden_plan">Dorada</string>
     <string name="google">Google</string>
     <string name="green">Verde</string>
     <string name="grey">Grey</string>
@@ -164,7 +164,7 @@
     <string name="small">Small (sm)</string>
     <string name="sku">SKU:</string>
     <string name="size">TAMAÑO</string>
-    <string name="silver_plan">  Silver </string>
+    <string name="silver_plan">  Plata </string>
     <string name="sign_up_with">Registrarte con</string>
     <string name="sign_up_now">Regístrate ahora</string>
     <string name="sign_up">Regístrate</string>
@@ -208,7 +208,7 @@
     <string name="overall_rating">Calificación general</string>
     <string name="out_of_stock">Agotada</string>
     <string name="order_placed">Pedido realizado</string>
-    <string name="order_id">Solicitar ID:</string>
+    <string name="order_id">SOLICITAR ID:</string>
     <string name="order_detail">Detalles del pedido</string>
     <string name="order_confirmed_successfully">Pedido confirmado con éxito</string>
     <string name="order_amount">Total de la orden:</string>
@@ -350,7 +350,7 @@
     <string name="something_worng">algo está mal</string>
     <string name="Please_full_name">Ingrese su nombre completo</string>
     <string name="select_size">selecciona el tamaño</string>
-    <string name="pick_up_a_bargain">Pick up a Bargain</string>
+    <string name="pick_up_a_bargain">Obtenga una ganga</string>
     <string name="deleteAddress_msg">¿Estás seguro de que deseas eliminar esta dirección?</string>
     <string name="Terms_condition">Términos y condiciones</string>
     <string name="no_review_given">sin revisión dada</string>
@@ -358,13 +358,16 @@
     <string name="order_">Orden</string>
     <string name="logout_">Cerrar sesión</string>
     <string name="cart_text">Carro</string>
-    <string name="item_zero">(0 it)</string>
+    <string name="item_zero">(0 elemento)</string>
     <string name="itemmmm">(0 item)</string>
     <string name="select_color">seleccionar el color</string>
-    <string name="rating_and">calificación y
-</string>
+    <string name="rating_and">calificación y</string>
     <string name="review_and">críticas</string>
     <string name="saveaddress">0 DIRECCIÓN GUARDADA</string>
+    <string name="silver">Plata</string>
+    <string name="_1_item_cart">(1 it)</string>
+    <string name="payment_">Pago</string>
+    <string name="select_cards">SELECCIONAR TARJETA</string>
 </resources>
 
     <!--<string name="place_key">AIzaSyAzlqPc1OwdMSrrVPLllUCKubclM_rcox0</string>-->

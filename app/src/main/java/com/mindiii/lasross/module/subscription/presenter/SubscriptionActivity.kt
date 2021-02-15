@@ -101,10 +101,10 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
     override fun onClick(view: View) {
         when (view.id) {
             R.id.tvSubscribe -> {
-                if (tvMiddleText.text.toString().equals("Free", ignoreCase = true)) {
+                if (tvMiddleText.text.toString().equals("Free", ignoreCase = true)||tvMiddleText.text.toString().equals("Libre",ignoreCase = true)) {
                     startActivity(Intent(this, HomeActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
                     finish()
-                } else if ((tvMiddleText.text.toString().equals("Silver", ignoreCase = true))) {
+                } else if ((tvMiddleText.text.toString().equals("Silver", ignoreCase = true)||tvMiddleText.text.toString().equals("Plata", ignoreCase = true))) {
                     if (cardResponce.data.size > 0) {
                         plan_id = response.data.get(0).subscriptionPlanId
                         subscribe(plan_id)
@@ -114,7 +114,7 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
                                 .putExtra("subscriptionScreen", "fromSubscription")
                                 .putExtra("subscriptionPlanId", plan_id))
                     }
-                } else if ((tvMiddleText.text.toString().equals("Golden", ignoreCase = true))) {
+                } else if ((tvMiddleText.text.toString().equals("Golden", ignoreCase = true)||tvMiddleText.text.toString().equals("Dorada", ignoreCase = true))) {
                     if (cardResponce.data.size > 0) {
                         plan_id = response.data.get(1).subscriptionPlanId
                         subscribe(plan_id)
@@ -130,20 +130,20 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
                 onBackPressed()
             }
             R.id.llRightLayout -> {
-                if (tvRightText.text.toString().trim().equals("Golden", ignoreCase = true)) {
+                if (tvRightText.text.toString().trim().equals("Golden", ignoreCase = true)||tvRightText.text.toString().trim().equals("Dorada", ignoreCase = true)) {
                     setGoldenPlanData()
-                } else if (tvRightText.text.toString().trim().equals("Silver", ignoreCase = true)) {
+                } else if (tvRightText.text.toString().trim().equals("Silver", ignoreCase = true)||tvRightText.text.toString().trim().equals("Plata", ignoreCase = true)) {
                     setSilverPlanData()
-                } else if (tvRightText.text.toString().trim().equals("Free", ignoreCase = true)) {
+                } else if (tvRightText.text.toString().trim().equals("Free", ignoreCase = true)||tvRightText.text.toString().trim().equals("Libre", ignoreCase = true)) {
                     setFreePlanData()
                 }
             }
             R.id.llLeftLayout -> {
-                if (tvLeftText.text.toString().trim().equals("Golden", ignoreCase = true)) {
+                if (tvLeftText.text.toString().trim().equals("Golden", ignoreCase = true)||tvLeftText.text.toString().trim().equals("Dorada", ignoreCase = true)) {
                     setGoldenPlanData()
-                } else if (tvLeftText.text.toString().trim().equals("Silver", ignoreCase = true)) {
+                } else if (tvLeftText.text.toString().trim().equals("Silver", ignoreCase = true)||tvLeftText.text.toString().trim().equals("Plata", ignoreCase = true)) {
                     setSilverPlanData()
-                } else if (tvLeftText.text.toString().trim().equals("Free", ignoreCase = true)) {
+                } else if (tvLeftText.text.toString().trim().equals("Free", ignoreCase = true)||tvLeftText.text.toString().trim().equals("Libre", ignoreCase = true)) {
                     setFreePlanData()
                 }
             }
@@ -162,7 +162,6 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
         for (i in 0..arrSplit.size - 1) {
             itemDescriptionList.add(arrSplit[i])
         }
-
         subscriptionItemDescriptionAdapter = SubscriptionItemDescriptionAdapter(itemDescriptionList, this)
         rvItemDescriptionListSubscription.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rvItemDescriptionListSubscription.adapter = subscriptionItemDescriptionAdapter
@@ -174,20 +173,18 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
         tvMiddlePlan.visibility = View.VISIBLE
 
         ivLeftImage.setImageResource(R.drawable.silverplan_icon_black)
-        tvLeftText.text = " Silver "
+        tvLeftText.text = getString(R.string.silver)
         tvLeftPlan.visibility = View.VISIBLE
 
         ivRightImage.setImageResource(R.drawable.free_icon_black)
         tvRightText.setText(R.string.free)
-        tvRightPlan.visibility = View.GONE
+        tvRightPlan.visibility = View.VISIBLE
 
         tvplanPriceCurrency.text = response.data[1].plan_currency
         tvplanPrice.text = " " + getTwoValueAfterDecimal(response.data[1].plan_price)
         tvplanDuration.text = " / " + response.data[1].plan_duration + " " + response.data[1].plan_duration_type
         tvplanDuration.visibility = View.VISIBLE
         tvplanPriceCurrency.visibility = View.VISIBLE
-
-
         setAdapterData(1)
 
     }
@@ -199,7 +196,7 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
 
         ivLeftImage.setImageResource(R.drawable.free_icon_black)
         tvLeftText.setText(R.string.free)
-        tvLeftPlan.visibility = View.GONE
+        tvLeftPlan.visibility = View.VISIBLE
 
         ivRightImage.setImageResource(R.drawable.goldenplan_icon_black)
         tvRightText.setText(R.string.golden_plan)
@@ -218,16 +215,14 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
     fun setFreePlanData() {
         ivMiddleImage.setImageResource(R.drawable.free_icon_orange)
         tvMiddleText.setText(R.string.free)
-        tvMiddlePlan.visibility = View.GONE
+        tvMiddlePlan.visibility = View.VISIBLE
 
         ivLeftImage.setImageResource(R.drawable.goldenplan_icon_black)
         tvLeftText.setText(R.string.golden_plan)
         tvLeftPlan.visibility = View.VISIBLE
 
         ivRightImage.setImageResource(R.drawable.silverplan_icon_black)
-        tvRightText.text = "  Silver "
-        tvRightPlan.visibility = View.VISIBLE
-
+        tvRightText.setText(R.string.silver_plan)
         tvplanPrice.setText(getString(R.string.free))
         tvplanDuration.visibility = View.GONE
         tvplanPriceCurrency.visibility = View.GONE
