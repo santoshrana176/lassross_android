@@ -215,8 +215,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_120sdp"
                     android:layout_below="@+id/rvListUp"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginEnd="@dimen/_5sdp" />
+                    tools:listitem="@layout/footer_list_layout"
+
+
+                    />
 
             </RelativeLayout>
         </androidx.core.widget.NestedScrollView>

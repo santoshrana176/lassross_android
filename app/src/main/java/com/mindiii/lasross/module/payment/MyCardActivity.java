@@ -94,7 +94,7 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
             rlt_totalAmount.setVisibility(View.VISIBLE);
             amount.setText(" " + totalAmount);
 
-            tvMyCart.setText("Payment");
+            tvMyCart.setText(R.string.payment_);
 
         } else {
             rlt_totalAmount.setVisibility(View.GONE);
@@ -179,7 +179,7 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
                                 cardResponce = new Gson().fromJson(externalAccountCollection.toJson(), StripeSaveCardResponce.class);
                                 Log.e("Size: ", "" + cardResponce.getData().size());
                                 if (from.equals("PaymentActivity")){
-                                    tvSaveCard.setText("SELECT CARD");
+                                    tvSaveCard.setText(R.string.select_cards);
                                 }else {
                                     if (cardResponce.getData().size()==1){
                                         tvSaveCard.setText(cardResponce.getData().size() + " " +getString(R.string.saved_card));
