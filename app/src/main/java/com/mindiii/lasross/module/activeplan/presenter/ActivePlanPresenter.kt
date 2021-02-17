@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.activeplan.presenter
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -19,7 +20,7 @@ class ActivePlanPresenter(var context: Context, var activePlan: ApiCallback.Acti
         activePlan.onShowBaseLoader()
         var session = Session(context)
         val api = ServiceGenerator.createService(API::class.java)
-        val callCancel = api.callCancelSubscription(session.authToken)
+        val callCancel = api.callCancelSubscription(Lasross.appLanguage,session.authToken)
         callCancel.enqueue(object : Callback<CancelSubscriptionResponse> {
             override fun onResponse(call: Call<CancelSubscriptionResponse>, response: Response<CancelSubscriptionResponse>) {
                 activePlan.onHideBaseLoader()

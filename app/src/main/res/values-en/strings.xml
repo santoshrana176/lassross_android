@@ -361,13 +361,14 @@
     <string name="item_zero">(0 item)</string>
     <string name="itemmmm">(0 item)</string>
     <string name="select_color">select color</string>
-    <string name="rating_and">\" rating and \"</string>
-    <string name="review_and">\" reviews\"</string>
+    <string name="rating_and"> rating and </string>
+    <string name="review_and"> reviews</string>
     <string name="saveaddress">0 SAVED ADDRESS</string>
     <string name="silver">Silver</string>
     <string name="_1_item_cart">(1 item)</string>
     <string name="payment_">Payment</string>
     <string name="select_cards">SELECT CARD</string>
+    <string name="my_subscription_plan">My Subscription Plan</string>
 </resources>
 
     <!--<string name="place_key">AIzaSyDyUk7vkNaDVsFojxOYTEz0m_rtdFqdgqs</string>-->

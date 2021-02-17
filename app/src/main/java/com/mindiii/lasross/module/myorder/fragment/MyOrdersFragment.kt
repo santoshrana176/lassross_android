@@ -18,6 +18,9 @@ import com.mindiii.lasross.module.myorder.adapter.MyOrdersAdapter
 import com.mindiii.lasross.module.myorder.model.MyOrdersModel
 import com.mindiii.lasross.module.myorder.model.Order
 import com.mindiii.lasross.module.myorder.presenter.MyOrderPresenter
+import com.mindiii.lasross.module.notification.model.NotificationListModel
+import com.mindiii.lasross.module.notification.model.ReadNotificationModel
+import com.mindiii.lasross.module.notification.presenter.NotificationPresenter
 import com.mindiii.lasross.module.orderdetail.fragment.OrderDetailsFragment
 import com.mindiii.lasross.utils.CommonUtils.toastMessage
 import kotlinx.android.synthetic.main.fragment_my_order.*
@@ -25,10 +28,11 @@ import kotlinx.android.synthetic.main.fragment_my_order.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class MyOrdersFragment : BaseKotlinFragment(), ApiCallback.MyOrderCallback {
+class MyOrdersFragment : BaseKotlinFragment(), ApiCallback.MyOrderCallback, ApiCallback.NotificationCallback {
 
     var myOrdersModelsList = mutableListOf<Order>()
     lateinit var myOrdersAdapter: MyOrdersAdapter
+    private var param1: String? = null
     private var param2: String? = null
     private lateinit var session: Session
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -45,6 +49,7 @@ class MyOrdersFragment : BaseKotlinFragment(), ApiCallback.MyOrderCallback {
         }
         session = Session(requireContext())
         setMyOrderAdapter()
+
         callMyOrderListApi(requireContext())
 
         //tvCartItemCountOrders
@@ -92,6 +97,14 @@ class MyOrdersFragment : BaseKotlinFragment(), ApiCallback.MyOrderCallback {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+        }
+    }
     override fun onResume() {
         super.onResume()
         myOrdersModelsList.clear()
@@ -110,13 +123,23 @@ class MyOrdersFragment : BaseKotlinFragment(), ApiCallback.MyOrderCallback {
         errorMessage?.let { toastMessage(context, errorMessage) }
     }
 
+    override fun onSuccessNotificationList(notificationListModel: NotificationListModel?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSuccessReadNotification(readNotificationModel: ReadNotificationModel?) {
+        TODO("Not yet implemented")
+    }
+
     companion object {
         @JvmStatic
-        fun newInstance(from: String) =
+        fun newInstance(from: String, orderId: String) =
                 MyOrdersFragment().apply {
                     arguments = Bundle().apply {
                         putString(ARG_PARAM1, from)
-                        putString(ARG_PARAM2, param2)
+                        putString(ARG_PARAM2, orderId)
+
+
                     }
                 }
     }

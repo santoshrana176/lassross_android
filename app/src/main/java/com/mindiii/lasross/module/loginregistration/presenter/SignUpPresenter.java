@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import com.mindiii.lasross.Lasross;
 import com.mindiii.lasross.R;
 import com.mindiii.lasross.base.ApiCallback;
 import com.mindiii.lasross.base.errorResponse.APIErrors;
@@ -32,7 +33,7 @@ public class SignUpPresenter {
     public void callSignUpApi(String name, String email, String pass, String id, String type, String dToken) {
         signUpCallback.onShowBaseLoader();
         API api = ServiceGenerator.createService(API.class);
-        Call<LoginResponse> loginResponseCall = api.callSignUpApi(name, email, pass, id, "", "2", dToken, "", "2");
+        Call<LoginResponse> loginResponseCall = api.callSignUpApi(Lasross.appLanguage,name, email, pass, id, "", "2", dToken, "", "2");
         loginResponseCall.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {
@@ -65,7 +66,7 @@ public class SignUpPresenter {
     public void callSocialCheck(String name, String email, String id, String url, String type, String dToken) {
         signUpCallback.onShowBaseLoader();
         API api = ServiceGenerator.createService(API.class);
-        Call<LoginResponse> loginResponseCall = api.callSignUpApi(name, email, "", id, type, "2", dToken, url, "2");
+        Call<LoginResponse> loginResponseCall = api.callSignUpApi(Lasross.appLanguage,name, email, "", id, type, "2", dToken, url, "2");
         loginResponseCall.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {

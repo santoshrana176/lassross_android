@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.address.presenter
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -20,7 +21,7 @@ class AddAddressPresenter(var mContext: Context, var addAddressCallback: ApiCall
         val session = Session(mContext)
         addAddressCallback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val addAddressCallApi = api.callAddAddress(session.authToken, companyType
+        val addAddressCallApi = api.callAddAddress(Lasross.appLanguage,session.authToken, companyType
                 , phoneNumber, fullAddress, latitdude, longitude)
         addAddressCallApi.enqueue(object : Callback<AddAddressResponse> {
             override fun onResponse(call: Call<AddAddressResponse>, response: Response<AddAddressResponse>) {
@@ -54,7 +55,7 @@ class AddAddressPresenter(var mContext: Context, var addAddressCallback: ApiCall
         addAddressCallback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
 
-        val addAddressCallApi = api.callUpdateAddress(session.authToken, userAddressId
+        val addAddressCallApi = api.callUpdateAddress(Lasross.appLanguage,session.authToken, userAddressId
                 , fullAddress, latitdude, longitude, companyType, phoneNumber)
         addAddressCallApi.enqueue(object : Callback<AddAddressResponse> {
             override fun onResponse(call: Call<AddAddressResponse>, response: Response<AddAddressResponse>) {

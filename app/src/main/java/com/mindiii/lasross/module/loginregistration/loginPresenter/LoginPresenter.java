@@ -5,6 +5,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import com.mindiii.lasross.Lasross;
 import com.mindiii.lasross.R;
 import com.mindiii.lasross.base.ApiCallback;
 import com.mindiii.lasross.base.errorResponse.APIErrors;
@@ -34,7 +35,7 @@ public class LoginPresenter {
     public void callLoginApi(String emailId, String password, String dToken) {
         loginCallback.onShowBaseLoader();
         API api = ServiceGenerator.createService(API.class);
-        Call<LoginResponse> loginResponseCall = api.callLoginApi(emailId, password, "2", dToken);
+        Call<LoginResponse> loginResponseCall = api.callLoginApi(Lasross.appLanguage,emailId, password, "2", dToken);
         loginResponseCall.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {
@@ -66,7 +67,7 @@ public class LoginPresenter {
     public void callForgotPasswordApi(String email, final Dialog dialog) {
         loginCallback.onShowBaseLoader();
         final API api = ServiceGenerator.createService(API.class);
-        Call<ForgotPasswordResponse> genderApi = api.callForgotPasswordApi(email);
+        Call<ForgotPasswordResponse> genderApi = api.callForgotPasswordApi(Lasross.appLanguage,email);
         genderApi.enqueue(new Callback<ForgotPasswordResponse>() {
             @Override
             public void onResponse(@NonNull Call<ForgotPasswordResponse> call, @NonNull Response<ForgotPasswordResponse> response) {
@@ -94,7 +95,7 @@ public class LoginPresenter {
     public void callSocialCheck(String name, String email, String id, String url, String type, String dToken) {
         loginCallback.onShowBaseLoader();
         API api = ServiceGenerator.createService(API.class);
-        Call<LoginResponse> loginResponseCall = api.callSignUpApi(name, email, "", id, type, "2", dToken, url, "2");
+        Call<LoginResponse> loginResponseCall = api.callSignUpApi(Lasross.appLanguage,name, email, "", id, type, "2", dToken, url, "2");
         loginResponseCall.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {

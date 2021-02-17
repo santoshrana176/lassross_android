@@ -3,6 +3,7 @@ package com.mindiii.lasross.module.profile.presenter
 import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -53,7 +54,7 @@ class UpdateProfilePresenter(var updateProfileCallback: ApiCallback.UpdateProfil
 
 
         val api = ServiceGeneratorkotlin().createService(API::class.java)
-        val loginResponseCall = api.callUpdateProfileApi(Session(mContext).authToken, fullName,
+        val loginResponseCall = api.callUpdateProfileApi(Lasross.appLanguage,Session(mContext).authToken, fullName,
                 userAddressId, fullAddress, longitude, phoneNumber, latitude, body)
         loginResponseCall.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {

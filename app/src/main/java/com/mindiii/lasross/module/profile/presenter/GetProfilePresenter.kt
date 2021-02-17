@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.profile.presenter
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -15,12 +16,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.IOException
-
+/*language---hadder*/
 class GetProfilePresenter(var getProfileCallback: ApiCallback.GetProfileCallback, var mContext: Context) {
     fun callGetProfileApi() {
         getProfileCallback.onShowBaseLoader()
         val api = ServiceGeneratorkotlin().createService(API::class.java)
-        val loginResponseCall = api.callGetProfile(Session(mContext).registration.auth_token)
+        val loginResponseCall = api.callGetProfile(Lasross.appLanguage,Session(mContext).registration.auth_token)
         loginResponseCall.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 getProfileCallback.onHideBaseLoader()
@@ -57,7 +58,7 @@ class GetProfilePresenter(var getProfileCallback: ApiCallback.GetProfileCallback
         val token=session.authToken
         getProfileCallback.onShowBaseLoader()//1f3fe7b8dae2c0631ee2fb0f2d78e59174904f38
         val api = ServiceGenerator.createService(API::class.java)
-        val cartListApi = api.callCartList(token, offset, "18")
+        val cartListApi = api.callCartList(Lasross.appLanguage,token, offset, "18")
         cartListApi.enqueue(object : Callback<CartListResponse> {
             override fun onResponse(call: Call<CartListResponse>, response: Response<CartListResponse>) {
                 getProfileCallback.onHideBaseLoader()
@@ -88,7 +89,7 @@ class GetProfilePresenter(var getProfileCallback: ApiCallback.GetProfileCallback
         val session = Session(mContext)
         getProfileCallback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val cartListApi = api.callNotificationList(session.authToken)
+        val cartListApi = api.callNotificationList(Lasross.appLanguage,session.authToken)
         cartListApi.enqueue(object : Callback<NotificationListModel> {
             override fun onResponse(call: Call<NotificationListModel>, response: Response<NotificationListModel>) {
                 getProfileCallback.onHideBaseLoader()

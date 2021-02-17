@@ -27,9 +27,7 @@ data class ProductDetail(
         val product_available_quantity: String,
         val product_description: String,
         val product_dimension: String,
-        val product_image: String,
-        val product_image_large: String,
-        val product_image_medium: String,
+         val product_image_medium: String,
         val product_image_original: String,
         val product_name: String,
         val product_sku: String,
@@ -44,12 +42,10 @@ data class ProductDetail(
 )
 
 data class GalleryImage(
-        val productGalleryAttachmentId: String,
-        val product_gallery_image: String,
-        val product_gallery_image_large: String,
-        val product_gallery_image_medium: String,
-        val product_gallery_image_thumb: String,
-        val product_id: String
+val productGalleryAttachmentId:String,
+val product_id:String,
+val product_gallery_image:String,
+val product_gallery_image_medium:String
 )
 
 data class SimilarProduct(

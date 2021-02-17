@@ -154,7 +154,6 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
 
         Bundle bundle = getIntent().getExtras();
         if (intent.getStringExtra("reference_id") != null) {
-
             String refrence_id = intent.getStringExtra("reference_id");
             String type = intent.getStringExtra("type");
             String body = intent.getStringExtra("body");

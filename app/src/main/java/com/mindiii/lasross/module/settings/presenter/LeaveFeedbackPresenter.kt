@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.settings.presenter
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -19,7 +20,7 @@ class LeaveFeedbackPresenter(var mContext: Context, var leavefeedback: ApiCallba
         val session = Session(mContext)
         leavefeedback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val leavefeedApi = api.callFeedBackApi(session.authToken, feedback)
+        val leavefeedApi = api.callFeedBackApi(Lasross.appLanguage,session.authToken, feedback)
         leavefeedApi.enqueue(object : Callback<FeedbackResponse> {
             override fun onResponse(call: Call<FeedbackResponse>, response: Response<FeedbackResponse>) {
                 leavefeedback.onHideBaseLoader()

@@ -166,6 +166,29 @@
                 android:padding="@dimen/_2sdp"
                 android:src="@drawable/ic_gray_back_ico" />
         </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/my_subscriptionPlans"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ibmplexsans_light"
+                android:text="@string/my_subscription_plan"
+                android:textColor="@color/setting_text_color"
+                android:textSize="@dimen/_12sdp" />
+
+            <ImageView
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:padding="@dimen/_2sdp"
+                android:src="@drawable/ic_gray_back_ico" />
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout

@@ -8,6 +8,7 @@ data class OrderDetailModel(
 ) : Serializable
 
 data class OrderDetail(
+        val order_status: String,
         val created_on: String,
         val discount_amount: String,
         val discount_percent: String,
@@ -64,6 +65,7 @@ data class OrderAddress(
 ) : Serializable
 
 data class Product(
+        val order_status: String,
         val category_name: String,
         val collection_type_id: String,
         val description: String,

@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.cart.presenter
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -18,7 +19,7 @@ class AddToCartPresenter(var mContext: Context, var addToCartCallback: ApiCallba
         val session = Session(mContext)
         addToCartCallback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val addToCartApi = api.callAddToCart(session.authToken, productId, productQuantity, variants)
+        val addToCartApi = api.callAddToCart(Lasross.appLanguage,session.authToken, productId, productQuantity, variants)
         addToCartApi.enqueue(object : Callback<AddTocartResponse> {
             override fun onResponse(call: Call<AddTocartResponse>, response: Response<AddTocartResponse>) {
                 addToCartCallback.onHideBaseLoader()

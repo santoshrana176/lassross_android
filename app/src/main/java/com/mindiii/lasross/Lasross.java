@@ -22,7 +22,7 @@ import okhttp3.OkHttpClient;
 public class Lasross extends Application {
 
     private static Lasross instance;
-
+   public static String appLanguage="en";
     protected static synchronized Lasross getInstance() {
         if (instance != null) {
             return instance;

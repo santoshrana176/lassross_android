@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.mindiii.lasross.R;
 import com.mindiii.lasross.base.ClickListener;
 import com.mindiii.lasross.helper.RoundRectCornerImageView;
@@ -53,11 +54,13 @@ public class FooterListAdapter extends RecyclerView.Adapter<FooterListAdapter.Ho
         if (itemList.getDeal_image().isEmpty()) {
             holder.roundRectCornerImageView.setImageResource(R.drawable.dress2);
         } else {
-            Picasso.with(context)
+            Glide.with(context).load(itemList.getDeal_image()).into(holder.roundRectCornerImageView);
+
+        /*    Picasso.with(context)
                     .load(itemList.getDeal_image())
                     //.resize(800,500)
                     //.transform(new RoundedTransformation(20, 0))
-                    .into(holder.roundRectCornerImageView);
+                    .into(holder.roundRectCornerImageView);*/
         }
     }
 

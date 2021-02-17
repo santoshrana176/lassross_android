@@ -45,7 +45,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvOrderDetail"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/_15sdp"
             android:paddingRight="@dimen/_15sdp" />

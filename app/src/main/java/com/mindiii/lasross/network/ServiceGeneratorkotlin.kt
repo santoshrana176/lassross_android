@@ -2,6 +2,7 @@ package com.mindiii.lasross.network
 
 import com.androidnetworking.interceptors.HttpLoggingInterceptor
 import com.google.gson.GsonBuilder
+import com.mindiii.lasross.BuildConfig
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -10,7 +11,7 @@ import java.util.concurrent.TimeUnit
 class ServiceGeneratorkotlin {
 
     // DBUG BASE URL
-    private val API_BASE_URL = "https://dev.mindiii.com/lasross/service/api_v1/"
+  //  private val API_BASE_URL = "https://dev.mindiii.com/lasross/service/api_v1/"
 
     companion object {
         fun logger(): HttpLoggingInterceptor {
@@ -34,7 +35,7 @@ class ServiceGeneratorkotlin {
             .create()
 
     private val builder = Retrofit.Builder()
-            .baseUrl(API_BASE_URL)
+            .baseUrl(/*API_BASE_URL*/BuildConfig.BASE_URL)
 
 
     fun <S> createService(serviceClass: Class<S>): S {

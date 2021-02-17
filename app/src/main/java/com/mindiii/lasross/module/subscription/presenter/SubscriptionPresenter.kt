@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.subscription.presenter
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -22,7 +23,7 @@ class SubscriptionPresenter(var mContext: Context, var subscription: ApiCallback
 
         subscription.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val subscriptionApiCall = api.subscriptionApi(session.authToken)
+        val subscriptionApiCall = api.subscriptionApi(Lasross.appLanguage,session.authToken)
         subscriptionApiCall.enqueue(object : Callback<SubscriptionResponse> {
             override fun onResponse(call: Call<SubscriptionResponse>, response: Response<SubscriptionResponse>) {
                 subscription.onHideBaseLoader()
@@ -57,7 +58,7 @@ class SubscriptionPresenter(var mContext: Context, var subscription: ApiCallback
         val session = Session(mContext)
         subscription.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val subscriptionApiCall = api.planSubscribeApi(session.authToken, plan_id)
+        val subscriptionApiCall = api.planSubscribeApi(Lasross.appLanguage,session.authToken, plan_id)
         subscriptionApiCall.enqueue(object : Callback<SubscribeResponse> {
             override fun onResponse(call: Call<SubscribeResponse>, response: Response<SubscribeResponse>) {
 

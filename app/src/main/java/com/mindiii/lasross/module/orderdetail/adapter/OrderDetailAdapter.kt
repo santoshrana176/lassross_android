@@ -14,7 +14,7 @@ import com.mindiii.lasross.module.faq.FAQActivity
 import com.mindiii.lasross.module.orderdetail.model.Product
 import com.squareup.picasso.Picasso
 
-class OrderDetailAdapter(private val list: List<Product>, private val context: Context, val listener: ClickListener.OrderDetailsListner) : RecyclerView.Adapter<OrderDetailAdapter.Holder>() {
+class OrderDetailAdapter(private val list: List<Product>, private val context: Context, val listener: ClickListener.OrderDetailsListner,val orderStatus: String) : RecyclerView.Adapter<OrderDetailAdapter.Holder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): Holder {
         val view: View
@@ -61,6 +61,12 @@ class OrderDetailAdapter(private val list: List<Product>, private val context: C
         holder.tvWriteReviewOrderDetail.setOnClickListener(View.OnClickListener {
             listener.onItemClick(itemList.productId, rating, desc, i, itemList.orderItemId)
         })
+
+        if (orderStatus.equals("4")){
+            holder.tvWriteReviewOrderDetail.visibility=View.VISIBLE
+        }else{
+            holder.tvWriteReviewOrderDetail.visibility=View.GONE
+        }
     }
 
     override fun getItemCount(): Int {

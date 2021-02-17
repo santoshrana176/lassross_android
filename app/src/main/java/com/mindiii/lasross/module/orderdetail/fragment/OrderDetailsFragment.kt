@@ -20,6 +20,10 @@ import com.mindiii.lasross.base.BaseKotlinFragment
 import com.mindiii.lasross.base.ClickListener
 import com.mindiii.lasross.module.address.model.AddAddressResponse
 import com.mindiii.lasross.module.faq.FAQActivity
+import com.mindiii.lasross.module.myorder.presenter.MyOrderPresenter
+import com.mindiii.lasross.module.notification.model.NotificationListModel
+import com.mindiii.lasross.module.notification.model.ReadNotificationModel
+import com.mindiii.lasross.module.notification.presenter.NotificationPresenter
 import com.mindiii.lasross.module.orderdetail.adapter.OrderDetailAdapter
 import com.mindiii.lasross.module.orderdetail.model.OrderDetailModel
 import com.mindiii.lasross.module.orderdetail.model.Product
@@ -30,8 +34,7 @@ import kotlinx.android.synthetic.main.fragment_order_details.*
 import kotlinx.android.synthetic.main.reset_password_dialog_artboard_35.ivClose
 import kotlinx.android.synthetic.main.write_review_dialog.*
 
-class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCallback.OrderDetailCallback, ClickListener.OrderDetailsListner
-{
+class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCallback.OrderDetailCallback, ClickListener.OrderDetailsListner, ApiCallback.NotificationCallback {
     var rating: Float = 0.0f
     var desc: String? = ""
     lateinit var productId: String
@@ -61,10 +64,8 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
         activityFAQ?.setOrderDetail()
 
         callOrderDetailApi()
-        setOrderDetailAdapter()
         rlGotoDeliveryDetails.setOnClickListener(this)
-
-        val textview = activity.findViewById(R.id.tvFAQUpperText) as TextView
+         val textview = activity.findViewById(R.id.tvFAQUpperText) as TextView
         textview.text = resources.getString(R.string.order_detail)
         val imageview = activity.findViewById(R.id.ivMyCartOrder) as ImageView
         imageview.visibility = View.GONE
@@ -93,6 +94,8 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
         super.onAttach(context)
         activityFAQ = context as FAQActivity
     }
+
+
 
     fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
     // comment and rating reviews
@@ -187,12 +190,19 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
         activity.toastMessage(errorMessage.toString())
     }
 
+    override fun onSuccessNotificationList(notificationListModel: NotificationListModel?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSuccessReadNotification(readNotificationModel: ReadNotificationModel?) {
+     }
+
     fun callOrderDetailApi() {
         OrderDetailPresenter(requireContext(), this).callOrderDetailApi(orderId.toString())
     }
 
-    fun setOrderDetailAdapter() {
-        orderDetailAdapter = OrderDetailAdapter(orderDetailList, requireContext(), this)
+    fun setOrderDetailAdapter(orderDetailList: ArrayList<Product>, orderStatus: String) {
+        orderDetailAdapter = OrderDetailAdapter(orderDetailList, requireContext(), this,orderStatus)
         rvOrderDetail.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         rvOrderDetail.adapter = orderDetailAdapter
     }
@@ -248,7 +258,10 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
             tvNameOrderDetail.text = orderDetailModel.orderDetail.order_address.order_bill_address_first_name
             tvAddressOrderDetail.text = orderDetailModel.orderDetail.order_address.order_bill_address_location
             tvMobileOrderDetail.text = orderDetailModel.orderDetail.order_address.order_bill_address_phone
+            orderDetailList.clear()
             orderDetailList.addAll(orderDetailModel.orderDetail.products)
+            setOrderDetailAdapter(orderDetailList,orderDetailModel.orderDetail.order_status)
+
             orderDetailAdapter.notifyDataSetChanged()
         }
     }

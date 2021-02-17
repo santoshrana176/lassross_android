@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import com.mindiii.lasross.Lasross;
 import com.mindiii.lasross.R;
 import com.mindiii.lasross.base.ApiCallback;
 import com.mindiii.lasross.base.errorResponse.APIErrors;
@@ -31,7 +32,7 @@ public class VarientFilterListPresenter {
 
         variantFilterCallback.onShowBaseLoader();
         final API api = ServiceGenerator.createService(API.class);
-        Call<VarientListResponse> varientApi = api.callVariantFilterApi();
+        Call<VarientListResponse> varientApi = api.callVariantFilterApi(Lasross.appLanguage);
         varientApi.enqueue(new Callback<VarientListResponse>() {
             @Override
             public void onResponse(@NonNull Call<VarientListResponse> call, @NonNull Response<VarientListResponse> response) {

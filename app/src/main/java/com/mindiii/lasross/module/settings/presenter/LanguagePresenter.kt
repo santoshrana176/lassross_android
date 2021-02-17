@@ -1,5 +1,6 @@
 package com.mindiii.lasross.module.settings.presenter
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -17,7 +18,7 @@ class LanguagePresenter(var mContext: Context, var leavefeedback: ApiCallback.La
         val session = Session(mContext)
         leavefeedback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val leavefeedApi = api.callLanguageApi(session.authToken, language_code)
+        val leavefeedApi = api.callLanguageApi(Lasross.appLanguage,session.authToken, language_code)
         leavefeedApi.enqueue(object : Callback<LanguageModel> {
             override fun onResponse(call: Call<LanguageModel>, response: Response<LanguageModel>) {
                 leavefeedback.onHideBaseLoader()

@@ -9,6 +9,7 @@
     <color name="btn_fb">#303F9F</color>
     <color name="white">#ffffff</color>
     <color name="text_color">#ff6230</color>
+    <color name="slider_text_color">#faa31d</color>
     <color name="signup_btn_back">#ae0a0a</color>
     <color name="createAccount">#ffc423</color>
     <color name="borderColor">#838383</color>

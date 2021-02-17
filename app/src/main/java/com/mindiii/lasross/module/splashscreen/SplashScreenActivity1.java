@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.util.Base64;
 import android.util.Log;
 
+import com.mindiii.lasross.Lasross;
 import com.mindiii.lasross.R;
 import com.mindiii.lasross.app.session.Session;
 import com.mindiii.lasross.base.LasrossParentActivity;
@@ -37,12 +38,15 @@ public class SplashScreenActivity1 extends LasrossParentActivity {
         if (defaltLanguage.equals("es") || selectedLanguage.equals("es")) {
             LanguageUtils.Companion.language(this, "es", false);
             session.setLanguage("es");
+            Lasross.appLanguage="es";
         } else if (defaltLanguage.equals("en") || selectedLanguage.equals("en")) {
             LanguageUtils.Companion.language(this, "en", false);
             session.setLanguage("en");
+            Lasross.appLanguage="en";
         } else {
             LanguageUtils.Companion.language(this, "en", false);
             session.setLanguage("en");
+            Lasross.appLanguage="en";
         }
         getKeyHashFacebook();
         new Handler().postDelayed(new Runnable() {

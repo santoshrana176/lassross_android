@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.payment.presenter
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -19,7 +20,7 @@ class MyCArdPaymentPresenter(var mContext: Context, var payment: ApiCallback.Pay
         val session = Session(mContext)
         payment.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val paymentCallApi = api.finalPaymentApi(session.authToken, payment_mode, source_type, source, shipping_add_id)
+        val paymentCallApi = api.finalPaymentApi(Lasross.appLanguage,session.authToken, payment_mode, source_type, source, shipping_add_id)
         paymentCallApi.enqueue(object : Callback<FinalPaymentResponse> {
             override fun onFailure(call: Call<FinalPaymentResponse>, t: Throwable) {
                 payment.onHideBaseLoader()

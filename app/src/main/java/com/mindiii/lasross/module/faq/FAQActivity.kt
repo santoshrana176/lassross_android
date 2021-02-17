@@ -7,20 +7,24 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
+import com.mindiii.lasross.base.ApiCallback
 import com.mindiii.lasross.base.LasrossParentKotlinActivity
 import com.mindiii.lasross.module.cart.MyCartActivity
 import com.mindiii.lasross.module.contactus.fragment.ContactUsFragment
 import com.mindiii.lasross.module.customerhelp.fragment.CustomerHelpFragment
 import com.mindiii.lasross.module.faq.fragment.FAQFragment
 import com.mindiii.lasross.module.myorder.fragment.MyOrdersFragment
+import com.mindiii.lasross.module.notification.model.NotificationListModel
+import com.mindiii.lasross.module.notification.model.ReadNotificationModel
+import com.mindiii.lasross.module.notification.presenter.NotificationPresenter
 import com.mindiii.lasross.module.orderdetail.fragment.OrderDetailsFragment
 import kotlinx.android.synthetic.main.faq_activty_28.*
 
 
-class FAQActivity : LasrossParentKotlinActivity()
-{
+class FAQActivity : LasrossParentKotlinActivity(), ApiCallback.NotificationCallback {
 
     var orderId: String = ""
+    var notificationId: String = ""
     var boolForBackPress = false
     var boolForBackPress1 = false
     private lateinit var session: Session
@@ -45,6 +49,9 @@ class FAQActivity : LasrossParentKotlinActivity()
         })
         if (intent.getStringExtra("orderId") != null) {
             orderId = intent.getStringExtra("orderId")
+        }
+        if (intent.getStringExtra("notificationId") != null) {
+            notificationId = intent.getStringExtra("notificationId")
         }//status
 
         ivMyCartOrder.setOnClickListener(View.OnClickListener {
@@ -63,11 +70,14 @@ class FAQActivity : LasrossParentKotlinActivity()
                     tvFAQUpperText.text = getString(R.string.contact_us)
                 }
                 "myOrder" -> {
-                    addFragment(MyOrdersFragment.newInstance("myOrder"), false, R.id.profileFrame)
+           //         callReadNotificationApi(orderId)
+                    addFragment(MyOrdersFragment.newInstance("myOrder",orderId), false, R.id.profileFrame)
                     tvFAQUpperText.text = getString(R.string.my_orders)
+
                 }
 
                 "Order Status" -> {
+                  //  callReadNotificationApi(notificationId)
                     addFragment(OrderDetailsFragment.newInstance(orderId), false, R.id.profileFrame)
                     tvFAQUpperText.text = getString(R.string.order_detail)
                 }
@@ -77,7 +87,9 @@ class FAQActivity : LasrossParentKotlinActivity()
             }
         }
     }
-
+    fun callReadNotificationApi(notificationId: String) {
+        NotificationPresenter(this,this).callReadNotificationApi(notificationId)
+    }
     override fun onBackPressed() {
         super.onBackPressed()
         val f = this.supportFragmentManager.findFragmentById(R.id.profileFrame)
@@ -132,5 +144,29 @@ class FAQActivity : LasrossParentKotlinActivity()
             tvCartItemCountOrders.setVisibility(View.VISIBLE)
             tvCartItemCountOrders.setText(session.cartItemCount)
         }
+    }
+
+    override fun onShowBaseLoader() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onHideBaseLoader() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onError(errorMessage: String?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSuccessNotificationList(notificationListModel: NotificationListModel?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSuccessReadNotification(readNotificationModel: ReadNotificationModel?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onTokenChangeError(errorMessage: String?) {
+        TODO("Not yet implemented")
     }
 }

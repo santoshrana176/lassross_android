@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.productDetail.presenter
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -21,7 +22,7 @@ class ProductDetailPresenter(var productDetailCallback: ApiCallback.ProductDetai
     fun callProductDetailApi(productId: String) {
         productDetailCallback.onShowBaseLoader()
          val api = ServiceGeneratorkotlin().createService(API::class.java)
-        val loginResponseCall = api.callProductDetailApi(productId,session)
+        val loginResponseCall = api.callProductDetailApi(Lasross.appLanguage,productId,session)
         loginResponseCall.enqueue(object : Callback<ProductDetailResponse> {
             override fun onResponse(call: Call<ProductDetailResponse>, response: Response<ProductDetailResponse>) {
                 productDetailCallback.onHideBaseLoader()
@@ -53,7 +54,7 @@ class ProductDetailPresenter(var productDetailCallback: ApiCallback.ProductDetai
         val session = Session(mContext)
         productDetailCallback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val genderApi = api.callAddRemoveWishListApi(session.authToken, productId)
+        val genderApi = api.callAddRemoveWishListApi(Lasross.appLanguage,session.authToken, productId)
         genderApi.enqueue(object : Callback<AddRemoveWishListResponse> {
             override fun onResponse(call: Call<AddRemoveWishListResponse>, response: Response<AddRemoveWishListResponse>) {
                 productDetailCallback.onHideBaseLoader()

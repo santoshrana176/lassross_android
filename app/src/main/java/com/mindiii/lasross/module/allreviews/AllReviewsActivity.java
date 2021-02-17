@@ -24,7 +24,7 @@ import com.mindiii.lasross.module.allreviews.presenter.AllReviewsPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllReviewsActivity19 extends LasrossParentActivity implements ApiCallback.AllReviewsCallback {
+public class AllReviewsActivity extends LasrossParentActivity implements ApiCallback.AllReviewsCallback {
 
     RecyclerView rvReviewsList;
     ImageView ivBackAllReviews;
@@ -38,7 +38,7 @@ public class AllReviewsActivity19 extends LasrossParentActivity implements ApiCa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.all_reviews_activity_layout_19);
+        setContentView(R.layout.all_reviews_activity_layout_);
 
         reviewList = new ArrayList<>();
 
@@ -110,9 +110,9 @@ public class AllReviewsActivity19 extends LasrossParentActivity implements ApiCa
                 if ((intRating % 1) > 0)
                     tvProductReview.setText(getOneValueAfterDecimal(allReviewsModel.getData().getRating().getAverage_rating()));
                 else
-                    tvProductReview.setText(getOneValueAfterDecimal(allReviewsModel.getData().getRating().getAverage_rating()) + ".0");
+                tvProductReview.setText(getOneValueAfterDecimal(allReviewsModel.getData().getRating().getAverage_rating()) + ".0");
 
-                tvRatingAndReview.setText(allReviewsModel.getData().getRating().getAll_ratings() + getString(R.string.rating_and) +" "+ allReviewsModel.getData().getRating().getReview() +" "+ getString(R.string.review_and));
+                tvRatingAndReview.setText(allReviewsModel.getData().getRating().getAll_ratings() +" "+ getString(R.string.rating_and) + " " + allReviewsModel.getData().getRating().getReview() + " " + getString(R.string.review_and));
                 tvFiveStartUser.setText(allReviewsModel.getData().getRating().getFive_star());
                 tvFourStartUser.setText(allReviewsModel.getData().getRating().getFour_star());
                 tvThreeStartUser.setText(allReviewsModel.getData().getRating().getThree_star());

@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.orderdetail.presenter
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -20,7 +21,7 @@ class OrderDetailPresenter(var mContext: Context, var orderDetailListener: ApiCa
     fun callOrderDetailApi(orderId: String) {
         orderDetailListener.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val genderApi = api.callOrderDetailApi(session.authToken, orderId)
+        val genderApi = api.callOrderDetailApi(Lasross.appLanguage,session.authToken, orderId)
         genderApi.enqueue(object : Callback<OrderDetailModel> {
             override fun onResponse(call: retrofit2.Call<OrderDetailModel>, response: Response<OrderDetailModel>) {
                 orderDetailListener.onHideBaseLoader()
@@ -51,7 +52,7 @@ class OrderDetailPresenter(var mContext: Context, var orderDetailListener: ApiCa
         orderDetailListener.onShowBaseLoader()
 
         val api = ServiceGenerator.createService(API::class.java)
-        val ratingApi = api.ratingAndReviews(session.authToken, productId, ratings.toString(), item_id, description)
+        val ratingApi = api.ratingAndReviews(Lasross.appLanguage,session.authToken, productId, ratings.toString(), item_id, description)
         ratingApi.enqueue(object : Callback<AddAddressResponse> {
             override fun onResponse(call: Call<AddAddressResponse>, response: Response<AddAddressResponse>) {
                 orderDetailListener.onHideBaseLoader()

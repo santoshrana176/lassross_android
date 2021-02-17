@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.delivery
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -19,7 +20,7 @@ class DeliveryPresenter(var mContext: Context, var myAddressCallback: ApiCallbac
     fun callDeliveryDetail(shipping_add_id: String) {
         myAddressCallback.onShowBaseLoader()
         val api = ServiceGeneratorkotlin().createService(API::class.java)
-        val loginResponseCall = api.callFinalAmount(Session(mContext).authToken, shipping_add_id)
+        val loginResponseCall = api.callFinalAmount(Lasross.appLanguage,Session(mContext).authToken, shipping_add_id)
         loginResponseCall.enqueue(object : Callback<DeliveryResponse> {
             override fun onResponse(call: Call<DeliveryResponse>, response: Response<DeliveryResponse>) {
                 myAddressCallback.onHideBaseLoader()

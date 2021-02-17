@@ -2,6 +2,7 @@ package com.mindiii.lasross.network;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.mindiii.lasross.BuildConfig;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,7 +15,8 @@ public class ServiceGenerator {
 
     // DBUG BASE URL
     //private static final String API_BASE_URL = "https://www.lasross.com/service/api_v1/";
-    private static final String API_BASE_URL = "https://dev.mindiii.com/lasross/service/api_v1/";
+  //  private static final String API_BASE_URL = "https://dev.mindiii.com/lasross/service/api_v1/";
+   // private static final String API_BASE_URL = "https://www.lasross.com/service/api_v1/";
 
     //LIVE BASE URL
     //private static final String API_BASE_URL = "https://api.lasross.com/api_v1/";
@@ -30,7 +32,7 @@ public class ServiceGenerator {
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
-                    .baseUrl(API_BASE_URL);
+                    .baseUrl(/*API_BASE_URL*/BuildConfig.BASE_URL);
 
     public static <S> S createService(Class<S> serviceClass) {
         Retrofit retrofit = builder

@@ -24,7 +24,7 @@ import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
 import com.mindiii.lasross.base.ClickListener.SimilarProductClickListener
 import com.mindiii.lasross.base.LasrossParentKotlinActivity
-import com.mindiii.lasross.module.allreviews.AllReviewsActivity19
+import com.mindiii.lasross.module.allreviews.AllReviewsActivity
 import com.mindiii.lasross.module.cart.MyCartActivity
 import com.mindiii.lasross.module.cart.model.AddTocartResponse
 import com.mindiii.lasross.module.cart.presenter.AddToCartPresenter
@@ -245,14 +245,8 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         variantColorValue = productDetailResponse.data.product_detail.variant[1].variant_value as ArrayList<VariantValue>
         val colorVal = VariantValue("0", "0", "")
          variantColorValue.add(0, colorVal)
-
-        galleryImage = productDetailResponse.data.product_detail.gallery_images as ArrayList<GalleryImage>
-        val galleryImages = GalleryImage("0",
-                productDetailResponse.data.product_detail.product_image_original,
-                productDetailResponse.data.product_detail.product_image_large,
-                productDetailResponse.data.product_detail.product_image_medium,
-                productDetailResponse.data.product_detail.product_image,
-                "0")
+         galleryImage =ArrayList() //productDetailResponse.data.product_detail.gallery_images as ArrayList<GalleryImage>
+        val galleryImages = GalleryImage("0","0",productDetailResponse.data.product_detail.product_image_original,productDetailResponse.data.product_detail.product_image_medium)
           galleryImage.add(0,galleryImages)
         if (productDetailResponse.data.product_detail.gallery_images.isNotEmpty()){
             galleryImage.addAll(productDetailResponse.data.product_detail.gallery_images)
@@ -379,7 +373,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
                 onBackPressed()
             }
             R.id.llProductDetailRating -> {
-                val intent = Intent(this@ProductDetailActivity, AllReviewsActivity19::class.java)
+                val intent = Intent(this@ProductDetailActivity, AllReviewsActivity::class.java)
                 intent.putExtra("productId", productId)
                 startActivity(intent)
             }

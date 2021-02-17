@@ -368,6 +368,7 @@
     <string name="_1_item_cart">(1 it)</string>
     <string name="payment_">Pago</string>
     <string name="select_cards">SELECCIONAR TARJETA</string>
+    <string name="my_subscription_plan">Mi plan de suscripción</string>
 </resources>
 
     <!--<string name="place_key">AIzaSyAzlqPc1OwdMSrrVPLllUCKubclM_rcox0</string>-->

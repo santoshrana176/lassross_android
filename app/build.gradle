@@ -30,7 +30,8 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             //dev url
-            buildConfigField("String", "BASE_URL", "\"https://www.lasross.com/service/api_v1/\"")
+             buildConfigField("String", "BASE_URL", "\"https://www.lasross.com/service/api_v1/\"")
+           // buildConfigField("String", "BASE_URL", "https://www.lasross.com/service/api_v1/")
 
             //Live url
             //buildConfigField("String", "BASE_URL", "\"http://lasross.com/api/\"")
@@ -41,7 +42,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
             //dev url
-            buildConfigField("String", "BASE_URL", "https://www.lasross.com/service/api_v1/")
+          //  buildConfigField("String", "BASE_URL", "https://www.lasross.com/service/api_v1/")
+           buildConfigField("String", "BASE_URL", "https://www.lasross.com/service/api_v1/")
 
             //Live url
             //buildConfigField("String", "BASE_URL", "\"http://lasross.com/api/\"")

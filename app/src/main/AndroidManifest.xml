@@ -141,7 +141,7 @@
             android:windowSoftInputMode="stateHidden"
             tools:ignore="InnerclassSeparator" />
         <activity
-            android:name=".module.allreviews.AllReviewsActivity19"
+            android:name=".module.allreviews.AllReviewsActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
@@ -183,9 +183,12 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="3ee0c6ce5a9e7deef951049958131a35bd5d4774" />
+        <!--<meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDyUk7vkNaDVsFojxOYTEz0m_rtdFqdgqs" />-->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDyUk7vkNaDVsFojxOYTEz0m_rtdFqdgqs" />
+            android:value="AIzaSyBqe3EW1H_T8rG1rPRvrdMI5_vs7zKA4p4" />
 
         <provider
             android:name=".app.GenericFileProvider"

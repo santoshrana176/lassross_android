@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.settings.presenter
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -24,7 +25,7 @@ class SettingsPresenter(var mContext: Context, var changePassword: ApiCallback.S
         val session = Session(mContext)
         changePassword.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val changePasswordApi = api.changePasswordApi(session.authToken, oldPassword, newPassword, cPassword)
+        val changePasswordApi = api.changePasswordApi(Lasross.appLanguage,session.authToken, oldPassword, newPassword, cPassword)
         changePasswordApi.enqueue(object : Callback<AddAddressResponse> {
             override fun onResponse(call: Call<AddAddressResponse>, response: Response<AddAddressResponse>) {
                 changePassword.onHideBaseLoader()
@@ -58,7 +59,7 @@ class SettingsPresenter(var mContext: Context, var changePassword: ApiCallback.S
         val session = Session(mContext)
         changePassword.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val genderApi = api.callLogoutApi(session.getAuthToken())
+        val genderApi = api.callLogoutApi(Lasross.appLanguage,session.getAuthToken())
         genderApi.enqueue(object : Callback<LogoutResponse> {
             override fun onResponse(call: Call<LogoutResponse>, response: Response<LogoutResponse>) {
                 changePassword.onHideBaseLoader()
@@ -89,7 +90,7 @@ class SettingsPresenter(var mContext: Context, var changePassword: ApiCallback.S
         val session = Session(mContext).authToken
         changePassword.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val genderApi = api.callNotificationOnOff(session,status)
+        val genderApi = api.callNotificationOnOff(Lasross.appLanguage,session,status)
         genderApi.enqueue(object : Callback<NotificationAlertResponse> {
             override fun onResponse(call: Call<NotificationAlertResponse>, response: Response<NotificationAlertResponse>) {
                 changePassword.onHideBaseLoader()
@@ -120,7 +121,7 @@ class SettingsPresenter(var mContext: Context, var changePassword: ApiCallback.S
         val session = Session(mContext)
         changePassword.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val currentPlan = api.callCurrentSubscribedPlan(session.authToken)
+        val currentPlan = api.callCurrentSubscribedPlan(Lasross.appLanguage,session.authToken)
         currentPlan.enqueue(object : Callback<SubscribeResponse> {
             override fun onResponse(call: Call<SubscribeResponse>, response: Response<SubscribeResponse>) {
 
@@ -155,7 +156,7 @@ class SettingsPresenter(var mContext: Context, var changePassword: ApiCallback.S
         val session = Session(mContext)
         changePassword.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val currentPlan = api.callTermsPolicyApi()
+        val currentPlan = api.callTermsPolicyApi(Lasross.appLanguage)
         currentPlan.enqueue(object : Callback<TermsPolicyResponse> {
             override fun onResponse(call: Call<TermsPolicyResponse>, response: Response<TermsPolicyResponse>) {
 

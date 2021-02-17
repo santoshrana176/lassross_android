@@ -32,7 +32,7 @@ class ViewPagerAdapter(private var galleryImage: List<GalleryImage>, var mContex
             //img.setImageResource(R.drawable.dress2);
         } else {
             Picasso.with(mContext)
-                    .load(galleryImage[position].product_gallery_image)
+                    .load(galleryImage[position].product_gallery_image_medium)
                     //.resize(0, img.height)
                     .into(img)
         }

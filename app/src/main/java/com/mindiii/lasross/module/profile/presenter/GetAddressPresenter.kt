@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.profile.presenter
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -19,7 +20,7 @@ class GetAddressPresenter(var myAddressCallback: ApiCallback.GetAddressCallback,
         val session = Session(mContext)
         myAddressCallback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val userAddressListCallApi = api.callUserAddressList(session.authToken, offset, limit)
+        val userAddressListCallApi = api.callUserAddressList(Lasross.appLanguage,session.authToken, offset, limit)
         userAddressListCallApi.enqueue(object : Callback<UserAddressListResponse> {
             override fun onResponse(call: Call<UserAddressListResponse>, response: Response<UserAddressListResponse>) {
                 myAddressCallback.onHideBaseLoader()

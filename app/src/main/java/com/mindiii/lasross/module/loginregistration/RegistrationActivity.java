@@ -103,7 +103,7 @@ public class RegistrationActivity extends LasrossParentActivity implements View.
         llImage = findViewById(R.id.llImage);
 
         GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                //.requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
@@ -153,15 +153,15 @@ public class RegistrationActivity extends LasrossParentActivity implements View.
 
                 if (name.isEmpty()) {
                     CommonUtils.showCustomAlert(RegistrationActivity.this, getString(R.string.Please_enter_full_name));
-                   // return;
+                    // return;
                 } else if (!isValidName(name)) {
                     CommonUtils.showCustomAlert(RegistrationActivity.this, getString(R.string.alphabets));
                 } else if (name.length() < 3) {
                     CommonUtils.showCustomAlert(RegistrationActivity.this, getString(R.string.full_name_max_two));
                     // return;
-                }else if (email.isEmpty()) {
+                } else if (email.isEmpty()) {
                     CommonUtils.showCustomAlert(RegistrationActivity.this, getString(R.string.Please_enter_email));
-                   // return;
+                    // return;
                 } else if (!isValidEmail(email)) {
                     CommonUtils.showCustomAlert(RegistrationActivity.this, getString(R.string.Please_enter_valid_email));
                 } else if (pass.isEmpty()) {
@@ -169,7 +169,7 @@ public class RegistrationActivity extends LasrossParentActivity implements View.
                     //return;
                 } else if (!isValidPass(pass)) {
                     CommonUtils.showCustomAlert(RegistrationActivity.this, getString(R.string.password_max));
-                }else {
+                } else {
                     if (CommonUtils.isNetworkAvailable(RegistrationActivity.this)) {
                         callSignUpApi(name, email, pass, formattedDate, getCurrentFirebaseToken());
                     } else {
@@ -376,13 +376,12 @@ public class RegistrationActivity extends LasrossParentActivity implements View.
     public void onSuccessSignUp(LoginResponse loginResponse) {
         if (loginResponse.getStatus().equalsIgnoreCase("success")) {
             session.createRegistration(loginResponse.getData().getUserDetail());
-             session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
+            session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
             session.setNotificatioStatus(loginResponse.getData().getUserDetail().getPush_alert_status());
             session.setUserLoggedIn();
-       Intent intent=     new Intent(RegistrationActivity.this, SubscriptionActivity.class);
-           intent.putExtra("from","Signup Screen");
+            Intent intent = new Intent(RegistrationActivity.this, SubscriptionActivity.class);
+            intent.putExtra("from", "Signup Screen");
             startActivity(intent);
-
             finish();
         } else {
             CommonUtils.showCustomAlert(this, loginResponse.getMessage());

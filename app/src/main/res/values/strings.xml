@@ -367,13 +367,6 @@
     <string name="_1_item_cart">(1 item)</string>
     <string name="payment_">Payment</string>
     <string name="select_cards">SELECT CARD</string>
+    <string name="my_subscription_plan">My Subscription Plan</string>
 </resources>
 
-
-
-    <!--<string name="place_key">AIzaSyDyUk7vkNaDVsFojxOYTEz0m_rtdFqdgqs</string>-->
-    <!--
-        <string name="place_key">AIzaSyAzlqPc1OwdMSrrVPLllUCKubclM_rcox0</string>
-    -->
-
-    <!--<string name="StripeKeyTest">sk_test_5LBctxgLZlmgYzB2oCWlw36O00OIq2Kfgg</string>-->

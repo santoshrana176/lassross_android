@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.cart.presenter
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -23,7 +24,7 @@ class GetCartPresenter(var mContext: Context, var getCartCallback: ApiCallback.G
         val session = Session(mContext)
         getCartCallback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val cartListApi = api.callCartList(session.authToken, offset, "18")
+        val cartListApi = api.callCartList(Lasross.appLanguage,session.authToken, offset, "18")
         cartListApi.enqueue(object : Callback<CartListResponse> {
             override fun onResponse(call: Call<CartListResponse>, response: Response<CartListResponse>) {
                 getCartCallback.onHideBaseLoader()
@@ -54,7 +55,7 @@ class GetCartPresenter(var mContext: Context, var getCartCallback: ApiCallback.G
         val session = Session(mContext)
         getCartCallback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val cartListApi = api.callUpdateCart(session.authToken, cartItemId, productId, productQuantity)
+        val cartListApi = api.callUpdateCart(Lasross.appLanguage,session.authToken, cartItemId, productId, productQuantity)
         cartListApi.enqueue(object : Callback<CartItemIncreaseResponse> {
             override fun onResponse(call: Call<CartItemIncreaseResponse>, response: Response<CartItemIncreaseResponse>) {
                 getCartCallback.onHideBaseLoader()
@@ -87,7 +88,7 @@ class GetCartPresenter(var mContext: Context, var getCartCallback: ApiCallback.G
         val session = Session(mContext)
         getCartCallback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val cartListApi = api.callUpdateDecrementCart(session.authToken, cartItemId, productId, productQuantity)
+        val cartListApi = api.callUpdateDecrementCart(Lasross.appLanguage,session.authToken, cartItemId, productId, productQuantity)
         cartListApi.enqueue(object : Callback<CartItemIncreaseResponse> {
             override fun onResponse(call: Call<CartItemIncreaseResponse>, response: Response<CartItemIncreaseResponse>) {
                 getCartCallback.onHideBaseLoader()
@@ -119,7 +120,7 @@ class GetCartPresenter(var mContext: Context, var getCartCallback: ApiCallback.G
         val session = Session(mContext)
         getCartCallback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val delteCartItemApi = api.callDeleteCartItem(session.authToken, cartItemId)
+        val delteCartItemApi = api.callDeleteCartItem(Lasross.appLanguage,session.authToken, cartItemId)
         delteCartItemApi.enqueue(object : Callback<DeleteCartItemResponse> {
             override fun onResponse(call: Call<DeleteCartItemResponse>, response: Response<DeleteCartItemResponse>) {
                 getCartCallback.onHideBaseLoader()
@@ -152,7 +153,7 @@ class GetCartPresenter(var mContext: Context, var getCartCallback: ApiCallback.G
         val session = Session(mContext)
         getCartCallback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val cartClearAllApi = api.callAllClearCartItem(session.authToken)
+        val cartClearAllApi = api.callAllClearCartItem(Lasross.appLanguage,session.authToken)
         cartClearAllApi.enqueue(object : Callback<CartClearAllResponse> {
             override fun onResponse(call: Call<CartClearAllResponse>, response: Response<CartClearAllResponse>) {
                 getCartCallback.onHideBaseLoader()

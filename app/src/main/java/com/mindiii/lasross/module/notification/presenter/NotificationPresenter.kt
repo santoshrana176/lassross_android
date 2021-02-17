@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.notification.presenter
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -21,7 +22,7 @@ class NotificationPresenter(var notificationCallback: ApiCallback.NotificationCa
     fun callNotificationListApi() {
         notificationCallback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val genderApi = api.callNotificationList(session.authToken)
+        val genderApi = api.callNotificationList(Lasross.appLanguage,session.authToken)
         genderApi.enqueue(object : Callback<NotificationListModel> {
             override fun onResponse(call: Call<NotificationListModel>, response: Response<NotificationListModel>) {
                 notificationCallback.onHideBaseLoader()
@@ -51,7 +52,7 @@ class NotificationPresenter(var notificationCallback: ApiCallback.NotificationCa
     fun callReadNotificationApi(notificationID: String) {
         notificationCallback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val genderApi = api.callReadNotificationApi(session.authToken, notificationID)
+        val genderApi = api.callReadNotificationApi(Lasross.appLanguage,session.authToken, notificationID)
         genderApi.enqueue(object : Callback<ReadNotificationModel> {
             override fun onResponse(call: Call<ReadNotificationModel>, response: Response<ReadNotificationModel>) {
                 notificationCallback.onHideBaseLoader()

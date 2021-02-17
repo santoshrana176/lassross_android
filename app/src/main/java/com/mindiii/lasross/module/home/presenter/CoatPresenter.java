@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import com.mindiii.lasross.Lasross;
 import com.mindiii.lasross.R;
 import com.mindiii.lasross.app.session.Session;
 import com.mindiii.lasross.base.ApiCallback;
@@ -37,7 +38,7 @@ public class CoatPresenter {
 
         coatsListCallback.onShowBaseLoader();
         final API api = ServiceGenerator.createService(API.class);
-        Call<ProductResponse> genderApi = api.callProductListApi(productName,
+        Call<ProductResponse> genderApi = api.callProductListApi(Lasross.appLanguage,productName,
                 limit, offset, size, color, price_from, price_to, popular, rating, latest, price_low,
                 pice_high, category, session.getRegistration().getUserId(), deal_id);
         genderApi.enqueue(new Callback<ProductResponse>() {
@@ -67,7 +68,7 @@ public class CoatPresenter {
     public void callAddRemoveWishListApi(String productId) {
         coatsListCallback.onShowBaseLoader();
         final API api = ServiceGenerator.createService(API.class);
-        Call<AddRemoveWishListResponse> genderApi = api.callAddRemoveWishListApi(session.getRegistration().getAuth_token(), productId);
+        Call<AddRemoveWishListResponse> genderApi = api.callAddRemoveWishListApi(Lasross.appLanguage,session.getRegistration().getAuth_token(), productId);
         genderApi.enqueue(new Callback<AddRemoveWishListResponse>() {
             @Override
             public void onResponse(@NonNull Call<AddRemoveWishListResponse> call, @NonNull Response<AddRemoveWishListResponse> response) {

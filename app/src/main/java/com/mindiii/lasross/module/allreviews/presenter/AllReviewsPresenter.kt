@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.allreviews.presenter
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -20,7 +21,7 @@ class AllReviewsPresenter(var allReviewsPresenter: ApiCallback.AllReviewsCallbac
     fun callAllReviewListApi(productId: String) {
         allReviewsPresenter.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val genderApi = api.callProductReviewApi(productId, session.authToken)
+        val genderApi = api.callProductReviewApi(Lasross.appLanguage,productId, session.authToken)
         genderApi.enqueue(object : Callback<AllReviewsModel> {
             override fun onResponse(call: Call<AllReviewsModel>, response: Response<AllReviewsModel>) {
                 allReviewsPresenter.onHideBaseLoader()

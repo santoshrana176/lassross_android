@@ -106,6 +106,7 @@ class NotificationsActivity : LasrossParentKotlinActivity(), View.OnClickListene
                 startActivity(Intent(this@NotificationsActivity, FAQActivity::class.java)
                         .putExtra("screenCheck", "Order Status")
                         .putExtra("orderId", notificationList[position].reference_id))
+                       // .putExtra("notificationId", notificationList[position].notificationId))
             }
         })
         rvNotificationListActivity.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.wishlist.presenter
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -22,7 +23,7 @@ class WishListPresenter(var userWishListCallback: ApiCallback.UserWishListCallba
     fun callUserWishListApi(offset: String) {
         userWishListCallback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val genderApi = api.callUserWishList(session.authToken, offset, "18")
+        val genderApi = api.callUserWishList(Lasross.appLanguage,session.authToken, offset, "18")
         genderApi.enqueue(object : Callback<WishListResponse> {
             override fun onResponse(call: Call<WishListResponse>, response: Response<WishListResponse>) {
                 userWishListCallback.onHideBaseLoader()
@@ -52,7 +53,7 @@ class WishListPresenter(var userWishListCallback: ApiCallback.UserWishListCallba
     fun callAddRemoveWishListApi(productId: String) {
         userWishListCallback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val genderApi = api.callAddRemoveWishListApi(session.authToken, productId)
+        val genderApi = api.callAddRemoveWishListApi(Lasross.appLanguage,session.authToken, productId)
         genderApi.enqueue(object : Callback<AddRemoveWishListResponse> {
             override fun onResponse(call: Call<AddRemoveWishListResponse>, response: Response<AddRemoveWishListResponse>) {
                 userWishListCallback.onHideBaseLoader()
@@ -83,7 +84,7 @@ class WishListPresenter(var userWishListCallback: ApiCallback.UserWishListCallba
     fun callAllClearWishListApi() {
         userWishListCallback.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val allClearWishListApi = api.callAllClearWishList(session.registration!!.auth_token)
+        val allClearWishListApi = api.callAllClearWishList(Lasross.appLanguage,session.registration!!.auth_token)
         allClearWishListApi.enqueue(object : Callback<AllClearResponse> {
             override fun onResponse(call: Call<AllClearResponse>, response: Response<AllClearResponse>) {
                 userWishListCallback.onHideBaseLoader()

@@ -1,6 +1,7 @@
 package com.mindiii.lasross.module.myorder.presenter
 
 import android.content.Context
+import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -52,7 +53,7 @@ class MyOrderPresenter(var mContext: Context, var myOrderListener: ApiCallback.M
     fun callMyOrderListApi() {
         myOrderListener.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val genderApi = api.callMyOrderList(session.authToken)
+        val genderApi = api.callMyOrderList(Lasross.appLanguage,session.authToken)
         genderApi.enqueue(object : Callback<MyOrdersModel> {
             override fun onResponse(call: retrofit2.Call<MyOrdersModel>, response: Response<MyOrdersModel>) {
                 myOrderListener.onHideBaseLoader()

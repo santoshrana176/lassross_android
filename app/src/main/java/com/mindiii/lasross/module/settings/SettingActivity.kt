@@ -15,8 +15,7 @@ import android.view.Window
 import android.view.WindowManager
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+  import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -39,8 +38,8 @@ import kotlinx.android.synthetic.main.custom_dialog_settings.*
 import kotlinx.android.synthetic.main.fragment_update.*
 import kotlinx.android.synthetic.main.logout_view.*
 import kotlinx.android.synthetic.main.reset_password_dialog_artboard_35.*
-import kotlinx.android.synthetic.main.setting_activty_40.*
-import java.util.*
+import kotlinx.android.synthetic.main.setting_activty_.*
+ import java.util.*
 
 
 class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, ApiCallback.SettingsCallback, ApiCallback.LanguageCallback {
@@ -56,7 +55,7 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
 
         session = Session(this)
         // setAppLocale(session!!.getIsEnglishLanguage())
-        setContentView(R.layout.setting_activty_40)
+        setContentView(R.layout.setting_activty_)
         val status1 = session!!.notificatioStatus
          if (status1.equals("1")) {
             status = "1"
@@ -70,7 +69,7 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = this.resources.getColor(R.color.home_header_bg1)
         setOnClicks(rlEditProfile, rlChangePassword, subscriptionPlans, iv_back, tvSettingLogout,
-                rlTermsCondition, rlPrivacyPolicy, rlFeedback, rlEnglish, rlSpanish, notificationSwitch)
+                rlTermsCondition, rlPrivacyPolicy, rlFeedback, rlEnglish, rlSpanish, notificationSwitch,my_subscriptionPlans)
     }
 
     fun setAppLocale(locale: String) {
@@ -99,9 +98,16 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
                 } else run { showInternetAlertDialog(this) }
             }
             R.id.subscriptionPlans -> {
+                val intent = Intent(this@SettingActivity, SubscriptionActivity::class.java)
+                intent.putExtra("from", "Settings")
+                startActivity(intent)
+                finish()
+            }
+            R.id.my_subscriptionPlans -> {
                 if (CommonUtils.isNetworkAvailable(this)) {
                     callUserCurrentSubscribedPlan()
                 } else run { showInternetAlertDialog(this) }
+
             }
             R.id.iv_back -> {
                 onBackPressed()
@@ -177,10 +183,10 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
         dialog.setContentView(R.layout.logout_view)
         dialog.tvMessagesLogout.setText(message)
         dialog.tvPopupNoLogout.setOnClickListener({ dialog.dismiss() })
-        dialog.tvPopupYesLogout.setOnClickListener({
+        dialog.tvPopupYesLogout.setOnClickListener {
             callLogoutApi()
             dialog.dismiss()
-        })
+        }
         dialog.show()
     }
 
@@ -300,16 +306,16 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
 
     override fun onSuccessCurrentSubscribedPlan(response: SubscribeResponse?) {
         if (response != null) {
-            if (response.message != null) {
+       /*     if (response.message != null) {
                 startActivity(Intent(this, SubscriptionActivity::class.java))
-            } else {
+            } else {*/
                 val b = Bundle()
                 val intent = Intent(this, ActivePlanActivity::class.java)
                 b.putSerializable("subscribeResponse", response)
                 intent.putExtras(b)
                 intent.putExtra("isCancelled", response.data.is_cancelled)
                 startActivity(intent)
-            }
+           // }
         }
     }
 
@@ -322,9 +328,11 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
             updateViews(selectedLanguage)
             if (selectedLanguage.equals("en")) {
                 session?.language = "en"
+                Lasross.appLanguage="en"
                 LanguageUtils.language(this, selectedLanguage, true)
             } else if (selectedLanguage.equals("es")) {
                 session?.language = "es"
+                Lasross.appLanguage="es"
                 LanguageUtils.language(this, selectedLanguage, true)
             }
         } else {
