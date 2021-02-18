@@ -323,7 +323,7 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
 
     @Override
     public void onError(String errorMessage) {
-        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
+         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
 
     @Override

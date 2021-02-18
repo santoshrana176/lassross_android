@@ -267,16 +267,16 @@ class MyAddressesActivity : LasrossParentActivity(), View.OnClickListener, ApiCa
     }
 
     override fun onSuccessUserAddressList(userAddressListResponse: UserAddressListResponse) {
-        tvTotalAddress.text = "${userAddressListResponse.data.total_records} SAVED ADDRESS"
+        tvTotalAddress.text = "${userAddressListResponse.data.total_records} "+ getString(R.string.saved_addresses)
         userAddressList.addAll(userAddressListResponse.data.user_addresslist)
         if (userAddressList.size != 0) {
             count = userAddressList.size
-            tvTotalAddress.text = userAddressList.size.toString() + " SAVED ADDRESS"
+            tvTotalAddress.text = userAddressList.size.toString() + " "+getString(R.string.saved_addresses)
             tvAddressNotFound.visibility = View.GONE
             llRecyclerView.visibility = View.VISIBLE
             //recyclerView.visibility = View.VISIBLE
         } else {
-            tvTotalAddress.text = 0.toString() + " SAVED ADDRESS"
+            tvTotalAddress.text = 0.toString() + " "+ getString(R.string.saved_addresses)
             tvAddressNotFound.visibility = View.VISIBLE
             llRecyclerView.visibility = View.GONE
             //recyclerView.visibility = View.GONE

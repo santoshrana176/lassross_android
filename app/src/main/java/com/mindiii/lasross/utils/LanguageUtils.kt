@@ -22,11 +22,12 @@ class LanguageUtils {
             activity.getResources().updateConfiguration(config,
                     activity.getResources().getDisplayMetrics())
             if (isRecreate) {
-                val intent = Intent(activity, SettingActivity::class.java)
+                /*val intent = Intent(activity, SettingActivity::class.java)
                 activity.finish()
-                activity.startActivity(intent)
+                activity.startActivity(intent)*/
+                activity.recreate()
             }
-            // activity.recreate()
+
         }
     }
 }

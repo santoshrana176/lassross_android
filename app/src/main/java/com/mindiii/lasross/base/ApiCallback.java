@@ -94,6 +94,7 @@ public interface ApiCallback {
 
     interface VariantFilterCallback extends BaseInterface {
         void onSuccessVariantList(VarientListResponse varientListResponse);
+        void onTokenChangeError(String errorMessage);
     }
 
     interface UpdateProfileCallback extends BaseInterface {
@@ -165,8 +166,7 @@ public interface ApiCallback {
 
     interface DeliveryCallback extends BaseInterface {
         void onSuccessDeliveryDetails(DeliveryResponse deliveryResponse);
-
-        void onTokenChangeError();
+        void onTokenChangeError(String errorMessage);
     }
 
     interface PaymentCallBack extends BaseInterface {

@@ -30,6 +30,7 @@ class ActivePlanActivity : LasrossParentKotlinActivity(), View.OnClickListener, 
     var date = ""
     private lateinit var itemDescriptionList: ArrayList<String>
     private lateinit var subscriptionItemDescriptionAdapter: SubscriptionItemDescriptionAdapter
+    var isCancelled = ""
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,8 +43,29 @@ class ActivePlanActivity : LasrossParentKotlinActivity(), View.OnClickListener, 
         window.statusBarColor = this.resources.getColor(R.color.home_header_bg1)
 
         ivActivePlanBack.setOnClickListener(this)
-        itemDescriptionList = ArrayList()
+        tvStopAutoRecurring.setOnClickListener(this)
 
+        itemDescriptionList = ArrayList()
+        val subscribeResponse = bundle!!.getSerializable("subscribeResponse") as SubscribeResponse?
+        isCancelled = intent.getStringExtra("isCancelled")
+
+        /*  if (isCancelled!!.equals("0") && !subscribeResponse!!.data.subscriptionPlanId.equals("999999999")) {
+              tvStopAutoRecurring.visibility=View.VISIBLE
+            } else {
+               tvStopAutoRecurring.visibility = View.GONE
+          }*/
+
+        if (subscribeResponse!!.data.plan_title.trim().equals("Golden Plan", ignoreCase = true)) {
+            setSubscribeData(R.drawable.goldenplan_icon_orange, R.string.golden_plan, subscribeResponse, true)
+
+        } else if (subscribeResponse.data.plan_title.trim().equals("Silver Plan", ignoreCase = true)) {
+            setSubscribeData(R.drawable.silverplan_icon_orange, R.string.silver_plan, subscribeResponse, true)
+
+        } else if (subscribeResponse.data.plan_title.trim().equals("Free Plan", ignoreCase = true)) {
+            setSubscribeData(R.drawable.silverplan_icon_orange, R.string.free, subscribeResponse, false)
+        }
+
+/*
         val subscribeResponse = bundle!!.getSerializable("subscribeResponse") as SubscribeResponse?
         val isCancelled = intent.getStringExtra("isCancelled")
 
@@ -54,7 +76,19 @@ class ActivePlanActivity : LasrossParentKotlinActivity(), View.OnClickListener, 
             tvRenewDateTextActivePlan.text = getString(R.string.expiry_date_active_plan)
             tvStopAutoRecurring.visibility = View.GONE
         }
+        tvSubscriptionPlanTitle.text=subscribeResponse!!.data.plan_title
+        if (subscribeResponse!!.data.plan_title.equals("Free Plan") || subscribeResponse.data.subscriptionPlanId.equals("999999999")){
+            llDownLayout.visibility=View.GONE
+            tvStopAutoRecurring.visibility=View.GONE
+            description_text.visibility=View.GONE
 
+        }else{
+            llDownLayout.visibility=View.VISIBLE
+            tvStopAutoRecurring.visibility=View.VISIBLE
+            description_text.visibility=View.VISIBLE
+        }
+
+        if (subscribeResponse!!.data.end_date.isNotEmpty())
         date = DateFormatChange(subscribeResponse!!.data.end_date)
         tvRenewDateActivePlan.text = date
 
@@ -65,18 +99,49 @@ class ActivePlanActivity : LasrossParentKotlinActivity(), View.OnClickListener, 
         } else if (subscribeResponse.data.plan_title.trim().equals("Free", ignoreCase = true)) {
             tvSubscriptionPlanImage.setImageResource(R.drawable.free_icon_orange)
             tvSubscriptionPlanTitle.setText(R.string.free)
-            tvSubscriptionPlan.visibility = View.GONE
-        }
+          //  tvSubscriptionPlan.visibility = View.GONE
+            setSubscribeData(R.drawable.silverplan_icon_orange, R.string.free, subscribeResponse)
+        }*/
     }
 
-    fun setSubscribeData(imageInt: Int, planNameInt: Int, subscribeResponse: SubscribeResponse) {
+    fun setSubscribeData(imageInt: Int, planNameInt: Int, subscribeResponse: SubscribeResponse, flag: Boolean) {
         tvSubscriptionPlanImage.setImageResource(imageInt)
         tvSubscriptionPlanTitle.setText(planNameInt)
-        tvSubscriptionPlan.visibility = View.VISIBLE
-
         tvplanPriceCurrency.text = subscribeResponse.data.plan_currency
-        tvSubscriptionPrice.text = " " + getTwoValueAfterDecimal(subscribeResponse.data.plan_price)
-        tvSubscriptionPlanDurationType.text = " / " + subscribeResponse.data.plan_duration + " " + subscribeResponse.data.plan_duration_type
+
+        if (subscribeResponse.data.plan_price.isNotEmpty())
+            tvSubscriptionPrice.text = " " + getTwoValueAfterDecimal(subscribeResponse.data.plan_price)
+
+        tvRenewDateTextActivePlan.text = getString(R.string.expiry_date_active_plan)
+
+        if (flag) {
+            plan_montly_details.visibility = View.VISIBLE
+            llDownLayout.visibility = View.VISIBLE
+            description_text.visibility = View.VISIBLE
+            text.visibility = View.GONE
+            if (isCancelled.equals("0")) {
+                tvRenewDateTextActivePlan.text = getString(R.string.next_billing_date)
+                tvStopAutoRecurring.visibility = View.VISIBLE
+            } else {
+                tvStopAutoRecurring.visibility = View.GONE
+                tvRenewDateTextActivePlan.text = getString(R.string.expiry_date_active_plan)
+            }
+            if (subscribeResponse!!.data.end_date.isNotEmpty())
+                date = DateFormatChange(subscribeResponse!!.data.end_date)
+            tvRenewDateActivePlan.text = date
+        } else {
+            llDownLayout.visibility = View.GONE
+            plan_montly_details.visibility = View.GONE
+            text.visibility = View.VISIBLE
+            text.text = getString(R.string.free_)
+            description_text.visibility = View.GONE
+            tvplanPriceCurrency.text = getString(R.string.free_)
+            tvStopAutoRecurring.visibility = View.GONE
+
+        }
+
+
+        // tvSubscriptionPlanDurationType.text = " / " + subscribeResponse.data.plan_duration + " " + subscribeResponse.data.plan_duration_type
 
         val description = subscribeResponse.data.plan_description
         if (description.equals(""))
@@ -84,9 +149,13 @@ class ActivePlanActivity : LasrossParentKotlinActivity(), View.OnClickListener, 
         else
             rvItemDescriptionListSubscription.visibility = View.VISIBLE
 
-        val arrSplit = description.split("| ")
-        for (i in 0..arrSplit.size - 1) {
-            itemDescriptionList.add(arrSplit[i])
+        if (description.contains("|")) {
+            val arrSplit = description.split("| ")
+            for (i in 0..arrSplit.size - 1) {
+                itemDescriptionList.add(arrSplit[i])
+            }
+        } else {
+            itemDescriptionList.add(description)
         }
 
         subscriptionItemDescriptionAdapter = SubscriptionItemDescriptionAdapter(itemDescriptionList, this)

@@ -247,8 +247,8 @@ open class LasrossParentKotlinActivity : AppCompatActivity() {
         tvTitleOfVal.text = message
         tvOK.setOnClickListener {
             dialog.dismiss()
-            startActivity(Intent(mContext, HomeActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
-            finish()
+           // startActivity(Intent(mContext, HomeActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
+            mContext
         }
         dialog.show()
         val window = dialog.window!!

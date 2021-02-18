@@ -17,7 +17,7 @@
     <string name="all_reviews">Toda la revisión</string>
     <string name="already_a_member">¿Ya eres usuario?</string>
     <string name="apply">APLICAR</string>
-    <string name="approved_processing">Approved and Processing</string>
+    <string name="approved_processing">Aprobado y procesado</string>
     <string name="auto_recurr_stop_success">La recurrencia automática se detuvo correctamente</string>
     <string name="blue">Azul</string>
     <string name="cancel_order">CANCELAR ORDEN</string>
@@ -171,7 +171,7 @@
     <string name="sign_in_with">Inicia sesión con</string>
     <string name="sign_in">Registrarse</string>
     <string name="shop">tienda</string>
-    <string name="shipping_charge">Shipping Charge</string>
+    <string name="shipping_charge">Costo de envío</string>
     <string name="shipped">Shipped</string>
     <string name="settings">Configuraciones</string>
     <string name="setting">Configuraciones</string>
@@ -267,7 +267,7 @@
     <string name="other_info">OTHER INFO</string>
     <string name="what_do_i_do_if_i_entered_an_incorrect_shipping_address">¿Qué hago si ingresé una dirección de envío incorrecta?</string>
     <string name="meditation_williamsburg_kogi_blog_bushwick_pitchfork_polaroid_austin_dreamcatcher_narwhal_taxidermy_tofu_gentrify_aesthetic">Meditation williamsburg kogi blog bushwick pitchfork polaroid austin dreamcatcher narwhal taxidermy tofu gentrify aesthetic.</string>
-    <string name="sizee">tamaño</string>
+    <string name="sizee">Tamaño</string>
     <string name="color">Color</string>
     <string name="price">Precio</string>
     <string name="search">Buscar</string>
@@ -317,7 +317,7 @@
     <string name="related_products">PRODUCTOS RELACIONADOS</string>
     <string name="item_1">Objeto 1</string>
     <string name="items">ARTICULO</string>
-    <string name="discount_with_silver_obtain_10_per_cent_in_all_items">Discount with silver obtain 10 per cent in all items</string>
+    <string name="discount_with_silver_obtain_10_per_cent_in_all_items">Descuento con plata obtenga el 10 por ciento en todos los artículos</string>
     <string name="start">comienzo</string>
     <string name="stop">Detener</string>
     <string name="generated_no_is">Generado no. es :</string>
@@ -329,7 +329,7 @@
     <string name="your_item_is_out_of_delivery">Tu artículo está fuera de entrega</string>
     <string name="_28th_oct_2019_3_00_am">28th Oct 2019 - 3:00 AM</string>
     <string name="delivered">Entregada</string>
-    <string name="your_item_has_been_received_in_the_hub_nearest_to_you">Your item has been received in the hub nearest to you</string>
+    <string name="your_item_has_been_received_in_the_hub_nearest_to_you">Su artículo ha sido recibido en el centro más cercano a usted</string>
     <string name="no_of_itemss">NO DE ARTÍCULO</string>
     <string name="question">¿Cuánto tiempo tardo en recibir mi pedido?</string>
     <string name="answer">Meditation williamsburg kogi blog bushwick pitchfork polaroid austin dreamcatcher narwhal taxidermy tofu gentrify aesthetic.</string>
@@ -369,6 +369,10 @@
     <string name="payment_">Pago</string>
     <string name="select_cards">SELECCIONAR TARJETA</string>
     <string name="my_subscription_plan">Mi plan de suscripción</string>
+    <string name="saved_addresses">DIRECCIÓN GUARDADA</string>
+    <string name="shop_now_deal_list">Compra ahora</string>
+    <string name="free_">Plan gratuito</string>
+    <string name="discount_">Descuento</string>
 </resources>
 
     <!--<string name="place_key">AIzaSyAzlqPc1OwdMSrrVPLllUCKubclM_rcox0</string>-->

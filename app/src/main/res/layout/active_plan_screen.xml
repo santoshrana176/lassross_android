@@ -80,7 +80,7 @@
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/ibmplexsans_bold"
                     android:text="@string/plan"
-                    android:textColor="@color/text_color"
+                     android:textColor="@color/text_color"
                     android:textSize="@dimen/_12sdp" />
             </LinearLayout>
 
@@ -92,12 +92,26 @@
                 android:layout_marginTop="@dimen/_60sdp"
                 android:layout_marginEnd="@dimen/_40sdp"
                 android:orientation="vertical"
-                android:visibility="visible">
 
+                android:visibility="visible">
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:fontFamily="@font/ibmplexsans_semibold"
+                    android:gravity="center"
+                    android:text=""
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_23sdp" />
                 <LinearLayout
+                    android:id="@+id/plan_montly_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <TextView
@@ -117,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/ibmplexsans_semibold"
                         android:gravity="center"
-                        android:text="500"
+                        android:text=""
                         android:textColor="@color/orange_forgot_password"
                         android:textSize="@dimen/_20sdp" />
 
@@ -150,6 +164,7 @@
             android:layout_below="@+id/llUpperLayout"
             android:layout_marginStart="@dimen/_30sdp"
             android:orientation="horizontal"
+            android:visibility="gone"
             android:paddingTop="@dimen/_20sdp">
 
             <TextView
@@ -179,6 +194,7 @@
             android:id="@+id/tvStopAutoRecurring"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35sdp"
+            android:visibility="gone"
             android:layout_below="@+id/llDownLayout"
             android:layout_marginLeft="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_30sdp"
@@ -193,12 +209,14 @@
             android:textSize="@dimen/_14sdp" />
 
         <TextView
+            android:id="@+id/description_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvStopAutoRecurring"
             android:layout_marginStart="@dimen/_35sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_35sdp"
+            android:visibility="gone"
             android:fontFamily="@font/ibmplexsans_regular"
             android:gravity="center"
             android:paddingBottom="@dimen/_30sdp"

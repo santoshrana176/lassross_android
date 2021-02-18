@@ -369,6 +369,10 @@
     <string name="payment_">Payment</string>
     <string name="select_cards">SELECT CARD</string>
     <string name="my_subscription_plan">My Subscription Plan</string>
+    <string name="saved_addresses">SAVED ADDRESS</string>
+    <string name="shop_now_deal_list">Shop Now</string>
+    <string name="free_">Free Plan</string>
+    <string name="discount_">Discount </string>
 </resources>
 
     <!--<string name="place_key">AIzaSyDyUk7vkNaDVsFojxOYTEz0m_rtdFqdgqs</string>-->

@@ -38,9 +38,9 @@ public class CoatPresenter {
 
         coatsListCallback.onShowBaseLoader();
         final API api = ServiceGenerator.createService(API.class);
-        Call<ProductResponse> genderApi = api.callProductListApi(Lasross.appLanguage,productName,
+        Call<ProductResponse> genderApi = api.callProductListApi(session.getAuthToken(),Lasross.appLanguage,productName,
                 limit, offset, size, color, price_from, price_to, popular, rating, latest, price_low,
-                pice_high, category, session.getRegistration().getUserId(), deal_id);
+                pice_high, category, session.getRegistration().getUserId(), deal_id,"2");
         genderApi.enqueue(new Callback<ProductResponse>() {
             @Override
             public void onResponse(@NonNull Call<ProductResponse> call, @NonNull Response<ProductResponse> response) {
@@ -49,7 +49,12 @@ public class CoatPresenter {
                     coatsListCallback.onSuccessProductList(response.body());
                 } else {
                     APIErrors apiErrors = ErrorUtils.parseError(response);
-                    coatsListCallback.onError(apiErrors.getMessage());
+                    if (apiErrors.getMessage().equals("Invalid token")) {
+                        coatsListCallback.onTokenChangeError(apiErrors.getMessage());
+                    } else {
+                        coatsListCallback.onError(apiErrors.getMessage());
+                    }
+                  //  coatsListCallback.onError(apiErrors.getMessage());
                 }
             }
 

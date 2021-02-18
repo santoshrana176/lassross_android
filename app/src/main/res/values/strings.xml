@@ -214,7 +214,7 @@
     <string name="overall_rating">Overall Rating</string>
     <string name="out_of_stock">Out of stock</string>
     <string name="no_reviews">No Reviews Found</string>
-    <string name="shipping_charge">Costo de envío</string>
+    <string name="shipping_charge">Shipping Charge</string>
     <string name="your_order_placed_on">Your order placed on</string>
     <string name="your_order_approved_on">Your order approved on</string>
     <string name="approved_processing">Approved and Processing</string>
@@ -368,5 +368,9 @@
     <string name="payment_">Payment</string>
     <string name="select_cards">SELECT CARD</string>
     <string name="my_subscription_plan">My Subscription Plan</string>
+    <string name="saved_addresses">SAVED ADDRESS</string>
+    <string name="shop_now_deal_list">Shop Now</string>
+    <string name="free_">Free Plan</string>
+    <string name="discount_">Discount </string>
 </resources>
 

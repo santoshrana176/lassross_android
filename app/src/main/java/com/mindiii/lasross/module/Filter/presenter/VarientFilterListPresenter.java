@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 
 import com.mindiii.lasross.Lasross;
 import com.mindiii.lasross.R;
+import com.mindiii.lasross.app.session.Session;
 import com.mindiii.lasross.base.ApiCallback;
 import com.mindiii.lasross.base.errorResponse.APIErrors;
 import com.mindiii.lasross.base.errorResponse.ErrorUtils;
@@ -22,17 +23,18 @@ import retrofit2.Response;
 public class VarientFilterListPresenter {
     private Context mContext;
     private ApiCallback.VariantFilterCallback variantFilterCallback;
-
+   Session session;
     public VarientFilterListPresenter(Context mContext, ApiCallback.VariantFilterCallback variantFilterCallback) {
         this.mContext = mContext;
         this.variantFilterCallback = variantFilterCallback;
+        session=new Session(mContext);
     }
 
     public void callGetVarientListApi() {
 
         variantFilterCallback.onShowBaseLoader();
         final API api = ServiceGenerator.createService(API.class);
-        Call<VarientListResponse> varientApi = api.callVariantFilterApi(Lasross.appLanguage);
+        Call<VarientListResponse> varientApi = api.callVariantFilterApi(session.getAuthToken(),Lasross.appLanguage);
         varientApi.enqueue(new Callback<VarientListResponse>() {
             @Override
             public void onResponse(@NonNull Call<VarientListResponse> call, @NonNull Response<VarientListResponse> response) {
@@ -41,7 +43,12 @@ public class VarientFilterListPresenter {
                     variantFilterCallback.onSuccessVariantList(response.body());
                 } else {
                     APIErrors apiErrors = ErrorUtils.parseError(response);
-                    variantFilterCallback.onError(apiErrors.getMessage());
+                    if (apiErrors.getMessage().equals("Invalid token")) {
+                        variantFilterCallback.onTokenChangeError(apiErrors.getMessage());
+                    } else {
+                        variantFilterCallback.onError(apiErrors.getMessage());
+                    }
+                    //ariantFilterCallback.onError(apiErrors.getMessage());
                 }
             }
 

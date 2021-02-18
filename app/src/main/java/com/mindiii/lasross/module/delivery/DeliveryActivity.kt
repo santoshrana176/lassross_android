@@ -151,9 +151,7 @@ class DeliveryActivity : LasrossParentKotlinActivity(), View.OnClickListener, Ap
         hideLoader()
     }
 
-    override fun onTokenChangeError() {
-        showDialog(this)
-    }
+
 
     override fun onShowBaseLoader() {
         showLoader()
@@ -167,6 +165,10 @@ class DeliveryActivity : LasrossParentKotlinActivity(), View.OnClickListener, Ap
 
     override fun onSuccessDeliveryDetails(deliveryResponse: DeliveryResponse?) {
         updateUI(deliveryResponse!!.data)
+    }
+
+    override fun onTokenChangeError(errorMessage: String) {
+        showDialog(this)
     }
 
     @SuppressLint("SetTextI18n")

@@ -45,10 +45,11 @@ public class HomePresenter {
                                       String price_to, String popular, String rating, String latest, String price_low,
                                       String pice_high, String category, String deal_id) {
         productListCallback.onShowBaseLoader();
+        String token = session.getAuthToken();
         final API api = ServiceGenerator.createService(API.class);
-        Call<ProductResponse> genderApi = api.callProductListApi(Lasross.appLanguage,productName,
+        Call<ProductResponse> genderApi = api.callProductListApi(token, Lasross.appLanguage, productName,
                 limit, offset, size, color, price_from, price_to, popular, rating, latest, price_low, pice_high, category
-                , session.getRegistration().getUserId(), deal_id);
+                , session.getRegistration().getUserId(), deal_id, "2");
         genderApi.enqueue(new Callback<ProductResponse>() {
             @Override
             public void onResponse(@NonNull Call<ProductResponse> call, @NonNull Response<ProductResponse> response) {
@@ -58,9 +59,14 @@ public class HomePresenter {
                     productListCallback.onHideBaseLoader();
                 } else {
                     try {
-                        APIErrors apiErrors = ErrorUtils.parseError(response);
-                        productListCallback.onError(apiErrors.getMessage());
                         productListCallback.onHideBaseLoader();
+                        APIErrors apiErrors = ErrorUtils.parseError(response);
+                        if (apiErrors.getMessage().equals("Invalid token")) {
+                            productListCallback.onTokenChangeError(apiErrors.getMessage());
+                        } else {
+                            productListCallback.onError(apiErrors.getMessage());
+                        }
+                        //productListCallback.onError(apiErrors.getMessage());
                     } catch (Exception e) {
                         e.printStackTrace();
                         productListCallback.onHideBaseLoader();
@@ -79,11 +85,12 @@ public class HomePresenter {
             }
         });
     }
+
     // get deal list api
     public void callDealListApi() {
         productListCallback.onShowBaseLoader();
         final API api = ServiceGenerator.createService(API.class);
-        Call<DealListResponse> genderApi = api.callDealListApi(Lasross.appLanguage,session.getAuthToken());
+        Call<DealListResponse> genderApi = api.callDealListApi(Lasross.appLanguage, session.getAuthToken());
         genderApi.enqueue(new Callback<DealListResponse>() {
             @Override
             public void onResponse(@NonNull Call<DealListResponse> call, @NonNull Response<DealListResponse> response) {
@@ -116,7 +123,7 @@ public class HomePresenter {
     public void callSlideMenuApi() {
         productListCallback.onShowBaseLoader();
         final API api = ServiceGenerator.createService(API.class);
-        Call<MenuSliderResponse> genderApi = api.callSlideMenuApi(Lasross.appLanguage,session.getAuthToken());
+        Call<MenuSliderResponse> genderApi = api.callSlideMenuApi(Lasross.appLanguage, session.getAuthToken(), "2");
         genderApi.enqueue(new Callback<MenuSliderResponse>() {
             @Override
             public void onResponse(@NonNull Call<MenuSliderResponse> call, @NonNull Response<MenuSliderResponse> response) {
@@ -149,7 +156,7 @@ public class HomePresenter {
     public void callLogoutApi() {
         productListCallback.onShowBaseLoader();
         final API api = ServiceGenerator.createService(API.class);
-        Call<LogoutResponse> genderApi = api.callLogoutApi(Lasross.appLanguage,session.getAuthToken());
+        Call<LogoutResponse> genderApi = api.callLogoutApi(Lasross.appLanguage, session.getAuthToken());
         genderApi.enqueue(new Callback<LogoutResponse>() {
             @Override
             public void onResponse(@NonNull Call<LogoutResponse> call, @NonNull Response<LogoutResponse> response) {
@@ -180,10 +187,10 @@ public class HomePresenter {
 
     // add and remove wishlist api
     public void callAddRemoveWishListApi(String productId) {//ad285ece5b6574fc15a0e9e2b176e024e84f44e3
-   String token= session.getAuthToken();//50a72d7892a1b0800c206730bca0366d14b3c73f
+        String token = session.getAuthToken();//50a72d7892a1b0800c206730bca0366d14b3c73f
         productListCallback.onShowBaseLoader();
         final API api = ServiceGenerator.createService(API.class);
-        Call<AddRemoveWishListResponse> genderApi = api.callAddRemoveWishListApi(Lasross.appLanguage,token, productId);
+        Call<AddRemoveWishListResponse> genderApi = api.callAddRemoveWishListApi(Lasross.appLanguage, token, productId);
         genderApi.enqueue(new Callback<AddRemoveWishListResponse>() {
             @Override
             public void onResponse(@NonNull Call<AddRemoveWishListResponse> call, @NonNull Response<AddRemoveWishListResponse> response) {
@@ -191,7 +198,7 @@ public class HomePresenter {
                 if (response.isSuccessful()) {
                     productListCallback.onSuccessAddRemoveWishList(response.body());
                 } else {
-                    Log.e("error:::",""+response.errorBody().toString());
+                    Log.e("error:::", "" + response.errorBody().toString());
                     APIErrors apiErrors = ErrorUtils.parseError(response);
                     if (apiErrors.getMessage().equals("Invalid token")) {
                         productListCallback.onTokenChangeError(apiErrors.getMessage());
@@ -217,7 +224,7 @@ public class HomePresenter {
     public void callBannerWeeklyOfferApi() {
         productListCallback.onShowBaseLoader();
         final API api = ServiceGenerator.createService(API.class);
-        Call<BannerWeeklyOfferResponse> genderApi = api.callBannerWeeklyOfferApi(Lasross.appLanguage);
+        Call<BannerWeeklyOfferResponse> genderApi = api.callBannerWeeklyOfferApi(session.getAuthToken(),Lasross.appLanguage);
         genderApi.enqueue(new Callback<BannerWeeklyOfferResponse>() {
             @Override
             public void onResponse(@NonNull Call<BannerWeeklyOfferResponse> call, @NonNull Response<BannerWeeklyOfferResponse> response) {
@@ -248,12 +255,11 @@ public class HomePresenter {
 
     //home screen bannerSlider api
     // slide menu api
-    public void callBannerSliderApi()
-    {
+    public void callBannerSliderApi() {
         productListCallback.onShowBaseLoader();
         final API api = ServiceGenerator.createService(API.class);
-        String token=session.getAuthToken();
-        Call<SliderBannerResponse> genderApi = api.callSlidingBannerApi(Lasross.appLanguage,token);
+        String token = session.getAuthToken();
+        Call<SliderBannerResponse> genderApi = api.callSlidingBannerApi(Lasross.appLanguage, token);
         genderApi.enqueue(new Callback<SliderBannerResponse>() {
             @Override
             public void onResponse(@NonNull Call<SliderBannerResponse> call, @NonNull Response<SliderBannerResponse> response) {
@@ -281,8 +287,6 @@ public class HomePresenter {
             }
         });
     }
-
-
 
 
 }

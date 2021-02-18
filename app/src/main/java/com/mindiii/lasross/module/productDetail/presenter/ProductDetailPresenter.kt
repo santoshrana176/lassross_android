@@ -18,11 +18,12 @@ import java.io.IOException
 
 class ProductDetailPresenter(var productDetailCallback: ApiCallback.ProductDetailCallback, var mContext: Context) {
      val session = Session(mContext).registration.userId
+     val token = Session(mContext).registration.auth_token
 
     fun callProductDetailApi(productId: String) {
         productDetailCallback.onShowBaseLoader()
          val api = ServiceGeneratorkotlin().createService(API::class.java)
-        val loginResponseCall = api.callProductDetailApi(Lasross.appLanguage,productId,session)
+        val loginResponseCall = api.callProductDetailApi(token,Lasross.appLanguage,productId,session,"2")
         loginResponseCall.enqueue(object : Callback<ProductDetailResponse> {
             override fun onResponse(call: Call<ProductDetailResponse>, response: Response<ProductDetailResponse>) {
                 productDetailCallback.onHideBaseLoader()
@@ -31,7 +32,12 @@ class ProductDetailPresenter(var productDetailCallback: ApiCallback.ProductDetai
                         productDetailCallback.onSuccessDetail(response.body())
                     } else {
                         val apiErrors = ErrorUtils.parseError(response)
-                        productDetailCallback.onError(apiErrors.message)
+                        if (apiErrors.message == "Invalid token") {
+                            productDetailCallback.onTokenChangeError(apiErrors.message)
+                        } else {
+                            productDetailCallback.onError(apiErrors.message)
+                        }
+                    //productDetailCallback.onError(apiErrors.message)
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()

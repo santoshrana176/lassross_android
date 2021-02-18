@@ -1,15 +1,22 @@
 package com.mindiii.lasross.module.subscription
 
 import android.annotation.SuppressLint
+import android.app.ActionBar
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Typeface
+import android.graphics.drawable.ColorDrawable
 import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.Window
 import android.view.WindowManager
 import android.widget.RadioButton
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
@@ -280,8 +287,27 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
         if (response!!.status.equals("fail")) {
             toastMessage(response.message)
         } else {
-            showSubscribeDialog(this, getString(R.string.plan_subscribe_success))
+           showSubscribeDialog1(this, getString(R.string.plan_subscribe_success))
         }
+    }
+
+    fun showSubscribeDialog1(mContext: Context, message: String) {
+        val dialog = Dialog(mContext)
+        Objects.requireNonNull<Window>(dialog.window).setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.session_expired_dialog)
+        val tvOK: TextView = dialog.findViewById(R.id.tvOK)
+        val tvTitleOfVal: TextView = dialog.findViewById(R.id.tvTitleOfVal)
+        tvTitleOfVal.text = message
+        tvOK.setOnClickListener {
+            dialog.dismiss()
+            // startActivity(Intent(mContext, HomeActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
+            this.finish()
+        }
+        dialog.show()
+        val window = dialog.window!!
+        window.setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT)
     }
 
     ///""""""""" Saved credit card api """"""""//

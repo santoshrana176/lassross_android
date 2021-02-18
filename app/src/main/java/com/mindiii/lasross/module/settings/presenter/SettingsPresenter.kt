@@ -156,7 +156,7 @@ class SettingsPresenter(var mContext: Context, var changePassword: ApiCallback.S
         val session = Session(mContext)
         changePassword.onShowBaseLoader()
         val api = ServiceGenerator.createService(API::class.java)
-        val currentPlan = api.callTermsPolicyApi(Lasross.appLanguage)
+        val currentPlan = api.callTermsPolicyApi(session.authToken,Lasross.appLanguage)
         currentPlan.enqueue(object : Callback<TermsPolicyResponse> {
             override fun onResponse(call: Call<TermsPolicyResponse>, response: Response<TermsPolicyResponse>) {
 

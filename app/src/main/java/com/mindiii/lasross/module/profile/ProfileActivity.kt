@@ -7,8 +7,10 @@ import android.view.WindowManager
 import androidx.annotation.RequiresApi
 import com.mindiii.lasross.R
 import com.mindiii.lasross.base.LasrossParentKotlinActivity
+import com.mindiii.lasross.module.home.HomeActivity
 import com.mindiii.lasross.module.profile.fragment.ProfileFragment
 import com.mindiii.lasross.module.profile.fragment.UpdateProfileFragment
+import com.mindiii.lasross.module.settings.SettingActivity
 
 class ProfileActivity : LasrossParentKotlinActivity() {
     var from: String = ""
@@ -22,7 +24,7 @@ class ProfileActivity : LasrossParentKotlinActivity() {
             window.statusBarColor = this.resources.getColor(R.color.home_header_bg1)
         }
         if (intent.getStringExtra("from") != null) {
-            from = intent.getStringExtra("from")
+            from = intent.getStringExtra("from")!!
         }
         if (from.isNotEmpty() && from.equals("Settings")) {
             addFragment(UpdateProfileFragment.newInstance(""), false, R.id.profileFrame)
@@ -34,10 +36,15 @@ class ProfileActivity : LasrossParentKotlinActivity() {
     override fun onPostResume() {
         super.onPostResume()
         val fragment = supportFragmentManager.findFragmentById(R.id.profileFrame)
+        if (SettingActivity.isScreenRefres){
+            SettingActivity.isScreenRefres=false
+
         if (fragment is ProfileFragment) {
-            val profileFragment = fragment
-            profileFragment.apiCalling()
-            profileFragment.getAddressListApi()
+            supportFragmentManager.beginTransaction().detach(fragment).attach(fragment).commit() //refreshing fragment
+          //  val profileFragment = fragment
+           // profileFragment.apiCalling()
+           // profileFragment.getAddressListApi()
+         }
         }
     }
 
@@ -50,12 +57,12 @@ class ProfileActivity : LasrossParentKotlinActivity() {
         }
     }
 
-    /*override fun onBackPressed() {
+    override fun onBackPressed() {
         super.onBackPressed()
         val fragment = supportFragmentManager.findFragmentById(R.id.profileFrame)
         if (fragment is ProfileFragment) {
             startActivity(Intent(this, HomeActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
             finish()
         }
-    }*/
+    }
 }

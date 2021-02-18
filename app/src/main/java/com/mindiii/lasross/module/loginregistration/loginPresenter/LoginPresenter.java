@@ -45,6 +45,7 @@ public class LoginPresenter {
                         loginCallback.onSuccessLogin(response.body());
                     } else {
                         APIErrors apiErrors = ErrorUtils.parseError(response);
+
                         loginCallback.onError(apiErrors.getMessage());
                     }
                 } catch (Exception e) {

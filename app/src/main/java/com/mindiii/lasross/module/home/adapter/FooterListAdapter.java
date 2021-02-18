@@ -49,7 +49,7 @@ public class FooterListAdapter extends RecyclerView.Adapter<FooterListAdapter.Ho
         Deal itemList = dealList.get(i);
         holder.tvdealTitle.setText(itemList.getDeal_title());
         holder.tvDealPrice.setText(itemList.getDeal_sub_title());
-        holder.btnShopNow.setText("Shop Now");
+        holder.btnShopNow.setText(R.string.shop_now_deal_list);
 
         if (itemList.getDeal_image().isEmpty()) {
             holder.roundRectCornerImageView.setImageResource(R.drawable.dress2);

@@ -25,14 +25,15 @@ import java.util.Locale;
 public class SplashScreenActivity1 extends LasrossParentActivity {
     private static int SPLASH_TIME_OUT = 3000;
     private Session session;
-
+    String defaltLanguage="";
+    String selectedLanguage="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen_1);
         session = new Session(SplashScreenActivity1.this);
-        String defaltLanguage = Locale.getDefault().getDisplayLanguage();
-        String selectedLanguage = LocaleHelper.getLanguage(this);
+          defaltLanguage = Locale.getDefault().getDisplayLanguage();
+          selectedLanguage = LocaleHelper.getLanguage(this);
 
        // String lang = session.getLanguage();
         if (defaltLanguage.equals("es") || selectedLanguage.equals("es")) {
@@ -48,7 +49,7 @@ public class SplashScreenActivity1 extends LasrossParentActivity {
             session.setLanguage("en");
             Lasross.appLanguage="en";
         }
-        getKeyHashFacebook();
+      //  getKeyHashFacebook();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

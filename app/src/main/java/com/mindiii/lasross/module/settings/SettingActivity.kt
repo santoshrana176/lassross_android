@@ -44,10 +44,14 @@ import kotlinx.android.synthetic.main.setting_activty_.*
 
 class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, ApiCallback.SettingsCallback, ApiCallback.LanguageCallback {
 
+    private var flag: Boolean=false
     private var session: Session? = null
     lateinit var changePasswordDialog: Dialog
     var selectedLanguage = ""
     var status = ""
+    companion object{
+        var isScreenRefres=false
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +60,13 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
         session = Session(this)
         // setAppLocale(session!!.getIsEnglishLanguage())
         setContentView(R.layout.setting_activty_)
+
+
+        if (session!!.getRegistration().social_id.isEmpty())
+            rlChangePassword.visibility=View.VISIBLE
+        else
+            rlChangePassword.visibility=View.GONE
+
         val status1 = session!!.notificatioStatus
          if (status1.equals("1")) {
             status = "1"
@@ -101,8 +112,7 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
                 val intent = Intent(this@SettingActivity, SubscriptionActivity::class.java)
                 intent.putExtra("from", "Settings")
                 startActivity(intent)
-                finish()
-            }
+             }
             R.id.my_subscriptionPlans -> {
                 if (CommonUtils.isNetworkAvailable(this)) {
                     callUserCurrentSubscribedPlan()
@@ -160,6 +170,17 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
 
             }
         }
+    }
+
+    override fun onBackPressed() {
+/*    if (flag){
+        val intent=Intent(this,ProfileActivity::class.java)
+        intent.putExtra("from","Settingss")
+        startActivity(intent)
+        finish()
+    }
+    else*/
+        super.onBackPressed()
     }
 
     private fun updateViews(languageCode: String) {
@@ -325,16 +346,22 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
             //    toastMessage(languageModel.message)
             //   startActivity(Intent(this, SettingActivity::class.java))
             //  finish()
+            flag=true;
+            isScreenRefres=true
             updateViews(selectedLanguage)
             if (selectedLanguage.equals("en")) {
                 session?.language = "en"
                 Lasross.appLanguage="en"
-                LanguageUtils.language(this, selectedLanguage, true)
+                LanguageUtils.language(this, selectedLanguage, false)
             } else if (selectedLanguage.equals("es")) {
                 session?.language = "es"
                 Lasross.appLanguage="es"
-                LanguageUtils.language(this, selectedLanguage, true)
+                LanguageUtils.language(this, selectedLanguage, false)
             }
+
+            val intent = Intent(this, SettingActivity::class.java)
+            finish()
+            this.startActivity(intent)
         } else {
             toastMessage(getString(R.string.something_worng))
         }

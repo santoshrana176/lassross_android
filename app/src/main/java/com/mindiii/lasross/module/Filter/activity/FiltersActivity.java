@@ -368,8 +368,8 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
     @Override
     public void onSuccessVariantList(final VarientListResponse varientListResponse) {
         sizeModelList.clear();
-        tvItemSize.setText(varientListResponse.getData().getVariant().get(0).getVariant_name());
-        tvItemColor.setText(varientListResponse.getData().getVariant().get(1).getVariant_name());
+        //tvItemSize.setText(varientListResponse.getData().getVariant().get(0).getVariant_name());
+       // tvItemColor.setText(varientListResponse.getData().getVariant().get(1).getVariant_name());
 
         sizeName = varientListResponse.getData().getVariant().get(0).getVariant_name();
         colorName = varientListResponse.getData().getVariant().get(1).getVariant_name();
@@ -383,6 +383,11 @@ public class FiltersActivity extends LasrossParentActivity implements ApiCallbac
         } else {
             setSizeData(sb);
         }
+    }
+
+    @Override
+    public void onTokenChangeError(String errorMessage) {
+        showDialog(this);
     }
 
     @Override

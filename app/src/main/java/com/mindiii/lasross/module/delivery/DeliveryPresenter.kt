@@ -29,7 +29,12 @@ class DeliveryPresenter(var mContext: Context, var myAddressCallback: ApiCallbac
                         myAddressCallback.onSuccessDeliveryDetails(response.body())
                     } else {
                         val apiErrors = ErrorUtils.parseError(response)
-                        myAddressCallback.onError(apiErrors.message)
+                       // myAddressCallback.onError(apiErrors.message)
+                        if (apiErrors.message == "Invalid token") {
+                            myAddressCallback.onTokenChangeError(apiErrors.message)
+                        } else {
+                            myAddressCallback.onError(apiErrors.message)
+                        }
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()

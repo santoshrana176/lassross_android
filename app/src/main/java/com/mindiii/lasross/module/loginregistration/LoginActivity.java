@@ -88,18 +88,18 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String defaltLanguage = Locale.getDefault().getDisplayLanguage();
-        System.out.println(defaltLanguage);
+        //      String defaltLanguage = Locale.getDefault().getDisplayLanguage();
+        //     System.out.println(defaltLanguage);
 
         session = new Session(this);
 
-        if (defaltLanguage.equals("español")) {
+      /*  if (defaltLanguage.equals("español")) {
             session.setIsEnglishLanguage("es");
         } else {
             session.setIsEnglishLanguage("en");
         }
 
-        setAppLocale(session.getIsEnglishLanguage());
+        setAppLocale(session.getIsEnglishLanguage());*/
 
         setContentView(R.layout.login_form);
         init();
@@ -196,16 +196,16 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
                     CommonUtils.showCustomAlert(LoginActivity.this, getString(R.string.Please_enter_email));
                     //etEmail.setError("Please enter email");
                     //return;
-                }else  if (!isValidEmail(email)){
+                } else if (!isValidEmail(email)) {
                     CommonUtils.showCustomAlert(LoginActivity.this, getString(R.string.Please_enter_valid_email));
-                   // return;
+                    // return;
                 } else if (pass.isEmpty()) {
                     CommonUtils.showCustomAlert(LoginActivity.this, getString(R.string.Please_enter_password));
-                   // return;
-                }else if (!isValidPass(pass)) {
+                    // return;
+                } else if (!isValidPass(pass)) {
                     CommonUtils.showCustomAlert(LoginActivity.this, getString(R.string.password_max));
                     //etPass.setError("Password should have minimum 6 characters");
-                }else {
+                } else {
                     if (CommonUtils.isNetworkAvailable(LoginActivity.this)) {
                         callLoginApi(email, pass, getCurrentFirebaseToken());
                     } else {
@@ -214,7 +214,7 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
                 }
 
                 ////////////////  LOGIN  API CALL  ////////////////////
-              //  if (isValidEmail(email) && isValidPass(pass)) {
+                //  if (isValidEmail(email) && isValidPass(pass)) {
 
 
                 /*} else if (!isValidEmail(email)) {
@@ -278,43 +278,43 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
     public void fbLogin(View view) {
         LoginManager.getInstance().logInWithReadPermissions(this, Collections.singletonList(EMAIL));
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        final GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(),
-                                new GraphRequest.GraphJSONObjectCallback() {
-                                    @Override
-                                    public void onCompleted(JSONObject object, GraphResponse response) {
-                                        try {
-                                            String name = object.getString("name");
-                                            String email = object.getString("email");
-                                            String id = object.getString("id");
-                                            JSONObject picture = object.getJSONObject("picture");
-                                            JSONObject data = picture.getJSONObject("data");
-                                            String url = data.getString("url");
-                                            LoginManager.getInstance().logOut();
-                                            callSocialApi(name, email, id, url, "facebook", getCurrentFirebaseToken());
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                final GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(),
+                        new GraphRequest.GraphJSONObjectCallback() {
+                            @Override
+                            public void onCompleted(JSONObject object, GraphResponse response) {
+                                try {
+                                    String name = object.getString("name");
+                                    String email = object.getString("email");
+                                    String id = object.getString("id");
+                                    JSONObject picture = object.getJSONObject("picture");
+                                    JSONObject data = picture.getJSONObject("data");
+                                    String url = data.getString("url");
+                                    LoginManager.getInstance().logOut();
+                                    callSocialApi(name, email, id, url, "facebook", getCurrentFirebaseToken());
 
-                                        } catch (Exception e) {
-                                            progressDialog.dismiss();
-                                        }
-                                    }
-                                });
-                        Bundle parameters = new Bundle();
-                        parameters.putString("fields", "name,email,id,picture");
-                        request.setParameters(parameters);
-                        request.executeAsync();
-                    }
+                                } catch (Exception e) {
+                                    progressDialog.dismiss();
+                                }
+                            }
+                        });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "name,email,id,picture");
+                request.setParameters(parameters);
+                request.executeAsync();
+            }
 
-                    @Override
-                    public void onCancel() {
-                        //etEmail.setText("Login cancel");
-                        //tvNameEmail.setText("Login cancel");
-                    }
+            @Override
+            public void onCancel() {
+                //etEmail.setText("Login cancel");
+                //tvNameEmail.setText("Login cancel");
+            }
 
-                    @Override
-                    public void onError(FacebookException exception) {
-                    }
-                });
+            @Override
+            public void onError(FacebookException exception) {
+            }
+        });
     }
 
     private void callSocialApi(String name, String email, String id, String url, String type, String dToken) {
@@ -343,12 +343,11 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
             public void onClick(View v) {
 
                 String emailDialog = etEmailID.getText().toString().trim();
-                if (emailDialog.isEmpty()){
+                if (emailDialog.isEmpty()) {
                     CommonUtils.showCustomAlert(LoginActivity.this, getString(R.string.Please_enter_email));
-                }
-                else if (!isValidEmail(emailDialog)) {
+                } else if (!isValidEmail(emailDialog)) {
                     CommonUtils.showCustomAlert(LoginActivity.this, getString(R.string.Please_enter_valid_email));
-                }else  {
+                } else {
                     if (CommonUtils.isNetworkAvailable(LoginActivity.this)) {
                         validPasswordDetail(emailDialog, dialog);
                     } else {
@@ -450,13 +449,16 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
     @Override
     public void onSuccessLogin(LoginResponse loginResponse) {
         if (loginResponse.getStatus().equalsIgnoreCase("success")) {
-           // Log.e("authToken::::::::",""+loginResponse.getData().getUserDetail().getAuth_token());
-            session.createRegistration(loginResponse.getData().getUserDetail());
-            session.setNotificatioStatus(loginResponse.getData().getUserDetail().getPush_alert_status());
-            session.setUserLoggedIn();
-          session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-            finish();
+            if (loginResponse.getMessage().equals("You are currently inactive by admin") || loginResponse.getMessage().equals("Actualmente estás inactivo por administrador")) {
+                showDialog(this);
+            } else {
+                session.createRegistration(loginResponse.getData().getUserDetail());
+                session.setNotificatioStatus(loginResponse.getData().getUserDetail().getPush_alert_status());
+                session.setUserLoggedIn();
+                session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
+                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                finish();
+            }
         } else {
             CommonUtils.showCustomAlert(LoginActivity.this, loginResponse.getMessage());
         }
@@ -465,22 +467,27 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
     @Override
     public void onSuccessSocial(LoginResponse loginResponse) {
         if (loginResponse.getStatus().equalsIgnoreCase("success")) {
-            session.createRegistration(loginResponse.getData().getUserDetail());
-            session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
-            session.setNotificatioStatus(loginResponse.getData().getUserDetail().getPush_alert_status());
-            session.setUserLoggedIn();
-            if (loginResponse.getMessageCode().equalsIgnoreCase("social_reg")) {
-                CommonUtils.toastMessage(LoginActivity.this, loginResponse.getMessage());
-                Intent intent = new Intent(LoginActivity.this, SubscriptionActivity.class);
-                startActivity(intent);
-                finish();
-                finishAffinity();
+
+            if (loginResponse.getMessage().equals("You are currently inactive by admin") || loginResponse.getMessage().equals("Actualmente estás inactivo por administrador")) {
+                showDialog(this);
             } else {
-                CommonUtils.toastMessage(LoginActivity.this, loginResponse.getMessage());
-                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
-                finishAffinity();
+                session.createRegistration(loginResponse.getData().getUserDetail());
+                session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
+                session.setNotificatioStatus(loginResponse.getData().getUserDetail().getPush_alert_status());
+                session.setUserLoggedIn();
+                if (loginResponse.getMessageCode().equalsIgnoreCase("social_reg")) {
+                    CommonUtils.toastMessage(LoginActivity.this, loginResponse.getMessage());
+                    Intent intent = new Intent(LoginActivity.this, SubscriptionActivity.class);
+                    startActivity(intent);
+                    finish();
+                    finishAffinity();
+                } else {
+                    CommonUtils.toastMessage(LoginActivity.this, loginResponse.getMessage());
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                    finishAffinity();
+                }
             }
         } else {
             CommonUtils.showCustomAlert(LoginActivity.this, loginResponse.getMessage());

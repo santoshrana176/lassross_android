@@ -167,6 +167,6 @@ class FAQActivity : LasrossParentKotlinActivity(), ApiCallback.NotificationCallb
     }
 
     override fun onTokenChangeError(errorMessage: String?) {
-        TODO("Not yet implemented")
+        showDialog(this)
     }
 }

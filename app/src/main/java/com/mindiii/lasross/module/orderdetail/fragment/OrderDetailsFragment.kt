@@ -244,14 +244,14 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
             }
 
             if (orderDetailModel.orderDetail.free_shipping.equals("Yes")) {
-                tvShippingPrcOrderDetail.text = "FREE SHIPPING"
+                tvShippingPrcOrderDetail.text = getString(R.string.free_shipping)/*"FREE SHIPPING"*/
             } else {
                 tvShippingPrcOrderDetail.text = "€ " + activity.getTwoValueAfterDecimal(orderDetailModel.orderDetail.shipping_price)
             }
 
             tvTotalOrderDetail.text = "€ " + activity.getTwoValueAfterDecimal(orderDetailModel.orderDetail.grand_total)
 
-            tvOrderDetailDiscount.text = "Discount (" + activity.getTwoValueAfterDecimal(orderDetailModel.orderDetail.discount_percent) + "%)"
+            tvOrderDetailDiscount.text = getString(R.string.discount_)+" (" + activity.getTwoValueAfterDecimal(orderDetailModel.orderDetail.discount_percent) + "%)"
             tvOrderDetailTax.text = "Tax (" + activity.getTwoValueAfterDecimal(orderDetailModel.orderDetail.tax_percentage) + "%)"
 
             tvOrderId.text = orderDetailModel.orderDetail.order_number

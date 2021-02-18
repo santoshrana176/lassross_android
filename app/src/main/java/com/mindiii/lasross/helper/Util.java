@@ -71,7 +71,7 @@ public class Util {
         tvPopupOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Session.getDataManager().logout(activity);
+                 // Session.getDataManager().logout(activity);
                 dialog.dismiss();
             }
         });
