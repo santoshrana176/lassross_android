@@ -94,9 +94,10 @@ public interface API {
 
     @FormUrlEncoded
     @POST("service/signup")
-    Call<LoginResponse> callSignUpApi(@Header("language") String language, @Field("full_name") String full_name
-            , @Field("email") String email
-            , @Field("password") String password
+    Call<LoginResponse> callSignUpApi(@Header("language") String language,
+                                      @Field("full_name") String full_name,
+                                      @Field("email") String email,
+                                      @Field("password") String password
             , @Field("social_id") String social_id
             , @Field("social_type") String social_type
             , @Field("device_type") String device_type

@@ -27,9 +27,9 @@ class ProfileActivity : LasrossParentKotlinActivity() {
             from = intent.getStringExtra("from")!!
         }
         if (from.isNotEmpty() && from.equals("Settings")) {
-            addFragment(UpdateProfileFragment.newInstance(""), false, R.id.profileFrame)
+            addFragment(UpdateProfileFragment.newInstance(""), true, R.id.profileFrame)
         } else {
-            addFragment(ProfileFragment.newInstance(), false, R.id.profileFrame)
+            addFragment(ProfileFragment.newInstance(), true, R.id.profileFrame)
         }
     }
 
@@ -58,11 +58,19 @@ class ProfileActivity : LasrossParentKotlinActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
+      //  super.onBackPressed()
         val fragment = supportFragmentManager.findFragmentById(R.id.profileFrame)
+        val count = supportFragmentManager.backStackEntryCount
+
         if (fragment is ProfileFragment) {
             startActivity(Intent(this, HomeActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
             finish()
         }
+        if (fragment is UpdateProfileFragment){
+            if (supportFragmentManager.backStackEntryCount > 0) {
+                supportFragmentManager.popBackStackImmediate()
+            }
+        }
     }
+
 }

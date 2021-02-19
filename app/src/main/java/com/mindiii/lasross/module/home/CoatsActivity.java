@@ -85,8 +85,14 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
         if (getIntent().getStringExtra("ChildCatName") != null) {
             childCatName = getIntent().getStringExtra("ChildCatName");
             String deal = getIntent().getStringExtra("title");
-            if (deal.isEmpty())
-                tvWishList.setText(childCatName);
+            if (deal.isEmpty()){
+                if (childCatName.equals("Shop"))
+                tvWishList.setText(R.string.shop__);
+                else
+                    tvWishList.setText(childCatName);
+
+
+            }
             else
                 tvWishList.setText(deal);
 
@@ -107,6 +113,7 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
             priceHigh = "";
             childCatName = "";
             IsSearch = true;
+            productListBeans.clear();
             apiCalling(searchText, popularity, average_rating, latest, lowPrice, highPrice, sizeIds, colorIds, prizeLow, priceHigh);
         } else if (getIntent().getStringExtra("childCategoryName") != null) {
             productListBeans.clear();
@@ -366,6 +373,7 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             offset = 0;
+            productListBeans.clear();
             sizeIds = data.getStringExtra("sizeIds");
             colorIds = data.getStringExtra("colorIds");
             seekBarLowPreice = Integer.parseInt(data.getStringExtra("prizeLow"));
@@ -390,14 +398,15 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
         }else if (resultCode==501){
 
         }else {
+            productListBeans.clear();
                   seekBarLowPreice = 0;
                   SeekBarHighPrice = 0;
             new CoatPresenter(this, this).
                     callGetProductListApi("",
                             "18",
                             String.valueOf(offset = 0),
-                            sizeIds,
-                            colorIds,
+                            sizeIds="",
+                            colorIds="",
                             "",
                             "",
                             popularity,
@@ -558,6 +567,7 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
             @androidx.annotation.RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                productListBeans.clear();
                 if (checkedId == R.id.rbDefault) {
                     rbDefault.setTypeface(semi_bold);
                 } else {
@@ -693,8 +703,8 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
         super.onRestart();
         recyclerView.scrollToPosition(0);
         offset = 0;
-        productListBeans.clear();
         IsSearch = true;
+        productListBeans.clear();
 
         if (session.getCartItemCount().equals("0"))
             tvCartItemCountShop.setVisibility(View.GONE);
@@ -702,7 +712,9 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
             tvCartItemCountShop.setVisibility(View.VISIBLE);
             tvCartItemCountShop.setText(session.getCartItemCount());
         }
-        if (flag)
+        if (flag){
+            productListBeans.clear();
             apiCalling(searchText, popularity, average_rating, latest, lowPrice, highPrice, sizeIds, colorIds, prizeLow, priceHigh);
+        }
     }
 }

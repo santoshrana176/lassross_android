@@ -142,7 +142,7 @@
     <string name="set">Set</string>
     <string name="my_card">Mis tarjetas</string>
     <string name="save_cards">SAVED CARDS</string>
-    <string name="no_address_found">No address found</string>
+    <string name="no_address_found">No address added</string>
     <string name="change_add">CAMBIAR DIRECCIÓN</string>
     <string name="add_new_card">AGREGAR NUEVA TARJETA</string>
     <string name="payment">Payment</string>
@@ -213,7 +213,7 @@
     <string name="quantity_order_detail">Qty : </string>
     <string name="overall_rating">Overall Rating</string>
     <string name="out_of_stock">Out of stock</string>
-    <string name="no_reviews">No Reviews Found</string>
+    <string name="no_reviews">Reviews not found</string>
     <string name="shipping_charge">Shipping Charge</string>
     <string name="your_order_placed_on">Your order placed on</string>
     <string name="your_order_approved_on">Your order approved on</string>
@@ -372,5 +372,11 @@
     <string name="shop_now_deal_list">Shop Now</string>
     <string name="free_">Free Plan</string>
     <string name="discount_">Discount </string>
+    <string name="subscribe_free">Subscribe Free</string>
+    <string name="items_">items</string>
+    <string name="shop__">Shop</string>
+    <string name="we_only_have_">We have only</string>
+    <string name="qty_for_this">Qty for this product</string>
+    <string name="remove_out_off_stock">First remove out of stock product to continue</string>
 </resources>
 

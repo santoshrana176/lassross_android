@@ -51,7 +51,7 @@ class WishListAdapter(private val list: List<UserWishlist>,
                 .resize(500, 600)
                 .into(holder.ivImage)
 
-        if (itemList.sale_price == "0") {
+        if (itemList.sale_price.equals("0") || itemList.sale_price.equals("0.00")) {
             holder.tvSellerPrice.setVisibility(View.GONE)
             holder.tvItemPrice.visibility = View.VISIBLE
         } else {

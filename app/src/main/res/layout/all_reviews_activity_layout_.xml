@@ -81,8 +81,7 @@
                 android:paddingLeft="@dimen/_12sdp"
                 android:paddingRight="@dimen/_12sdp"
                 android:paddingBottom="@dimen/_3sdp"
-                android:text="3.9"
-                android:textColor="@color/rating_star_green_color"
+                 android:textColor="@color/rating_star_green_color"
                 android:textSize="@dimen/_14sdp"
                 android:visibility="gone" />
 
@@ -119,8 +118,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/ibmplexsans_regular"
                 android:gravity="center"
-                android:text="sssssssssssssss"
-                android:textColor="#828282"
+                 android:textColor="#828282"
                 android:textSize="@dimen/_10sdp" />
         </LinearLayout>
 

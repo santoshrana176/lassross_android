@@ -5,8 +5,8 @@
     <solid android:color="#ffffff" />
 
     <size
-        android:width="200dp"
-        android:height="200dp" />
+        android:width="190dp"
+        android:height="190dp" />
     <padding
         android:bottom="@dimen/_10sdp"
         android:left="@dimen/_10sdp"

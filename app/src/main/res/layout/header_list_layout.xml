@@ -30,11 +30,11 @@
 
                 <ImageView
                     android:id="@+id/ivAddWishList"
-                    android:layout_width="21dp"
-                    android:layout_height="21dp"
+                    android:layout_width="@dimen/_17sdp"
+                    android:layout_height="@dimen/_17sdp"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:layout_marginEnd="12dp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
                     android:background="@drawable/favourite_bg"
                     android:padding="@dimen/_3sdp"
                     android:src="@drawable/favourite_icon" />

@@ -31,17 +31,14 @@ class OrderTrackingDetailFragment : BaseKotlinFragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_order_tracking_detail, container, false)
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         orderDetailsFragment!!.setTrackingDetail()
-
         val window = getActivity()!!.window
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -53,7 +50,6 @@ class OrderTrackingDetailFragment : BaseKotlinFragment() {
         imageview.visibility = View.GONE
         val textViewCartCount = activity.findViewById(R.id.tvCartItemCountOrders) as TextView
         textViewCartCount.visibility = View.GONE
-
         if (list.size == 1) {
             val date0 = getCurrentDateInSpecificFormat(list[0].created_on)//2021-02-13 12:27:01
             lineOrderPlaced.visibility = View.GONE

@@ -138,19 +138,25 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
             }
             R.id.llRightLayout -> {
                 if (tvRightText.text.toString().trim().equals("Golden", ignoreCase = true)||tvRightText.text.toString().trim().equals("Dorada", ignoreCase = true)) {
+                    tvSubscribe.text=getString(R.string.subscribe)
                     setGoldenPlanData()
                 } else if (tvRightText.text.toString().trim().equals("Silver", ignoreCase = true)||tvRightText.text.toString().trim().equals("Plata", ignoreCase = true)) {
+                    tvSubscribe.text=getString(R.string.subscribe)
                     setSilverPlanData()
-                } else if (tvRightText.text.toString().trim().equals("Free", ignoreCase = true)||tvRightText.text.toString().trim().equals("Libre", ignoreCase = true)) {
+                } else if (tvRightText.text.toString().trim().equals("Free", ignoreCase = true)||tvRightText.text.toString().trim().equals("Libre", ignoreCase = true)||tvLeftText.text.toString().trim().equals("gratuito", ignoreCase = true)) {
+                    tvSubscribe.text=getString(R.string.subscribe_free)
                     setFreePlanData()
                 }
             }
             R.id.llLeftLayout -> {
                 if (tvLeftText.text.toString().trim().equals("Golden", ignoreCase = true)||tvLeftText.text.toString().trim().equals("Dorada", ignoreCase = true)) {
+                    tvSubscribe.text=getString(R.string.subscribe)
                     setGoldenPlanData()
                 } else if (tvLeftText.text.toString().trim().equals("Silver", ignoreCase = true)||tvLeftText.text.toString().trim().equals("Plata", ignoreCase = true)) {
+                    tvSubscribe.text=getString(R.string.subscribe)
                     setSilverPlanData()
-                } else if (tvLeftText.text.toString().trim().equals("Free", ignoreCase = true)||tvLeftText.text.toString().trim().equals("Libre", ignoreCase = true)) {
+                } else if (tvLeftText.text.toString().trim().equals("Free", ignoreCase = true)||tvLeftText.text.toString().trim().equals("Libre", ignoreCase = true)||tvLeftText.text.toString().trim().equals("gratuito", ignoreCase = true)) {
+                    tvSubscribe.text=getString(R.string.subscribe_free)
                     setFreePlanData()
                 }
             }
@@ -188,7 +194,7 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
         tvRightPlan.visibility = View.VISIBLE
 
         tvplanPriceCurrency.text = response.data[1].plan_currency
-        tvplanPrice.text = " " + getTwoValueAfterDecimal(response.data[1].plan_price)
+        tvplanPrice.text =response.data[1].plan_price// " " + getTwoValueAfterDecimal(response.data[1].plan_price)
         tvplanDuration.text = " / " + response.data[1].plan_duration + " " + response.data[1].plan_duration_type
         tvplanDuration.visibility = View.VISIBLE
         tvplanPriceCurrency.visibility = View.VISIBLE
@@ -210,7 +216,7 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
         tvRightPlan.visibility = View.VISIBLE
 
         tvplanPriceCurrency.text = response.data[0].plan_currency
-        tvplanPrice.text = " " + getTwoValueAfterDecimal(response.data[0].plan_price)
+        tvplanPrice.text =response.data[0].plan_price// " " + getTwoValueAfterDecimal(response.data[0].plan_price)
         //tvplanPrice.text = response.data[0].plan_currency + " " + response.data[0].plan_price
         tvplanDuration.text = " / " + response.data[0].plan_duration + " " + response.data[0].plan_duration_type
         tvplanDuration.visibility = View.VISIBLE
@@ -247,9 +253,27 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
         Log.d("subscriptionResponse", subscriptionResponse.toString())
         response = subscriptionResponse
         tvplanPriceCurrency.text = response.data[0].plan_currency
-        tvplanPrice.text = " " + getTwoValueAfterDecimal(response.data[0].plan_price)
+
+
+        tvplanPrice.text = response.data[0].plan_price//" " + getTwoValueAfterDecimal(response.data[0].plan_price)
         //tvplanPrice.text = response.data[0].plan_currency + " " + response.data[0].plan_price
-        tvplanDuration.text = " / " + response.data[0].plan_duration + " " + response.data[0].plan_duration_type
+       val str=response.data[0].plan_title
+
+       val splitarray=str.split(" ")
+
+        if (str.equals("Silver Plan")|| str.equals("Plan Plata")){
+        tvMiddleText.text=getString(R.string.silver)
+        tvMiddlePlan.text=getString(R.string.plan)
+        }else if (str.equals("Golden Plan")|| str.equals("Plan dorado")){
+            tvMiddleText.text=getString(R.string.golden)
+            tvMiddlePlan.text=getString(R.string.plan)
+        }else{
+            tvMiddleText.text=getString(R.string.free)
+            tvMiddlePlan.text=getString(R.string.plan)
+        }
+
+
+         tvplanDuration.text = " / " + response.data[0].plan_duration + " " + response.data[0].plan_duration_type
 
         val description = response.data[0].plan_description
         if (description.equals(""))

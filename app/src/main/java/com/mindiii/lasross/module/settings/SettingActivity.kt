@@ -318,6 +318,7 @@ class SettingActivity : LasrossParentKotlinActivity(), View.OnClickListener, Api
         val tvPopupOk = dialog.tvOk
         tvPopupOk.setOnClickListener {
             dialog.dismiss()
+            callLogoutApi()
             if (this::changePasswordDialog.isInitialized) {
                 changePasswordDialog.dismiss()
             }

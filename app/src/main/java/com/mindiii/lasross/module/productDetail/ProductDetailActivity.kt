@@ -254,6 +254,15 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
 
         setAdapter()
         similarProductAdapter!!.notifyDataSetChanged()
+        if(similarProduct.isEmpty()){
+            view_similar.visibility=View.GONE
+            rvRecycler.visibility=View.GONE
+            divider_similer.visibility=View.GONE
+        }   else{
+            view_similar.visibility=View.VISIBLE
+            rvRecycler.visibility=View.VISIBLE
+            divider_similer.visibility=View.VISIBLE
+        }
     }
 
     @SuppressLint("SetTextI18n")

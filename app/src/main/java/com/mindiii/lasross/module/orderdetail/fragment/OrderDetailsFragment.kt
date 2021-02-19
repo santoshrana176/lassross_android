@@ -218,17 +218,17 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
             val date = DateFormatChange(orderDetailModel.orderDetail.tracking_status[lastIndexOfTrackingList].created_on)
             tvDateOrderDetail.text = date
 
-            val orderStatus = orderDetailModel.orderDetail.tracking_status[lastIndexOfTrackingList].order_status_title
-            tvStatus.text = orderStatus
-            /*if (status.equals("0")) {
+            val orderStatus = orderDetailModel.orderDetail.order_status
+           // tvStatus.text = orderStatus
+            if (orderStatus.equals("1")) {
                 tvStatus.text = getString(R.string.ordered_and_approved)
-            } else if (status.equals("1")) {
+            } else if (orderStatus.equals("2")) {
                 tvStatus.text = getString(R.string.packed)
-            } else if (status.equals("2")) {
+            } else if (orderStatus.equals("3")) {
                 tvStatus.text = getString(R.string.shipped)
-            } else if (status.equals("3")) {
+            } else if (orderStatus.equals("4")) {
                 tvStatus.text = getString(R.string.delivered)
-            }*/
+            }
 
 
             tvSubTotalOrderDetail.text = "€ " + activity.getTwoValueAfterDecimal(orderDetailModel.orderDetail.item_total)

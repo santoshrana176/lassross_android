@@ -219,14 +219,14 @@
     <string name="notifications">Notificaciones</string>
     <string name="not_a_member">¿No es un miembro?</string>
     <string name="nointernet_connection_mssge">Comprueba tus conexiones a Internet</string>
-    <string name="no_reviews">No se encontraron comentarios</string>
+    <string name="no_reviews">Reseñas no encontradas</string>
     <string name="no_order">Sin pedidos</string>
     <string name="no_of_item">NO DE ARTÍCULO</string>
     <string name="no_notification">No Notificaciones</string>
     <string name="no_items">No hay artículos</string>
     <string name="no_free_shipping">Sin envío gratuito</string>
     <string name="no_discount">Sin descuento</string>
-    <string name="no_address_found">No se encontró dirección</string>
+    <string name="no_address_found">No se agregó dirección</string>
     <string name="english_lng">Inglesa</string>
     <string name="spanish_lng">Española</string>
     <string name="expiry_date_text">Ingrese la fecha de vencimiento.</string>
@@ -237,7 +237,7 @@
     <string name="Please_enter_full_name">Ingrese su nombre completo</string>
     <string name="alphabets">Solo se permiten alfabéticos en nombre completo.</string>
     <string name="full_name_max_two">El nombre completo no debe tener menos de 2 caracteres</string>
-    <string name="golden">Golden</string>
+    <string name="golden">Dorada</string>
     <string name="month">/ Mes</string>
     <string name="_1_item">(1 it)</string>
     <string name="jennie_bostick">Jennie Bostick</string>
@@ -264,7 +264,7 @@
     <string name="no_">No</string>
     <string name="this_item_is_ethically_produced">Este artículo se produce éticamente</string>
     <string name="pellentesque_habitant_morbi_tristique_senectus_et_netus_et_malesuada_fames_ac_turpis_egestas_vestibulum_tortor_quam_feugiat_vitae_ultricies_eget_tempor_sit_amet_ante_donec_eu_libero_sit_amet_quam_egestas_semper_aenean_ultricies_mi_vitae_est_mauris_placerat_eleifend_leo">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</string>
-    <string name="other_info">OTHER INFO</string>
+    <string name="other_info">OTRA INFORMACIÓN</string>
     <string name="what_do_i_do_if_i_entered_an_incorrect_shipping_address">¿Qué hago si ingresé una dirección de envío incorrecta?</string>
     <string name="meditation_williamsburg_kogi_blog_bushwick_pitchfork_polaroid_austin_dreamcatcher_narwhal_taxidermy_tofu_gentrify_aesthetic">Meditation williamsburg kogi blog bushwick pitchfork polaroid austin dreamcatcher narwhal taxidermy tofu gentrify aesthetic.</string>
     <string name="sizee">Tamaño</string>
@@ -373,6 +373,12 @@
     <string name="shop_now_deal_list">Compra ahora</string>
     <string name="free_">Plan gratuito</string>
     <string name="discount_">Descuento</string>
+    <string name="subscribe_free">Suscríbete gratis</string>
+    <string name="items_">artículos</string>
+    <string name="shop__">Tienda</string>
+    <string name="we_only_have_">Nosotras solo tenemos</string>
+    <string name="qty_for_this">Cant. De este producto</string>
+    <string name="remove_out_off_stock">Primero retire el producto agotado para continuar</string>
 </resources>
 
     <!--<string name="place_key">AIzaSyAzlqPc1OwdMSrrVPLllUCKubclM_rcox0</string>-->

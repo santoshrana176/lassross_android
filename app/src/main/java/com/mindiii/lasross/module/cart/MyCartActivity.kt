@@ -118,7 +118,7 @@ class MyCartActivity : LasrossParentKotlinActivity(), ApiCallback.GetCartCallbac
                     quantity = cartList[position].cart_item_quantity.toInt()
                     quantity += quantity
                     if (cartList[position].cart_item_quantity == cartList[position].product_available_quantity) {
-                        val message: String = "We have only " + cartList[position].product_available_quantity + " Qty for this product"
+                        val message: String = getString(R.string.we_only_have_)+" "+ cartList[position].product_available_quantity + " "+getString(R.string.qty_for_this)
                         showConfirmDialog(this@MyCartActivity, message)
                     } else {
                         callUpdateIncreaseQuantity(cartItemId, productId, "1")
@@ -186,7 +186,7 @@ class MyCartActivity : LasrossParentKotlinActivity(), ApiCallback.GetCartCallbac
         tvTotal.text = cartListResponse.data.pricing_detail.currency_symbol + " " + cartListResponse.data.pricing_detail.total_amount
         when {
             cartList.size == 1 -> {
-                tvMyCartTotalItem.text = "(" + cartList.size + " item)"
+                tvMyCartTotalItem.text = "(" + cartList.size + " "+getString(R.string.item)+")"
                 tvMyCartTotalItem.visibility = View.VISIBLE
             }
             cartList.isEmpty() -> {
@@ -194,7 +194,7 @@ class MyCartActivity : LasrossParentKotlinActivity(), ApiCallback.GetCartCallbac
                 tvMyCartTotalItem.visibility = View.VISIBLE
             }
             else -> {
-                tvMyCartTotalItem.text = "(" + cartList.size + " items)"
+                tvMyCartTotalItem.text = "(" + cartList.size +" "+getString(R.string.item)+")"
                 tvMyCartTotalItem.visibility = View.VISIBLE
             }
         }
@@ -241,7 +241,7 @@ class MyCartActivity : LasrossParentKotlinActivity(), ApiCallback.GetCartCallbac
             R.id.btnCardContinue -> {
                 if (CommonUtils.isNetworkAvailable(this)!!) {
                     if (intOutOfStock > 0) {
-                        showOutOfStockDialog(this, "First remove out of stock product to continue")
+                        showOutOfStockDialog(this, getString(R.string.remove_out_off_stock))
                     } else {
                         startActivity(Intent(this, MyAddressesActivity::class.java)
                                 .putExtra("CheckValue", "CheckFound")

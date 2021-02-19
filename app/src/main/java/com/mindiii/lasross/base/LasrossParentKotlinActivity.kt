@@ -89,15 +89,15 @@ open class LasrossParentKotlinActivity : AppCompatActivity() {
         val backStackName = fragment.javaClass.name
 
         val fragmentManager = supportFragmentManager
-        val fragmentPopped = fragmentManager.popBackStackImmediate(backStackName, 0)
-        if (!fragmentPopped) {
+       // val fragmentPopped = fragmentManager.popBackStackImmediate(backStackName, 0)
+      //  if (!fragmentPopped) {
             val transaction = fragmentManager.beginTransaction()
             transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.fade_out)
             transaction.add(containerId, fragment, backStackName)
             if (addToBackStack)
                 transaction.addToBackStack(backStackName)
             transaction.commit()
-        }
+      //  }
     }
 
     internal fun replaceFragmentLoss(fragmentHolder: Fragment, layoutId: Int) {
