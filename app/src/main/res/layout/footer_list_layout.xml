@@ -27,9 +27,10 @@
     <LinearLayout
         android:layout_width="@dimen/_140sdp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_5sdp"
-        android:orientation="vertical"
-        android:padding="@dimen/_10sdp">
+         android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:paddingStart="@dimen/_10sdp"
+       >
 
         <TextView
             android:id="@+id/tvdealTitle"
@@ -37,10 +38,10 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/ibmplexsans_semibold"
             android:text="@string/holiday_style"
-            android:maxLines="2"
+            android:maxLines="1"
              android:ellipsize="end"
             android:textColor="@color/white"
-            android:textSize="@dimen/_10sdp" />
+            android:textSize="@dimen/_11sdp" />
 
         <TextView
             android:id="@+id/tvDealPrice"
@@ -51,18 +52,24 @@
             android:fontFamily="@font/ibmplexsans_medium"
             android:text="@string/from_50"
             android:textColor="@color/white"
-            android:textSize="@dimen/_8sdp" />
+            android:textSize="@dimen/_10sdp" />
 
-        <Button
+        <TextView
             android:id="@+id/btnShopNow"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="13dp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:background="#3bb54a"
-            android:fontFamily="@font/ibmplexsans_semibold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             android:background="#3bb54a"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingStart="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_8sdp"
+            android:paddingBottom="@dimen/_5sdp"
+             android:fontFamily="@font/ibmplexsans_medium"
             android:text="@string/shop_now"
+            android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="@dimen/_5sdp" />
+            android:textSize="@dimen/_10sdp" />
     </LinearLayout>
 
 

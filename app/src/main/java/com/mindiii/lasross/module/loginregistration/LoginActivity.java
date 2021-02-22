@@ -14,6 +14,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.text.InputType;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -87,20 +88,7 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //      String defaltLanguage = Locale.getDefault().getDisplayLanguage();
-        //     System.out.println(defaltLanguage);
-
         session = new Session(this);
-
-      /*  if (defaltLanguage.equals("español")) {
-            session.setIsEnglishLanguage("es");
-        } else {
-            session.setIsEnglishLanguage("en");
-        }
-
-        setAppLocale(session.getIsEnglishLanguage());*/
-
         setContentView(R.layout.login_form);
         init();
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -242,6 +230,7 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
         llFacebook = findViewById(R.id.llFacebook);
         tvEnglish = findViewById(R.id.tvEnglish);
         tvSpanish = findViewById(R.id.tvSpanish);
+       etEmail.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
 
         tvEnglish.setOnClickListener(new View.OnClickListener() {
             @Override

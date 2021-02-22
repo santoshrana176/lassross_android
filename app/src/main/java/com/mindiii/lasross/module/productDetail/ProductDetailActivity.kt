@@ -76,7 +76,12 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             window.setStatusBarColor(Color.BLACK)
         }
-
+         // In Activity's onCreate() for instance
+         // In Activity's onCreate() for instance
+        /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            val w = window
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        }*/
         if (session.cartItemCount.equals("0", ignoreCase = true))
             tvCartItemCountProductDetail.setVisibility(View.GONE)
         else {
@@ -246,8 +251,8 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         val colorVal = VariantValue("0", "0", "")
          variantColorValue.add(0, colorVal)
          galleryImage =ArrayList() //productDetailResponse.data.product_detail.gallery_images as ArrayList<GalleryImage>
-        val galleryImages = GalleryImage("0","0",productDetailResponse.data.product_detail.product_image_original,productDetailResponse.data.product_detail.product_image_medium)
-          galleryImage.add(0,galleryImages)
+        val galleryImages = GalleryImage("0", "0", productDetailResponse.data.product_detail.product_image_original, productDetailResponse.data.product_detail.product_image_medium)
+          galleryImage.add(0, galleryImages)
         if (productDetailResponse.data.product_detail.gallery_images.isNotEmpty()){
             galleryImage.addAll(productDetailResponse.data.product_detail.gallery_images)
         }
@@ -353,7 +358,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
             R.id.tv_color -> {
                 spinColor.performClick()
             }
-            R.id.tv_size ->{
+            R.id.tv_size -> {
                 spinSize.performClick()
             }
             /*R.id.ll_size1 -> {

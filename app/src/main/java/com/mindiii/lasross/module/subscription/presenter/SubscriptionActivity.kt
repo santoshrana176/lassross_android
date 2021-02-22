@@ -34,6 +34,7 @@ import com.stripe.Stripe
 import com.stripe.exception.StripeException
 import com.stripe.model.Customer
 import com.stripe.model.ExternalAccountCollection
+import kotlinx.android.synthetic.main.active_plan_screen.view.*
 import kotlinx.android.synthetic.main.subscription_screen.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -253,27 +254,28 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
         Log.d("subscriptionResponse", subscriptionResponse.toString())
         response = subscriptionResponse
         tvplanPriceCurrency.text = response.data[0].plan_currency
+        tvplanPrice.text = " " + getTwoValueAfterDecimal(response.data[0].plan_price)
 
-
-        tvplanPrice.text = response.data[0].plan_price//" " + getTwoValueAfterDecimal(response.data[0].plan_price)
+        val planTitle1=response.data[2].plan_title
+        val planFree = planTitle1.split(" ")
         //tvplanPrice.text = response.data[0].plan_currency + " " + response.data[0].plan_price
-       val str=response.data[0].plan_title
+        tvplanDuration.text = " / " + response.data[0].plan_duration + " " + response.data[0].plan_duration_type
 
-       val splitarray=str.split(" ")
+        tvLeftText.text=planFree[0]//free
+        tvLeftPlan.text=planFree[1]//free
 
-        if (str.equals("Silver Plan")|| str.equals("Plan Plata")){
-        tvMiddleText.text=getString(R.string.silver)
-        tvMiddlePlan.text=getString(R.string.plan)
-        }else if (str.equals("Golden Plan")|| str.equals("Plan dorado")){
-            tvMiddleText.text=getString(R.string.golden)
-            tvMiddlePlan.text=getString(R.string.plan)
-        }else{
-            tvMiddleText.text=getString(R.string.free)
-            tvMiddlePlan.text=getString(R.string.plan)
-        }
+        val planTitle2=response.data[0].plan_title
+        val silver = planTitle2.split(" ")
 
+        tvMiddleText.text=silver[0]//silver
+        tvMiddlePlan.text=silver[1]//silver
 
-         tvplanDuration.text = " / " + response.data[0].plan_duration + " " + response.data[0].plan_duration_type
+        val planTitle3=response.data[1].plan_title
+        val golden = planTitle3.split(" ")
+
+        tvRightText.text=golden[0]//golden
+        tvRightPlan.text=golden[1]//golden
+
 
         val description = response.data[0].plan_description
         if (description.equals(""))

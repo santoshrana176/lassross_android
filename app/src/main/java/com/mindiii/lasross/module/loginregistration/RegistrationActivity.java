@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -128,6 +129,7 @@ public class RegistrationActivity extends LasrossParentActivity implements View.
         etFullName = findViewById(R.id.etFullName);
         etEmail = findViewById(R.id.etEmail);
         etPass = findViewById(R.id.etPass);
+        etFullName.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
 
         tvSignIn.setOnClickListener(new View.OnClickListener() {
             @Override

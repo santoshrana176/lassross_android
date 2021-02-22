@@ -97,6 +97,7 @@
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp"
             android:visibility="gone"
+            android:textAllCaps="true"
             android:text="@string/save_cards"
             android:textColor="@color/another_black"
             android:textSize="@dimen/_11sdp" />
@@ -122,6 +123,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#f2f2f2"
+            android:textSize="@dimen/_10sdp"
             android:fontFamily="@font/ibmplexsans_regular"
             android:text="@string/cancel_order"
             android:textColor="@color/sort_by_color"
@@ -141,9 +143,10 @@
                 android:fontFamily="@font/ibmplexsans_regular"
                 android:gravity="center"
                 android:padding="@dimen/_7sdp"
+                android:singleLine="true"
                 android:text="@string/add_new_card"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_12sdp"/>
+                android:textSize="@dimen/_10sdp"/>
 
             <Button
                 android:id="@+id/btnUpdateCard"
@@ -155,7 +158,7 @@
                 android:padding="@dimen/_7sdp"
                 android:text="@string/select_card"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_10sdp"
                 android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>

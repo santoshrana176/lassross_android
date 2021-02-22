@@ -204,9 +204,9 @@
     <string name="yes">Yes</string>
     <string name="order_confirmed_successfully">Order Confirmed Successfully</string>
     <string name="your_order_has_been_confirmed">Your order has been confirmed successfully you will get a confirmation message.</string>
-    <string name="confirmation">Confirmación</string>
+    <string name="confirmation">Confirmation</string>
     <string name="order_amount">Order Amount:</string>
-    <string name="continue_shopping">SIGUE COMPRANDO</string>
+    <string name="continue_shopping">CONTINUE SHOPPING</string>
     <string name="order_id">Order Id:</string>
     <string name="nointernet_connection_mssge">Please check your internet connections</string>
     <string name="color_order_detail">Color : </string>
@@ -239,7 +239,7 @@
     <string name="Please_enter_valid_email">Please enter valid email</string>
     <string name="Please_enter_password">Please enter password</string>
     <string name="password_max">Password should have minimum 6 characters</string>
-    <string name="Please_enter_full_name">Por favor ingrese el nombre completo</string>
+    <string name="Please_enter_full_name">Please enter full name</string>
     <string name="alphabets">Only alphabeticals allowed in full name</string>
     <string name="full_name_max_two">Full name should not less than 2 characters</string>
     <string name="golden">Golden</string>
@@ -378,5 +378,7 @@
     <string name="we_only_have_">We have only</string>
     <string name="qty_for_this">Qty for this product</string>
     <string name="remove_out_off_stock">First remove out of stock product to continue</string>
+    <string name="delete_confirm">Are you sure you want to delete card?</string>
+    <string name="_deal_">Deal</string>
 </resources>
 

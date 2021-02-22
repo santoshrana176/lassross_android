@@ -379,6 +379,8 @@
     <string name="we_only_have_">We have only</string>
     <string name="qty_for_this">Qty for this product</string>
     <string name="remove_out_off_stock">First remove out of stock product to continue</string>
+    <string name="delete_confirm">Are you sure you want to delete card?</string>
+    <string name="_deal_">Deal</string>
 </resources>
 
     <!--<string name="place_key">AIzaSyDyUk7vkNaDVsFojxOYTEz0m_rtdFqdgqs</string>-->

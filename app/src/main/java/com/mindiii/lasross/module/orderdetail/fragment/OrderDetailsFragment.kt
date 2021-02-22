@@ -220,7 +220,9 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
 
             val orderStatus = orderDetailModel.orderDetail.order_status
            // tvStatus.text = orderStatus
-            if (orderStatus.equals("1")) {
+            if (orderStatus.equals("0")) {
+                tvStatus.text =getString(R.string.order_placed)
+            }else if (orderStatus.equals("1")) {
                 tvStatus.text = getString(R.string.ordered_and_approved)
             } else if (orderStatus.equals("2")) {
                 tvStatus.text = getString(R.string.packed)

@@ -257,6 +257,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_medium"
                     android:text="@string/size"
+                    android:textSize="@dimen/_12sdp"
                     android:textColor="#333333" />
 
                 <LinearLayout
@@ -407,6 +408,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/_12sdp"
                         android:fontFamily="@font/ibmplexsans_medium"
                         android:text="@string/color_available"
                         android:textColor="#333333" />
@@ -477,11 +479,12 @@
 
                     <TextView
                         android:id="@+id/tv_count_text"
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                         android:fontFamily="@font/ibmplexsans_medium"
+                        android:layout_marginEnd="@dimen/_22sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:fontFamily="@font/ibmplexsans_medium"
                         android:text="@string/no_of_item"
                         android:textColor="#333333" />
 
@@ -556,6 +559,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
+                android:textSize="@dimen/_12sdp"
                 android:fontFamily="@font/ibmplexsans_medium"
                 android:text="@string/view_similar"
                 android:textColor="#333333" />
@@ -582,6 +586,7 @@
                 android:fontFamily="@font/ibmplexsans_medium"
                 android:text="@string/description"
                 android:textAllCaps="true"
+                android:textSize="@dimen/_12sdp"
                 android:textColor="#333333" />
 
 

@@ -69,6 +69,8 @@ class ProfileActivity : LasrossParentKotlinActivity() {
         if (fragment is UpdateProfileFragment){
             if (supportFragmentManager.backStackEntryCount > 0) {
                 supportFragmentManager.popBackStackImmediate()
+                if (from.equals("Settings"))
+                super.onBackPressed()
             }
         }
     }

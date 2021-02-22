@@ -74,7 +74,7 @@ public class FooterListAdapter extends RecyclerView.Adapter<FooterListAdapter.Ho
         //ImageView imageView;
         RoundRectCornerImageView roundRectCornerImageView;
         TextView tvdealTitle, tvDealPrice;
-        Button btnShopNow;
+        TextView btnShopNow;
         RelativeLayout rvFullLayout;
 
         public Holder(@NonNull View itemView) {

@@ -42,7 +42,7 @@
     <string name="confirm">Confirmar</string>
     <string name="confirm_cancel_subscription_text">¿Estás seguro de que quieres dejar de recurrir automáticamente?</string>
     <string name="confirm_pwd">Confirmar contraseña</string>
-    <string name="confirmation">Confirmation</string>
+    <string name="confirmation">Confirmación</string>
     <string name="contact_us">Contacta con nosotras</string>
     <string name="continue_free">Continuar como gratis</string>
     <string name="continue_shopping">SEGUIR COMPRANDO</string>
@@ -104,7 +104,7 @@
     <string name="mobile_no_ten_digit">El número de móvil debe tener 10 dígitos</string>
     <string name="more">Más</string>
     <string name="move_to_bag">MOVE TO BAG</string>
-    <string name="my_address">Mi dirección</string>
+    <string name="my_address">Mis direcciones</string>
     <string name="my_card">Mis cartas</string>
     <string name="my_cart">Mi carrito</string>
     <string name="my_orders">Mis ordenes</string>
@@ -143,7 +143,7 @@
     <string name="todo">TODO</string>
     <string name="title">Título</string>
     <string name="terms_and_conditions">Términos y Condiciones</string>
-    <string name="tax">Tax</string>
+    <string name="tax">Impuesto</string>
     <string name="subtotal">Total parcial</string>
     <string name="subscription_plan">Plan de suscripción</string>
     <string name="subscription">Suscripción</string>
@@ -208,7 +208,7 @@
     <string name="overall_rating">Calificación general</string>
     <string name="out_of_stock">Agotada</string>
     <string name="order_placed">Pedido realizado</string>
-    <string name="order_id">SOLICITAR ID:</string>
+    <string name="order_id">Solicitar ID:</string>
     <string name="order_detail">Detalles del pedido</string>
     <string name="order_confirmed_successfully">Pedido confirmado con éxito</string>
     <string name="order_amount">Total de la orden:</string>
@@ -234,7 +234,7 @@
     <string name="Please_enter_valid_email">Por favor introduzca un correo electrónico válido</string>
     <string name="Please_enter_password">Por favor, ingrese contraseña</string>
     <string name="password_max">La contraseña debe tener un mínimo de 6 caracteres</string>
-    <string name="Please_enter_full_name">Ingrese su nombre completo</string>
+    <string name="Please_enter_full_name">Por favor ingrese el nombre completo</string>
     <string name="alphabets">Solo se permiten alfabéticos en nombre completo.</string>
     <string name="full_name_max_two">El nombre completo no debe tener menos de 2 caracteres</string>
     <string name="golden">Dorada</string>
@@ -358,7 +358,7 @@
     <string name="order_">Orden</string>
     <string name="logout_">Cerrar sesión</string>
     <string name="cart_text">Carro</string>
-    <string name="item_zero">(0 elemento)</string>
+    <string name="item_zero">(0 artículo)</string>
     <string name="itemmmm">(0 item)</string>
     <string name="select_color">seleccionar el color</string>
     <string name="rating_and">calificación y</string>
@@ -379,6 +379,8 @@
     <string name="we_only_have_">Nosotras solo tenemos</string>
     <string name="qty_for_this">Cant. De este producto</string>
     <string name="remove_out_off_stock">Primero retire el producto agotado para continuar</string>
+    <string name="delete_confirm">¿Estás seguro de que quieres eliminar la tarjeta?</string>
+    <string name="_deal_">Negocio</string>
 </resources>
 
     <!--<string name="place_key">AIzaSyAzlqPc1OwdMSrrVPLllUCKubclM_rcox0</string>-->

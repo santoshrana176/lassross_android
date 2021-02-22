@@ -114,6 +114,7 @@
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:fontFamily="@font/ibmplexsans_light"
                 android:gravity="center"
+                android:textAllCaps="false"
                 android:text="@string/order_id"
                 android:textSize="@dimen/_12sdp" />
 

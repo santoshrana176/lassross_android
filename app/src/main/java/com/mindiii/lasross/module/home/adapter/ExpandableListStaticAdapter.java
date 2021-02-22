@@ -88,7 +88,7 @@ public class ExpandableListStaticAdapter extends BaseExpandableListAdapter {
         }
 
 
-        if (headerTitle.equals("Wishlist")) {
+        if (headerTitle.equals("Wishlist")|| headerTitle.equals("Lista de deseos")) {//Lista de deseos
             ivHeaderImage.setImageResource(R.drawable.wishlist_icon);
             tvLine.setVisibility(View.VISIBLE);
 /*if(isExpanded){
@@ -103,7 +103,7 @@ ivUpAndDown.setImageResource(R.drawable.right_arrow);
         }
 
 
-        if (headerTitle.equals("Order")) {
+        if (headerTitle.equals("Order")|| headerTitle.equals("Orden")) {//Orden
             ivHeaderImage.setImageResource(R.drawable.ic_order_ico);
             tvLine.setVisibility(View.VISIBLE);
 /*if(isExpanded){
@@ -118,7 +118,7 @@ ivUpAndDown.setImageResource(R.drawable.right_arrow);
         }
 
 
-        if (headerTitle.equals("Cart")) {
+        if (headerTitle.equals("Cart")|| headerTitle.equals("Carro")) {//Carro
             ivHeaderImage.setImageResource(R.drawable.cart_icon);
             tvLine.setVisibility(View.VISIBLE);
 /*if(isExpanded){
@@ -193,7 +193,7 @@ ivUpAndDown.setImageResource(R.drawable.right_arrow);
         }
 
 
-        if (headerTitle.equals("Logout")) {
+        if (headerTitle.equals("Logout") || headerTitle.equals("Cerrar sesión")) {//Cerrar sesión
             ivHeaderImage.setImageResource(R.drawable.logout_icon);
             tvLine.setVisibility(View.GONE);
 /*if(isExpanded){

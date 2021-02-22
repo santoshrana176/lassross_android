@@ -127,7 +127,7 @@ open class BaseKotlinFragment : Fragment() {
         df.timeZone = TimeZone.getTimeZone("UTC")
         val date = df.parse(input)
         df.timeZone = TimeZone.getDefault()
-        val df1 = SimpleDateFormat("dd MMM yyyy hh:mm:ss a", Locale.ENGLISH).format(date!!)
+        val df1 = SimpleDateFormat("dd MMM yyyy - hh:mm a", Locale.ENGLISH).format(date!!)
         return df1
         //  Log.e("date---",""+df1)
         //   inputFormat.timeZone = TimeZone.getTimeZone("UTC")

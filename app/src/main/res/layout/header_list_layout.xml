@@ -19,12 +19,21 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_120sdp">
+                android:layout_height="@dimen/_130sdp"
+                 >
+
+                <com.mindiii.lasross.helper.RoundRectCornerImageView
+                    android:id="@+id/ivImage1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/circular_back_ground"
+                    android:scaleType="centerCrop" />
 
                 <com.mindiii.lasross.helper.RoundRectCornerImageView
                     android:id="@+id/ivImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_1sdp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/dress2" />
 

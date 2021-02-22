@@ -90,11 +90,12 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
                 tvWishList.setText(R.string.shop__);
                 else
                     tvWishList.setText(childCatName);
-
-
             }
+            else if (deal.equals("Deal"))
+                tvWishList.setText(R.string._deal_);
             else
                 tvWishList.setText(deal);
+
 
 
             productListBeans.clear();
@@ -704,7 +705,7 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
         recyclerView.scrollToPosition(0);
         offset = 0;
         IsSearch = true;
-        productListBeans.clear();
+   //     productListBeans.clear();
 
         if (session.getCartItemCount().equals("0"))
             tvCartItemCountShop.setVisibility(View.GONE);
@@ -712,9 +713,9 @@ public class CoatsActivity extends LasrossParentActivity implements ApiCallback.
             tvCartItemCountShop.setVisibility(View.VISIBLE);
             tvCartItemCountShop.setText(session.getCartItemCount());
         }
-        if (flag){
+     /*   if (flag){
             productListBeans.clear();
             apiCalling(searchText, popularity, average_rating, latest, lowPrice, highPrice, sizeIds, colorIds, prizeLow, priceHigh);
-        }
+        }*/
     }
 }
