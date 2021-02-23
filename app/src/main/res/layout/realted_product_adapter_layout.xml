@@ -13,18 +13,57 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_8sdp"
         android:orientation="vertical">
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_110sdp">
+            android:layout_height="@dimen/_110sdp"
+            >
 
-            <com.mindiii.lasross.utils.RoudedReactLessCorner
+            <com.mindiii.lasross.helper.RoundRectCornerImageView
+                android:id="@+id/ivImage1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/circular_back_ground"
+                android:scaleType="centerCrop" />
+
+            <com.mindiii.lasross.helper.RoundRectCornerImageView
                 android:id="@+id/ivImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"
+                android:layout_margin="@dimen/_1sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/dress2" />
+
+            <ImageView
+                android:id="@+id/ivSimilarProductLike"
+                android:layout_width="@dimen/_17sdp"
+                android:layout_height="@dimen/_17sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:background="@drawable/favourite_bg"
+                android:padding="@dimen/_3sdp"
+                android:src="@drawable/favourite_icon" />
+        </RelativeLayout>
+      <!--  <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_120sdp"
+            android:background="@drawable/circular_back_ground">
+
+          &lt;!&ndash;  <com.mindiii.lasross.utils.RoudedReactLessCorner
+                android:id="@+id/ivImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 android:src="@drawable/dress2"
                 app:siBorderColor="@android:color/transparent" />
+&ndash;&gt;
+            <com.mindiii.lasross.helper.RoundRectCornerImageView
+                android:id="@+id/ivImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                 android:scaleType="centerCrop"
+                android:layout_marginBottom="-2dp"
+                android:src="@drawable/dress2" />
 
             <ImageView
                 android:id="@+id/ivSimilarProductLike"
@@ -36,7 +75,7 @@
                 android:background="@drawable/related_product_wishlist"
                 android:padding="@dimen/_3sdp"
                 android:src="@drawable/favourite_icon" />
-        </RelativeLayout>
+        </RelativeLayout>-->
 
         <TextView
             android:id="@+id/tvItemNameVariety"

@@ -83,7 +83,7 @@
                     android:layout_width="@dimen/_15sdp"
                     android:layout_height="@dimen/_15sdp"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
                     android:layout_toStartOf="@+id/bag_icon"
                     android:src="@drawable/bell_icon"
                     android:tint="#ffffff" />
@@ -123,8 +123,8 @@
                     android:padding="@dimen/_5sdp">
 
                     <ImageView
-                        android:layout_width="@dimen/_18sdp"
-                        android:layout_height="@dimen/_18sdp"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
                         android:padding="@dimen/_3sdp"
                         android:src="@drawable/ic_search_home_ico"
                         android:tint="#666666" />

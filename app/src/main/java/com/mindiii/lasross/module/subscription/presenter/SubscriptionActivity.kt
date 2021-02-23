@@ -274,7 +274,7 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
         val golden = planTitle3.split(" ")
 
         tvRightText.text=golden[0]//golden
-        tvRightPlan.text=golden[1]//golden
+        tvRightPlan.text=golden[1].trim()//golden
 
 
         val description = response.data[0].plan_description

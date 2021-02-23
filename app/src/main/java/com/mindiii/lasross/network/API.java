@@ -1,6 +1,8 @@
 package com.mindiii.lasross.network;
 
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.mindiii.lasross.Lasross;
 import com.mindiii.lasross.module.Filter.model.VarientListResponse;
 import com.mindiii.lasross.module.activeplan.model.CancelSubscriptionResponse;
@@ -256,8 +258,9 @@ public interface API {
 
     @FormUrlEncoded
     @POST("subscription/createSubscription")
-    Call<SubscribeResponse> planSubscribeApi(@Header("language") String language, @Header("authToken") String token
-            , @Field("plan_id") String plan_id);
+    Call</*JsonElement*/SubscribeResponse> planSubscribeApi(@Header("language") String language,
+                                       @Header("authToken") String token,
+                                       @Field("plan_id") String plan_id);
 
     @GET("user/userCurrentSubscribedPlan")
     Call<SubscribeResponse> callCurrentSubscribedPlan(@Header("language") String language, @Header("authToken") String token);

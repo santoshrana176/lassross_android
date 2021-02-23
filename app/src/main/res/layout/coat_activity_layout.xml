@@ -25,9 +25,9 @@
                 android:gravity="center"
                 android:padding="@dimen/_5sdp">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:gravity="center"
                     tools:ignore="UseCompoundDrawables">
@@ -36,9 +36,8 @@
                         android:id="@+id/ivBackButton"
                         android:layout_width="@dimen/_13sdp"
                         android:layout_height="@dimen/_13sdp"
-                        android:layout_marginTop="@dimen/_2sdp"
-                        android:paddingBottom="@dimen/_2sdp"
-                        android:src="@drawable/ic_back_arrow_ico"
+                        android:layout_centerVertical="true"
+                         android:src="@drawable/ic_back_arrow_ico"
                         tools:ignore="ContentDescription" />
 
                     <TextView
@@ -46,13 +45,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_13sdp"
-                        android:drawablePadding="@dimen/_5sdp"
-                        android:fontFamily="@font/ibmplexsans_regular"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@id/ivBackButton"
+                        android:layout_marginStart="@dimen/_8sdp"
+                          android:fontFamily="@font/ibmplexsans_regular"
                         android:text="@string/submit"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_13sdp" />
-                </LinearLayout>
+                </RelativeLayout>
 
                 <ImageView
                     android:id="@+id/bag_icon"
@@ -107,8 +107,8 @@
                     android:padding="@dimen/_5sdp">
 
                     <ImageView
-                        android:layout_width="@dimen/_18sdp"
-                        android:layout_height="@dimen/_18sdp"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
                         android:padding="@dimen/_3sdp"
                         android:src="@drawable/ic_search_home_ico"
                         android:tint="#666666" />

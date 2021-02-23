@@ -18,14 +18,14 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_220sdp"
+            android:layout_height="@dimen/_200sdp"
             android:background="@drawable/login_bg_img"
             android:gravity="center_horizontal">
 
             <ImageView
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="@dimen/_90sdp"
-                android:layout_marginTop="@dimen/_38sdp"
+                android:layout_marginTop="@dimen/_18sdp"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/login_screen_logo" />
         </RelativeLayout>
@@ -55,7 +55,7 @@
                     android:gravity="center"
                      android:text="@string/sign_in_with"
                     android:textColor="@color/black_1"
-                    android:textSize="@dimen/_17sdp" />
+                    android:textSize="@dimen/_20sdp" />
 
                 <com.facebook.login.widget.LoginButton
                     android:id="@+id/login_button"
@@ -248,7 +248,7 @@
                     android:id="@+id/tvSignIn"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_35sdp"
-                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_18sdp"
                     android:background="@drawable/tv_signin_bg"
                     android:fontFamily="@font/ibmplexsans_semibold"
                     android:gravity="center"

@@ -46,7 +46,8 @@
         <item name="colorControlActivated">@color/switch_btn_orange_color</item>
     </style>
 
-    <style name="customRatingBar" parent="android:style/Widget.Material.RatingBar.Small"></style>
+    <style name="customRatingBar"
+        parent="android:style/Widget.Material.RatingBar.Small"/>
 
     <style name="SwitchCompatStyle">
         <item name="thumbTint">@color/black</item>
@@ -86,4 +87,14 @@
         <item name="windowMinWidthMinor">50%</item>
     </style>
 
+
+
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+         <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+     </style>
 </resources>

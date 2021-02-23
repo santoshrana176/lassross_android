@@ -381,6 +381,8 @@
     <string name="remove_out_off_stock">Primero retire el producto agotado para continuar</string>
     <string name="delete_confirm">¿Estás seguro de que quieres eliminar la tarjeta?</string>
     <string name="_deal_">Negocio</string>
+    <string name="we_have_only">Sólo tenemos</string>
+    <string name="oty_for_this">Cant. De este producto</string>
 </resources>
 
     <!--<string name="place_key">AIzaSyAzlqPc1OwdMSrrVPLllUCKubclM_rcox0</string>-->

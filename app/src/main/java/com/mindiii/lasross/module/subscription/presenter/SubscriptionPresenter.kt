@@ -1,6 +1,8 @@
 package com.mindiii.lasross.module.subscription.presenter
 
 import android.content.Context
+import com.google.gson.JsonElement
+import com.google.gson.JsonObject
 import com.mindiii.lasross.Lasross
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
@@ -10,6 +12,8 @@ import com.mindiii.lasross.module.subscription.SubscriptionResponse
 import com.mindiii.lasross.module.subscription.presenter.model.SubscribeResponse
 import com.mindiii.lasross.network.API
 import com.mindiii.lasross.network.ServiceGenerator
+import com.mindiii.lasross.network.ServiceGeneratorkotlin
+import com.mindiii.lasross.utils.CommonUtils.toastMessage
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -57,18 +61,18 @@ class SubscriptionPresenter(var mContext: Context, var subscription: ApiCallback
     fun subscribePlanApi(plan_id: String) {
         val session = Session(mContext)
         subscription.onShowBaseLoader()
-        val api = ServiceGenerator.createService(API::class.java)
+        val api = ServiceGeneratorkotlin().createService(API::class.java)
         val subscriptionApiCall = api.planSubscribeApi(Lasross.appLanguage,session.authToken, plan_id)
-        subscriptionApiCall.enqueue(object : Callback<SubscribeResponse> {
+        subscriptionApiCall.enqueue(object : Callback</*JsonElement*/SubscribeResponse> {
             override fun onResponse(call: Call<SubscribeResponse>, response: Response<SubscribeResponse>) {
 
                 subscription.onHideBaseLoader()
                 if (response.isSuccessful) {
-                    subscription.onSuccessSubscribe(response.body())
+                     subscription.onSuccessSubscribe(response.body())
 
                 } else {
                     val apiErrors = ErrorUtils.parseError(response)
-                    if (apiErrors.message == "Invalid token") {
+                   if (apiErrors.message == "Invalid token") {
                         subscription.onTokenChangeError(apiErrors.message)
                     } else {
                         subscription.onError(apiErrors.message)
