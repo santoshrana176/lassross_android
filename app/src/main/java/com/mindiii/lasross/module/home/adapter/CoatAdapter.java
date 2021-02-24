@@ -85,8 +85,8 @@ public class CoatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         myviewHolder.tvItemPrice.setText(itemList.getCurrency_symbol() + " " + itemList.getRegular_price());
         Picasso.with(context)
                 .load(itemList.getProduct_image())
-                .resize(600, 600)
-                .transform(new RoundedTransformation(50, 0))
+           //     .resize(600, 600)
+              //  .transform(new RoundedTransformation(50, 0))
                 .into(myviewHolder.ivImage);
 
         myviewHolder.tvSellerPrice.setText(itemList.getCurrency_symbol() + " " + itemList.getSale_price());

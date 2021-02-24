@@ -61,8 +61,8 @@
 
             <ImageView
                 android:id="@+id/ivOrderDetail"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_80sdp"
+                android:layout_width="@dimen/_65sdp"
+                android:layout_height="@dimen/_82sdp"
                 android:src="@drawable/dress2" />
 
             <LinearLayout

@@ -12,6 +12,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mindiii.lasross.R
 import com.mindiii.lasross.base.ClickListener
+import com.mindiii.lasross.helper.RoundRectCornerImageView
+import com.mindiii.lasross.helper.RoundRectCornerImageViewNew
 import com.mindiii.lasross.helper.RoundedTransformation
 import com.mindiii.lasross.module.productDetail.adapter.SimilarProductKotlinAdapter.Holder
 import com.mindiii.lasross.module.productDetail.model.SimilarProduct
@@ -51,14 +53,14 @@ class SimilarProductKotlinAdapter(private var productList: List<SimilarProduct>,
         if (product_image.isEmpty()) {
             Picasso.with(mContext)
                     .load(R.drawable.default_profile_img)
-                    .resize(500, 500)
-                    .transform(RoundedTransformation(50, 0))
+                   // .resize(500, 500)
+                //    .transform(RoundedTransformation(50, 0))
                     .into(holder.ivImage)
         } else {
             Picasso.with(mContext)
                     .load(product_image)
-                    .resize(500, 500)
-                    .transform(RoundedTransformation(50, 0))
+                    //.resize(500, 500)
+                    //.transform(RoundedTransformation(50, 0))
                     .into(holder.ivImage)
         }
 
@@ -74,7 +76,7 @@ class SimilarProductKotlinAdapter(private var productList: List<SimilarProduct>,
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        internal var ivImage: ImageView
+        internal var ivImage: RoundRectCornerImageViewNew
         internal var tvItemNameVariety: TextView
         internal var tvItemName: TextView
         internal var tvItemPrice: TextView

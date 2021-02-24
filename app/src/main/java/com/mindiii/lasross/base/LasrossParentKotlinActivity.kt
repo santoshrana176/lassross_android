@@ -6,10 +6,12 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.Window
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
@@ -43,7 +45,42 @@ open class LasrossParentKotlinActivity : AppCompatActivity() {
         progressDialog = ProgressDialog(this@LasrossParentKotlinActivity)
         getCurrentFirebaseToken()
     }
+    fun transparentStatusBar(activity: AppCompatActivity) {
+        if (Build.VERSION.SDK_INT in 19..20) {
+            setWindowTransparentFlag(
+                    activity,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                    true
+            )
+        }
+        if (Build.VERSION.SDK_INT >= 19) {
+            activity.window.decorView.systemUiVisibility =
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        }
+        if (Build.VERSION.SDK_INT >= 21) {
+            setWindowTransparentFlag(
+                    activity,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                    false
+            )
+            activity.window.statusBarColor = Color.TRANSPARENT
+        }
+    }
 
+    private fun setWindowTransparentFlag(
+            activity: AppCompatActivity,
+            bits: Int,
+            on: Boolean
+    ) {
+        val win = activity.window
+        val winParams = win.attributes
+        if (on) {
+            winParams.flags = winParams.flags or bits
+        } else {
+            winParams.flags = winParams.flags and bits.inv()
+        }
+        win.attributes = winParams
+    }
     fun DateFormatChange(input: String): String {
         val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         val outputFormat = SimpleDateFormat("dd MMM yyyy ");

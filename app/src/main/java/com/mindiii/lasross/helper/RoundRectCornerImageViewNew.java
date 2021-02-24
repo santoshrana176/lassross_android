@@ -6,23 +6,23 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 
-public class RoundRectCornerImageView extends androidx.appcompat.widget.AppCompatImageView {
+public class RoundRectCornerImageViewNew extends androidx.appcompat.widget.AppCompatImageView {
 
     private float radius = 16.0f;
     private Path path;
     private RectF rect;
 
-    public RoundRectCornerImageView(Context context) {
+    public RoundRectCornerImageViewNew(Context context) {
         super(context);
         init();
     }
 
-    public RoundRectCornerImageView(Context context, AttributeSet attrs) {
+    public RoundRectCornerImageViewNew(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public RoundRectCornerImageView(Context context, AttributeSet attrs, int defStyle) {
+    public RoundRectCornerImageViewNew(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
@@ -32,7 +32,14 @@ public class RoundRectCornerImageView extends androidx.appcompat.widget.AppCompa
 
     }
 
-
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int width = getMeasuredWidth();
+        //force a 16:9 aspect ratio
+        int height = Math.round(width * 1.25f);
+        setMeasuredDimension(width, height);
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {

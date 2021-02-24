@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/ivImage"
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="@dimen/_82sdp"
             android:src="@drawable/placeholder_image" />
 
         <LinearLayout

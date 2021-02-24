@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Paint;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mindiii.lasross.R;
 import com.mindiii.lasross.helper.RoundRectCornerImageView;
+import com.mindiii.lasross.helper.RoundRectCornerImageViewNew;
 import com.mindiii.lasross.module.home.interfc.HeaderInterface;
 import com.mindiii.lasross.module.home.model.ProductResponse;
 import com.squareup.picasso.Picasso;
@@ -83,6 +85,9 @@ public class HeaderListAdapter extends RecyclerView.Adapter<HeaderListAdapter.Ho
     public void onBindViewHolder(@NonNull Holder holder, @SuppressLint("RecyclerView") final int i) {
 
         if (holder.view_type == TYPE_LIST) {
+
+
+
             ProductResponse.DataBean.ProductListBean itemList = productListBeans.get(i);
             holder.tvItemNameVariety.setText(itemList.getCategory_name());
             holder.tvItemName.setText(itemList.getProduct_name());
@@ -123,6 +128,8 @@ public class HeaderListAdapter extends RecyclerView.Adapter<HeaderListAdapter.Ho
                 Picasso.with(context).load(strBannerImage).into(holder.ivDiscount);
             }
         }*/
+
+
     }
 
     @Override
@@ -147,9 +154,9 @@ public class HeaderListAdapter extends RecyclerView.Adapter<HeaderListAdapter.Ho
 
     public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        RoundRectCornerImageView roundRectCornerImageView, ivDiscount;
+        RoundRectCornerImageViewNew roundRectCornerImageView, ivDiscount;
         TextView tvItemNameVariety, tvItemName, tvItemPrice, tvDiscountHome;
-        RelativeLayout fullLayout, rvHeaderHomeTop;
+        RelativeLayout fullLayout, rvHeaderHomeTop,mLayout;
 
         TextView tvUpTo50, tvMessage;
         Button btnPick;
@@ -163,6 +170,7 @@ public class HeaderListAdapter extends RecyclerView.Adapter<HeaderListAdapter.Ho
             super(itemView);
 
             if (viewType == TYPE_LIST) {
+                mLayout = itemView.findViewById(R.id.mLayout);
                 tvItemNameVariety = itemView.findViewById(R.id.tvItemNameVariety);
                 tvItemName = itemView.findViewById(R.id.tvItemName);
                 tvDiscountHome = itemView.findViewById(R.id.tvDiscountHome);

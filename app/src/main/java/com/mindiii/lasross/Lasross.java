@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.res.Configuration;
 
 import com.androidnetworking.AndroidNetworking;
+import com.firebase.client.Firebase;
+import com.google.firebase.FirebaseApp;
 
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
@@ -35,6 +37,7 @@ public class Lasross extends Application {
     public void onCreate() {
         super.onCreate();
         AndroidNetworking.initialize(getApplicationContext(), getUnsafeOkHttpClient());
+        FirebaseApp.initializeApp(this);
         instance = this;
     }
 

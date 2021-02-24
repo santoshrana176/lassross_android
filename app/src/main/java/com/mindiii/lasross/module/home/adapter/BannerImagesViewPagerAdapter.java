@@ -1,6 +1,8 @@
 package com.mindiii.lasross.module.home.adapter;
 
 import android.content.Context;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +50,19 @@ public class BannerImagesViewPagerAdapter extends PagerAdapter {
         offer_description.setText(mBannerSilderList.get(position).getDescription());
 
         RelativeLayout banner_item = view.findViewById(R.id.banner_item);
+
+
+        DisplayMetrics displaymetrics =new DisplayMetrics();
+        //Display display = context.
+
+       // windowManager.defaultDisplay.getMetrics(displaymetrics);
+        //width = displaymetrics.widthPixels
+
+        //val params = viewPager.layoutParams
+        //params.height = (1.25 * width).toInt()
+       // params.width = width
+
+        //viewPager.layoutParams = params
 
 
         banner_item.setOnClickListener(new View.OnClickListener() {

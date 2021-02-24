@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="253dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_7sdp"
         android:layout_marginTop="@dimen/_7sdp"
         android:layout_marginEnd="@dimen/_7sdp"
@@ -17,37 +17,38 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_7sdp"
+            android:layout_margin="@dimen/_6sdp"
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/mLayout"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_130sdp">
+                android:layout_height="wrap_content">
 
-                <com.mindiii.lasross.helper.RoundRectCornerImageView
+                <com.mindiii.lasross.helper.RoundRectCornerImageViewNew
                     android:id="@+id/ivImage1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/circular_back_ground"
                     android:scaleType="centerCrop" />
 
-                <com.mindiii.lasross.helper.RoundRectCornerImageView
+                <com.mindiii.lasross.helper.RoundRectCornerImageViewNew
                     android:id="@+id/ivImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="@dimen/_1sdp"
+                    android:layout_margin="1dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/dress2" />
 
                 <ImageView
                     android:id="@+id/ivAddWishList"
-                    android:layout_width="@dimen/_17sdp"
-                    android:layout_height="@dimen/_17sdp"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:layout_marginEnd="@dimen/_4sdp"
                     android:background="@drawable/favourite_bg"
-                    android:padding="@dimen/_3sdp"
+                    android:padding="@dimen/_2sdp"
                     android:src="@drawable/favourite_icon" />
             </RelativeLayout>
 

@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/ivImage"
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="@dimen/_82sdp"
             android:src="@drawable/dress1"
             tools:ignore="ContentDescription" />
 
@@ -80,8 +80,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_semibold"
                     android:paddingTop="@dimen/_3sdp"
-                    android:text=""
-                    android:textColor="@color/black"
+                     android:textColor="@color/black"
                     android:textSize="@dimen/_10sdp" />
 
                 <TextView
@@ -92,7 +91,7 @@
                     android:fontFamily="@font/ibmplexsans_regular"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/_10sdp"
-                    android:visibility="gone" />
+                     android:visibility="gone" />
 
             </LinearLayout>
 

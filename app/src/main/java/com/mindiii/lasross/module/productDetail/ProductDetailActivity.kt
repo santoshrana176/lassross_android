@@ -7,10 +7,14 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.LayerDrawable
+import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.os.SystemClock
 import android.text.method.ScrollingMovementMethod
+import android.util.DisplayMetrics
 import android.view.View
+import android.view.Window
 import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ImageView
@@ -63,7 +67,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
     private var similarProductAdapter: SimilarProductKotlinAdapter? = null
     private var viewPagerAdapter: ViewPagerAdapter? = null
     private lateinit var session: Session
-
+    var width = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,18 +75,45 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         session = Session(this)
         //showSystemUI()
      //   window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-        this?.window?.decorView?.apply {
+        /*this?.window?.decorView?.apply {
             systemUiVisibility = View.SYSTEM_UI_FLAG_LOW_PROFILE
-        }
+        }*/
+       /* Handler().postDelayed({
+           this.window.apply {
+                clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    statusBarColor = Color.TRANSPARENT
+                }
+            }
+        },5000)
+*/
         /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
              val window: Window = window
              window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
              window.setStatusBarColor(Color.BLACK)
-         }*/
-          /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+         }
+
+          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             val w = window
             w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         }*/
+        //Display display = context.
+        // windowManager.defaultDisplay.getMetrics(displaymetrics);
+        //width = displaymetrics.widthPixels
+        //val params = viewPager.layoutParams
+        //params.height = (1.25 * width).toInt()
+        // params.width = width
+        //viewPager.layoutParams = params
+        val displaymetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displaymetrics)
+        width = displaymetrics.widthPixels
+
+        val params = viewPager.layoutParams
+        params.height = (1.25 * width).toInt()
+        params.width = width
+        viewPager.layoutParams = params
         if (session.cartItemCount.equals("0", ignoreCase = true))
             tvCartItemCountProductDetail.setVisibility(View.GONE)
         else {
@@ -370,7 +401,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
                 quantity = tvQuantity.text.toString().toInt()
                 quantity += 1
                 if (availableQuantity.toInt() < quantity) {
-                    val message = getString(R.string.we_have_only)+" $availableQuantity "+getString(R.string.oty_for_this)
+                    val message = getString(R.string.we_have_only) + " $availableQuantity " + getString(R.string.oty_for_this)
                     //showConfirmDialog(this, message)
                     showOnBackPressed(this, message)
                 } else {
@@ -481,6 +512,11 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
     override fun onSuccessAddToCart(addTocartResponse: AddTocartResponse?) {
         //showConfirmDialog(this, addTocartResponse!!.message)
         showOnBackPressed(this, addTocartResponse!!.message)
+    }
+
+    override fun onResume() {
+        transparentStatusBar(this)
+        super.onResume()
     }
 
     override fun onRestart() {
