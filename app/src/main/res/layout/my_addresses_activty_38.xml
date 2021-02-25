@@ -101,7 +101,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#f2f2f2"
-            android:textSize="@dimen/_10sdp"
+            android:textSize="@dimen/_12sdp"
+
             android:fontFamily="@font/ibmplexsans_regular"
             android:text="@string/cancel_order"
             android:textColor="@color/sort_by_color"
@@ -116,7 +117,7 @@
             android:background="@drawable/background_gradient"
             android:text="@string/add_new_address"
             android:textColor="@color/white"
-            android:textSize="@dimen/_10sdp" />
+            android:textSize="@dimen/_12sdp" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -7,19 +7,20 @@
 
     <ImageView
         android:id="@+id/ivOrderDetail"
-        android:layout_width="@dimen/_65sdp"
-        android:layout_height="@dimen/_82sdp"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_centerVertical="true"
+        android:layout_height="@dimen/_75sdp"
         android:src="@drawable/dress2" />
 
     <LinearLayout
         android:id="@+id/llMiddle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_21sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_1sdp"
         android:layout_marginEnd="@dimen/_3sdp"
          android:layout_toEndOf="@+id/ivOrderDetail"
-        android:layout_centerVertical="true"
-        android:orientation="vertical"
+         android:orientation="vertical"
         >
 
         <TextView
@@ -55,7 +56,7 @@
                 android:paddingEnd="@dimen/_2sdp"
                 android:singleLine="true"
                  android:textColor="@color/another_black"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_10sdp"
                 android:layout_toStartOf="@+id/tvItemTotalPriceOrderDetail"
                 />
 
@@ -81,7 +82,7 @@
             android:paddingStart="@dimen/_2sdp"
             android:text="@string/largee"
             android:textColor="@color/another_black"
-            android:textSize="@dimen/_11sdp" />
+            android:textSize="@dimen/_10sdp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -129,7 +130,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/_5sdp">
+            android:paddingTop="@dimen/_3sdp">
 
             <RatingBar
                 android:id="@+id/myRatingBar"

@@ -39,7 +39,7 @@ class WishListAdapter(private val list: List<UserWishlist>,
         holder.tvItemNameVariety.text = itemList.category_name
         holder.tvItemName.text = itemList.product_name
         holder.tvItemPrice.text = itemList.currency_symbol + " " + itemList.regular_price
-        holder.tvMoveToBag.text = context.getString(R.string.move_to_bag)
+      //  holder.tvMoveToBag.text = context.getString(R.string.move_to_bag)
         holder.tvSellerPrice.setText(itemList.currency_symbol + " " + itemList.sale_price)
         itemList.AverageRating?.let {
             holder.myRatingBar2.rating = it.toFloat()
@@ -48,14 +48,16 @@ class WishListAdapter(private val list: List<UserWishlist>,
 
         Picasso.with(context)
                 .load(itemList.product_image)
-                .resize(500, 600)
+                //.resize(500, 600)
                 .into(holder.ivImage)
 
         if (itemList.sale_price.equals("0") || itemList.sale_price.equals("0.00")) {
             holder.tvSellerPrice.setVisibility(View.GONE)
             holder.tvItemPrice.visibility = View.VISIBLE
+                holder.tvItemPrice.textSize=context.resources.getDimension(R.dimen._7sdp)
         } else {
             holder.tvSellerPrice.setVisibility(View.VISIBLE)
+            holder.tvItemPrice.textSize=context.resources.getDimension(R.dimen._5sdp)
             holder.tvItemPrice.visibility = View.VISIBLE
             holder.tvItemPrice.setTextColor(context.resources.getColor(R.color.sort_by_color))
             holder.tvItemPrice.paintFlags = holder.tvItemPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
@@ -72,7 +74,7 @@ class WishListAdapter(private val list: List<UserWishlist>,
         internal var tvItemNameVariety: TextView = itemView.findViewById(R.id.tvItemNameVariety)
         internal var tvItemName: TextView = itemView.findViewById(R.id.tvItemName)
         internal var tvItemPrice: TextView = itemView.findViewById(R.id.tvItemPrice)
-        internal var tvMoveToBag: TextView = itemView.findViewById(R.id.tvMoveToBag)
+      //  internal var tvMoveToBag: TextView = itemView.findViewById(R.id.tvMoveToBag)
         internal var tvSellerPrice: TextView = itemView.findViewById(R.id.tvSellerPrice)
         internal var rlGoingToUserDetail: RelativeLayout = itemView.findViewById(R.id.rlGoingToUserDetail)
 
@@ -80,7 +82,7 @@ class WishListAdapter(private val list: List<UserWishlist>,
 
             itemView.ivDeleteWishList.setOnClickListener(this)
             itemView.rlGoingToUserDetail.setOnClickListener(this)
-            itemView.tvMoveToBag.setOnClickListener(this)
+          //  itemView.tvMoveToBag.setOnClickListener(this)
         }
 
         override fun onClick(p0: View?) {
@@ -93,7 +95,7 @@ class WishListAdapter(private val list: List<UserWishlist>,
                     wishListListener.onItemClick(adapterPosition)
                 }
                 R.id.ivDeleteWishList -> wishListListener.onDelete(adapterPosition)
-                R.id.tvMoveToBag -> wishListListener.onAddToCartClick(adapterPosition)
+             //   R.id.tvMoveToBag -> wishListListener.onAddToCartClick(adapterPosition)
             }
         }
     }

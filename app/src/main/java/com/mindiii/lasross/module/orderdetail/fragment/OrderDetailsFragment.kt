@@ -52,6 +52,7 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_order_details, container, false)
     }
+
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -65,7 +66,7 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
 
         callOrderDetailApi()
         rlGotoDeliveryDetails.setOnClickListener(this)
-         val textview = activity.findViewById(R.id.tvFAQUpperText) as TextView
+        val textview = activity.findViewById(R.id.tvFAQUpperText) as TextView
         textview.text = resources.getString(R.string.order_detail)
         val imageview = activity.findViewById(R.id.ivMyCartOrder) as ImageView
         imageview.visibility = View.GONE
@@ -96,8 +97,8 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
     }
 
 
-
     fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
+
     // comment and rating reviews
     fun openReviewBox(productId: String, rating: Float, description: String, item_id: String) {
         val dialog = mContext?.let { Dialog(it) }//,android.R.style.Theme_Dialog);
@@ -106,7 +107,7 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
         dialog.ivClose.setOnClickListener { dialog.dismiss() }
         if (rating != 0.0f) {
             dialog.myRatingBar1.rating = rating
-
+             dialog.dialog_title_text.text = getString(R.string.view_review_)
             if (description.isEmpty()) {
                 dialog.etReviews.text = getString(R.string.no_review_given).toEditable()
                 dialog.etReviews.isEnabled = false
@@ -119,6 +120,7 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
         } else {
             dialog.tvSendReview.visibility = View.VISIBLE
             dialog.myRatingBar1.setIsIndicator(false)
+            dialog.dialog_title_text.text = getString(R.string.write_review)
             dialog.myRatingBar1.setFocusable(true)
         }
 
@@ -195,14 +197,14 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
     }
 
     override fun onSuccessReadNotification(readNotificationModel: ReadNotificationModel?) {
-     }
+    }
 
     fun callOrderDetailApi() {
         OrderDetailPresenter(requireContext(), this).callOrderDetailApi(orderId.toString())
     }
 
     fun setOrderDetailAdapter(orderDetailList: ArrayList<Product>, orderStatus: String) {
-        orderDetailAdapter = OrderDetailAdapter(orderDetailList, requireContext(), this,orderStatus)
+        orderDetailAdapter = OrderDetailAdapter(orderDetailList, requireContext(), this, orderStatus)
         rvOrderDetail.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         rvOrderDetail.adapter = orderDetailAdapter
     }
@@ -219,10 +221,10 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
             tvDateOrderDetail.text = date
 
             val orderStatus = orderDetailModel.orderDetail.order_status
-           // tvStatus.text = orderStatus
+            // tvStatus.text = orderStatus
             if (orderStatus.equals("0")) {
-                tvStatus.text =getString(R.string.order_placed)
-            }else if (orderStatus.equals("1")) {
+                tvStatus.text = getString(R.string.order_placed)
+            } else if (orderStatus.equals("1")) {
                 tvStatus.text = getString(R.string.ordered_and_approved)
             } else if (orderStatus.equals("2")) {
                 tvStatus.text = getString(R.string.packed)
@@ -253,16 +255,16 @@ class OrderDetailsFragment : BaseKotlinFragment(), View.OnClickListener, ApiCall
 
             tvTotalOrderDetail.text = "€ " + activity.getTwoValueAfterDecimal(orderDetailModel.orderDetail.grand_total)
 
-            tvOrderDetailDiscount.text = getString(R.string.discount_)+" (" + activity.getTwoValueAfterDecimal(orderDetailModel.orderDetail.discount_percent) + "%)"
+            tvOrderDetailDiscount.text = getString(R.string.discount_) + " (" + activity.getTwoValueAfterDecimal(orderDetailModel.orderDetail.discount_percent) + "%)"
             tvOrderDetailTax.text = "Tax (" + activity.getTwoValueAfterDecimal(orderDetailModel.orderDetail.tax_percentage) + "%)"
 
-            tvOrderId.text = orderDetailModel.orderDetail.order_number
+            tvOrderId.text = " " + orderDetailModel.orderDetail.order_number
             tvNameOrderDetail.text = orderDetailModel.orderDetail.order_address.order_bill_address_first_name
             tvAddressOrderDetail.text = orderDetailModel.orderDetail.order_address.order_bill_address_location
             tvMobileOrderDetail.text = orderDetailModel.orderDetail.order_address.order_bill_address_phone
             orderDetailList.clear()
             orderDetailList.addAll(orderDetailModel.orderDetail.products)
-            setOrderDetailAdapter(orderDetailList,orderDetailModel.orderDetail.order_status)
+            setOrderDetailAdapter(orderDetailList, orderDetailModel.orderDetail.order_status)
 
             orderDetailAdapter.notifyDataSetChanged()
         }

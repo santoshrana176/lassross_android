@@ -393,9 +393,9 @@ open class LasrossParentKotlinActivity : AppCompatActivity() {
     }
 
     fun getOneValueAfterDecimal(value: String): String {
-        var dbl = value.toDouble()
+        var dbl = value.toFloat()
         val df = DecimalFormat("#.#")
-        df.roundingMode = RoundingMode.CEILING
+        df.roundingMode = RoundingMode.FLOOR
         return df.format(dbl)
     }
 }

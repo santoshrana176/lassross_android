@@ -67,11 +67,11 @@
 
                 <TextView
                     android:id="@+id/tvCartItemCount"
-                    android:layout_width="@dimen/_12sdp"
-                    android:layout_height="@dimen/_12sdp"
+                    android:layout_width="@dimen/_13sdp"
+                    android:layout_height="@dimen/_13sdp"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
                     android:background="@drawable/cart_item_box_grey"
                     android:gravity="center"
                     android:text=""
@@ -91,15 +91,15 @@
 
                 <TextView
                     android:id="@+id/tvNotificationCount"
-                    android:layout_width="@dimen/_12sdp"
-                    android:layout_height="@dimen/_12sdp"
+                    android:layout_width="@dimen/_13sdp"
+                    android:layout_height="@dimen/_13sdp"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_28sdp"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:layout_marginEnd="@dimen/_38sdp"
                     android:background="@drawable/cart_item_box_grey"
                     android:gravity="center"
                     android:lines="1"
-                    android:textColor="@color/white"
+                     android:textColor="@color/white"
                     android:textSize="@dimen/_6sdp"
                     android:visibility="gone" />
 

@@ -47,7 +47,12 @@ public class AllReviewsAdapter extends RecyclerView.Adapter<AllReviewsAdapter.Ho
 
         Review itemList = list.get(i);
         holder.tvUserName.setText(itemList.getFull_name());
-        holder.tvUserComment.setText(itemList.getDescription());
+        if (itemList.getDescription() !=null  && itemList.getDescription().isEmpty()){
+            holder.tvUserComment.setVisibility(View.GONE);
+        }else {
+            holder.tvUserComment.setVisibility(View.VISIBLE);
+            holder.tvUserComment.setText(itemList.getDescription());
+        }
 
         SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy ");

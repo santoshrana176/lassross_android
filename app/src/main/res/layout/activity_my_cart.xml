@@ -75,6 +75,7 @@
             android:fontFamily="@font/ibmplexsans_regular"
             android:text="@string/clear_all"
             android:textColor="@color/sort_by_color"
+            android:textSize="@dimen/_13sdp"
             tools:ignore="ButtonStyle" />
 
         <Button
@@ -86,6 +87,7 @@
             android:fontFamily="@font/ibmplexsans_regular"
             android:text="@string/continues"
             android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp"
             tools:ignore="ButtonStyle" />
 
     </LinearLayout>
@@ -139,26 +141,29 @@
                         android:layout_width="match_parent"
                         android:layout_height=".5dp"
                         android:layout_marginTop="@dimen/_7sdp"
+                        android:alpha=".5"
                         android:background="#cccccc" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_9sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_7sdp">
+                        android:layout_marginBottom="@dimen/_9sdp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/item_quantity" />
+                            android:text="@string/item_quantity"
+                            android:textSize="@dimen/_10sdp" />
 
                         <TextView
                             android:id="@+id/tvItem"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
+                            android:textSize="@dimen/_10sdp"
                             tools:ignore="RelativeOverlap" />
                     </RelativeLayout>
 
@@ -168,26 +173,29 @@
                         android:layout_height=".5dp"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
+                        android:alpha=".5"
                         android:background="#cccccc" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_9sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_7sdp">
+                        android:layout_marginBottom="@dimen/_9sdp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/subtotal" />
+                            android:text="@string/subtotal"
+                            android:textSize="@dimen/_10sdp" />
 
                         <TextView
                             android:id="@+id/tvTotalAmount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
+                            android:textSize="@dimen/_10sdp"
                             tools:ignore="RelativeOverlap" />
                     </RelativeLayout>
 
@@ -197,21 +205,23 @@
                         android:layout_height=".5dp"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:background="#cccccc"/>
+                        android:alpha=".5"
+                        android:background="#cccccc" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_9sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_7sdp"
+                        android:layout_marginBottom="@dimen/_9sdp"
                         android:visibility="gone">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/discount" />
+                            android:text="@string/discount"
+                            android:textSize="@dimen/_10sdp" />
 
                         <TextView
                             android:id="@+id/tvDiscount"
@@ -219,6 +229,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:text="0"
+                            android:textSize="@dimen/_10sdp"
                             tools:ignore="RelativeOverlap" />
                     </RelativeLayout>
 
@@ -228,22 +239,26 @@
                         android:layout_height=".5dp"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
+                        android:alpha=".5"
                         android:background="#cccccc" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_9sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_7sdp">
+                        android:layout_marginBottom="@dimen/_9sdp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/ibmplexsans_semibold"
+
                             android:text="@string/total"
-                            android:textColor="@color/black" />
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp" />
 
                         <TextView
                             android:id="@+id/tvTotal"
@@ -252,6 +267,7 @@
                             android:layout_alignParentEnd="true"
                             android:fontFamily="@font/ibmplexsans_semibold"
                             android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp"
                             tools:ignore="RelativeOverlap" />
                     </RelativeLayout>
 
@@ -262,6 +278,7 @@
                         android:layout_height=".5dp"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
+                        android:alpha=".5"
                         android:background="#cccccc" />
                 </LinearLayout>
             </RelativeLayout>

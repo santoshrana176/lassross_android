@@ -12,7 +12,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_12sdp"
-            android:background="#f8f8f8"
+            android:background="#ffffff"
             android:visibility="visible"/>
 
         <LinearLayout
@@ -27,10 +27,12 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_semibold"
                 android:text="@string/order_id_"
+                android:textSize="@dimen/_12sdp"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/tvOrderId"
+                android:textSize="@dimen/_12sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ibmplexsans_regular"
@@ -40,7 +42,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height=".5dp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_13sdp"
             android:background="#cccccc" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -199,7 +201,7 @@
             <TextView
                 android:layout_width="@dimen/_7sdp"
                 android:layout_height="@dimen/_7sdp"
-                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:background="@drawable/green_box" />
 
             <RelativeLayout
@@ -222,7 +224,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvStatus"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:text=""
+                     android:layout_marginTop="@dimen/_4sdp"
                     android:textColor="#828282"
                     android:textSize="@dimen/_10sdp" />
 
@@ -230,6 +232,7 @@
                     android:id="@+id/gotoDeliveryDetails"
                     android:layout_width="@dimen/_14sdp"
                     android:layout_height="@dimen/_15sdp"
+                    android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:padding="@dimen/_2sdp"
@@ -329,17 +332,24 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:textSize="@dimen/_10sdp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp">
 
                 <TextView
                     android:layout_width="wrap_content"
+                    android:fontFamily="@font/ibmplexsans_regular"
                     android:layout_height="wrap_content"
+                    android:textSize="@dimen/_10sdp"
+
                     android:text="@string/sub_total" />
 
                 <TextView
                     android:id="@+id/tvSubTotalOrderDetail"
+                    android:fontFamily="@font/ibmplexsans_regular"
+
+                    android:textSize="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -353,13 +363,18 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
+
+                android:textSize="@dimen/_10sdp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_10sdp"
+                    android:fontFamily="@font/ibmplexsans_regular"
+
+                     android:layout_height="wrap_content"
                     android:text="@string/shipping_charge" />
 
                 <TextView
@@ -368,7 +383,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:gravity="start"
-
+                    android:textAllCaps="true"
+                     android:fontFamily="@font/ibmplexsans_regular"
                     android:textColor="#ff0101" />
             </RelativeLayout>
 
@@ -387,11 +403,17 @@
 
                 <TextView
                     android:id="@+id/tvOrderDetailDiscount"
+                    android:textSize="@dimen/_10sdp"
+                    android:fontFamily="@font/ibmplexsans_regular"
+
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="@string/discount" />
 
                 <TextView
+                    android:textSize="@dimen/_10sdp"
+                    android:fontFamily="@font/ibmplexsans_regular"
+
                     android:id="@+id/tvOrderDetailDiscountCharges"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -413,11 +435,17 @@
 
                 <TextView
                     android:id="@+id/tvOrderDetailTax"
+                    android:textSize="@dimen/_10sdp"
+                    android:fontFamily="@font/ibmplexsans_regular"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tax" />
 
                 <TextView
+                    android:textSize="@dimen/_10sdp"
+                    android:fontFamily="@font/ibmplexsans_regular"
+
                     android:id="@+id/tvTaxOrderDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -438,8 +466,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                   android:textSize="@dimen/_10sdp"
                     android:fontFamily="@font/ibmplexsans_semibold"
-                    android:text="@string/total"
+                     android:text="@string/total"
+                    android:textAllCaps="true"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -448,7 +478,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:fontFamily="@font/ibmplexsans_semibold"
-
+                    android:textSize="@dimen/_10sdp"
                     android:textColor="@color/black" />
             </RelativeLayout>
 

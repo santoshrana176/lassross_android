@@ -34,7 +34,7 @@
                 android:fontFamily="@font/ibmplexsans_semibold"
                 android:text="@string/pearle_desrosier"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_11sdp" />
 
             <RatingBar
                 android:id="@+id/ratingBarAllReviews"
@@ -43,6 +43,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="false"
                 android:focusable="false"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:focusableInTouchMode="false"
                 android:isIndicator="true"
                 android:numStars="5"
@@ -61,7 +62,8 @@
             android:layout_marginEnd="@dimen/_5sdp"
             android:text="21 Apr 2019"
             android:textColor="#828282"
-            android:textSize="@dimen/_10sdp" />
+            android:fontFamily="@font/ibmplexsans_regular"
+            android:textSize="@dimen/_9sdp" />
     </RelativeLayout>
 
     <TextView
@@ -74,12 +76,15 @@
         android:layout_marginEnd="@dimen/_5sdp"
         android:text="@string/at_vero_eos_et_accusamus_et_iusto_odio_dignissimos_ducimus_qui_blan_diti_is_praese_ntium_voluptatum_deleniti_atque_corrupti_quos_dolores_et_qu_as_molestias_excepturi_sint_occaecati_cupiditate_non_provi_dent_simili_que_sunt_in_culpa_qui_officia_deserunt_mollitia_animi_id_est_laborum_et_dolorum_fuga"
         android:textColor="#828282"
-        android:textSize="@dimen/_9sdp" />
+        android:textSize="@dimen/_10sdp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height=".5dp"
+        android:alpha=".5"
         android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:background="#cccccc" />
 
 </LinearLayout>

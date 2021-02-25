@@ -126,7 +126,7 @@
     <string name="discount">Discount</string>
     <string name="total_amount">Total amount</string>
     <string name="continues">CONTINUE</string>
-    <string name="item">Item</string>
+    <string name="item">item</string>
     <string name="items_not_found">Items not found</string>
     <string name="sign_up_now">Sign Up Now</string>
     <string name="not_a_member">Not a member?</string>
@@ -207,7 +207,7 @@
     <string name="no_reviews">Reviews not found</string>
     <string name="shipping_charge">Shipping Charge</string>
     <string name="your_order_placed_on">Your order placed on</string>
-    <string name="your_order_approved_on">Your order approved on</string>
+    <string name="your_order_approved_on">Your item approved on</string>
     <string name="approved_processing">Approved and Processing</string>
     <string name="order_placed">Order Placed</string>
     <string name="total_amount_to_be_pay">Total Amount to be Pay</string>
@@ -321,7 +321,7 @@
     <string name="seller_processed_order_on">Seller processed order on</string>
     <string name="_26th_oct_2019_2_31_am">26th Oct 2019 - 2:31 AM</string>
     <string name="packed">Packed</string>
-    <string name="your_item_packed_on">Your item packed on</string>
+    <string name="your_item_packed_on">Your item has been packed on</string>
     <string name="shipped">Shipped</string>
     <string name="ekart_logistics_frdhjl76gj">Ekart Logistics - FRDHJL76GJ</string>
     <string name="your_item_has_been_shipped_on">Your item has been shipped on</string>
@@ -353,7 +353,7 @@
     <string name="pick_up_a_bargain">Pick up a Bargain</string>
     <string name="deleteAddress_msg">Are you sure you want to delete this address?</string>
     <string name="Terms_condition">Terms and Conditions</string>
-    <string name="no_review_given">no review given</string>
+    <string name="no_review_given">No review given</string>
     <string name="wishlist_">Wishlist</string>
     <string name="order_">Order</string>
     <string name="logout_">Logout</string>
@@ -383,6 +383,7 @@
     <string name="_deal_">Deal</string>
     <string name="we_have_only">We have only</string>
     <string name="oty_for_this">Qty for this product</string>
+    <string name="view_review_">View Review</string>
 </resources>
 
     <!--<string name="place_key">AIzaSyDyUk7vkNaDVsFojxOYTEz0m_rtdFqdgqs</string>-->

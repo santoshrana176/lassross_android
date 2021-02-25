@@ -13,6 +13,7 @@ import android.os.Handler
 import android.os.SystemClock
 import android.text.method.ScrollingMovementMethod
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
@@ -37,6 +38,7 @@ import com.mindiii.lasross.module.productDetail.adapter.ViewPagerAdapter
 import com.mindiii.lasross.module.productDetail.model.*
 import com.mindiii.lasross.module.productDetail.presenter.ProductDetailPresenter
 import kotlinx.android.synthetic.main.activity_product_detail.*
+import java.text.DecimalFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -53,7 +55,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
     private lateinit var variantColorValue: ArrayList<VariantValue>
     private lateinit var galleryImage: ArrayList<GalleryImage>
     lateinit var productId: String
-      var productDesc: String=""
+    var productDesc: String = ""
     lateinit var productSku: String
     lateinit var productCategory: String
     private var quantity: Int = 1
@@ -73,39 +75,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
         session = Session(this)
-        //showSystemUI()
-     //   window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-        /*this?.window?.decorView?.apply {
-            systemUiVisibility = View.SYSTEM_UI_FLAG_LOW_PROFILE
-        }*/
-       /* Handler().postDelayed({
-           this.window.apply {
-                clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-                addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-                decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    statusBarColor = Color.TRANSPARENT
-                }
-            }
-        },5000)
-*/
-        /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-             val window: Window = window
-             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-             window.setStatusBarColor(Color.BLACK)
-         }
 
-          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            val w = window
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        }*/
-        //Display display = context.
-        // windowManager.defaultDisplay.getMetrics(displaymetrics);
-        //width = displaymetrics.widthPixels
-        //val params = viewPager.layoutParams
-        //params.height = (1.25 * width).toInt()
-        // params.width = width
-        //viewPager.layoutParams = params
         val displaymetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displaymetrics)
         width = displaymetrics.widthPixels
@@ -147,7 +117,6 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
     }
 
 
-
     private fun hideSystemUI() {
         // Enables regular immersive mode.
         // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
@@ -170,8 +139,6 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
                 /*or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION*/
                 or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
     }
-
-
 
 
     private fun setRatingBarStart(rating_bar: RatingBar) {
@@ -221,7 +188,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         spinSize.adapter = spinSizeAdapter
         spinSize.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                 selectedSizeId = variantSizeValue[position].variantValueId
+                selectedSizeId = variantSizeValue[position].variantValueId
                 tv_size.text = variantSizeValue[position].variant_value
             } // to close the onItemSelected
 
@@ -249,19 +216,19 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
             colorArray.add(variantColorValue.get(n).variant_value)
         }*/
 
-      /*  val spinnerAdapter = ArrayAdapter(this, R.layout.color_adapter_layout, variantColorValue.toMutableList())
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        // spinSize.setPrompt("Select Color");
-        spinColor.adapter = spinnerAdapter
+        /*  val spinnerAdapter = ArrayAdapter(this, R.layout.color_adapter_layout, variantColorValue.toMutableList())
+          spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+          // spinSize.setPrompt("Select Color");
+          spinColor.adapter = spinnerAdapter
 
-        spinColor.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                selectedColorId = variantColorValue[position].variantValueId
-            } // to close the onItemSelected
+          spinColor.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+              override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                  selectedColorId = variantColorValue[position].variantValueId
+              } // to close the onItemSelected
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
-            }
-        }*/
+              override fun onNothingSelected(parent: AdapterView<*>) {
+              }
+          }*/
         var spinnerColorAdapter = CustomeSpinnerAdapter(this, variantColorValue/*, object : CustomeSpinnerAdapter.SelectedItem {
             override fun selectedItem(variantValueId: String,name:String) {
                 selectedColorId = variantValueId
@@ -273,8 +240,8 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         spinColor.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 selectedColorId = variantColorValue[position].variantValueId
-               // selectedColorId = variantValueId
-                tv_color.text=variantColorValue[position].variant_value
+                // selectedColorId = variantValueId
+                tv_color.text = variantColorValue[position].variant_value
             } // to close the onItemSelected
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -307,27 +274,27 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         varientlist = productDetailResponse.data.product_detail.variant
         variantSizeValue = productDetailResponse.data.product_detail.variant[0].variant_value as ArrayList<VariantValue>
         val sizeVal = VariantValue("0", "0", "")
-         variantSizeValue.add(0, sizeVal)
+        variantSizeValue.add(0, sizeVal)
         variantColorValue = productDetailResponse.data.product_detail.variant[1].variant_value as ArrayList<VariantValue>
         val colorVal = VariantValue("0", "0", "")
-         variantColorValue.add(0, colorVal)
-         galleryImage =ArrayList() //productDetailResponse.data.product_detail.gallery_images as ArrayList<GalleryImage>
+        variantColorValue.add(0, colorVal)
+        galleryImage = ArrayList() //productDetailResponse.data.product_detail.gallery_images as ArrayList<GalleryImage>
         val galleryImages = GalleryImage("0", "0", productDetailResponse.data.product_detail.product_image_original, productDetailResponse.data.product_detail.product_image_medium)
-          galleryImage.add(0, galleryImages)
-        if (productDetailResponse.data.product_detail.gallery_images.isNotEmpty()){
+        galleryImage.add(0, galleryImages)
+        if (productDetailResponse.data.product_detail.gallery_images.isNotEmpty()) {
             galleryImage.addAll(productDetailResponse.data.product_detail.gallery_images)
         }
 
         setAdapter()
         similarProductAdapter!!.notifyDataSetChanged()
-        if(similarProduct.isEmpty()){
-            view_similar.visibility=View.GONE
-            rvRecycler.visibility=View.GONE
-            divider_similer.visibility=View.GONE
-        }   else{
-            view_similar.visibility=View.VISIBLE
-            rvRecycler.visibility=View.VISIBLE
-            divider_similer.visibility=View.VISIBLE
+        if (similarProduct.isEmpty()) {
+            view_similar.visibility = View.GONE
+            rvRecycler.visibility = View.GONE
+            divider_similer.visibility = View.GONE
+        } else {
+            view_similar.visibility = View.VISIBLE
+            rvRecycler.visibility = View.VISIBLE
+            divider_similer.visibility = View.VISIBLE
         }
     }
 
@@ -342,10 +309,14 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         tvItemCurreny.text = productDetail.currency_symbol + " "
         tvDescription.text = productDetail.product_description
 
+        // avgRating(productDetail.AverageRating)
         productDetail.AverageRating?.let {
             ratingBarProductDetail.rating = it.toFloat()
         }
-
+        /*if (productDetail.AverageRating.isNotEmpty()) {
+         val dd= avgRating(productDetail.AverageRating)
+            ratingBarProductDetail.rating =dd
+        }*/
         if (productDetail.in_stock == "0") {
             llAddToCart.isClickable = false
         } else {
@@ -356,9 +327,12 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
             val strRating = productDetail.AverageRating
             val floatRating = java.lang.Float.valueOf(strRating)
 
-            if (floatRating % 1 > 0)
+            if (floatRating % 1 > 0) {
+                val number=""+productDetail.AverageRating
+       //val rating= DecimalFormat(number).format("#.#")
                 ratingNumberProductDetail.text = "(" + getOneValueAfterDecimal(productDetail.AverageRating) + ")"
-            else
+
+            }else
                 ratingNumberProductDetail.text = "(" + getOneValueAfterDecimal(productDetail.AverageRating) + ".0)"
 
 
@@ -386,6 +360,14 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
             ivAlreadyAddWish.visibility = View.VISIBLE
             ivAddWish.visibility = View.GONE
         }
+    }
+
+    fun avgRating(j: String): Float {
+      val  i=j+"0000"
+        val j: Float = i.toFloat()
+        val dd = (("%.1f".format(j))).toFloat()
+        Log.e("valuee---", "" + dd)
+        return dd
     }
 
     override fun onClick(p0: View?) {
@@ -481,7 +463,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         tvSKU = dialog.findViewById(R.id.tvSKU)
         tvCategory = dialog.findViewById(R.id.tvCategory)
         ivCancel.setOnClickListener { dialog.dismiss() }
-       tvShortDescription.text = otherDesc
+        tvShortDescription.text = otherDesc
         tvShortDescription.setMovementMethod(ScrollingMovementMethod())
 
         tvSKU.text = productSku

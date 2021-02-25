@@ -116,7 +116,7 @@
     <string name="apply">APPLY</string>
     <string name="move_to_bag">MOVE TO BAG</string>
     <string name="clear_all">CLEAR ALL</string>
-    <string name="cancel_order">CANCELAR ORDEN</string>
+    <string name="cancel_order"><!--CANCELAR ORDEN-->CANCEL ORDER</string>
     <string name="no_items">No Items</string>
     <string name="no_order">No Orders</string>
     <string name="no_notification">No Notifications</string>
@@ -125,7 +125,7 @@
     <string name="discount">Discount</string>
     <string name="total_amount">Total amount</string>
     <string name="continues">CONTINUE</string>
-    <string name="item">Item</string>
+    <string name="item">item</string>
     <string name="items_not_found">Items not found</string>
     <string name="sign_up_now">Sign Up Now</string>
     <string name="not_a_member">Not a member?</string>
@@ -140,11 +140,11 @@
     <string name="expiry_date">Expiry Date</string>
     <string name="cancel">Cancel</string>
     <string name="set">Set</string>
-    <string name="my_card">Mis tarjetas</string>
+    <string name="my_card">My Cards</string>
     <string name="save_cards">SAVED CARDS</string>
     <string name="no_address_found">No address added</string>
-    <string name="change_add">CAMBIAR DIRECCIÓN</string>
-    <string name="add_new_card">AGREGAR NUEVA TARJETA</string>
+    <string name="change_add"><!--CAMBIAR DIRECCIÓN-->CHANGE ADDRESS</string>
+    <string name="add_new_card"><!--AGREGAR NUEVA TARJETA-->ADD NEW CARD</string>
     <string name="payment">Payment</string>
     <string name="choose_payment_type">CHOOSE PAYMENT TYPE</string>
     <string name="credit_debit_atm_card">Credit / Debit / ATM Card</string>
@@ -173,7 +173,7 @@
     <string name="packed">Packed</string>
     <string name="shipped">Shipped</string>
     <string name="delivered">Delivered</string>
-    <string name="your_item_packed_on">Your item packed on</string>
+    <string name="your_item_packed_on">Your item has been packed on</string>
     <string name="your_item_has_been_shipped_on">Your item has been shipped on</string>
     <string name="your_item_has_been_delivered_on">Your item has been delivered on</string>
     <string name="discount_with_golden_obtain_20_per_cent_in_all_items">Discount with golden obtain 20 per cent in all items</string>
@@ -216,7 +216,7 @@
     <string name="no_reviews">Reviews not found</string>
     <string name="shipping_charge">Shipping Charge</string>
     <string name="your_order_placed_on">Your order placed on</string>
-    <string name="your_order_approved_on">Your order approved on</string>
+    <string name="your_order_approved_on">Your item approved on</string>
     <string name="approved_processing">Approved and Processing</string>
     <string name="order_placed">Order Placed</string>
     <string name="total_amount_to_be_pay">Total Amount to be Pay</string>
@@ -352,7 +352,7 @@
     <string name="pick_up_a_bargain">Pick up a Bargain</string>
     <string name="deleteAddress_msg">Are you sure you want to delete this address?</string>
     <string name="Terms_condition">Terms and Conditions</string>
-    <string name="no_review_given">no review given</string>
+    <string name="no_review_given">No review given</string>
     <string name="wishlist_">Wishlist</string>
     <string name="order_">Order</string>
     <string name="logout_">Logout</string>
@@ -382,5 +382,6 @@
     <string name="_deal_">Deal</string>
     <string name="we_have_only">We have only</string>
     <string name="oty_for_this">Qty for this product</string>
+    <string name="view_review_">View Review</string>
 </resources>
 

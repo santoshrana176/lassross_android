@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f8f8f8"
-    tools:context=".module.payment.MyCardActivity">
+     tools:context=".module.payment.MyCardActivity">
 
     <LinearLayout
         android:id="@+id/upperLayout"
@@ -50,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/llBottomLayout"
         android:layout_below="@id/upperLayout"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_13sdp"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -89,14 +88,13 @@
         <TextView
             android:id="@+id/tvSaveCard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-             android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_height="@dimen/_40sdp"
+             android:layout_marginBottom="@dimen/_5sdp"
+            android:paddingStart="@dimen/_13sdp"
+             android:background="@color/white"
+            android:gravity="center_vertical"
             android:fontFamily="@font/ibmplexsans_bold"
-            android:paddingTop="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_10sdp"
-            android:visibility="gone"
+             android:visibility="gone"
             android:textAllCaps="true"
             android:text="@string/save_cards"
             android:textColor="@color/another_black"
@@ -146,7 +144,7 @@
                 android:singleLine="true"
                 android:text="@string/add_new_card"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_10sdp"/>
+                android:textSize="@dimen/_12sdp"/>
 
             <Button
                 android:id="@+id/btnUpdateCard"

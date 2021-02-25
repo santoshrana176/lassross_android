@@ -37,6 +37,7 @@
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginBottom="-60dp"
                     android:padding="@dimen/_3sdp"
+
                     android:src="@drawable/ic_back_arrow_ico"
                     android:visibility="visible" />
 
@@ -123,10 +124,9 @@
                             android:layout_toStartOf="@+id/tvMoveToBag"
                             android:fontFamily="@font/ibmplexsans_regular"
                             android:gravity="center_vertical"
-                            android:text=""
-                            android:textAllCaps="true"
+                             android:textAllCaps="true"
                             android:textColor="#999999"
-                            android:textSize="@dimen/_10sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <LinearLayout
                             android:id="@+id/tvMoveToBag"
@@ -164,9 +164,8 @@
                         android:layout_marginTop="-5dp"
                         android:layout_marginEnd="@dimen/_65sdp"
                         android:fontFamily="@font/ibmplexsans_regular"
-                        android:text=""
-                        android:textColor="@color/another_black"
-                        android:textSize="@dimen/_12sdp" />
+                         android:textColor="@color/another_black"
+                        android:textSize="@dimen/_11sdp" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -182,9 +181,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/ibmplexsans_semibold"
-                                android:text=""
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_15sdp" />
+                                 android:textColor="@color/black"
+                                android:textSize="@dimen/_14sdp" />
 
                             <TextView
                                 android:id="@+id/tvItemPrice"
@@ -243,13 +241,22 @@
                     </RelativeLayout>
                 </LinearLayout>
             </RelativeLayout>
+            <View
+                android:layout_marginTop="@dimen/_10sdp"
+                 android:layout_width="match_parent"
+                android:layout_height="@dimen/_10sdp"
+                android:alpha=".3"
+
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="#dfdfdf" />
+
 
             <LinearLayout
                 android:id="@+id/llSize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_2sdp"
                 android:orientation="vertical">
 
                 <TextView
@@ -560,8 +567,9 @@
                 android:id="@+id/divider_similer"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:background="#f8f8f8" />
+                android:alpha=".3"
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:background="#dfdfdf" />
 
             <TextView
                 android:id="@+id/view_similar"
@@ -579,15 +587,16 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvRelatedProduct"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 tools:ignore="ObsoleteLayoutParam" />
 
             <View
                 android:layout_width="match_parent"
+                android:alpha=".3"
                 android:layout_height="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
-                android:background="#f8f8f8" />
+                android:background="#dfdfdf" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -646,7 +655,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@drawable/wishlist_black_border"
-                android:padding="@dimen/_10sdp"
+                android:padding="@dimen/_11sdp"
                 android:src="@drawable/ic_favorite_filled"
                 android:visibility="visible" />
         </LinearLayout>
@@ -662,8 +671,8 @@
             android:gravity="center">
 
             <ImageView
-                android:layout_width="@dimen/_18sdp"
-                android:layout_height="@dimen/_18sdp"
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_16sdp"
                 android:src="@drawable/ic_shopping_bag_ico" />
 
             <TextView
@@ -675,7 +684,7 @@
                 android:gravity="center"
                 android:text="@string/add_to_cart"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_15sdp" />
+                android:textSize="@dimen/_13sdp" />
         </LinearLayout>
     </LinearLayout>
 

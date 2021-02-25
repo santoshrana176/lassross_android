@@ -119,8 +119,8 @@
     <string name="no">No</string>
     <string name="next_renew_date">"Próxima fecha de renovación-"</string>
     <string name="your_order_has_been_confirmed">Su pedido ha sido confirmado con éxito, recibirá un mensaje de confirmación.</string>
-    <string name="your_order_approved_on">Su pedido aprobado el</string>
-    <string name="your_item_packed_on">Tu artículo empacado en</string>
+    <string name="your_order_approved_on">Su artículo aprobado el</string>
+    <string name="your_item_packed_on">Tu artículo ha sido empaquetado el</string>
     <string name="your_item_has_been_shipped_on">Su artículo ha sido enviado el</string>
     <string name="your_item_has_been_delivered_on">Su artículo ha sido entregado el</string>
     <string name="yes">Sí</string>
@@ -383,6 +383,7 @@
     <string name="_deal_">Negocio</string>
     <string name="we_have_only">Sólo tenemos</string>
     <string name="oty_for_this">Cant. De este producto</string>
+    <string name="view_review_">Ver reseña</string>
 </resources>
 
     <!--<string name="place_key">AIzaSyAzlqPc1OwdMSrrVPLllUCKubclM_rcox0</string>-->

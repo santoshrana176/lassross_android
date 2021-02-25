@@ -62,7 +62,7 @@
                 android:fontFamily="@font/ibmplexsans_medium"
                 android:text="@string/order_placed"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp" />
+                android:textSize="@dimen/_12sdp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -72,7 +72,7 @@
                 android:paddingBottom="@dimen/_2sdp"
                 android:text="@string/your_order_placed_on"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp" />
+                android:textSize="@dimen/_10sdp" />
 
             <TextView
                 android:id="@+id/tvOrderPlacedDate"
@@ -132,7 +132,7 @@
                 android:fontFamily="@font/ibmplexsans_medium"
                 android:text="@string/approved_processing"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp" />
+                android:textSize="@dimen/_12sdp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -142,7 +142,7 @@
                 android:paddingBottom="@dimen/_2sdp"
                 android:text="@string/your_order_approved_on"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp" />
+                android:textSize="@dimen/_10sdp" />
 
             <TextView
                 android:id="@+id/tvOrderApprovedDate"
@@ -202,7 +202,7 @@
                 android:fontFamily="@font/ibmplexsans_medium"
                 android:text="@string/packed"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp" />
+                android:textSize="@dimen/_12sdp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -212,7 +212,7 @@
                 android:paddingBottom="@dimen/_2sdp"
                 android:text="@string/your_item_packed_on"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp" />
+                android:textSize="@dimen/_10sdp" />
 
             <TextView
                 android:id="@+id/tvPackedDate"
@@ -272,7 +272,7 @@
                 android:fontFamily="@font/ibmplexsans_medium"
                 android:text="@string/shipped"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp" />
+                android:textSize="@dimen/_12sdp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -280,6 +280,7 @@
                 android:fontFamily="@font/ibmplexsans_regular"
                 android:paddingTop="@dimen/_4sdp"
                 android:paddingBottom="@dimen/_2sdp"
+                android:textSize="@dimen/_10sdp"
                 android:text="@string/your_item_has_been_shipped_on"
                 android:textColor="@color/black" />
 
@@ -328,7 +329,7 @@
                 android:fontFamily="@font/ibmplexsans_medium"
                 android:text="@string/delivered"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp" />
+                android:textSize="@dimen/_10sdp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -338,7 +339,7 @@
                 android:paddingBottom="@dimen/_2sdp"
                 android:text="@string/your_item_has_been_delivered_on"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp" />
+                android:textSize="@dimen/_10sdp" />
 
             <TextView
                 android:id="@+id/tvDeliveredDate"

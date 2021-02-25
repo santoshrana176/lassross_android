@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/ivImage"
-            android:layout_width="@dimen/_65sdp"
-            android:layout_height="@dimen/_82sdp"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_75sdp"
             android:src="@drawable/dress1"
             tools:ignore="ContentDescription" />
 
@@ -24,9 +24,8 @@
             android:id="@+id/llMiddle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_toStartOf="@+id/rlLastLayout"
-            android:layout_toEndOf="@+id/ivImage"
+            android:layout_marginStart="@dimen/_10sdp"
+             android:layout_toEndOf="@+id/ivImage"
             android:layout_toRightOf="@+id/ivImage"
             android:orientation="vertical"
             tools:ignore="RtlHardcoded">
@@ -35,8 +34,9 @@
                 android:id="@+id/tvItemNameVariety"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                 android:textAllCaps="true"
                 android:fontFamily="@font/ibmplexsans_regular"
-                android:text=""
+                android:layout_marginEnd="@dimen/_35sdp"
                 android:textColor="#999999"
                 android:textSize="@dimen/_8sdp" />
 
@@ -47,10 +47,11 @@
                 android:layout_marginTop="@dimen/_2sdp"
                 android:fontFamily="@font/ibmplexsans_regular"
                 android:maxLines="1"
+                 android:layout_marginEnd="@dimen/_35sdp"
+                android:ellipsize="end"
                 android:singleLine="true"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp" />
+                 android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp" />
 
             <RatingBar
                 android:id="@+id/myRatingBar2"
@@ -66,13 +67,13 @@
             <View
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height=".5dp"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:background="#cccccc" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp">
+                android:layout_marginTop="@dimen/_4sdp">
 
                 <TextView
                     android:id="@+id/tvItemPrice"
@@ -80,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_semibold"
                     android:paddingTop="@dimen/_3sdp"
-                     android:textColor="@color/black"
+                      android:textColor="@color/black"
                     android:textSize="@dimen/_10sdp" />
 
                 <TextView
@@ -88,9 +89,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_5sdp"
-                    android:fontFamily="@font/ibmplexsans_regular"
+                     android:fontFamily="@font/ibmplexsans_regular"
                     android:textColor="@color/text_color"
-                    android:textSize="@dimen/_10sdp"
+                    android:textSize="@dimen/_12sdp"
                      android:visibility="gone" />
 
             </LinearLayout>
@@ -98,40 +99,15 @@
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/rlLastLayout"
-            android:layout_width="@dimen/_90sdp"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/ivDeleteWishList"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            tools:ignore="RtlHardcoded">
-
-            <ImageView
-                android:id="@+id/ivDeleteWishList"
-                android:layout_width="@dimen/_28sdp"
-                android:layout_height="@dimen/_28sdp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/delete_icon"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:id="@+id/tvMoveToBag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginRight="@dimen/_15sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:background="@drawable/move_to_bag_bg"
-                android:padding="@dimen/_5sdp"
-                android:text="@string/move_to_bag"
-                android:textColor="#ff6230"
-                android:textSize="@dimen/_8sdp"
-                android:visibility="gone" />
-        </RelativeLayout>
-
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/delete_icon"
+            tools:ignore="ContentDescription" />
     </RelativeLayout>
 
     <View

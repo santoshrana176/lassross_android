@@ -230,7 +230,7 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
         llFacebook = findViewById(R.id.llFacebook);
         tvEnglish = findViewById(R.id.tvEnglish);
         tvSpanish = findViewById(R.id.tvSpanish);
-       etEmail.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+       //etEmail.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
 
         tvEnglish.setOnClickListener(new View.OnClickListener() {
             @Override

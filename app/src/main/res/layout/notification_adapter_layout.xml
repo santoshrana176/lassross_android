@@ -41,6 +41,7 @@
                 android:layout_alignParentBottom="true"
                 android:fontFamily="@font/ibmplexsans_light"
                 android:text="@string/_11_07_am"
+                android:layout_marginEnd="@dimen/_5sdp"
                 android:textColor="@color/input_text_color"
                 android:textSize="@dimen/_10sdp" />
         </RelativeLayout>
