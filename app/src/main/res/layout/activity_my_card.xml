@@ -57,19 +57,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:padding="@dimen/_10sdp"
+            android:padding="@dimen/_7sdp"
             android:visibility="gone">
 
             <TextView
                 android:id="@+id/totalText"
                 android:layout_width="wrap_content"
+                android:fontFamily="@font/ibmplexsans_regular"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
                 android:text="@string/total_amount_to_be_pay"
                 android:textColor="#828282"
-                android:textSize="@dimen/_15sdp" />
+                android:textSize="@dimen/_14sdp" />
 
             <TextView
                 android:id="@+id/amount"
@@ -78,9 +79,8 @@
                 android:layout_below="@id/totalText"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/ibmplexsans_semibold"
-                android:text="3.40000"
-                android:textColor="@color/another_black"
-                android:textSize="@dimen/_18sdp" />
+                 android:textColor="@color/another_black"
+                android:textSize="@dimen/_16sdp" />
 
 
 

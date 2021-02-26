@@ -77,10 +77,12 @@ class DeliveryActivity : LasrossParentKotlinActivity(), View.OnClickListener, Ap
         btnClearOrderDelivery.setOnClickListener(this)
 
         if (CommonUtils.isNetworkAvailable(this)!!) {
-            scrollViewDelivery.visibility = View.VISIBLE
+          //  scrollViewDelivery.visibility = View.VISIBLE
+            llView.visibility = View.VISIBLE
             llDeliveryContinue.visibility = View.VISIBLE
         } else {
-            scrollViewDelivery.visibility = View.GONE
+          //  scrollViewDelivery.visibility = View.GONE
+            llView.visibility = View.GONE
             llDeliveryContinue.visibility = View.GONE
         }
     }

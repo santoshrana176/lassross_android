@@ -647,7 +647,7 @@
                 android:background="@drawable/wishlist_black_border"
                 android:padding="@dimen/_10sdp"
                 android:src="@drawable/ic_favorite_ico"
-                android:tint="@color/quantum_grey"
+                android:tint="#000000"
                 android:visibility="gone" />
 
             <ImageView

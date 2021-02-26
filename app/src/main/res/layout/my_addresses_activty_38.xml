@@ -114,10 +114,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:singleLine="true"
+            android:fontFamily="@font/ibmplexsans_medium"
             android:background="@drawable/background_gradient"
             android:text="@string/add_new_address"
             android:textColor="@color/white"
-            android:textSize="@dimen/_12sdp" />
+            android:textSize="@dimen/_13sdp" />
     </LinearLayout>
 
 </RelativeLayout>

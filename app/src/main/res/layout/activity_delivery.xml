@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".module.delivery.DeliveryActivity">
+        android:background="#f8f8f8"
+     tools:context=".module.delivery.DeliveryActivity">
 
     <LinearLayout
         android:id="@+id/topLayout"
@@ -42,16 +43,25 @@
 
     </LinearLayout>
 
-    <ScrollView
+  <!--  <ScrollView
         android:id="@+id/scrollViewDelivery"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/topLayout">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topLayout">-->
 
         <LinearLayout
+            android:id="@+id/llView"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/topLayout"
             android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_15sdp"
+                android:background="#f8f8f8"
+                />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -123,11 +133,17 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_10sdp"
+                android:background="#f8f8f8"
+                />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:fontFamily="@font/ibmplexsans_semibold"
                 android:text="@string/price_details"
                 android:textColor="@color/black"
@@ -168,7 +184,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height=".5dp"
-                    android:background="#cccccc"/>
+                    android:background="#cccccc" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -316,8 +332,13 @@
 
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
-
+   <!-- </ScrollView>-->
+   <!-- <View
+        android:layout_below="@+id/scrollViewDelivery"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_80sdp"
+        android:alpha=".3"
+        android:background="#dfdfdf" />-->
     <LinearLayout
         android:id="@+id/llDeliveryContinue"
         android:layout_width="match_parent"
@@ -335,16 +356,17 @@
             android:fontFamily="@font/ibmplexsans_regular"
             android:text="@string/cancel_order"
             android:textColor="@color/sort_by_color"
-            tools:ignore="ButtonStyle"/>
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/btnAddNewAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/ibmplexsans_regular"
             android:background="@drawable/background_gradient"
             android:text="@string/continues"
             android:textColor="@color/white"
-            android:textSize="@dimen/_12sdp"/>
+            android:textSize="@dimen/_12sdp" />
     </LinearLayout>
 </RelativeLayout>

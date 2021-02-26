@@ -467,6 +467,7 @@ public class LoginActivity extends LasrossParentActivity implements View.OnClick
                 if (loginResponse.getMessageCode().equalsIgnoreCase("social_reg")) {
                     CommonUtils.toastMessage(LoginActivity.this, loginResponse.getMessage());
                     Intent intent = new Intent(LoginActivity.this, SubscriptionActivity.class);
+                    intent.putExtra("from","Signup Screen");
                     startActivity(intent);
                     finish();
                     finishAffinity();

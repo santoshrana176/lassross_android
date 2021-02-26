@@ -145,6 +145,7 @@
                     android:imeOptions="actionNext"
                     android:inputType="textEmailAddress"
                     android:singleLine="true"
+                    android:maxLength="30"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                      android:padding="@dimen/_10sdp"
                     android:textColor="@color/input_text_color"

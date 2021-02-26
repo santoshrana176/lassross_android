@@ -254,7 +254,7 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
         Log.d("subscriptionResponse", subscriptionResponse.toString())
         response = subscriptionResponse
         tvplanPriceCurrency.text = response.data[0].plan_currency
-        tvplanPrice.text = " " + getTwoValueAfterDecimal(response.data[0].plan_price)
+        tvplanPrice.text =response.data[0].plan_price// " " + getTwoValueAfterDecimal(response.data[0].plan_price)
 
         val planTitle1=response.data[2].plan_title
         val planFree = planTitle1.split(" ")

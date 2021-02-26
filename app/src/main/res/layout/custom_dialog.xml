@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/_290sdp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:layout_marginStart="@dimen/_25sdp"
+    android:layout_marginEnd="@dimen/_25sdp"
     android:animateLayoutChanges="true"
     android:background="@drawable/newpop_bg"
     android:orientation="vertical">

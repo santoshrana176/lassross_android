@@ -359,6 +359,7 @@ public class RegistrationActivity extends LasrossParentActivity implements View.
             if (loginResponse.getMessageCode().equalsIgnoreCase("social_reg")) {
                 CommonUtils.toastMessage(RegistrationActivity.this, loginResponse.getMessage());
                 Intent intent = new Intent(RegistrationActivity.this, SubscriptionActivity.class);
+                intent.putExtra("from","Signup Screen");
                 startActivity(intent);
                 finish();
                 finishAffinity();

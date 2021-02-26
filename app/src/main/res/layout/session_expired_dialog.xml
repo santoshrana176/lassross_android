@@ -22,8 +22,7 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:fontFamily="@font/ibmplexsans_bold"
             android:text="@string/alert"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
+             android:textColor="@color/black"
             android:textSize="@dimen/_15sdp" />
 
         <TextView

@@ -254,8 +254,16 @@
                 android:paddingStart="@dimen/_15sdp"
                 android:paddingEnd="@dimen/_8sdp"
                 android:paddingBottom="@dimen/_15sdp">
+                <com.mindiii.lasross.helper.RoundRectCornerImageViewNavigationDrawer
+                    android:id="@+id/ivUserPic"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                     android:scaleType="centerCrop"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:src="@drawable/dress1" />
 
-                <com.github.siyamed.shapeimageview.RoundedImageView
+            <!--    <com.github.siyamed.shapeimageview.RoundedImageView
                     android:id="@+id/ivUserPic"
                     android:layout_width="44dp"
                     android:layout_height="38dp"
@@ -264,10 +272,24 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/dress1"
                     app:siBorderWidth="0dp"
-                    app:siRadius="6dp"
-                    app:siSquare="true" />
+                     android:elevation="0dp"
+                     app:siRadius="5dp"
+                    android:background="@android:color/transparent"
 
-                <TextView
+                    app:siSquare="true" />
+-->
+<!--<com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivUserPic"
+                android:layout_width="44dp"
+                android:layout_height="38dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:srcCompat="@drawable/dress1"
+                 app:strokeWidth="0dp"
+                 app:strokeColor="@android:color/darker_gray"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
+                />
+-->                <TextView
                     android:layout_toEndOf="@+id/ivUserPic"
                     android:id="@+id/tvUserName"
                     android:layout_width="wrap_content"

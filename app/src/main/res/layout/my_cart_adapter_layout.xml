@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibmplexsans_regular"
                     android:text="@string/color_order_detail"
-                    android:textColor="@color/input_text_color"
+                    android:textColor="#999999"
                     android:textSize="@dimen/_9sdp" />
 
                 <TextView

@@ -47,8 +47,8 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:fontFamily="@font/ibmplexsans_semibold"
                     android:gravity="center"
-                    android:text="@string/abc"
-                    android:textColor="@color/white"
+                    android:singleLine="true"
+                     android:textColor="@color/white"
                     android:textSize="@dimen/_16sdp"/>
             </LinearLayout>
 
