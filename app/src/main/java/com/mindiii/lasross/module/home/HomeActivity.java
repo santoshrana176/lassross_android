@@ -189,8 +189,8 @@ public class HomeActivity extends LasrossParentActivity implements NavigationVie
         rvListUp = findViewById(R.id.rvListUp);
         rvListDown = findViewById(R.id.rvListDown);
 
-          mviewPager = findViewById(R.id.banner_images_viewpager);
-         mTabLayout = findViewById(R.id.banner_dots_tab_layout);
+        mviewPager = findViewById(R.id.banner_images_viewpager);
+        mTabLayout = findViewById(R.id.banner_dots_tab_layout);
 
         rvListUp.setHasFixedSize(true);
         rvListDown.setHasFixedSize(true);

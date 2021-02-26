@@ -162,6 +162,11 @@ class AddAddressActivity : LasrossParentActivity(), View.OnClickListener, ApiCal
         }
     }
 
+    override fun onBackPressed() {
+
+        super.onBackPressed()
+    }
+
 
     private fun getDataForApi() {
         val name = etAddressTitle!!.text.toString().trim()
@@ -221,13 +226,19 @@ class AddAddressActivity : LasrossParentActivity(), View.OnClickListener, ApiCal
         val tvTitleOfVal: TextView = dialog.findViewById(R.id.tvTitleOfVal)
         tvTitleOfVal.text = message
         tvOK.setOnClickListener {
+            dialog.dismiss()
             if (checkValue == "CheckFound") {
                 finish()
             } else {
-                startActivity(Intent(this, MyAddressesActivity::class.java)
+                var data=Intent()
+                data.putExtra("CheckValue","CheckNotFound")
+                data.putExtra("showClearButton", "showClearButtonProfile")
+                 setResult(RESULT_OK, data)
+                finish()
+                /* (Intent(this, MyAddressesActivity::class.java)
                         .putExtra("CheckValue", "CheckNotFound")
                         .putExtra("showClearButton", "showClearButtonProfile"))
-                finish()
+                finish()*/
             }
         }
         dialog.show()

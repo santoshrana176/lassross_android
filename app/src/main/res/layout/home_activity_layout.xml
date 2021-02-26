@@ -137,6 +137,8 @@
                         android:layout_marginStart="@dimen/_3sdp"
                         android:background="@drawable/home_search_bg"
                         android:focusable="false"
+                        android:singleLine="true"
+                        android:ellipsize="end"
                         android:hint="@string/search_here_for_products"
                         android:textColor="@color/search_icon"
                         android:textColorHint="@color/search_icon"
@@ -266,6 +268,7 @@
                     app:siSquare="true" />
 
                 <TextView
+                    android:layout_toEndOf="@+id/ivUserPic"
                     android:id="@+id/tvUserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -273,12 +276,16 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/ivUserPic"
                     android:fontFamily="@font/ibmplexsans_regular"
-                    android:gravity="end"
+                    android:gravity="start"
+                    android:layout_toStartOf="@+id/ivGoForword"
+                    android:singleLine="true"
+                    android:ellipsize="end"
                     android:text="@string/jennie_bostick"
                     android:textColor="#ffffff"
                     android:textSize="16sp" />
 
                 <ImageView
+                    android:id="@+id/ivGoForword"
                     android:layout_width="@dimen/_10sdp"
                     android:layout_height="@dimen/_10sdp"
                     android:layout_alignParentEnd="true"

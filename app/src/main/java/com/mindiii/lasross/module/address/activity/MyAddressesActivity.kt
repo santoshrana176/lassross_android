@@ -123,21 +123,21 @@ class MyAddressesActivity : LasrossParentActivity(), View.OnClickListener, ApiCa
         userAddressList.clear()
         myAddressAdapter = MyAddressAdapter(checkValue, userAddressList, this, object : ClickListener.MyAddressListener {
             override fun onItemDelete(position: Int) {
-                deleteAddress(this@MyAddressesActivity,position)
+                deleteAddress(this@MyAddressesActivity, position)
 
             }
 
             override fun onItemUpdate(position: Int) {
                 if (CommonUtils.isNetworkAvailable(this@MyAddressesActivity)!!) {
-                    startActivity(Intent(this@MyAddressesActivity, AddAddressActivity::class.java)
+                    var intent = Intent(this@MyAddressesActivity, AddAddressActivity::class.java)
                             .putExtra("shipAddress", userAddressList[position].ship_address_location)
                             .putExtra("latitude", userAddressList[position].ship_address_latitude)
                             .putExtra("longitude", userAddressList[position].ship_address_longitude)
                             .putExtra("phoneNumber", userAddressList[position].bill_address_phone)
                             .putExtra("companyType", userAddressList[position].ship_address_company_name)
                             .putExtra("addressID", userAddressList[position].userAddressId)
-                            .putExtra("strComeFrom", "UpdateBtn"))
-                    finish()
+                            .putExtra("strComeFrom", "UpdateBtn")
+                    startActivityForResult(intent, 176)
                 } else {
                     showInternetAlertDialog(this@MyAddressesActivity)
                 }
@@ -164,17 +164,17 @@ class MyAddressesActivity : LasrossParentActivity(), View.OnClickListener, ApiCa
         Objects.requireNonNull(dialog.getWindow())!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow()!!.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         dialog.setContentView(R.layout.custom_dilog_delete);
-       dialog.tvMessages_delete.text = getString(R.string.deleteAddress_msg)
+        dialog.tvMessages_delete.text = getString(R.string.deleteAddress_msg)
         dialog.tvPopupNo.setOnClickListener {
             dialog.dismiss()
         }
-        dialog. tvPopupOk.setOnClickListener {
-               if (CommonUtils.isNetworkAvailable(this@MyAddressesActivity)!!) {
-                      callRemoveAddressApi(userAddressList.get(position).userAddressId)
-                      myAddressAdapter.notifyItemRemoved(position)
-                  } else {
-                      showInternetAlertDialog(this@MyAddressesActivity)
-                  }
+        dialog.tvPopupOk.setOnClickListener {
+            if (CommonUtils.isNetworkAvailable(this@MyAddressesActivity)!!) {
+                callRemoveAddressApi(userAddressList.get(position).userAddressId)
+                myAddressAdapter.notifyItemRemoved(position)
+            } else {
+                showInternetAlertDialog(this@MyAddressesActivity)
+            }
             dialog.dismiss()
         }
         dialog.show();
@@ -243,13 +243,13 @@ class MyAddressesActivity : LasrossParentActivity(), View.OnClickListener, ApiCa
                         positionInt == -1 -> startActivity(Intent(this, AddAddressActivity::class.java)
                                 .putExtra("strComeFrom", "Addbutton")
                                 .putExtra("CheckValue", checkValue))
+
                         else -> toastMessage(getString(R.string.Please_select_address))
                     }
                 } else {
                     startActivity(Intent(this, AddAddressActivity::class.java)
                             .putExtra("strComeFrom", "Addbutton")
                             .putExtra("CheckValue", checkValue))
-                    finish()
                 }
             } else {
                 showInternetAlertDialog(this)
@@ -266,17 +266,35 @@ class MyAddressesActivity : LasrossParentActivity(), View.OnClickListener, ApiCa
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 176) {
+
+                checkValue = data?.getStringExtra("CheckValue")
+
+                checkValue?.let { setAdapter(it) }
+
+                if (data!!.getStringExtra("showClearButton") != null) {
+                    btnClearOrderMyAdd.visibility = View.GONE
+                } else {
+                    btnClearOrderMyAdd.visibility = View.VISIBLE
+                }
+            }
+        }
+    }
+
     override fun onSuccessUserAddressList(userAddressListResponse: UserAddressListResponse) {
-        tvTotalAddress.text = "${userAddressListResponse.data.total_records} "+ getString(R.string.saved_addresses)
+        tvTotalAddress.text = "${userAddressListResponse.data.total_records} " + getString(R.string.saved_addresses)
         userAddressList.addAll(userAddressListResponse.data.user_addresslist)
         if (userAddressList.size != 0) {
             count = userAddressList.size
-            tvTotalAddress.text = userAddressList.size.toString() + " "+getString(R.string.saved_addresses)
+            tvTotalAddress.text = userAddressList.size.toString() + " " + getString(R.string.saved_addresses)
             tvAddressNotFound.visibility = View.GONE
             llRecyclerView.visibility = View.VISIBLE
             //recyclerView.visibility = View.VISIBLE
         } else {
-            tvTotalAddress.text = 0.toString() + " "+ getString(R.string.saved_addresses)
+            tvTotalAddress.text = 0.toString() + " " + getString(R.string.saved_addresses)
             tvAddressNotFound.visibility = View.VISIBLE
             llRecyclerView.visibility = View.GONE
             //recyclerView.visibility = View.GONE
