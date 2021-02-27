@@ -78,20 +78,19 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/_15sdp"
                         android:fontFamily="@font/ibmplexsans_semibold"
                         android:text="@string/sku"
                         android:textColor="#333333"
-                        android:textSize="@dimen/_10sdp"/>
+                        android:textSize="@dimen/_10sdp" />
 
                     <TextView
                         android:id="@+id/tvSKU"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/ibmplexsans_light"
-                        android:paddingStart="@dimen/_10sdp"
-                        android:textColor="#333333"
+                         android:textColor="#333333"
                         android:textSize="@dimen/_10sdp" />
                 </LinearLayout>
 
@@ -115,7 +114,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/ibmplexsans_light"
-                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingStart="@dimen/_5sdp"
                         android:singleLine="true"
                         android:textColor="#333333"
                         android:ellipsize="end"

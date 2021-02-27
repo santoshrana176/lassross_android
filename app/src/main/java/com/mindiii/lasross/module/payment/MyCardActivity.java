@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.mindiii.lasross.BuildConfig;
 import com.mindiii.lasross.R;
 import com.mindiii.lasross.app.session.Session;
 import com.mindiii.lasross.base.ApiCallback;
@@ -35,9 +36,12 @@ import com.mindiii.lasross.utils.CommonUtils;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Customer;
+import com.stripe.model.ExternalAccount;
 import com.stripe.model.ExternalAccountCollection;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MyCardActivity extends LasrossParentActivity implements View.OnClickListener, ApiCallback.PaymentCallBack {
@@ -146,7 +150,7 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
     protected void showCreditCardInfo() {
         if (CommonUtils.isNetworkAvailable(this)) {
             cardResponce = new StripeSaveCardResponce();
-            new AsyncTask<Void, Void, ExternalAccountCollection>() {
+            new AsyncTask<Void, Void, ExternalAccount>() {
                 @Override
                 protected void onPreExecute() {
                     super.onPreExecute();
@@ -154,21 +158,23 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
                 }
 
                 @Override
-                protected ExternalAccountCollection doInBackground(Void... voids) {
-                    Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
-                    ExternalAccountCollection customer = null;
+                protected ExternalAccount doInBackground(Void... voids) {
+               //  Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
+                  Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
+                    ExternalAccount customer = null;
                     try {
                         String stripeCustomerId = session.getRegistration().getStripe_customer_id();//"cus_Fl6RC2yZA8vTna";//session.getRegistration().getStripe_customer_id();
                         Map<String, Object> cardParams = new HashMap<String, Object>();
                         cardParams.put("object", "card");
-                        customer = Customer.retrieve(stripeCustomerId).getSources().all(cardParams);
+                        customer = Customer.retrieve(stripeCustomerId).getDefaultSourceObject();
+                    //.all(cardParams);
                     } catch (StripeException ignored) {
                     }
                     return customer;
                 }
 
                 @Override
-                protected void onPostExecute(final ExternalAccountCollection externalAccountCollection) {
+                protected void onPostExecute(final ExternalAccount externalAccountCollection) {
                     super.onPostExecute(externalAccountCollection);
                     hideLoader();
                     runOnUiThread(new Runnable() {
@@ -241,7 +247,7 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
     @SuppressLint("StaticFieldLeak")
     private void removedSaveCardApi(final String id) {
         if (CommonUtils.isNetworkAvailable(MyCardActivity.this)) {
-            new AsyncTask<Void, Void, Customer>() {
+            new AsyncTask<Void, Void, ExternalAccountCollection>() {
 
                 @Override
                 protected void onPreExecute() {
@@ -250,12 +256,23 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
                 }
 
                 @Override
-                protected Customer doInBackground(Void... voids) {
-                    Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
-                    Customer customer = null;
+                protected ExternalAccountCollection doInBackground(Void... voids) {
+               //   Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
+                        Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
+                    ExternalAccountCollection customer = null;
                     try {
-                        customer = Customer.retrieve(session.getRegistration().getStripe_customer_id()); // session.getRegistration().getStripe_customer_id();
-                        customer.getSources().retrieve(id).delete();
+                      //  customer = Customer.retrieve(session.getRegistration().getStripe_customer_id()); // session.getRegistration().getStripe_customer_id();
+                        Map<String, Object> retrieveParams = new HashMap<>();
+                        List<String> expandList = new ArrayList<>();
+                        expandList.add("sources");
+                        retrieveParams.put("expand",expandList);
+                        Customer  c = Customer.retrieve(
+                                session.getRegistration().getStripe_customer_id(),
+                                retrieveParams,
+                                null
+                        );
+                        customer=c.getSources();
+                        customer.retrieve(id).delete();
                     } catch (StripeException e) {
                         e.printStackTrace();
                         hideLoader();
@@ -265,7 +282,7 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
                 }
 
                 @Override
-                protected void onPostExecute(Customer customer) {
+                protected void onPostExecute(ExternalAccountCollection customer) {
                     super.onPostExecute(customer);
                     hideLoader();
                     if (customer != null) {

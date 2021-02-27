@@ -71,7 +71,7 @@
     <string name="enter_expiry_date">Ingrese la fecha de vencimiento</string>
     <string name="enter_mobile_no">Ingrese el número de celular</string>
     <string name="enter_valid_name">Ingrese un nombre válido</string>
-    <string name="expiry_date">Fecha de caducidad-</string>
+    <string name="expiry_date">Fecha de caducidad</string>
     <string name="expiry_date_active_plan">"Fecha de caducidad</string>
     <string name="facebook">Facebook</string>
     <string name="facebook_app_id">2268931679891162</string>
@@ -349,7 +349,7 @@
     <string name="comfirm_password_doesnot_match">Confirme que la contraseña no coincide</string>
     <string name="something_worng">algo está mal</string>
     <string name="Please_full_name">Ingrese su nombre completo</string>
-    <string name="select_size">selecciona el tamaño</string>
+    <string name="select_size">Selecciona el tamaño</string>
     <string name="pick_up_a_bargain">Obtenga una ganga</string>
     <string name="deleteAddress_msg">¿Estás seguro de que deseas eliminar esta dirección?</string>
     <string name="Terms_condition">Términos y condiciones</string>
@@ -360,7 +360,7 @@
     <string name="cart_text">Carro</string>
     <string name="item_zero">(0 artículo)</string>
     <string name="itemmmm">(0 item)</string>
-    <string name="select_color">seleccionar el color</string>
+    <string name="select_color">Seleccionar el color</string>
     <string name="rating_and">calificación y</string>
     <string name="review_and">críticas</string>
     <string name="saveaddress">0 DIRECCIÓN GUARDADA</string>

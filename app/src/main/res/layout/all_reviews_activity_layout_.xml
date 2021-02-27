@@ -117,6 +117,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/ibmplexsans_regular"
                 android:gravity="center"
+                android:paddingBottom="@dimen/_3sdp"
                  android:textColor="#828282"
                 android:textSize="@dimen/_10sdp" />
         </LinearLayout>

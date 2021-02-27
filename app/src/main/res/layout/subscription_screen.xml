@@ -81,20 +81,20 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/ivLeftImage"
 
-                            android:textSize="@dimen/_13sdp"
                             android:layout_marginStart="@dimen/_25sdp"
                             android:fontFamily="@font/ibmplexsans_regular"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
 
                         <TextView
                             android:id="@+id/tvLeftPlan"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvLeftText"
-                            android:textSize="@dimen/_13sdp"
                             android:layout_marginStart="@dimen/_25sdp"
                             android:fontFamily="@font/ibmplexsans_regular"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
                     </RelativeLayout>
 
 
@@ -125,7 +125,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/ivMiddleImage"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginStart="@dimen/_40sdp"
+                            android:layout_marginStart="@dimen/_36sdp"
                             android:fontFamily="@font/ibmplexsans_bold"
                             android:paddingTop="@dimen/_3sdp"
                             android:textColor="@color/text_color"
@@ -134,10 +134,11 @@
                         <TextView
                             android:id="@+id/tvMiddlePlan"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="23dp"
                             android:layout_below="@+id/tvMiddleText"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginStart="@dimen/_40sdp"
+                            android:layout_marginStart="@dimen/_36sdp"
+                            android:layout_marginTop="5dp"
                             android:fontFamily="@font/ibmplexsans_bold"
                             android:textColor="@color/text_color"
                             android:textSize="@dimen/_15sdp" />
@@ -157,33 +158,41 @@
                     android:orientation="vertical">
 
 
-                        <ImageView
-                            android:id="@+id/ivRightImage"
-                            android:layout_width="@dimen/_80sdp"
-                            android:layout_height="@dimen/_80sdp"
-                            android:background="@drawable/circular_side_bg"
-                            android:src="@drawable/goldenplan_icon_black" />
+                    <ImageView
+                        android:id="@+id/ivRightImage"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_80sdp"
+                        android:background="@drawable/circular_side_bg"
+                        android:src="@drawable/goldenplan_icon_black" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_36sdp"
+
+                        >
 
                         <TextView
                             android:id="@+id/tvRightText"
-                             android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                             android:textSize="@dimen/_13sdp"
-                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_gravity="center"
                             android:fontFamily="@font/ibmplexsans_regular"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
 
                         <TextView
                             android:id="@+id/tvRightPlan"
-                             android:layout_marginStart="@dimen/_3sdp"
-                            android:layout_gravity="center"
-                            android:gravity="start"
-                            android:textSize="@dimen/_13sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvRightText"
+                            android:layout_gravity="center"
                              android:fontFamily="@font/ibmplexsans_regular"
-                            android:textColor="@color/black" />
+                            android:gravity="start"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
+                    </RelativeLayout>
+
 
                 </LinearLayout>
 
@@ -236,7 +245,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvItemDescriptionListSubscription"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:visibility="visible" />

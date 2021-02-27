@@ -4,8 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.drawable.ColorDrawable
+ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Build
 import android.os.Bundle
@@ -99,9 +98,10 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         variantColorValue = ArrayList()
         galleryImage = ArrayList()
 
-        tv_size.setOnClickListener(this)
-        ivDropdown.setOnClickListener(this)
-        tv_color.setOnClickListener(this)
+     //   tv_size.setOnClickListener(this)
+      //  ivDropdown.setOnClickListener(this)
+        //tv_color.setOnClickListener(this)
+        ll_color1.setOnClickListener(this)
         ll_size1.setOnClickListener(this)
         tvMoveToBag.setOnClickListener(this)
         tvPlus.setOnClickListener(this)
@@ -141,7 +141,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
     }
 
 
-    private fun setRatingBarStart(rating_bar: RatingBar) {
+   /* private fun setRatingBarStart(rating_bar: RatingBar) {
         val stars = rating_bar.progressDrawable as LayerDrawable
         stars.getDrawable(2)
                 .setColorFilter(getResources().getColor(R.color.star_fill_color),
@@ -152,7 +152,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         stars.getDrawable(0)
                 .setColorFilter(getResources().getColor(R.color.star_unfill_color),
                         PorterDuff.Mode.SRC_ATOP) // for empty stars
-    }
+    }*/
 
     private fun apiCalling() {
         ProductDetailPresenter(this, this).callProductDetailApi(productId)
@@ -398,10 +398,10 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
                 }
 
             }
-            R.id.tv_color -> {
+            R.id.ll_color1 -> {
                 spinColor.performClick()
             }
-            R.id.tv_size -> {
+            R.id.ll_size1 -> {
                 spinSize.performClick()
             }
             /*R.id.ll_size1 -> {
@@ -453,7 +453,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         val dialog = Dialog(this, R.style.my_dialog)
         dialog.setContentView(R.layout.dialog_artboard_18)
         Objects.requireNonNull(dialog.window)!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
+        dialog.setCancelable(false)
         val ivCancel: ImageView
         val tvShortDescription: TextView
         val tvSKU: TextView
@@ -466,7 +466,7 @@ class ProductDetailActivity : LasrossParentKotlinActivity(),
         tvShortDescription.text = otherDesc
         tvShortDescription.setMovementMethod(ScrollingMovementMethod())
 
-        tvSKU.text = productSku
+        tvSKU.text = " "+productSku
         tvCategory.text = productCategory
         val lp = WindowManager.LayoutParams()
         lp.copyFrom(dialog.window!!.attributes)

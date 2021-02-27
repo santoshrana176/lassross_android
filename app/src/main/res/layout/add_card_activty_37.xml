@@ -56,7 +56,7 @@
                     android:padding="@dimen/_8sdp"
                     android:text="@string/add_card"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_19sdp" />
+                    android:textSize="@dimen/_18sdp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -65,7 +65,7 @@
                     android:fontFamily="@font/ibmplexsans_regular"
                     android:text="@string/card_holder_name"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_11sdp" />
 
                 <EditText
                     android:id="@+id/etName"
@@ -79,7 +79,7 @@
                     android:inputType="text"
                     android:imeOptions="actionNext"
                     android:textColor="#828282"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_11sdp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -88,7 +88,7 @@
                     android:fontFamily="@font/ibmplexsans_regular"
                     android:text="@string/card_number"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_11sdp" />
 
                 <EditText
                     android:id="@+id/etCardNumber"
@@ -102,7 +102,7 @@
                     android:imeOptions="actionNext"
                     android:padding="@dimen/_10sdp"
                     android:textColor="#828282"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_11sdp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -124,7 +124,7 @@
                             android:fontFamily="@font/ibmplexsans_regular"
                             android:text="@string/expiry_date"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_13sdp" />
+                            android:textSize="@dimen/_11sdp" />
 
                         <EditText
                             android:id="@+id/etExpiryDate"
@@ -136,7 +136,7 @@
                             android:focusable="false"
                             android:padding="@dimen/_10sdp"
                             android:textColor="#828282"
-                            android:textSize="@dimen/_13sdp" />
+                            android:textSize="@dimen/_11sdp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -153,7 +153,7 @@
                             android:fontFamily="@font/ibmplexsans_regular"
                             android:text="@string/cvv"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_13sdp"/>
+                            android:textSize="@dimen/_11sdp"/>
 
                         <EditText
                             android:id="@+id/etCVV"
@@ -222,9 +222,8 @@
                     android:id="@+id/tvAddCard"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_35sdp"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:layout_marginBottom="@dimen/_100sdp"
-                    android:background="@drawable/lasros_main_btn"
+                    android:layout_marginTop="@dimen/_35sdp"
+                     android:background="@drawable/lasros_main_btn"
                     android:fontFamily="@font/ibmplexsans_semibold"
                     android:gravity="center"
                     android:padding="@dimen/_7sdp"

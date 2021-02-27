@@ -5,6 +5,21 @@ apply plugin: 'kotlin-android'
 
 
 android {
+
+    signingConfigs {
+      /*  release {
+            storeFile file('/home/php-santosh/AndroidStudioPr/Lasrosskeystore/dharmraj-release-key ')
+             storePassword 'draj222073'
+            keyAlias 'android'
+            keyPassword 'draj222073'
+        }
+        debug {
+            storeFile file('/home/php-santosh/AndroidStudioPr/Lasrosskeystore/dharmraj-release-key ')
+            storePassword 'draj222073'
+            keyAlias 'android'
+            keyPassword 'draj222073'
+        }*/
+    }
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.mindiii.lasross"
@@ -26,27 +41,36 @@ android {
     buildTypes {
 
         debug {
-
+            debuggable true
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            shrinkResources false
+             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             //dev url
-             buildConfigField("String", "BASE_URL", "\"https://www.lasross.com/service/api_v1/\"")
-           // buildConfigField("String", "BASE_URL", "https://www.lasross.com/service/api_v1/")
+             buildConfigField("String", "BASE_URL", '"https://www.lasross.com/service/api_v1/"')
+
+            buildConfigField("String", "STRIPE_PUBLIC_KEY", '"pk_test_51IP8QbI2oDeWaFshBY6mf7xO5WqrxNtiNamzPtI1jFYDyPipIDcW9omQi7g7qfEciNkW1NOSBCg1Wopk9xH9QDJ900eRxijYsS"')
+            buildConfigField("String", "STRIPE_SECRET_KEY", '"sk_test_51IP8QbI2oDeWaFshezNlgLIFybcS74yM40XzpLXqYJqWZgaDoM75qBVJJ7AGgMkMh3OmOlhsmV4Gub5SfUVvu73P00K6Pc5m0Z"')
+
+        }
+
+        release {
+            debuggable false
+            minifyEnabled false
+            shrinkResources false
+             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", '"https://www.lasross.com/service/api_v1/"')
+            buildConfigField("String", "STRIPE_PUBLIC_KEY", '"pk_test_51IP8QbI2oDeWaFshBY6mf7xO5WqrxNtiNamzPtI1jFYDyPipIDcW9omQi7g7qfEciNkW1NOSBCg1Wopk9xH9QDJ900eRxijYsS"')
+            buildConfigField("String", "STRIPE_SECRET_KEY", '"sk_test_51IP8QbI2oDeWaFshezNlgLIFybcS74yM40XzpLXqYJqWZgaDoM75qBVJJ7AGgMkMh3OmOlhsmV4Gub5SfUVvu73P00K6Pc5m0Z"')
+
+            //dev url
+          //  buildConfigField("String", "BASE_URL", "https://www.lasross.com/service/api_v1/")
 
             //Live url
             //buildConfigField("String", "BASE_URL", "\"http://lasross.com/api/\"")
         }
-
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-
-            //dev url
-          //  buildConfigField("String", "BASE_URL", "https://www.lasross.com/service/api_v1/")
-           buildConfigField("String", "BASE_URL", "https://www.lasross.com/service/api_v1/")
-
-            //Live url
-            //buildConfigField("String", "BASE_URL", "\"http://lasross.com/api/\"")
+        lintOptions {
+            checkReleaseBuilds false
+            abortOnError false
         }
     }
 }
@@ -113,6 +137,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-places:17.0.0'
     //Stripe payment
     implementation 'com.stripe:stripe-java:7.8.0'
+   // implementation 'com.stripe:stripe-android:16.1.1'
     implementation "com.daimajia.swipelayout:library:1.2.0@aar"
 
     implementation 'com.google.android.material:material:1.2.0'

@@ -20,6 +20,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
+import com.mindiii.lasross.BuildConfig
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -32,6 +33,7 @@ import com.mindiii.lasross.module.subscription.presenter.adapter.SubscriptionIte
 import com.mindiii.lasross.module.subscription.presenter.model.SubscribeResponse
 import com.stripe.Stripe
 import com.stripe.exception.StripeException
+import com.stripe.model.Card
 import com.stripe.model.Customer
 import com.stripe.model.ExternalAccountCollection
 import kotlinx.android.synthetic.main.active_plan_screen.view.*
@@ -109,55 +111,71 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
     override fun onClick(view: View) {
         when (view.id) {
             R.id.tvSubscribe -> {
-                if (tvMiddleText.text.toString().equals("Free", ignoreCase = true)||tvMiddleText.text.toString().equals("Libre",ignoreCase = true)) {
+                if (tvMiddleText.text.toString().equals("Free", ignoreCase = true) || tvMiddleText.text.toString().equals("Libre", ignoreCase = true)) {
                     startActivity(Intent(this, HomeActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
                     finish()
-                } else if ((tvMiddleText.text.toString().equals("Silver", ignoreCase = true)||tvMiddleText.text.toString().equals("Plata", ignoreCase = true))) {
-                    if (cardResponce.data.size > 0) {
-                        plan_id = response.data.get(0).subscriptionPlanId
-                        subscribe(plan_id)
-                    } else {
+                } else if ((tvMiddleText.text.toString().equals("Silver", ignoreCase = true) || tvMiddleText.text.toString().equals("Plata", ignoreCase = true))) {
+                  //  if (this::cardResponce.isInitialized) {
+                        if (cardResponce.data.size > 0) {
+                            plan_id = response.data.get(0).subscriptionPlanId
+                            subscribe(plan_id)
+                        } else {
+                            plan_id = response.data.get(0).subscriptionPlanId
+                            startActivity(Intent(this, AddCardActivity::class.java)
+                                    .putExtra("subscriptionScreen", "fromSubscription")
+                                    .putExtra("subscriptionPlanId", plan_id))
+                        }
+                  /*  } else {
                         plan_id = response.data.get(0).subscriptionPlanId
                         startActivity(Intent(this, AddCardActivity::class.java)
                                 .putExtra("subscriptionScreen", "fromSubscription")
                                 .putExtra("subscriptionPlanId", plan_id))
-                    }
-                } else if ((tvMiddleText.text.toString().equals("Golden", ignoreCase = true)||tvMiddleText.text.toString().equals("Dorada", ignoreCase = true))) {
-                    if (cardResponce.data.size > 0) {
-                        plan_id = response.data.get(1).subscriptionPlanId
-                        subscribe(plan_id)
-                    } else {
+                    }*/
+                } else if ((tvMiddleText.text.toString().equals("Golden", ignoreCase = true) || tvMiddleText.text.toString().equals("Dorada", ignoreCase = true))) {
+
+                  //  if (this::cardResponce.isInitialized) {
+
+                        if (cardResponce.data.size > 0) {
+                            plan_id = response.data.get(1).subscriptionPlanId
+                            subscribe(plan_id)
+                        } else {
+                            plan_id = response.data.get(1).subscriptionPlanId
+                            startActivity(Intent(this, AddCardActivity::class.java)
+                                    .putExtra("subscriptionScreen", "fromSubscription")
+                                    .putExtra("subscriptionPlanId", plan_id))
+                        }
+                    /*} else {
                         plan_id = response.data.get(1).subscriptionPlanId
                         startActivity(Intent(this, AddCardActivity::class.java)
                                 .putExtra("subscriptionScreen", "fromSubscription")
                                 .putExtra("subscriptionPlanId", plan_id))
-                    }
+                    }*/
                 }
             }
             R.id.iv_subcribeBack -> {
                 onBackPressed()
             }
             R.id.llRightLayout -> {
-                if (tvRightText.text.toString().trim().equals("Golden", ignoreCase = true)||tvRightText.text.toString().trim().equals("Dorada", ignoreCase = true)) {
-                    tvSubscribe.text=getString(R.string.subscribe)
+                if (tvRightText.text.toString().trim().equals("Golden", ignoreCase = true) || tvRightText.text.toString().trim().equals("Dorada", ignoreCase = true)) {
+                    tvSubscribe.text = getString(R.string.subscribe)
                     setGoldenPlanData()
-                } else if (tvRightText.text.toString().trim().equals("Silver", ignoreCase = true)||tvRightText.text.toString().trim().equals("Plata", ignoreCase = true)) {
-                    tvSubscribe.text=getString(R.string.subscribe)
+                } else if (tvRightText.text.toString().trim().equals("Silver", ignoreCase = true) || tvRightText.text.toString().trim().equals("Plata", ignoreCase = true)) {
+                    tvSubscribe.text = getString(R.string.subscribe)
                     setSilverPlanData()
-                } else if (tvRightText.text.toString().trim().equals("Free", ignoreCase = true)||tvRightText.text.toString().trim().equals("Libre", ignoreCase = true)||tvLeftText.text.toString().trim().equals("gratuito", ignoreCase = true)) {
-                    tvSubscribe.text=getString(R.string.subscribe_free)
+                } else if (tvRightText.text.toString().trim().equals("Free", ignoreCase = true) || tvRightText.text.toString().trim().equals("Libre", ignoreCase = true) || tvLeftText.text.toString().trim().equals("gratuito", ignoreCase = true)) {
+                    tvSubscribe.text = getString(R.string.subscribe_free)
                     setFreePlanData()
                 }
             }
             R.id.llLeftLayout -> {
-                if (tvLeftText.text.toString().trim().equals("Golden", ignoreCase = true)||tvLeftText.text.toString().trim().equals("Dorada", ignoreCase = true)) {
-                    tvSubscribe.text=getString(R.string.subscribe)
+                if (tvLeftText.text.toString().trim().equals("Golden", ignoreCase = true) || tvLeftText.text.toString().trim().equals("Dorada", ignoreCase = true)) {
+                    tvSubscribe.text = getString(R.string.subscribe)
                     setGoldenPlanData()
-                } else if (tvLeftText.text.toString().trim().equals("Silver", ignoreCase = true)||tvLeftText.text.toString().trim().equals("Plata", ignoreCase = true)) {
-                    tvSubscribe.text=getString(R.string.subscribe)
+                } else if (tvLeftText.text.toString().trim().equals("Silver", ignoreCase = true) || tvLeftText.text.toString().trim().equals("Plata", ignoreCase = true)) {
+                    tvSubscribe.text = getString(R.string.subscribe)
                     setSilverPlanData()
-                } else if (tvLeftText.text.toString().trim().equals("Free", ignoreCase = true)||tvLeftText.text.toString().trim().equals("Libre", ignoreCase = true)||tvLeftText.text.toString().trim().equals("gratuito", ignoreCase = true)) {
-                    tvSubscribe.text=getString(R.string.subscribe_free)
+                } else if (tvLeftText.text.toString().trim().equals("Free", ignoreCase = true) || tvLeftText.text.toString().trim().equals("Libre", ignoreCase = true) || tvLeftText.text.toString().trim().equals("gratuito", ignoreCase = true)) {
+                    tvSubscribe.text = getString(R.string.subscribe_free)
                     setFreePlanData()
                 }
             }
@@ -195,7 +213,7 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
         tvRightPlan.visibility = View.VISIBLE
 
         tvplanPriceCurrency.text = response.data[1].plan_currency
-        tvplanPrice.text =response.data[1].plan_price// " " + getTwoValueAfterDecimal(response.data[1].plan_price)
+        tvplanPrice.text = response.data[1].plan_price// " " + getTwoValueAfterDecimal(response.data[1].plan_price)
         tvplanDuration.text = " / " + response.data[1].plan_duration + " " + response.data[1].plan_duration_type
         tvplanDuration.visibility = View.VISIBLE
         tvplanPriceCurrency.visibility = View.VISIBLE
@@ -217,7 +235,7 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
         tvRightPlan.visibility = View.VISIBLE
 
         tvplanPriceCurrency.text = response.data[0].plan_currency
-        tvplanPrice.text =response.data[0].plan_price// " " + getTwoValueAfterDecimal(response.data[0].plan_price)
+        tvplanPrice.text = response.data[0].plan_price// " " + getTwoValueAfterDecimal(response.data[0].plan_price)
         //tvplanPrice.text = response.data[0].plan_currency + " " + response.data[0].plan_price
         tvplanDuration.text = " / " + response.data[0].plan_duration + " " + response.data[0].plan_duration_type
         tvplanDuration.visibility = View.VISIBLE
@@ -254,27 +272,27 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
         Log.d("subscriptionResponse", subscriptionResponse.toString())
         response = subscriptionResponse
         tvplanPriceCurrency.text = response.data[0].plan_currency
-        tvplanPrice.text =response.data[0].plan_price// " " + getTwoValueAfterDecimal(response.data[0].plan_price)
+        tvplanPrice.text = response.data[0].plan_price// " " + getTwoValueAfterDecimal(response.data[0].plan_price)
 
-        val planTitle1=response.data[2].plan_title
+        val planTitle1 = response.data[2].plan_title
         val planFree = planTitle1.split(" ")
         //tvplanPrice.text = response.data[0].plan_currency + " " + response.data[0].plan_price
         tvplanDuration.text = " / " + response.data[0].plan_duration + " " + response.data[0].plan_duration_type
 
-        tvLeftText.text=planFree[0]//free
-        tvLeftPlan.text=planFree[1]//free
+        tvLeftText.text = planFree[0]//free
+        tvLeftPlan.text = planFree[1]//free
 
-        val planTitle2=response.data[0].plan_title
+        val planTitle2 = response.data[0].plan_title
         val silver = planTitle2.split(" ")
 
-        tvMiddleText.text=silver[0]//silver
-        tvMiddlePlan.text=silver[1]//silver
+        tvMiddleText.text = silver[0]//silver
+        tvMiddlePlan.text = silver[1]//silver
 
-        val planTitle3=response.data[1].plan_title
+        val planTitle3 = response.data[1].plan_title
         val golden = planTitle3.split(" ")
 
-        tvRightText.text=golden[0]//golden
-        tvRightPlan.text=golden[1].trim()//golden
+        tvRightText.text = golden[0]//golden
+        tvRightPlan.text = golden[1].trim()//golden
 
 
         val description = response.data[0].plan_description
@@ -313,7 +331,7 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
         if (response!!.status.equals("fail")) {
             toastMessage(response.message)
         } else {
-           showSubscribeDialog1(this, getString(R.string.plan_subscribe_success))
+            showSubscribeDialog1(this, getString(R.string.plan_subscribe_success))
         }
     }
 
@@ -341,7 +359,6 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
     protected fun getCreditCardInfo() {
         tvSubscribe.isEnabled = false
 
-        cardResponce = StripeSaveCardResponce()
         object : AsyncTask<Void, Void, ExternalAccountCollection>() {
             override fun onPreExecute() {
                 super.onPreExecute()
@@ -349,13 +366,29 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
             }
 
             override fun doInBackground(vararg voids: Void): ExternalAccountCollection? {
-                Stripe.apiKey = resources.getString(R.string.StripeKeyTest)
+                // Stripe.apiKey = resources.getString(R.string.StripeKeyTest)
+                Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY
                 var customer: ExternalAccountCollection? = null
                 try {
                     val stripeCustomerId = session!!.getRegistration()!!.getStripe_customer_id()//"cus_Fl6RC2yZA8vTna";//session.getRegistration().getStripe_customer_id();
-                    val cardParams = HashMap<String, Any>()
+                  /*  val cardParams = HashMap<String, Any>()
                     cardParams["object"] = "card"
-                    customer = Customer.retrieve(stripeCustomerId).sources.all(cardParams)
+                    if (Customer.retrieve(stripeCustomerId).sources != null)
+                        customer = Customer.retrieve(stripeCustomerId).sources.all(cardParams)*/
+                    val retrieveParams: MutableMap<String, Any> = HashMap()
+                    val expandList: MutableList<String> = ArrayList()
+                    expandList.add("sources")
+                    retrieveParams["expand"] = expandList
+                    val c = Customer.retrieve(
+                            stripeCustomerId,
+                            retrieveParams,
+                            null
+                    )
+                    customer=c.sources
+                     val params: MutableMap<String, Any> = HashMap()
+                    params["source"] = "tok_mastercard"
+
+                   // val card: Card = customer.sources.create(params) as Card
                 } catch (ignored: StripeException) {
                 }
                 return customer
@@ -367,9 +400,9 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
                 runOnUiThread {
                     tvSubscribe.isEnabled = false
                     if (externalAccountCollection != null) {
+                        cardResponce = StripeSaveCardResponce()
                         cardResponce = Gson().fromJson(externalAccountCollection.toJson(), StripeSaveCardResponce::class.java)
                         Log.e("Size: ", "" + cardResponce.data.size)
-
 
                         for (i in 0 until cardResponce.data.size) {
                             cardResponce.data[i].isMoreDetail = true

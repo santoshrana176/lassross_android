@@ -90,7 +90,7 @@
     <string name="pick_image_intent_chooser_title">Select source</string>
     <string name="coats_and_jackets">COATS AND JACKETS</string>
     <string name="info">INFO</string>
-    <string name="forgot_your_password">Forgot your Password?</string>
+    <string name="forgot_your_password">Forgot Your Password?</string>
     <string name="logout_msg">Do you want to logout</string>
     <string name="confirm_cancel_subscription_text">Are you sure you want to stop auto recurring</string>
     <string name="logout">Logout</string>

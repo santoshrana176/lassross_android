@@ -99,11 +99,9 @@ class TermsPolicyActivity : LasrossParentKotlinActivity(), ApiCallback.SettingsC
 
     override fun onSuccessTermsPolicy(termsPolicyResponse: TermsPolicyResponse?) {
         if (titleBar.equals(getString(R.string.Terms_condition))) {
-            // webViewLayout.loadUrl(termsPolicyResponse!!.content_url.term_and_condition)
             initilization(termsPolicyResponse!!.content_url.term_and_condition)
         } else {
             initilization(termsPolicyResponse!!.content_url.policy)
-            // webViewLayout.loadUrl(termsPolicyResponse!!.content_url.policy)
         }
     }
 

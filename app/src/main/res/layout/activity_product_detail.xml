@@ -280,13 +280,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:focusable="true"
                         android:background="@drawable/small_size_border">
 
                         <TextView
                             android:id="@+id/tv_size"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_25sdp"
-                            android:layout_centerVertical="true"
+                             android:layout_centerVertical="true"
                             android:layout_toStartOf="@id/ivDropdown"
                             android:fontFamily="@font/ibmplexsans_regular"
                             android:gravity="start|center_vertical"
@@ -299,7 +300,7 @@
                             android:layout_width="@dimen/_13sdp"
                             android:layout_height="@dimen/_13sdp"
                             android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
+                             android:layout_centerVertical="true"
                             android:layout_gravity="center_vertical"
                             android:layout_marginEnd="@dimen/_12sdp"
                             android:src="@drawable/ic_drop_down" />
@@ -431,6 +432,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:focusable="true"
                             android:background="@drawable/small_size_border">
 
                             <TextView
@@ -613,8 +615,9 @@
                 android:id="@+id/tvDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
                 android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginBottom="@dimen/_55sdp"
+                android:layout_marginBottom="@dimen/_60sdp"
                 android:fontFamily="@font/ibmplexsans_regular"
                 android:paddingTop="@dimen/_5sdp" />
 

@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
+import com.mindiii.lasross.BuildConfig;
 import com.mindiii.lasross.R;
 import com.mindiii.lasross.app.session.Session;
 import com.mindiii.lasross.base.ApiCallback;
@@ -33,10 +34,13 @@ import com.mindiii.lasross.utils.CommonUtils;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Customer;
+import com.stripe.model.ExternalAccountCollection;
 import com.stripe.model.Token;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -201,7 +205,7 @@ public class AddCardActivity extends LasrossParentActivity implements View.OnCli
 
     @SuppressLint("StaticFieldLeak")
     private void saveCreditCard(final String id) {
-        new AsyncTask<Void, Void, Customer>() {
+        new AsyncTask<Void, Void, ExternalAccountCollection>() {
 
             @Override
             protected void onPreExecute() {
@@ -210,17 +214,28 @@ public class AddCardActivity extends LasrossParentActivity implements View.OnCli
             }
 
             @Override
-            protected Customer doInBackground(Void... voids) {
+            protected ExternalAccountCollection doInBackground(Void... voids) {
                 //sk_test_jVM872jPfk462GPwYDH7mr84
-                Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
-                Customer customer = null;
+               //Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
+               Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
+
+                ExternalAccountCollection customer = null;
                 try {
                     String stripeCustomerId = session.getRegistration().getStripe_customer_id(); //"cus_Fl6RC2yZA8vTna";  //session.getRegistration().getStripe_customer_id();
-                    customer = Customer.retrieve(stripeCustomerId);
-                    Map<String, Object> params = new HashMap<>();
-                    params.put("source", id);
-                    customer.getSources().create(params);
+                  //  customer = Customer.retrieve(stripeCustomerId);
+                  //  Map<String, Object> params = new HashMap<>();
+                 //   params.put("source", id);
 
+                  //  customer.getSources().create(params);
+                    Map<String, Object> retrieveParams = new HashMap<>();
+                      retrieveParams.put("source",id);
+                        Customer  c = Customer.retrieve(
+                            stripeCustomerId,
+                            retrieveParams,
+                                null
+                    );
+                    customer=c.getSources();
+                    customer.create(retrieveParams);
                 } catch (StripeException e) {
                     e.printStackTrace();
                 }
@@ -228,11 +243,12 @@ public class AddCardActivity extends LasrossParentActivity implements View.OnCli
             }
 
             @Override
-            protected void onPostExecute(Customer customer) {
+            protected void onPostExecute(ExternalAccountCollection customer) {
                 super.onPostExecute(customer);
-                tvAddCard.setEnabled(false);
                 hideLoader();
                 if (customer != null) {
+                    tvAddCard.setEnabled(false);
+
                     if (getIntent().getStringExtra("subscriptionScreen") != null) {
                         subscribe(subscriptionPlanId);
                     } else {
@@ -348,8 +364,8 @@ public class AddCardActivity extends LasrossParentActivity implements View.OnCli
         @SuppressLint("WrongThread")
         @Override
         protected Token doInBackground(Void... voids) {
-            Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
-
+          //Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
+         Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
             Token token = null;
             Map<String, Object> tokenParams = new HashMap<>();
             Map<String, Object> cardParams = new HashMap<>();
@@ -374,6 +390,7 @@ public class AddCardActivity extends LasrossParentActivity implements View.OnCli
             // hideLoader();
             if (token != null) {
                 saveCreditCard(token.getId());
+               // saveCreditCard(token.getCard().getId());
             } else {
                 CommonUtils.showCustomAlert(AddCardActivity.this, error);
                 //toastMessage(error);
