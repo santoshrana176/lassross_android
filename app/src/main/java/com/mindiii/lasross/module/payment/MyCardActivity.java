@@ -33,10 +33,10 @@ import com.mindiii.lasross.module.payment.model.FinalPaymentResponse;
 import com.mindiii.lasross.module.payment.model.StripeSaveCardResponce;
 import com.mindiii.lasross.module.payment.presenter.MyCArdPaymentPresenter;
 import com.mindiii.lasross.utils.CommonUtils;
-import com.stripe.Stripe;
+import com.mindiii.lasross.utils.StripeResponse;
+ import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Customer;
-import com.stripe.model.ExternalAccount;
 import com.stripe.model.ExternalAccountCollection;
 
 import java.util.ArrayList;
@@ -52,7 +52,8 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
     private TextView amount;
     private TextView tvNotFoundCard;
     private Button btnAddNewCard, btnUpdateCard, btnClearOrderMyCards;
-    private StripeSaveCardResponce cardResponce;
+   //private StripeSaveCardResponce cardResponce;
+    private StripeResponse cardResponce;
     private CardAdapter cardAdapter;
     private String source_type = "";
     private String shipping_id = "";
@@ -149,8 +150,8 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
     @SuppressLint("StaticFieldLeak")
     protected void showCreditCardInfo() {
         if (CommonUtils.isNetworkAvailable(this)) {
-            cardResponce = new StripeSaveCardResponce();
-            new AsyncTask<Void, Void, ExternalAccount>() {
+           cardResponce = new StripeResponse();
+            new AsyncTask<Void, Void, Customer>() {
                 @Override
                 protected void onPreExecute() {
                     super.onPreExecute();
@@ -158,42 +159,126 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
                 }
 
                 @Override
-                protected ExternalAccount doInBackground(Void... voids) {
-               //  Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
-                  Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
-                    ExternalAccount customer = null;
+                protected Customer doInBackground(Void... voids) {
+                   Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
+                   // Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
+                    String stripeCustomerId = session.getRegistration().getStripe_customer_id();
+
+                  /*  ExternalAccount customer = null;
                     try {
-                        String stripeCustomerId = session.getRegistration().getStripe_customer_id();//"cus_Fl6RC2yZA8vTna";//session.getRegistration().getStripe_customer_id();
+                         Log.d("fbkabfkabjk", "CUSTOMER ID: "+session.getRegistration().getStripe_customer_id());
                         Map<String, Object> cardParams = new HashMap<String, Object>();
                         cardParams.put("object", "card");
+                    //    customer =   Customer.retrieve(stripeCustomerId).getSources().all(cardParams);
                         customer = Customer.retrieve(stripeCustomerId).getDefaultSourceObject();
-                    //.all(cardParams);
+                        Log.d("fbkabfkabjk", "OBJECT: "+customer.getObject());
+                        //.all(cardParams);
                     } catch (StripeException ignored) {
+                        Log.e("fbkabfkabjk---------","StripeException "+ignored.getMessage());
                     }
-                    return customer;
+                    return customer;*/
+
+                 /*   List<String> expandList = new ArrayList<>();
+                    expandList.add("sources");
+
+                    Map<String, Object> retrieveParams = new HashMap<>();
+                    retrieveParams.put("expand", expandList);
+
+                    Customer customer =
+                            null;
+                    try {
+                        customer = Customer.retrieve(
+                                stripeCustomerId,
+                                retrieveParams,
+                                null
+                        );
+                    } catch (StripeException e) {
+                        e.printStackTrace();
+                        Log.d("fbkasjbfjkas", "StripeException: ONE "+e.getMessage());
+                    }
+
+                    Map<String, Object> params = new HashMap<>();
+                    params.put("object", "card");
+                   // params.put("limit", 3);
+
+                    try {
+                        ExternalAccountCollection cards = customer.getSources().list(params);
+
+                        Log.d("fbkasjbfjkas", "ExternalAccountCollection: INNER "+cards.getData().size());
+                    } catch (StripeException e) {
+                        e.printStackTrace();
+                        Log.d("fbkasjbfjkas", "StripeException: TWO "+e.getMessage());
+                    }
+                    return customer;*/
+
+                    List<String> expandList = new ArrayList<>();
+                    expandList.add("sources");
+
+                    Map<String, Object> retrieveParams = new HashMap<>();
+                    retrieveParams.put("expand", expandList);
+
+                    Customer customer =
+                            null;
+                    try {
+                        customer = Customer.retrieve(
+                                stripeCustomerId,
+                                retrieveParams,
+                                null
+                        );
+                    } catch (StripeException e) {
+                        e.printStackTrace();
+                    }
+
+                    Map<String, Object> params = new HashMap<>();
+                    params.put("object", "card");
+
+                  /*  try {
+                        PaymentSourceCollection cards =
+                                customer.getSources().list(params);
+                    } catch (StripeException e) {
+                        e.printStackTrace();
+                    }*/
+
+                    return  customer;
                 }
 
                 @Override
-                protected void onPostExecute(final ExternalAccount externalAccountCollection) {
+                protected void onPostExecute(final Customer externalAccountCollection) {
                     super.onPostExecute(externalAccountCollection);
                     hideLoader();
+                    Log.d("fbkasjbfjkas", "onPostExecute: "+externalAccountCollection.toString());
                     runOnUiThread(new Runnable() {
                         @SuppressLint("SetTextI18n")
                         @Override
                         public void run() {
                             if (externalAccountCollection != null) {
-                                cardResponce = new Gson().fromJson(externalAccountCollection.toJson(), StripeSaveCardResponce.class);
-                                Log.e("Size: ", "" + cardResponce.getData().size());
+                                cardResponce = new Gson().fromJson(externalAccountCollection.toJson(), StripeResponse.class);
+
+                                if(cardResponce.getSources().getData() == null){
+                                    return;
+                                }
+
+                                Log.d("bfkjasbfask", "run: "+cardResponce +" ---- ");
+                                if(cardResponce != null){
+                                    Log.d("bfkjasbfask", "OUTER: " +" ---- ");
+                                    if(cardResponce.getSources() != null){
+                                        Log.d("bfkjasbfask", "INNER: " +" ---- "+cardResponce.getSources().getData().size());
+                                    }
+                                }
+
                                 if (from.equals("PaymentActivity")){
                                     tvSaveCard.setText(R.string.select_cards);
                                 }else {
-                                    if (cardResponce.getData().size()==1){
-                                        tvSaveCard.setText(cardResponce.getData().size() + " " +getString(R.string.saved_card));
+
+                                    if (cardResponce.getSources() != null && cardResponce.getSources().getData().size()==1){
+                                        tvSaveCard.setText(cardResponce.getSources().getData().size() + " " +getString(R.string.saved_card));
                                     }else {
-                                        tvSaveCard.setText(cardResponce.getData().size() + " " +getString(R.string.saved_cards));
+                                        if(cardResponce.getSources().getData() != null){
+                                            tvSaveCard.setText(cardResponce.getSources().getData().size() + " " +getString(R.string.saved_cards));
+                                        }
                                     }
                                 }
-                                if (cardResponce.getData().size() > 0) {
+                                if (cardResponce.getSources().getData() != null && cardResponce.getSources().getData().size() > 0) {
                                     tvSaveCard.setVisibility(View.VISIBLE);
                                     cardsList.setVisibility(View.VISIBLE);
                                     tvNotFoundCard.setVisibility(View.GONE);
@@ -206,15 +291,15 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
                                     btnUpdateCard.setVisibility(View.GONE);
                                     btnAddNewCard.setVisibility(View.VISIBLE);
                                 }
-                                for (int i = 0; i < cardResponce.getData().size(); i++) {
-                                    cardResponce.getData().get(i).setMoreDetail(true);
+                                for (int i = 0; i < cardResponce.getSources().getData().size(); i++) {
+                                    cardResponce.getSources().getData().get(i).setMoreDetail(true);
                                 }
                                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MyCardActivity.this);
                                 cardsList.setLayoutManager(linearLayoutManager);
-                                cardAdapter = new CardAdapter(MyCardActivity.this, cardResponce.getData(), new CardClickListener() {
+                                cardAdapter = new CardAdapter(MyCardActivity.this, cardResponce.getSources().getData(), new CardClickListener() {
                                     @Override
                                     public void deleteOnClick(int position) {
-                                        String id = cardResponce.getData().get(position).getId();
+                                        String id = cardResponce.getSources().getData().get(position).getId();
                                         removedSaveCardApi(id);
                                     }
 
@@ -257,11 +342,11 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
 
                 @Override
                 protected ExternalAccountCollection doInBackground(Void... voids) {
-               //   Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
-                        Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
+                    Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
+                   //Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
                     ExternalAccountCollection customer = null;
                     try {
-                      //  customer = Customer.retrieve(session.getRegistration().getStripe_customer_id()); // session.getRegistration().getStripe_customer_id();
+                        //  customer = Customer.retrieve(session.getRegistration().getStripe_customer_id()); // session.getRegistration().getStripe_customer_id();
                         Map<String, Object> retrieveParams = new HashMap<>();
                         List<String> expandList = new ArrayList<>();
                         expandList.add("sources");

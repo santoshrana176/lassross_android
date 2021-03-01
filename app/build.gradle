@@ -47,7 +47,6 @@ android {
              proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             //dev url
              buildConfigField("String", "BASE_URL", '"https://www.lasross.com/service/api_v1/"')
-
             buildConfigField("String", "STRIPE_PUBLIC_KEY", '"pk_test_51IP8QbI2oDeWaFshBY6mf7xO5WqrxNtiNamzPtI1jFYDyPipIDcW9omQi7g7qfEciNkW1NOSBCg1Wopk9xH9QDJ900eRxijYsS"')
             buildConfigField("String", "STRIPE_SECRET_KEY", '"sk_test_51IP8QbI2oDeWaFshezNlgLIFybcS74yM40XzpLXqYJqWZgaDoM75qBVJJ7AGgMkMh3OmOlhsmV4Gub5SfUVvu73P00K6Pc5m0Z"')
 
@@ -136,7 +135,11 @@ dependencies {
     implementation 'com.google.android.libraries.places:places:2.0.0'
     implementation 'com.google.android.gms:play-services-places:17.0.0'
     //Stripe payment
-    implementation 'com.stripe:stripe-java:7.8.0'
+   implementation "com.stripe:stripe-java:7.8.0"
+
+ //   implementation 'com.stripe:stripe-java:19.28.0'
+    //implementation 'com.stripe:stripe-android:15.0.0'
+
    // implementation 'com.stripe:stripe-android:16.1.1'
     implementation "com.daimajia.swipelayout:library:1.2.0@aar"
 
@@ -150,8 +153,4 @@ repositories {
     maven { url 'https://jitpack.io' }
 
 }
-
-
-//apply plugin: 'kotlin-android'
-//apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'

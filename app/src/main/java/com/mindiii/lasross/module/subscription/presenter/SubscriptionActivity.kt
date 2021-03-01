@@ -20,7 +20,6 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
-import com.mindiii.lasross.BuildConfig
 import com.mindiii.lasross.R
 import com.mindiii.lasross.app.session.Session
 import com.mindiii.lasross.base.ApiCallback
@@ -33,7 +32,6 @@ import com.mindiii.lasross.module.subscription.presenter.adapter.SubscriptionIte
 import com.mindiii.lasross.module.subscription.presenter.model.SubscribeResponse
 import com.stripe.Stripe
 import com.stripe.exception.StripeException
-import com.stripe.model.Card
 import com.stripe.model.Customer
 import com.stripe.model.ExternalAccountCollection
 import kotlinx.android.synthetic.main.active_plan_screen.view.*
@@ -44,7 +42,7 @@ import kotlin.collections.set
 
 class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener, ApiCallback.SubscriptionCallback {
     lateinit var response: SubscriptionResponse
-    lateinit var cardResponce: StripeSaveCardResponce
+    lateinit var cardResponce: com.mindiii.lasross.utils.StripeResponse
     private var session: Session? = null
     private var mLastClickTime: Long = 0
     private var plan_id: String = ""
@@ -115,17 +113,17 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
                     startActivity(Intent(this, HomeActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
                     finish()
                 } else if ((tvMiddleText.text.toString().equals("Silver", ignoreCase = true) || tvMiddleText.text.toString().equals("Plata", ignoreCase = true))) {
-                  //  if (this::cardResponce.isInitialized) {
-                        if (cardResponce.data.size > 0) {
-                            plan_id = response.data.get(0).subscriptionPlanId
-                            subscribe(plan_id)
-                        } else {
-                            plan_id = response.data.get(0).subscriptionPlanId
-                            startActivity(Intent(this, AddCardActivity::class.java)
-                                    .putExtra("subscriptionScreen", "fromSubscription")
-                                    .putExtra("subscriptionPlanId", plan_id))
-                        }
-                  /*  } else {
+                    //  if (this::cardResponce.isInitialized) {
+                    if (cardResponce.sources.data.size > 0) {
+                        plan_id = response.data.get(0).subscriptionPlanId
+                        subscribe(plan_id)
+                    } else {
+                        plan_id = response.data.get(0).subscriptionPlanId
+                        startActivity(Intent(this, AddCardActivity::class.java)
+                                .putExtra("subscriptionScreen", "fromSubscription")
+                                .putExtra("subscriptionPlanId", plan_id))
+                    }
+                    /*  } else {
                         plan_id = response.data.get(0).subscriptionPlanId
                         startActivity(Intent(this, AddCardActivity::class.java)
                                 .putExtra("subscriptionScreen", "fromSubscription")
@@ -133,17 +131,17 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
                     }*/
                 } else if ((tvMiddleText.text.toString().equals("Golden", ignoreCase = true) || tvMiddleText.text.toString().equals("Dorada", ignoreCase = true))) {
 
-                  //  if (this::cardResponce.isInitialized) {
+                    //  if (this::cardResponce.isInitialized) {
 
-                        if (cardResponce.data.size > 0) {
-                            plan_id = response.data.get(1).subscriptionPlanId
-                            subscribe(plan_id)
-                        } else {
-                            plan_id = response.data.get(1).subscriptionPlanId
-                            startActivity(Intent(this, AddCardActivity::class.java)
-                                    .putExtra("subscriptionScreen", "fromSubscription")
-                                    .putExtra("subscriptionPlanId", plan_id))
-                        }
+                    if (cardResponce.sources.data.size > 0) {
+                        plan_id = response.data.get(1).subscriptionPlanId
+                        subscribe(plan_id)
+                    } else {
+                        plan_id = response.data.get(1).subscriptionPlanId
+                        startActivity(Intent(this, AddCardActivity::class.java)
+                                .putExtra("subscriptionScreen", "fromSubscription")
+                                .putExtra("subscriptionPlanId", plan_id))
+                    }
                     /*} else {
                         plan_id = response.data.get(1).subscriptionPlanId
                         startActivity(Intent(this, AddCardActivity::class.java)
@@ -366,15 +364,15 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
             }
 
             override fun doInBackground(vararg voids: Void): ExternalAccountCollection? {
-                // Stripe.apiKey = resources.getString(R.string.StripeKeyTest)
-                Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY
+             Stripe.apiKey = resources.getString(R.string.StripeKeyTest)
+           //Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY
                 var customer: ExternalAccountCollection? = null
                 try {
                     val stripeCustomerId = session!!.getRegistration()!!.getStripe_customer_id()//"cus_Fl6RC2yZA8vTna";//session.getRegistration().getStripe_customer_id();
-                  /*  val cardParams = HashMap<String, Any>()
+                    val cardParams = HashMap<String, Any>()
                     cardParams["object"] = "card"
                     if (Customer.retrieve(stripeCustomerId).sources != null)
-                        customer = Customer.retrieve(stripeCustomerId).sources.all(cardParams)*/
+                        customer = Customer.retrieve(stripeCustomerId).sources.all(cardParams)
                     val retrieveParams: MutableMap<String, Any> = HashMap()
                     val expandList: MutableList<String> = ArrayList()
                     expandList.add("sources")
@@ -392,6 +390,29 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
                 } catch (ignored: StripeException) {
                 }
                 return customer
+         /*       Stripe.apiKey = resources.getString(R.string.StripeKeyTest)
+                //Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
+                //Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
+                var customer: ExternalAccountCollection? = null
+                try {
+                    //  customer = Customer.retrieve(session.getRegistration().getStripe_customer_id()); // session.getRegistration().getStripe_customer_id();
+                    val retrieveParams: MutableMap<String, Any> = HashMap()
+                    val expandList: MutableList<String> = java.util.ArrayList()
+                    expandList.add("sources")
+                    retrieveParams["expand"] = expandList
+                    val c = Customer.retrieve(
+                            session!!.registration.stripe_customer_id,
+                            retrieveParams,
+                            null
+                    )
+                    customer = c.sources
+                    customer.retrieve(id).delete()
+                } catch (e: StripeException) {
+                    e.printStackTrace()
+                    hideLoader()
+                    toastMessage(e.localizedMessage)
+                }
+                return customer*/
             }
 
             override fun onPostExecute(externalAccountCollection: ExternalAccountCollection?) {
@@ -401,11 +422,11 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
                     tvSubscribe.isEnabled = false
                     if (externalAccountCollection != null) {
                         cardResponce = StripeSaveCardResponce()
-                        cardResponce = Gson().fromJson(externalAccountCollection.toJson(), StripeSaveCardResponce::class.java)
-                        Log.e("Size: ", "" + cardResponce.data.size)
+                        cardResponce = Gson().fromJson(externalAccountCollection.toJson(), com.mindiii.lasross.utils.StripeResponse::class.java)
+                        Log.e("Size: ", "" + cardResponce.sources.data.size)
 
-                        for (i in 0 until cardResponce.data.size) {
-                            cardResponce.data[i].isMoreDetail = true
+                        for (i in 0 until cardResponce.sources.data.size) {
+                            cardResponce.sources.data[i].isMoreDetail = true
                         }
                     }
                 }

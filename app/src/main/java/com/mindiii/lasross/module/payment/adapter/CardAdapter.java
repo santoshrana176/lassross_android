@@ -23,13 +23,14 @@ import com.daimajia.swipe.SwipeLayout;
 import com.mindiii.lasross.R;
 import com.mindiii.lasross.base.ClickListener;
 import com.mindiii.lasross.module.payment.model.StripeSaveCardResponce;
+import com.mindiii.lasross.utils.StripeResponse;
 
 import java.util.List;
 import java.util.Objects;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
-    private List<StripeSaveCardResponce.DataBean> cardList;
+    private List<StripeResponse.Datum> cardList;
     private Context context;
     private ClickListener.CardClickListener cardClickListener;
     private int selectedPosition = -1;
@@ -38,7 +39,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     private long mLastClickTime = 0;
     private ViewHolder mHolder = null;
 
-    public CardAdapter(Context context, List<StripeSaveCardResponce.DataBean> cardList, ClickListener.CardClickListener cardClickListener, String cardSelection) {
+    public CardAdapter(Context context, List<StripeResponse.Datum> cardList, ClickListener.CardClickListener cardClickListener, String cardSelection) {
         this.cardList = cardList;
         this.context = context;
         this.cardClickListener = cardClickListener;
@@ -55,7 +56,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        StripeSaveCardResponce.DataBean dataBean = cardList.get(position);
+        StripeResponse.Datum dataBean = cardList.get(position);
 
         holder.tvCardNumberShow.setText(dataBean.getBrand());
         holder.tvExpDateShow.setText("**** **** **** " + dataBean.getLast4());

@@ -51,9 +51,9 @@ public class AddCardActivity extends LasrossParentActivity implements View.OnCli
     private EditText etCVV;
     private TextView tvAddCard;
     private String error = "", subscriptionPlanId = "";
-    private int  width;
-    private int  month1=0;
-    private int  year1=0;
+    private int width;
+    private int month1 = 0;
+    private int year1 = 0;
     private long mLastClickTime = 0;
     private Session session;
 
@@ -108,7 +108,7 @@ public class AddCardActivity extends LasrossParentActivity implements View.OnCli
         mLastClickTime = SystemClock.elapsedRealtime();
         switch (view.getId()) {
             case R.id.etExpiryDate:
-                    showMonthYearDialog(month1,year1);
+                showMonthYearDialog(month1, year1);
                 break;
             case R.id.ivUnChecked:
                 if (ivUnChecked.getVisibility() == View.VISIBLE) {
@@ -123,44 +123,43 @@ public class AddCardActivity extends LasrossParentActivity implements View.OnCli
                 }
                 break;
             case R.id.tvAddCard:
-                    String name = etName.getText().toString().trim();
-                    String cardNumber = etCardNumber.getText().toString().trim();
-                    String expiryDate = etExpiryDate.getText().toString().trim();
-                    String cvv = etCVV.getText().toString().trim();
+                String name = etName.getText().toString().trim();
+                String cardNumber = etCardNumber.getText().toString().trim();
+                String expiryDate = etExpiryDate.getText().toString().trim();
+                String cvv = etCVV.getText().toString().trim();
 
                      /*
                      Please enter valid name
                      Please enter expiry date
                      CVV number must be 3 digit long*/
 
-                    if (name.isEmpty()) {
-                        CommonUtils.showCustomAlert(this, getResources().getString(R.string.enter_card_holder_name));
-                        return;
-                    } else if (cardNumber.isEmpty()) {
-                        CommonUtils.showCustomAlert(this, getResources().getString(R.string.enter_card_no));
-                        return;
-                    }  else if (cardNumber.length() < 16) {
-                        CommonUtils.showCustomAlert(this, getResources().getString(R.string.card_no_sixteen_digit));
-                        return;
-                    }else  if (expiryDate.isEmpty()){
-                        CommonUtils.showCustomAlert(this, getString(R.string.expiry_date_text));
-                    }
-                    else if (cvv.isEmpty()) {
-                        CommonUtils.showCustomAlert(this, getResources().getString(R.string.enter_cvv));
-                        return;
-                    } else if (cvv.length() < 3) {
-                        CommonUtils.showCustomAlert(this, getResources().getString(R.string.cvv_no_three_digit));
-                        return;
+                if (name.isEmpty()) {
+                    CommonUtils.showCustomAlert(this, getResources().getString(R.string.enter_card_holder_name));
+                    return;
+                } else if (cardNumber.isEmpty()) {
+                    CommonUtils.showCustomAlert(this, getResources().getString(R.string.enter_card_no));
+                    return;
+                } else if (cardNumber.length() < 16) {
+                    CommonUtils.showCustomAlert(this, getResources().getString(R.string.card_no_sixteen_digit));
+                    return;
+                } else if (expiryDate.isEmpty()) {
+                    CommonUtils.showCustomAlert(this, getString(R.string.expiry_date_text));
+                } else if (cvv.isEmpty()) {
+                    CommonUtils.showCustomAlert(this, getResources().getString(R.string.enter_cvv));
+                    return;
+                } else if (cvv.length() < 3) {
+                    CommonUtils.showCustomAlert(this, getResources().getString(R.string.cvv_no_three_digit));
+                    return;
+                } else {
+                    if (CommonUtils.isNetworkAvailable(this)) {
+                        showLoader();
+                        AsyncTaskRunner asyncTaskRunner = new AsyncTaskRunner();
+                        asyncTaskRunner.execute();
                     } else {
-                        if (CommonUtils.isNetworkAvailable(this)) {
-                            showLoader();
-                            AsyncTaskRunner asyncTaskRunner = new AsyncTaskRunner();
-                            asyncTaskRunner.execute();
-                        }else {
-                            showInternetAlertDialog(this);
-                        }
-
+                        showInternetAlertDialog(this);
                     }
+
+                }
 
                 break;
             case R.id.btnBackToCard:
@@ -205,7 +204,7 @@ public class AddCardActivity extends LasrossParentActivity implements View.OnCli
 
     @SuppressLint("StaticFieldLeak")
     private void saveCreditCard(final String id) {
-        new AsyncTask<Void, Void, ExternalAccountCollection>() {
+        new AsyncTask<Void, Void, Customer>() {
 
             @Override
             protected void onPreExecute() {
@@ -214,47 +213,110 @@ public class AddCardActivity extends LasrossParentActivity implements View.OnCli
             }
 
             @Override
-            protected ExternalAccountCollection doInBackground(Void... voids) {
+            protected Customer doInBackground(Void... voids) {
                 //sk_test_jVM872jPfk462GPwYDH7mr84
-               //Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
-               Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
-
+                Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
+                // Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
+                String stripeCustomerId = session.getRegistration().getStripe_customer_id();
+/*
                 ExternalAccountCollection customer = null;
                 try {
                     String stripeCustomerId = session.getRegistration().getStripe_customer_id(); //"cus_Fl6RC2yZA8vTna";  //session.getRegistration().getStripe_customer_id();
-                  //  customer = Customer.retrieve(stripeCustomerId);
-                  //  Map<String, Object> params = new HashMap<>();
-                 //   params.put("source", id);
+                    //  customer = Customer.retrieve(stripeCustomerId);
+                    //  Map<String, Object> params = new HashMap<>();
+                    //   params.put("source", id);
 
-                  //  customer.getSources().create(params);
+                    //  customer.getSources().create(params);
                     Map<String, Object> retrieveParams = new HashMap<>();
-                      retrieveParams.put("source",id);
-                        Customer  c = Customer.retrieve(
+                    retrieveParams.put("source",id);
+
+
+                    Customer  c = Customer.retrieve(
                             stripeCustomerId,
                             retrieveParams,
-                                null
+                            null
                     );
+                    c.setSources(customer);
                     customer=c.getSources();
                     customer.create(retrieveParams);
+
+                } catch (StripeException e) {
+                    e.printStackTrace();
+                    Log.d("fnalfkla", "doInBackground: "+e.getMessage());
+                }
+                return customer;*/
+
+                 /*  Customer customer = null;
+                try {
+                        customer = Customer.retrieve(stripeCustomerId);
+                    Map<String, Object> params = new HashMap<>();
+                    params.put("source", id);
+                    customer.getSources().create(params);
+
+                } catch (StripeException e) {
+                    e.printStackTrace();
+                    Log.d("fnalfkla", "doInBackground: " + e.getMessage());
+                }
+                return customer;    */
+
+                /* Customer customer = null;
+                try {
+                    Log.e("stripeCustomerId", stripeCustomerId);
+                    customer = Customer.retrieve(stripeCustomerId);
+                    Map<String, Object> retrieveParams = new HashMap<>();
+                    retrieveParams.put("source",id);
+                    customer.getSources().create(retrieveParams);
+
+                } catch (StripeException e) {
+                    e.printStackTrace();
+                    Log.d("TAG", "doInBackground: " + e.getMessage());
+                }
+                return customer;*/
+
+
+                List<String> expandList = new ArrayList<>();
+                expandList.add("sources");
+
+                Map<String, Object> retrieveParams = new HashMap<>();
+                retrieveParams.put("expand", expandList);
+
+                Customer customer =
+                        null;
+                try {
+                    customer = Customer.retrieve(
+                            stripeCustomerId,
+                            retrieveParams,
+                            null
+                    );
                 } catch (StripeException e) {
                     e.printStackTrace();
                 }
+                Map<String, Object> params = new HashMap<>();
+                params.put("source", id);
+                try {
+                    customer.getSources().create(params);
+                } catch (StripeException e) {
+                    e.printStackTrace();
+                }
+
                 return customer;
             }
 
+            
             @Override
-            protected void onPostExecute(ExternalAccountCollection customer) {
+            protected void onPostExecute(Customer customer) {
                 super.onPostExecute(customer);
                 hideLoader();
+                Log.d("fnalfkla", "onPostExecute: " + customer);
                 if (customer != null) {
                     tvAddCard.setEnabled(false);
-
                     if (getIntent().getStringExtra("subscriptionScreen") != null) {
                         subscribe(subscriptionPlanId);
                     } else {
                         showAlertDialog(AddCardActivity.this, getString(R.string.card_add_success));
                     }
                 } else {
+                    Log.d("fnalfkla", "ERRRORRRRR: " + customer);
                     toastMessage("Stripe Error");
                 }
             }
@@ -293,12 +355,12 @@ public class AddCardActivity extends LasrossParentActivity implements View.OnCli
 
     //*************show  MonthYear  Dialog *******************//
     private void showMonthYearDialog(int month11, int year11) {
-        int year=0;
-        int month=0;
-        if (month1!=0){
-            month=month11;
-            year=year11;
-        }else {
+        int year = 0;
+        int month = 0;
+        if (month1 != 0) {
+            month = month11;
+            year = year11;
+        } else {
             year = Calendar.getInstance().get(Calendar.YEAR);
             month = Calendar.getInstance().get(Calendar.MONTH);
         }
@@ -364,8 +426,8 @@ public class AddCardActivity extends LasrossParentActivity implements View.OnCli
         @SuppressLint("WrongThread")
         @Override
         protected Token doInBackground(Void... voids) {
-          //Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
-         Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
+            Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
+            // Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
             Token token = null;
             Map<String, Object> tokenParams = new HashMap<>();
             Map<String, Object> cardParams = new HashMap<>();
@@ -384,13 +446,16 @@ public class AddCardActivity extends LasrossParentActivity implements View.OnCli
             return token;
         }
 
+        //tok_1IQBb1I2oDeWaFshAwOkPFnO
+        //card_1IQBb1I2oDeWaFshJ8ZaFRgf//card_1IQBfmI2oDeWaFsh7reNyQmj
         @Override
         protected void onPostExecute/*cardResponce.data!=null &&*/(Token token) {
             super.onPostExecute(token);
+
             // hideLoader();
             if (token != null) {
                 saveCreditCard(token.getId());
-               // saveCreditCard(token.getCard().getId());
+                //saveCreditCard(token.getCard().getId());
             } else {
                 CommonUtils.showCustomAlert(AddCardActivity.this, error);
                 //toastMessage(error);

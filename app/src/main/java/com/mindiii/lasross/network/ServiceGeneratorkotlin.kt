@@ -35,7 +35,7 @@ class ServiceGeneratorkotlin {
             .create()
 
     private val builder = Retrofit.Builder()
-            .baseUrl(/*API_BASE_URL*/BuildConfig.BASE_URL)
+                .baseUrl(/*API_BASE_URL*/BuildConfig.BASE_URL)
 
 
     fun <S> createService(serviceClass: Class<S>): S {

@@ -41,7 +41,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="up_to_50off">Up to 50% OFF !</string>
     <string name="sort_by">SORT BY</string>
-    <string name="StripeKeyTest">sk_test_jVM872jPfk462GPwYDH7mr84<!--sk_test_51IP8QbI2oDeWaFshezNlgLIFybcS74yM40XzpLXqYJqWZgaDoM75qBVJJ7AGgMkMh3OmOlhsmV4Gub5SfUVvu73P00K6Pc5m0Z--></string>
+    <string name="StripeKeyTest"><!--sk_test_jVM872jPfk462GPwYDH7mr84-->sk_test_51IP8QbI2oDeWaFshezNlgLIFybcS74yM40XzpLXqYJqWZgaDoM75qBVJJ7AGgMkMh3OmOlhsmV4Gub5SfUVvu73P00K6Pc5m0Z</string>
     <string name="sort_default">Default Sorting</string>
     <string name="sort_popularity">Sort By Popularity</string>
     <string name="sort_rating">Sort By Average Rating</string>

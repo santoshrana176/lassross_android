@@ -1,8 +1,10 @@
 package com.mindiii.lasross.module.payment.model;
 
+import com.mindiii.lasross.utils.StripeResponse;
+
 import java.util.List;
 
-public class StripeSaveCardResponce {
+public class StripeSaveCardResponce extends StripeResponse {
     /**
      * count : null
      * data : [{"address_city":null,"address_country":null,"address_line1":null,"address_line1_check":null,"address_line2":null,"address_state":null,"address_zip":null,"address_zip_check":null,"available_payout_methods":null,"brand":"Visa","country":"US","currency":null,"cvc_check":"pass","default_for_currency":null,"deleted":null,"description":null,"dynamic_last4":null,"exp_month":10,"exp_year":2023,"fingerprint":"xQUClG00Wnpubm6b","funding":"credit","iin":null,"issuer":null,"last4":"4242","name":null,"recipient":null,"status":null,"three_d_secure":null,"tokenization_method":null,"type":null,"account":null,"customer":"cus_E2nQFXkVY4FrpL","id":"card_1DaixWAx9wBOzcgNgKKABdUR","metadata":{},"object":"card"},{"address_city":null,"address_country":null,"address_line1":null,"address_line1_check":null,"address_line2":null,"address_state":null,"address_zip":null,"address_zip_check":null,"available_payout_methods":null,"brand":"Visa","country":"US","currency":null,"cvc_check":"pass","default_for_currency":null,"deleted":null,"description":null,"dynamic_last4":null,"exp_month":10,"exp_year":2026,"fingerprint":"xQUClG00Wnpubm6b","funding":"credit","iin":null,"issuer":null,"last4":"4242","name":null,"recipient":null,"status":null,"three_d_secure":null,"tokenization_method":null,"type":null,"account":null,"customer":"cus_E2nQFXkVY4FrpL","id":"card_1DajcuAx9wBOzcgNIfq6g90l","metadata":{},"object":"card"},{"address_city":null,"address_country":null,"address_line1":null,"address_line1_check":null,"address_line2":null,"address_state":null,"address_zip":null,"address_zip_check":null,"available_payout_methods":null,"brand":"Visa","country":"US","currency":null,"cvc_check":"pass","default_for_currency":null,"deleted":null,"description":null,"dynamic_last4":null,"exp_month":10,"exp_year":2025,"fingerprint":"xQUClG00Wnpubm6b","funding":"credit","iin":null,"issuer":null,"last4":"4242","name":null,"recipient":null,"status":null,"three_d_secure":null,"tokenization_method":null,"type":null,"account":null,"customer":"cus_E2nQFXkVY4FrpL","id":"card_1DajVOAx9wBOzcgNSuFmmbyb","metadata":{},"object":"card"}]

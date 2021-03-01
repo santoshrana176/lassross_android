@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Lasross</string>
-     <string name="StripeKeyTest">sk_test_jVM872jPfk462GPwYDH7mr84</string>
+     <string name="StripeKeyTest"><!--sk_test_jVM872jPfk462GPwYDH7mr84-->sk_test_51IP8QbI2oDeWaFshezNlgLIFybcS74yM40XzpLXqYJqWZgaDoM75qBVJJ7AGgMkMh3OmOlhsmV4Gub5SfUVvu73P00K6Pc5m0Z</string>
     <string name="abc">abc</string>
     <string name="accounts">Cuenta</string>
     <string name="active_plan">Plan activo</string>
