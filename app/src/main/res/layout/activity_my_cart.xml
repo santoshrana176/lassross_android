@@ -121,7 +121,7 @@
                     android:layout_below="@id/cartListRecyclerView"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
 
                     <TextView

@@ -14,6 +14,7 @@ import com.mindiii.lasross.module.settings.SettingActivity
 
 class ProfileActivity : LasrossParentKotlinActivity() {
     var from: String = ""
+
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,15 +37,11 @@ class ProfileActivity : LasrossParentKotlinActivity() {
     override fun onPostResume() {
         super.onPostResume()
         val fragment = supportFragmentManager.findFragmentById(R.id.profileFrame)
-        if (SettingActivity.isScreenRefres){
-            SettingActivity.isScreenRefres=false
-
-        if (fragment is ProfileFragment) {
-            supportFragmentManager.beginTransaction().detach(fragment).attach(fragment).commit() //refreshing fragment
-          //  val profileFragment = fragment
-           // profileFragment.apiCalling()
-           // profileFragment.getAddressListApi()
-         }
+        if (SettingActivity.isScreenRefres) {
+            SettingActivity.isScreenRefres = false
+            if (fragment is ProfileFragment) {
+                supportFragmentManager.beginTransaction().detach(fragment).attach(fragment).commit()
+            }
         }
     }
 
@@ -58,7 +55,7 @@ class ProfileActivity : LasrossParentKotlinActivity() {
     }
 
     override fun onBackPressed() {
-      //  super.onBackPressed()
+        //  super.onBackPressed()
         val fragment = supportFragmentManager.findFragmentById(R.id.profileFrame)
         val count = supportFragmentManager.backStackEntryCount
 
@@ -66,11 +63,11 @@ class ProfileActivity : LasrossParentKotlinActivity() {
             startActivity(Intent(this, HomeActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
             finish()
         }
-        if (fragment is UpdateProfileFragment){
+        if (fragment is UpdateProfileFragment) {
             if (supportFragmentManager.backStackEntryCount > 0) {
                 supportFragmentManager.popBackStackImmediate()
                 if (from.equals("Settings"))
-                super.onBackPressed()
+                    super.onBackPressed()
             }
         }
     }

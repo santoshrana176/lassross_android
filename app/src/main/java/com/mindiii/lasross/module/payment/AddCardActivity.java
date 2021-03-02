@@ -19,10 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-
 import androidx.annotation.RequiresApi;
-
-import com.mindiii.lasross.BuildConfig;
 import com.mindiii.lasross.R;
 import com.mindiii.lasross.app.session.Session;
 import com.mindiii.lasross.base.ApiCallback;

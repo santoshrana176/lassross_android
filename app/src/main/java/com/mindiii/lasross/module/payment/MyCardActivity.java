@@ -161,64 +161,12 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
                 @Override
                 protected Customer doInBackground(Void... voids) {
                    Stripe.apiKey = getResources().getString(R.string.StripeKeyTest);
-                   // Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
                     String stripeCustomerId = session.getRegistration().getStripe_customer_id();
-
-                  /*  ExternalAccount customer = null;
-                    try {
-                         Log.d("fbkabfkabjk", "CUSTOMER ID: "+session.getRegistration().getStripe_customer_id());
-                        Map<String, Object> cardParams = new HashMap<String, Object>();
-                        cardParams.put("object", "card");
-                    //    customer =   Customer.retrieve(stripeCustomerId).getSources().all(cardParams);
-                        customer = Customer.retrieve(stripeCustomerId).getDefaultSourceObject();
-                        Log.d("fbkabfkabjk", "OBJECT: "+customer.getObject());
-                        //.all(cardParams);
-                    } catch (StripeException ignored) {
-                        Log.e("fbkabfkabjk---------","StripeException "+ignored.getMessage());
-                    }
-                    return customer;*/
-
-                 /*   List<String> expandList = new ArrayList<>();
-                    expandList.add("sources");
-
-                    Map<String, Object> retrieveParams = new HashMap<>();
-                    retrieveParams.put("expand", expandList);
-
-                    Customer customer =
-                            null;
-                    try {
-                        customer = Customer.retrieve(
-                                stripeCustomerId,
-                                retrieveParams,
-                                null
-                        );
-                    } catch (StripeException e) {
-                        e.printStackTrace();
-                        Log.d("fbkasjbfjkas", "StripeException: ONE "+e.getMessage());
-                    }
-
-                    Map<String, Object> params = new HashMap<>();
-                    params.put("object", "card");
-                   // params.put("limit", 3);
-
-                    try {
-                        ExternalAccountCollection cards = customer.getSources().list(params);
-
-                        Log.d("fbkasjbfjkas", "ExternalAccountCollection: INNER "+cards.getData().size());
-                    } catch (StripeException e) {
-                        e.printStackTrace();
-                        Log.d("fbkasjbfjkas", "StripeException: TWO "+e.getMessage());
-                    }
-                    return customer;*/
-
                     List<String> expandList = new ArrayList<>();
                     expandList.add("sources");
-
                     Map<String, Object> retrieveParams = new HashMap<>();
                     retrieveParams.put("expand", expandList);
-
-                    Customer customer =
-                            null;
+                    Customer customer = null;
                     try {
                         customer = Customer.retrieve(
                                 stripeCustomerId,
@@ -231,13 +179,6 @@ public class MyCardActivity extends LasrossParentActivity implements View.OnClic
 
                     Map<String, Object> params = new HashMap<>();
                     params.put("object", "card");
-
-                  /*  try {
-                        PaymentSourceCollection cards =
-                                customer.getSources().list(params);
-                    } catch (StripeException e) {
-                        e.printStackTrace();
-                    }*/
 
                     return  customer;
                 }

@@ -26,15 +26,13 @@ import com.mindiii.lasross.base.ApiCallback
 import com.mindiii.lasross.base.LasrossParentKotlinActivity
 import com.mindiii.lasross.module.home.HomeActivity
 import com.mindiii.lasross.module.payment.AddCardActivity
-import com.mindiii.lasross.module.payment.model.StripeSaveCardResponce
 import com.mindiii.lasross.module.subscription.presenter.SubscriptionPresenter
 import com.mindiii.lasross.module.subscription.presenter.adapter.SubscriptionItemDescriptionAdapter
 import com.mindiii.lasross.module.subscription.presenter.model.SubscribeResponse
+import com.mindiii.lasross.utils.StripeResponse
 import com.stripe.Stripe
 import com.stripe.exception.StripeException
 import com.stripe.model.Customer
-import com.stripe.model.ExternalAccountCollection
-import kotlinx.android.synthetic.main.active_plan_screen.view.*
 import kotlinx.android.synthetic.main.subscription_screen.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -42,6 +40,7 @@ import kotlin.collections.set
 
 class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener, ApiCallback.SubscriptionCallback {
     lateinit var response: SubscriptionResponse
+    lateinit var mTempList: ArrayList<Data>
     lateinit var cardResponce: com.mindiii.lasross.utils.StripeResponse
     private var session: Session? = null
     private var mLastClickTime: Long = 0
@@ -67,7 +66,7 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
             iv_subcribeBack.visibility = View.VISIBLE
         }
 
-
+        mTempList = ArrayList()
         subscriptionApiCAll()
         getCreditCardInfo()
 
@@ -112,77 +111,72 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
                 if (tvMiddleText.text.toString().equals("Free", ignoreCase = true) || tvMiddleText.text.toString().equals("Libre", ignoreCase = true)) {
                     startActivity(Intent(this, HomeActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
                     finish()
-                } else if ((tvMiddleText.text.toString().equals("Silver", ignoreCase = true) || tvMiddleText.text.toString().equals("Plata", ignoreCase = true))) {
-                    //  if (this::cardResponce.isInitialized) {
+                }else {
+                    plan_id = mTempList[0].subscriptionPlanId
                     if (cardResponce.sources.data.size > 0) {
-                        plan_id = response.data.get(0).subscriptionPlanId
                         subscribe(plan_id)
-                    } else {
-                        plan_id = response.data.get(0).subscriptionPlanId
-                        startActivity(Intent(this, AddCardActivity::class.java)
+                    }else{
+                         startActivity(Intent(this, AddCardActivity::class.java)
                                 .putExtra("subscriptionScreen", "fromSubscription")
                                 .putExtra("subscriptionPlanId", plan_id))
                     }
-                    /*  } else {
-                        plan_id = response.data.get(0).subscriptionPlanId
-                        startActivity(Intent(this, AddCardActivity::class.java)
-                                .putExtra("subscriptionScreen", "fromSubscription")
-                                .putExtra("subscriptionPlanId", plan_id))
-                    }*/
-                } else if ((tvMiddleText.text.toString().equals("Golden", ignoreCase = true) || tvMiddleText.text.toString().equals("Dorada", ignoreCase = true))) {
-
-                    //  if (this::cardResponce.isInitialized) {
-
-                    if (cardResponce.sources.data.size > 0) {
-                        plan_id = response.data.get(1).subscriptionPlanId
-                        subscribe(plan_id)
-                    } else {
-                        plan_id = response.data.get(1).subscriptionPlanId
-                        startActivity(Intent(this, AddCardActivity::class.java)
-                                .putExtra("subscriptionScreen", "fromSubscription")
-                                .putExtra("subscriptionPlanId", plan_id))
-                    }
-                    /*} else {
-                        plan_id = response.data.get(1).subscriptionPlanId
-                        startActivity(Intent(this, AddCardActivity::class.java)
-                                .putExtra("subscriptionScreen", "fromSubscription")
-                                .putExtra("subscriptionPlanId", plan_id))
-                    }*/
                 }
             }
             R.id.iv_subcribeBack -> {
                 onBackPressed()
             }
             R.id.llRightLayout -> {
-                if (tvRightText.text.toString().trim().equals("Golden", ignoreCase = true) || tvRightText.text.toString().trim().equals("Dorada", ignoreCase = true)) {
-                    tvSubscribe.text = getString(R.string.subscribe)
-                    setGoldenPlanData()
-                } else if (tvRightText.text.toString().trim().equals("Silver", ignoreCase = true) || tvRightText.text.toString().trim().equals("Plata", ignoreCase = true)) {
-                    tvSubscribe.text = getString(R.string.subscribe)
-                    setSilverPlanData()
-                } else if (tvRightText.text.toString().trim().equals("Free", ignoreCase = true) || tvRightText.text.toString().trim().equals("Libre", ignoreCase = true) || tvLeftText.text.toString().trim().equals("gratuito", ignoreCase = true)) {
-                    tvSubscribe.text = getString(R.string.subscribe_free)
-                    setFreePlanData()
-                }
+                Collections.swap(mTempList, 0, 1);
+                Collections.swap(mTempList, 1, 2);
+                updateUi(mTempList)
             }
             R.id.llLeftLayout -> {
-                if (tvLeftText.text.toString().trim().equals("Golden", ignoreCase = true) || tvLeftText.text.toString().trim().equals("Dorada", ignoreCase = true)) {
-                    tvSubscribe.text = getString(R.string.subscribe)
-                    setGoldenPlanData()
-                } else if (tvLeftText.text.toString().trim().equals("Silver", ignoreCase = true) || tvLeftText.text.toString().trim().equals("Plata", ignoreCase = true)) {
-                    tvSubscribe.text = getString(R.string.subscribe)
-                    setSilverPlanData()
-                } else if (tvLeftText.text.toString().trim().equals("Free", ignoreCase = true) || tvLeftText.text.toString().trim().equals("Libre", ignoreCase = true) || tvLeftText.text.toString().trim().equals("gratuito", ignoreCase = true)) {
-                    tvSubscribe.text = getString(R.string.subscribe_free)
-                    setFreePlanData()
-                }
-            }
+                Collections.swap(mTempList, 0, 2);
+                Collections.swap(mTempList, 1, 2);
+                updateUi(mTempList)
+                     }
         }
     }
 
-    fun setAdapterData(i: Int) {
+    private fun updateUi(mTempList: ArrayList<Data>) {
+        for (i  in 0 until mTempList.size){
+            val planTitle = mTempList[i].plan_title
+            val titleNames = planTitle.split(" ")
+            if (i==0){
+                tvMiddleText.text = titleNames[0]//silver
+                tvMiddlePlan.text = titleNames[1].trim()//silver
+
+                ivMiddleImage.setImageResource(mTempList[i].imageIdActive)
+
+                tvplanPriceCurrency.text = mTempList[i].plan_currency
+                tvplanPrice.text = mTempList[i].plan_price
+
+                if (!titleNames[0].equals("free",true) || !titleNames[0].equals("libre",true))
+                tvplanDuration.text = " / " + mTempList[i].plan_duration + " " + mTempList[i].plan_duration_type
+                setAdapterData(mTempList[i].plan_description)
+            }
+            if (i==1){
+                tvRightText.text = titleNames[0]//golden
+                tvRightPlan.text = titleNames[1].trim()//golden
+                ivRightImage.setImageResource(mTempList[i].imageIdDeActive)
+            }
+            if (i==2){
+                tvLeftText.text = titleNames[0]//free
+                tvLeftPlan.text = titleNames[1].trim()//free
+                ivLeftImage.setImageResource(mTempList[i].imageIdDeActive)
+            }
+        }
+    val title=tvMiddleText.text.toString()
+        if (title.equals("free",true)||title.equals("libre",true)){
+            tvSubscribe.text = getString(R.string.subscribe_free)
+        }else{
+            tvSubscribe.text = getString(R.string.subscribe)
+        }
+    }
+
+    fun setAdapterData(i: String) {
         itemDescriptionList.clear()
-        val description = response.data[i].plan_description
+        val description =i //response.data[i].plan_description
         if (description.equals(""))
             rvItemDescriptionListSubscription.visibility = View.GONE
         else
@@ -197,70 +191,6 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
         rvItemDescriptionListSubscription.adapter = subscriptionItemDescriptionAdapter
     }
 
-    fun setGoldenPlanData() {
-        ivMiddleImage.setImageResource(R.drawable.goldenplan_icon_orange)
-        tvMiddleText.setText(R.string.golden_plan)
-        tvMiddlePlan.visibility = View.VISIBLE
-
-        ivLeftImage.setImageResource(R.drawable.silverplan_icon_black)
-        tvLeftText.text = getString(R.string.silver)
-        tvLeftPlan.visibility = View.VISIBLE
-
-        ivRightImage.setImageResource(R.drawable.free_icon_black)
-        tvRightText.setText(R.string.free)
-        tvRightPlan.visibility = View.VISIBLE
-
-        tvplanPriceCurrency.text = response.data[1].plan_currency
-        tvplanPrice.text = response.data[1].plan_price// " " + getTwoValueAfterDecimal(response.data[1].plan_price)
-        tvplanDuration.text = " / " + response.data[1].plan_duration + " " + response.data[1].plan_duration_type
-        tvplanDuration.visibility = View.VISIBLE
-        tvplanPriceCurrency.visibility = View.VISIBLE
-        setAdapterData(1)
-
-    }
-
-    fun setSilverPlanData() {
-        ivMiddleImage.setImageResource(R.drawable.silverplan_icon_orange)
-        tvMiddleText.setText(R.string.silver_plan)
-        tvMiddlePlan.visibility = View.VISIBLE
-
-        ivLeftImage.setImageResource(R.drawable.free_icon_black)
-        tvLeftText.setText(R.string.free)
-        tvLeftPlan.visibility = View.VISIBLE
-
-        ivRightImage.setImageResource(R.drawable.goldenplan_icon_black)
-        tvRightText.setText(R.string.golden_plan)
-        tvRightPlan.visibility = View.VISIBLE
-
-        tvplanPriceCurrency.text = response.data[0].plan_currency
-        tvplanPrice.text = response.data[0].plan_price// " " + getTwoValueAfterDecimal(response.data[0].plan_price)
-        //tvplanPrice.text = response.data[0].plan_currency + " " + response.data[0].plan_price
-        tvplanDuration.text = " / " + response.data[0].plan_duration + " " + response.data[0].plan_duration_type
-        tvplanDuration.visibility = View.VISIBLE
-        tvplanPriceCurrency.visibility = View.VISIBLE
-
-        setAdapterData(0)
-    }
-
-    fun setFreePlanData() {
-        ivMiddleImage.setImageResource(R.drawable.free_icon_orange)
-        tvMiddleText.setText(R.string.free)
-        tvMiddlePlan.visibility = View.VISIBLE
-
-        ivLeftImage.setImageResource(R.drawable.goldenplan_icon_black)
-        tvLeftText.setText(R.string.golden_plan)
-        tvLeftPlan.visibility = View.VISIBLE
-
-        ivRightImage.setImageResource(R.drawable.silverplan_icon_black)
-        tvRightText.setText(R.string.silver_plan)
-        tvplanPrice.setText(getString(R.string.free))
-        tvplanDuration.visibility = View.GONE
-        tvplanPriceCurrency.visibility = View.GONE
-
-        setAdapterData(2)
-
-    }
-
     override fun onRestart() {
         super.onRestart()
         getCreditCardInfo()
@@ -269,12 +199,21 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
     override fun onSuccessSubscription(subscriptionResponse: SubscriptionResponse) {
         Log.d("subscriptionResponse", subscriptionResponse.toString())
         response = subscriptionResponse
-        tvplanPriceCurrency.text = response.data[0].plan_currency
-        tvplanPrice.text = response.data[0].plan_price// " " + getTwoValueAfterDecimal(response.data[0].plan_price)
+        mTempList.clear()
+        mTempList.addAll(response.data)
+        mTempList[0].imageIdActive=R.drawable.silverplan_icon_orange
+        mTempList[0].imageIdDeActive=R.drawable.silverplan_icon_black
 
+        mTempList[1].imageIdActive=R.drawable.goldenplan_icon_orange
+        mTempList[1].imageIdDeActive=R.drawable.goldenplan_icon_black
+
+        mTempList[2].imageIdActive=R.drawable.free_icon_orange
+        mTempList[2].imageIdDeActive=R.drawable.free_icon_black
+
+        tvplanPriceCurrency.text = response.data[0].plan_currency
+        tvplanPrice.text = response.data[0].plan_price
         val planTitle1 = response.data[2].plan_title
         val planFree = planTitle1.split(" ")
-        //tvplanPrice.text = response.data[0].plan_currency + " " + response.data[0].plan_price
         tvplanDuration.text = " / " + response.data[0].plan_duration + " " + response.data[0].plan_duration_type
 
         tvLeftText.text = planFree[0]//free
@@ -357,71 +296,42 @@ class SubscriptionActivity : LasrossParentKotlinActivity(), View.OnClickListener
     protected fun getCreditCardInfo() {
         tvSubscribe.isEnabled = false
 
-        object : AsyncTask<Void, Void, ExternalAccountCollection>() {
+        object : AsyncTask<Void, Void, Customer>() {
             override fun onPreExecute() {
                 super.onPreExecute()
                 showLoader()
             }
 
-            override fun doInBackground(vararg voids: Void): ExternalAccountCollection? {
-             Stripe.apiKey = resources.getString(R.string.StripeKeyTest)
-           //Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY
-                var customer: ExternalAccountCollection? = null
+            override fun doInBackground(vararg voids: Void): Customer? {
+                Stripe.apiKey = resources.getString(R.string.StripeKeyTest)
+                val stripeCustomerId = session!!.registration.stripe_customer_id
+                val expandList: MutableList<String> = java.util.ArrayList()
+                expandList.add("sources")
+                val retrieveParams: MutableMap<String, Any> = HashMap()
+                retrieveParams["expand"] = expandList
+                var customer: Customer? = null
                 try {
-                    val stripeCustomerId = session!!.getRegistration()!!.getStripe_customer_id()//"cus_Fl6RC2yZA8vTna";//session.getRegistration().getStripe_customer_id();
-                    val cardParams = HashMap<String, Any>()
-                    cardParams["object"] = "card"
-                    if (Customer.retrieve(stripeCustomerId).sources != null)
-                        customer = Customer.retrieve(stripeCustomerId).sources.all(cardParams)
-                    val retrieveParams: MutableMap<String, Any> = HashMap()
-                    val expandList: MutableList<String> = ArrayList()
-                    expandList.add("sources")
-                    retrieveParams["expand"] = expandList
-                    val c = Customer.retrieve(
+                    customer = Customer.retrieve(
                             stripeCustomerId,
                             retrieveParams,
                             null
                     )
-                    customer=c.sources
-                     val params: MutableMap<String, Any> = HashMap()
-                    params["source"] = "tok_mastercard"
-
-                   // val card: Card = customer.sources.create(params) as Card
-                } catch (ignored: StripeException) {
-                }
-                return customer
-         /*       Stripe.apiKey = resources.getString(R.string.StripeKeyTest)
-                //Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
-                //Stripe.apiKey = BuildConfig.STRIPE_SECRET_KEY;
-                var customer: ExternalAccountCollection? = null
-                try {
-                    //  customer = Customer.retrieve(session.getRegistration().getStripe_customer_id()); // session.getRegistration().getStripe_customer_id();
-                    val retrieveParams: MutableMap<String, Any> = HashMap()
-                    val expandList: MutableList<String> = java.util.ArrayList()
-                    expandList.add("sources")
-                    retrieveParams["expand"] = expandList
-                    val c = Customer.retrieve(
-                            session!!.registration.stripe_customer_id,
-                            retrieveParams,
-                            null
-                    )
-                    customer = c.sources
-                    customer.retrieve(id).delete()
                 } catch (e: StripeException) {
                     e.printStackTrace()
-                    hideLoader()
-                    toastMessage(e.localizedMessage)
                 }
-                return customer*/
+
+                val params: MutableMap<String, Any> = HashMap()
+                params["object"] = "card"
+                return customer
             }
 
-            override fun onPostExecute(externalAccountCollection: ExternalAccountCollection?) {
+            override fun onPostExecute(externalAccountCollection: Customer?) {
                 super.onPostExecute(externalAccountCollection)
 
                 runOnUiThread {
                     tvSubscribe.isEnabled = false
                     if (externalAccountCollection != null) {
-                        cardResponce = StripeSaveCardResponce()
+                        cardResponce = StripeResponse()
                         cardResponce = Gson().fromJson(externalAccountCollection.toJson(), com.mindiii.lasross.utils.StripeResponse::class.java)
                         Log.e("Size: ", "" + cardResponce.sources.data.size)
 

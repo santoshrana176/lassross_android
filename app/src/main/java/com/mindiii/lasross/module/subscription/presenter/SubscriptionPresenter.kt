@@ -45,7 +45,6 @@ class SubscriptionPresenter(var mContext: Context, var subscription: ApiCallback
             }
 
             override fun onFailure(call: Call<SubscriptionResponse>, t: Throwable) {
-
                 subscription.onHideBaseLoader()
                 if (t is IOException) {
                     subscription.onError(mContext.getString(R.string.internet_connection))

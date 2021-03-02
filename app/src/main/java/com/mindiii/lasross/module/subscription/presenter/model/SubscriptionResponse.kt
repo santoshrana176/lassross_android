@@ -1,7 +1,7 @@
 package com.mindiii.lasross.module.subscription
 
 data class SubscriptionResponse(
-        val `data`: List<Data>,
+        var `data`: List<Data>,
         val status: String
 )
 
@@ -19,5 +19,7 @@ data class Data(
         val stripe_plan_id: String,
         val stripe_product_id: String,
         val subscriptionPlanId: String,
-        val updated_on: String
+        val updated_on: String,
+        var imageIdActive: Int,
+        var imageIdDeActive: Int
 )

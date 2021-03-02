@@ -78,7 +78,6 @@ class ProfileFragment : BaseKotlinFragment(), View.OnClickListener, ApiCallback.
 
         when (p0!!.id) {
             R.id.iv_back_Icon -> {
-                //activity.onBackPressed()
                 startActivity(Intent(mContext, HomeActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
                 activity.finish()
             }
@@ -105,7 +104,6 @@ class ProfileFragment : BaseKotlinFragment(), View.OnClickListener, ApiCallback.
             R.id.rlMyOrders -> {
                 startActivity(Intent(mContext, FAQActivity::class.java)
                         .putExtra("screenCheck", "myOrder"))
-                /*  activity.addFragment(MyOrdersFragment.newInstance("PROFILE_FRAGMENT"), true, R.id.profileFrame)*/
             }
             R.id.rlSettings -> {
                 startActivity(Intent(mContext, SettingActivity::class.java))

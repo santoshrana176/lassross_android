@@ -62,7 +62,7 @@ class UpdateProfileFragment : BaseKotlinFragment(), ApiCallback.UpdateProfileCal
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         session = Session(mContext)
-        setOnClicks(tvUpdate, edit_pencil, etAddress, btnBackToProfile)
+        setOnClicks(tvUpdate, edit_pencil, etAddress, btnBackToProfile, updateView)
         setData()
     }
 
@@ -109,15 +109,11 @@ class UpdateProfileFragment : BaseKotlinFragment(), ApiCallback.UpdateProfileCal
     override fun onSuccessUpdateProfile(loginResponse: LoginResponse?) {
         startActivity(Intent(requireContext(), ProfileActivity::class.java))
         activity.finish()
-        //activity.showOnBackPressed(requireContext(), loginResponse!!.message)
         Toast.makeText(mContext, loginResponse?.message, Toast.LENGTH_SHORT).show()
         if (loginResponse!!.status.equals("success", ignoreCase = true)) {
             session.createRegistration(loginResponse.data?.userDetail)
             session.setUserLoggedIn()
-            //  session.setAuthToken(loginResponse.getData().getUserDetail().getAuth_token());
             session.notificatioStatus = loginResponse.data.userDetail.push_alert_status
-
-            //  session.authToken=loginResponse.data?.userDetail!!.auth_token
         }
     }
 
@@ -160,6 +156,9 @@ class UpdateProfileFragment : BaseKotlinFragment(), ApiCallback.UpdateProfileCal
             R.id.etAddress -> {
                 startActivity(Intent(mContext, MyAddressesActivity::class.java)
                         .putExtra("CheckValue", "CheckFound"))
+            }
+            R.id.updateView -> {
+                // no need to do anything
             }
             R.id.btnBackToProfile -> {
                 activity.onBackPressed()

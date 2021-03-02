@@ -49,12 +49,6 @@ class ActivePlanActivity : LasrossParentKotlinActivity(), View.OnClickListener, 
         val subscribeResponse = bundle!!.getSerializable("subscribeResponse") as SubscribeResponse?
         isCancelled = intent.getStringExtra("isCancelled")
 
-        /*  if (isCancelled!!.equals("0") && !subscribeResponse!!.data.subscriptionPlanId.equals("999999999")) {
-              tvStopAutoRecurring.visibility=View.VISIBLE
-            } else {
-               tvStopAutoRecurring.visibility = View.GONE
-          }*/
-
         if (subscribeResponse!!.data.plan_title.trim().equals("Golden Plan", ignoreCase = true)) {
             setSubscribeData(R.drawable.goldenplan_icon_orange, R.string.golden_plan, subscribeResponse, true)
 
@@ -65,43 +59,6 @@ class ActivePlanActivity : LasrossParentKotlinActivity(), View.OnClickListener, 
             setSubscribeData(R.drawable.free_icon_orange, R.string.free, subscribeResponse, false)
         }
 
-/*
-        val subscribeResponse = bundle!!.getSerializable("subscribeResponse") as SubscribeResponse?
-        val isCancelled = intent.getStringExtra("isCancelled")
-
-        if (isCancelled!!.equals("0")) {
-            tvRenewDateTextActivePlan.text = getString(R.string.next_billing_date)
-            tvStopAutoRecurring.setOnClickListener(this)
-        } else {
-            tvRenewDateTextActivePlan.text = getString(R.string.expiry_date_active_plan)
-            tvStopAutoRecurring.visibility = View.GONE
-        }
-        tvSubscriptionPlanTitle.text=subscribeResponse!!.data.plan_title
-        if (subscribeResponse!!.data.plan_title.equals("Free Plan") || subscribeResponse.data.subscriptionPlanId.equals("999999999")){
-            llDownLayout.visibility=View.GONE
-            tvStopAutoRecurring.visibility=View.GONE
-            description_text.visibility=View.GONE
-
-        }else{
-            llDownLayout.visibility=View.VISIBLE
-            tvStopAutoRecurring.visibility=View.VISIBLE
-            description_text.visibility=View.VISIBLE
-        }
-
-        if (subscribeResponse!!.data.end_date.isNotEmpty())
-        date = DateFormatChange(subscribeResponse!!.data.end_date)
-        tvRenewDateActivePlan.text = date
-
-        if (subscribeResponse.data.plan_title.trim().equals("Golden Plan", ignoreCase = true)) {
-            setSubscribeData(R.drawable.goldenplan_icon_orange, R.string.golden_plan, subscribeResponse)
-        } else if (subscribeResponse.data.plan_title.trim().equals("Silver Plan", ignoreCase = true)) {
-            setSubscribeData(R.drawable.silverplan_icon_orange, R.string.silver_plan, subscribeResponse)
-        } else if (subscribeResponse.data.plan_title.trim().equals("Free", ignoreCase = true)) {
-            tvSubscriptionPlanImage.setImageResource(R.drawable.free_icon_orange)
-            tvSubscriptionPlanTitle.setText(R.string.free)
-          //  tvSubscriptionPlan.visibility = View.GONE
-            setSubscribeData(R.drawable.silverplan_icon_orange, R.string.free, subscribeResponse)
-        }*/
     }
 
     fun setSubscribeData(imageInt: Int, planNameInt: Int, subscribeResponse: SubscribeResponse, flag: Boolean) {
@@ -114,9 +71,7 @@ class ActivePlanActivity : LasrossParentKotlinActivity(), View.OnClickListener, 
         tvplanPriceCurrency.text = subscribeResponse.data.plan_currency
 
         if (subscribeResponse.data.plan_price.isNotEmpty()){
-
-            tvSubscriptionPrice.text =subscribeResponse.data.plan_price //getTwoValueAfterDecimal(subscribeResponse.data.plan_price)
-
+            tvSubscriptionPrice.text =subscribeResponse.data.plan_price
         }
 
         tvRenewDateTextActivePlan.text = getString(R.string.expiry_date_active_plan)
@@ -129,14 +84,13 @@ class ActivePlanActivity : LasrossParentKotlinActivity(), View.OnClickListener, 
                 description_text.visibility=View.VISIBLE
                 tvRenewDateTextActivePlan.text = getString(R.string.next_billing_date)
                 tvStopAutoRecurring.visibility = View.VISIBLE
-
             } else {
                 tvStopAutoRecurring.visibility = View.GONE
                 description_text.visibility=View.GONE
                 tvRenewDateTextActivePlan.text = getString(R.string.expiry_date_active_plan)
             }
-            if (subscribeResponse!!.data.end_date.isNotEmpty())
-                date = DateFormatChange(subscribeResponse!!.data.end_date)
+            if (subscribeResponse.data.end_date.isNotEmpty())
+                date = DateFormatChange(subscribeResponse.data.end_date)
             tvRenewDateActivePlan.text = date
         } else {
             llDownLayout.visibility = View.GONE
@@ -146,11 +100,9 @@ class ActivePlanActivity : LasrossParentKotlinActivity(), View.OnClickListener, 
             description_text.visibility = View.GONE
             tvplanPriceCurrency.text = getString(R.string.free_)
             tvStopAutoRecurring.visibility = View.GONE
-
         }
 
-
-            tvSubscriptionPlanDurationType.text = " / " + subscribeResponse.data.plan_duration + " " + subscribeResponse.data.plan_duration_type
+        tvSubscriptionPlanDurationType.text = " / " + subscribeResponse.data.plan_duration + " " + subscribeResponse.data.plan_duration_type
 
         val description = subscribeResponse.data.plan_description
         if (description.equals(""))
